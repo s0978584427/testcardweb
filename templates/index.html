@@ -70,9 +70,17 @@
 
         .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
             margin-bottom: 2rem;
+            width: 100%;
+            max-width: 1000px;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         .stat-card {
@@ -137,12 +145,29 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            position: relative;
+        }
+
+        .card-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(99, 102, 241, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .card-item:hover {
             border-color: var(--primary-color);
             box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
             transform: translateY(-5px);
+        }
+
+        .card-item:hover::after {
+            opacity: 1;
         }
 
         .card-image {
@@ -287,7 +312,7 @@
     <!-- 導航欄 -->
     <nav class="navbar navbar-dark sticky-top">
         <div class="container-fluid">
-            <span class="navbar-brand">ðŸall 卡牌價格監控</span>
+            <span class="navbar-brand">卡牌達人</span>
             <div>
                 <button id="updateBtn" class="btn btn-primary btn-sm" onclick="triggerUpdate()">
                     <span class="loading-spinner" id="updateSpinner" style="display: none;"></span>
@@ -374,7 +399,25 @@
          * 顯示提示消息
          */
         function showAlert(message, type = 'info') {
-            const alertId = `alert-${Date.now()}`;
+           在不同平台查詢卡牌
+         */
+        function searchPlatform(cardName, platform) {
+            let url = '';
+            const searchTerm = encodeURIComponent(cardName);
+            
+            if (platform === 'shopee') {
+                url = `https://shopee.tw/search?keyword=${searchTerm}`;
+            } else if (platform === 'ruten') {
+                url = `https://www.ruten.com.tw/find/?q=${searchTerm}`;
+            }
+            
+            if (url) {
+                window.open(url, '_blank');
+            }
+        }
+
+        /**
+         *  const alertId = `alert-${Date.now()}`;
             const alertHtml = `
                 <div class="alert alert-${type} alert-dismissible fade show" role="alert" id="${alertId}">
                     ${message}
@@ -403,6 +446,10 @@
                         <div class="no-cards" style="grid-column: 1/-1;">
                             <div class="no-cards-icon">🔍</div>
                             <h3>尚無卡牌數據</h3>
+                            <div class="card-actions">
+                                <button class="btn-platform btn-shopee" onclick="searchPlatform('${card.name}', 'shopee')" title="在蝦皮查詢">🦐 蝦皮</button>
+                                <button class="btn-platform btn-ruten" onclick="searchPlatform('${card.name}', 'ruten')" title="在露天查詢">🏪 露天</button>
+                            </div>
                             <p>點擊「更新卡牌」按鈕來加載卡牌信息</p>
                         </div>
                     `;
