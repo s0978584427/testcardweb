@@ -8,6 +8,9 @@ Flask-CORS==4.0.0
 requests==2.31.0
 beautifulsoup4==4.12.2
 
+# 自動更新排程
+APScheduler==3.10.4
+
 # 其他工具
 python-dotenv==1.0.0
 

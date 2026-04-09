@@ -5,6 +5,7 @@ from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 from models import Card, PriceHistory, Stats, init_db
 from scraper import scrape_cards
+from scheduler import start_scheduler
 import logging
 from datetime import datetime
 import os
@@ -21,6 +22,14 @@ CORS(app)
 
 # 初始化資料庫
 init_db()
+
+# 啟動自動更新排程
+scheduler = None
+if os.environ.get('FLASK_ENV') != 'development':
+    try:
+        scheduler = start_scheduler()
+    except Exception as e:
+        logger.warning(f"排程啟動失敗（本地開發可忽略）: {str(e)}")
 
 @app.route('/')
 def index():

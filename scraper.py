@@ -144,10 +144,110 @@ class CardScraper:
         self.session.close()
 
 
-def scrape_cards() -> List[Dict[str, Optional[str]]]:
-    """爬取卡牌數據"""
+def scrape_cards_shopee() -> List[Dict[str, Optional[str]]]:
+    """爬取蝦皮卡牌數據"""
     scraper = CardScraper()
     try:
-        return scraper.fetch_cards()
+        # 蝦皮遊戲卡商品頁
+        response = scraper.session.get(
+            'https://shopee.tw/search?keyword=遊戲卡',
+            timeout=10
+        )
+        
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            cards = []
+            
+            # 蝦皮產品容器
+            products = soup.find_all('div', class_=['shopee-search-item-result__item'])
+            
+            for product in products[:5]:  # 最多取 5 個
+                try:
+                    name_elem = product.find('span', class_='line-clamp-2')
+                    price_elem = product.find('span', class_='shopee-search-item-result__price')
+                    img_elem = product.find('img')
+                    
+                    if name_elem and price_elem:
+                        cards.append({
+                            'name': f"[蝦皮] {name_elem.get_text(strip=True)}",
+                            'price': int(price_elem.get_text(strip=True).replace(',', '').split('~')[0]) or 0,
+                            'image_url': img_elem.get('src') if img_elem else None,
+                            'description': '來自蝦皮商城'
+                        })
+                except:
+                    continue
+            
+            return cards[:5]
+        return []
+    except Exception as e:
+        logger.warning(f"蝦皮爬蟲錯誤: {str(e)}")
+        return []
+    finally:
+        scraper.close()
+
+
+def scrape_cards_ruten() -> List[Dict[str, Optional[str]]]:
+    """爬取露天卡牌數據"""
+    scraper = CardScraper()
+    try:
+        # 露天拍賣遊戲卡頁
+        response = scraper.session.get(
+            'https://www.ruten.com.tw/find/?q=遊戲卡',
+            timeout=10
+        )
+        
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            cards = []
+            
+            # 露天商品容器
+            products = soup.find_all('li', class_=['item-flex'])
+            
+            for product in products[:5]:  # 最多取 5 個
+                try:
+                    name_elem = product.find('h3', class_='item-title')
+                    price_elem = product.find('span', class_='price')
+                    img_elem = product.find('img')
+                    
+                    if name_elem and price_elem:
+                        price_text = price_elem.get_text(strip=True).replace(',', '').replace('元', '')
+                        cards.append({
+                            'name': f"[露天] {name_elem.get_text(strip=True)}",
+                            'price': int(price_text) if price_text.isdigit() else 0,
+                            'image_url': img_elem.get('src') if img_elem else None,
+                            'description': '來自露天拍賣'
+                        })
+                except:
+                    continue
+            
+            return cards[:5]
+        return []
+    except Exception as e:
+        logger.warning(f"露天爬蟲錯誤: {str(e)}")
+        return []
+    finally:
+        scraper.close()
+
+
+def scrape_cards() -> List[Dict[str, Optional[str]]]:
+    """爬取卡牌數據 (組合多個來源)"""
+    scraper = CardScraper()
+    try:
+        cards = scraper.fetch_cards()
+        
+        # 嘗試加入蝦皮和露天的數據
+        try:
+            shopee_cards = scrape_cards_shopee()
+            cards.extend(shopee_cards)
+        except:
+            pass
+        
+        try:
+            ruten_cards = scrape_cards_ruten()
+            cards.extend(ruten_cards)
+        except:
+            pass
+        
+        return cards if cards else scraper._get_sample_cards()
     finally:
         scraper.close()
