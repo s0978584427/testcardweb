@@ -119,7 +119,7 @@ class CardScraper:
         """返回示例卡牌數據"""
         return [
             {
-                'name': '藍眼白龍 (Blue-Eyes White Dragon)',
+                'name': '青眼白龍 (Blue-Eyes White Dragon)',
                 'price': 1500,
                 'image_url': 'https://via.placeholder.com/200x280?text=Blue-Eyes+White+Dragon',
                 'description': '傳說中的強力卡牌，具有高度攻擊力'
@@ -134,7 +134,7 @@ class CardScraper:
                 'name': '青眼亞白龍 (Blue-Eyes Alternative White Dragon)',
                 'price': 800,
                 'image_url': 'https://via.placeholder.com/200x280?text=Blue-Eyes+Alternative',
-                'description': '藍眼白龍的姐妹卡，具有不同的效果'
+                'description': '青眼白龍的姐妹卡，具有不同的效果'
             },
             {
                 'name': '混沌儀式 (Chaos Ritual)',
@@ -659,10 +659,10 @@ def get_sample_search_results(platform: str) -> List[Dict]:
     
     # 遊戲王卡牌及圖片 (使用 YGOProDeck - 官方資源)
     yugioh_cards = [
-        ('藍眼白龍', 'https://images.ygoprodeck.com/images/cards/89631139.jpg'),
+        ('青眼白龍', 'https://images.ygoprodeck.com/images/cards/89631139.jpg'),
         ('黑魔法師', 'https://images.ygoprodeck.com/images/cards/16732705.jpg'),
         ('青眼亞白龍', 'https://images.ygoprodeck.com/images/cards/70095154.jpg'),
-        ('藍眼白龍 終極龍', 'https://images.ygoprodeck.com/images/cards/70630755.jpg'),
+        ('青眼白龍 終極龍', 'https://images.ygoprodeck.com/images/cards/70630755.jpg'),
         ('黑魔法公開書', 'https://images.ygoprodeck.com/images/cards/16829259.jpg'),
         ('新歐貝利斯克之巨神兵', 'https://images.ygoprodeck.com/images/cards/30683548.jpg'),
         ('漂亮女孩 貝亞', 'https://images.ygoprodeck.com/images/cards/1045806.jpg'),
@@ -689,20 +689,20 @@ def get_sample_search_results(platform: str) -> List[Dict]:
         ('固拉多', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png'),
         ('帝牙海獅', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png'),
         ('妙蛙花', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png'),
-        ('火焰雞', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png'),
-        ('水箭龜', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png'),
+        ('火恐龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png'),
+        ('卡咪龜', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png'),
         ('雷丘', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png'),
-        ('三頭龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/147.png'),
+        ('迷你龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/147.png'),
         ('快龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png'),
         ('阿爾宙斯', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/493.png'),
         ('帕路奇亞', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/484.png'),
         ('帝牙路奇亞', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/483.png'),
         ('騎拉帝納', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/487.png'),
         ('夢幻', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png'),
-        ('蒂姆之王', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png'),
+        ('急凍鳥', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png'),
         ('閃電鳥', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png'),
         ('火焰鳥', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png'),
-        ('迷你龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/148.png'),
+        ('哈克龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/148.png'),
     ]
     
     # 合併卡牌列表 (遊戲王 + 寶可梦)
