@@ -4,7 +4,7 @@
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 from models import Card, PriceHistory, Stats, init_db
-from scraper import scrape_cards
+from scraper import scrape_cards, search_cards_multi_platform
 from scheduler import start_scheduler
 import logging
 from datetime import datetime
@@ -143,6 +143,33 @@ def get_stats():
     except Exception as e:
         logger.error(f"取得統計信息失敗: {str(e)}")
         return jsonify({'error': '取得統計信息失敗'}), 500
+
+
+@app.route('/api/search', methods=['GET'])
+def search_cards():
+    """
+    API 端點 - 在多個平台搜索卡牌
+    參數: keyword (搜索關鍵字)
+    返回: 來自 Shopee, Ruten, Yahoo, PChome 的搜索結果
+    """
+    try:
+        keyword = request.args.get('keyword', '').strip()
+        
+        if not keyword or len(keyword) < 2:
+            return jsonify({'error': '搜索關鍵字至少 2 個字符'}), 400
+        
+        # 搜索多個平台
+        results = search_cards_multi_platform(keyword)
+        
+        return jsonify({
+            'keyword': keyword,
+            'results': results,
+            'total_results': sum(len(items) for items in results.values())
+        })
+    
+    except Exception as e:
+        logger.error(f"搜索卡牌失敗: {str(e)}")
+        return jsonify({'error': '搜索失敗，請稍後重試'}), 500
 
 
 @app.errorhandler(404)

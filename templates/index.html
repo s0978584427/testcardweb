@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>卡牌價格監控系統</title>
+    <title>卡牌價格查詢系統 - 一站式卡牌搜尋平台</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #6366f1;
             --secondary-color: #8b5cf6;
             --success-color: #10b981;
             --danger-color: #ef4444;
+            --warning-color: #f59e0b;
             --dark-bg: #0f172a;
             --card-bg: #1e293b;
             --border-color: #334155;
+            --text-primary: #e2e8f0;
+            --text-secondary: #cbd5e1;
         }
 
         * {
@@ -23,602 +26,681 @@
 
         body {
             background-color: var(--dark-bg);
-            color: #e2e8f0;
+            color: var(--text-primary);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
         }
 
+        /* 導航欄 */
         .navbar {
-            background-color: var(--card-bg) !important;
-            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-bottom: 2px solid var(--border-color);
             padding: 1rem 0;
+            backdrop-filter: blur(10px);
         }
 
         .navbar-brand {
             font-weight: 700;
             font-size: 1.5rem;
-            color: var(--primary-color) !important;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
+        /* 主容器 */
+        .container-main {
+            padding: 3rem 1rem;
+            min-height: 100vh;
+        }
+
+        /* 搜索區域 */
+        .search-section {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .search-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .search-section p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .search-input-group {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .search-input-group input {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .search-input-group input:focus {
+            outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
-        .btn-primary:hover {
+        .search-input-group button {
+            background-color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .search-input-group button:hover {
             background-color: var(--secondary-color);
             border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
 
-        .container-fluid {
-            padding: 2rem 1rem;
+        .search-input-group button:active {
+            transform: translateY(0);
+        }
+
+        /* 平台標籤 */
+        .platform-tabs {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
-        .header-section {
-            margin-bottom: 2rem;
+        .platform-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background-color: transparent;
+            color: var(--text-secondary);
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .platform-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .platform-btn.active {
+            border-color: var(--primary-color);
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* 結果區域 */
+        .results-section {
+            display: none;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        .platform-results {
+            margin-bottom: 3rem;
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
             padding-bottom: 1rem;
             border-bottom: 2px solid var(--border-color);
         }
 
-        .header-section h1 {
-            color: var(--primary-color);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            width: 100%;
-            max-width: 1000px;
-        }
-        
-        @media (max-width: 768px) {
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-            border: 2px solid var(--primary-color);
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            animation: slide 3s infinite;
-        }
-
-        @keyframes slide {
-            0%, 100% { transform: translateX(-100%); }
-            50% { transform: translateX(100%); }
-        }
-
-        .stat-card h3 {
-            color: var(--secondary-color);
+        .platform-icon {
             font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
         }
 
-        .stat-card p {
-            color: #94a3b8;
+        .platform-header h2 {
             margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
-        .btn-update {
-            margin-bottom: 2rem;
+        .result-count {
+            margin-left: auto;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
-        .cards-grid {
+        /* 商品卡片 */
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .card-item {
+        .product-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 0.75rem;
             overflow: hidden;
-            cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            height: 100%;
-            position: relative;
         }
 
-        .card-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent 0%, rgba(99, 102, 241, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .card-item:hover {
+        .product-card:hover {
             border-color: var(--primary-color);
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-            transform: translateY(-5px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
         }
 
-        .card-item:hover::after {
-            opacity: 1;
-        }
-
-        .card-image {
+        .product-image {
             width: 100%;
-            height: 250px;
-            object-fit: cover;
-            background-color: var(--border-color);
-            background-image: linear-gradient(135deg, var(--border-color) 25%, transparent 25%, transparent 75%, var(--border-color) 75%, var(--border-color)),
-                              linear-gradient(135deg, var(--border-color) 25%, transparent 25%, transparent 75%, var(--border-color) 75%, var(--border-color));
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
+            height: 220px;
+            background-color: rgba(99, 102, 241, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
-        .card-content {
-            padding: 1.5rem;
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.25rem;
+            flex: 1;
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
         }
 
-        .card-name {
+        .product-name {
+            font-size: 1rem;
             font-weight: 600;
-            color: #e2e8f0;
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-            line-height: 1.3;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .card-price {
+        .product-shop {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .rating {
+            font-size: 0.85rem;
+            color: var(--warning-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .product-price {
             font-size: 1.5rem;
-            color: var(--success-color);
             font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .card-description {
-            color: #94a3b8;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .btn-view-chart {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            font-size: 0.85rem;
-            width: 100%;
-        }
-
-        .btn-view-chart:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Modal */
-        .modal-content {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-        }
-
-        .modal-header {
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .modal-title {
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .btn-close {
-            filter: invert(1);
-        }
-
-        .chart-container {
-            position: relative;
-            height: 400px;
-            margin: 2rem 0;
-        }
-
-        /* Toast/Alert */
-        .alert {
-            border: 1px solid var(--border-color);
-            background-color: var(--card-bg);
-        }
-
-        .alert-info {
-            color: #06b6d4;
-            border-color: #06b6d4;
-        }
-
-        .alert-success {
             color: var(--success-color);
-            border-color: var(--success-color);
-        }
-
-        .alert-danger {
-            color: var(--danger-color);
-            border-color: var(--danger-color);
-        }
-
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(99, 102, 241, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--primary-color);
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .no-cards {
-            text-align: center;
-            padding: 3rem;
-            color: #94a3b8;
-        }
-
-        .no-cards-icon {
-            font-size: 3rem;
             margin-bottom: 1rem;
         }
 
-        footer {
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-            padding: 2rem;
-            text-align: center;
-            color: #64748b;
+        .product-footer {
+            display: flex;
+            gap: 0.5rem;
             margin-top: auto;
+        }
+
+        .btn-visit {
+            flex: 1;
+            padding: 0.75rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-visit:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* 載入狀態 */
+        .loading {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .spinner-border {
+            color: var(--primary-color);
+            width: 3rem;
+            height: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* 空結果 */
+        .no-results {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-secondary);
+        }
+
+        .no-results i {
+            font-size: 3rem;
+            color: var(--warning-color);
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .search-section h1 {
+                font-size: 2rem;
+            }
+
+            .search-input-group {
+                flex-direction: column;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .platform-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .result-count {
+                margin-left: 0;
+            }
+        }
+
+        /* 平台顏色 */
+        .platform-shopee {
+            --platform-color: #ee7752;
+        }
+
+        .platform-ruten {
+            --platform-color: #d32f2f;
+        }
+
+        .platform-yahoo {
+            --platform-color: #ffd700;
+        }
+
+        .platform-pchome {
+            --platform-color: #00b4d8;
+        }
+
+        .platform-header {
+            --platform-color: var(--primary-color);
+        }
+
+        .platform-header.platform-shopee {
+            border-bottom-color: #ee7752;
+        }
+
+        .platform-header.platform-ruten {
+            border-bottom-color: #d32f2f;
+        }
+
+        .platform-header.platform-yahoo {
+            border-bottom-color: #ffd700;
+        }
+
+        .platform-header.platform-pchome {
+            border-bottom-color: #00b4d8;
+        }
+
+        /* 動畫 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .platform-results {
+            animation: fadeIn 0.4s ease-out;
         }
     </style>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
     <!-- 導航欄 -->
-    <nav class="navbar navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <span class="navbar-brand">卡牌達人</span>
-            <div>
-                <button id="updateBtn" class="btn btn-primary btn-sm" onclick="triggerUpdate()">
-                    <span class="loading-spinner" id="updateSpinner" style="display: none;"></span>
-                    <span id="updateText">更新卡牌</span>
-                </button>
-            </div>
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-credit-card"></i> 卡牌價格查詢系統
+            </a>
+            <span class="navbar-text ms-auto">
+                <small>一站式卡牌搜尋平台</small>
+            </span>
         </div>
     </nav>
 
     <!-- 主容器 -->
-    <div class="container-fluid flex-grow-1">
-        <!-- 消息提示 -->
-        <div id="alertContainer" style="position: fixed; top: 80px; right: 20px; z-index: 9999; width: 100%; max-width: 400px;"></div>
-
-        <!-- 卡牌達人面板 -->
-        <div class="header-section">
-            <div style="text-align: center; margin-bottom: 1rem;">
-                <h1 style="font-size: 2.5rem; color: var(--primary-color);">👑 卡牌達人市場監要</h1>
+    <div class="container-main">
+        <!-- 搜索區域 -->
+        <div class="search-section">
+            <h1>🎴 卡牌價格比較</h1>
+            <p>在所有主要平台上搜尋卡牌價格，快速找到最佳交易</p>
+            
+            <div class="search-input-group">
+                <input 
+                    type="text" 
+                    id="searchKeyword" 
+                    placeholder="輸入卡牌名稱 (例：藍眼白龍、黑魔法師)..." 
+                    onkeyup="handleKeyboardSearch(event)"
+                >
+                <button onclick="performSearch()" id="searchBtn">
+                    <i class="fas fa-search"></i> 搜尋
+                </button>
             </div>
-            <div class="stats-container">
-                <div class="stat-card">
-                    <h3 id="totalCards">0</h3>
-                    <p>卡牌總數</p>
-                </div>
-                <div class="stat-card">
-                    <h3 id="priceHistory">0</h3>
-                    <p>價格記錄</p>
-                </div>
-                <div class="stat-card">
-                    <h3 id="avgPrice">$0</h3>
-                    <p>平均價格</p>
-                </div>
+
+            <!-- 平台篩選 -->
+            <div class="platform-tabs">
+                <button class="platform-btn active" onclick="filterByPlatform('all')">
+                    <i class="fas fa-th"></i> 全部平台
+                </button>
+                <button class="platform-btn" onclick="filterByPlatform('shopee')">
+                    <i class="fas fa-shrimp"></i> 蝦皮 Shopee
+                </button>
+                <button class="platform-btn" onclick="filterByPlatform('ruten')">
+                    <i class="fas fa-store"></i> 露天拍賣
+                </button>
+                <button class="platform-btn" onclick="filterByPlatform('yahoo')">
+                    <i class="fas fa-gavel"></i> Yahoo 奇摩
+                </button>
+                <button class="platform-btn" onclick="filterByPlatform('pchome')">
+                    <i class="fas fa-shopping-cart"></i> PChome
+                </button>
             </div>
         </div>
 
-        <!-- 卡牌網格 -->
-        <div class="cards-grid" id="cardsContainer">
-            <div class="no-cards">
-                <div class="no-cards-icon">🔍</div>
-                <h3>尚無卡牌數據</h3>
-                <p>點擊「更新卡牌」按鈕來加載卡牌信息</p>
+        <!-- 結果區域 -->
+        <div class="results-section" id="resultsSection">
+            <!-- 載入中 -->
+            <div class="loading" id="loadingSection" style="display: none;">
+                <div class="spinner-border" role="status"></div>
+                <p>正在搜尋多個平台...</p>
             </div>
+
+            <!-- 搜索結果 -->
+            <div id="searchResults"></div>
         </div>
     </div>
 
-    <!-- 價格圖表 Modal -->
-    <div class="modal fade" id="priceChartModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">卡牌價格歷史</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="chart-container">
-                        <canvas id="priceChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 頁腳 -->
-    <footer>
-        <p>&copy; 2024 卡牌價格監控系統 | 數據更新時間: <span id="lastUpdate">-</span></p>
-    </footer>
-
-    <!-- Bootstrap & 自定義腳本 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // 全局變量
-        let chartInstance = null;
-        const alertContainer = document.getElementById('alertContainer');
-        const cardsContainer = document.getElementById('cardsContainer');
-
-        // 初始化
-        document.addEventListener('DOMContentLoaded', () => {
-            loadCards();
-            loadStats();
-            updateLastUpdateTime();
-        });
+        let currentSearchResults = {};
+        let currentFilter = 'all';
 
         /**
-         * 顯示提示消息
+         * 執行搜尋
          */
-        function showAlert(message, type = 'info') {
-           在不同平台查詢卡牌
-         */
-        function searchPlatform(cardName, platform) {
-            let url = '';
-            const searchTerm = encodeURIComponent(cardName);
+        async function performSearch() {
+            const keyword = document.getElementById('searchKeyword').value.trim();
             
-            if (platform === 'shopee') {
-                url = `https://shopee.tw/search?keyword=${searchTerm}`;
-            } else if (platform === 'ruten') {
-                url = `https://www.ruten.com.tw/find/?q=${searchTerm}`;
+            if (!keyword || keyword.length < 2) {
+                alert('請輸入至少 2 個字符');
+                return;
             }
-            
-            if (url) {
-                window.open(url, '_blank');
-            }
-        }
 
-        /**
-         *  const alertId = `alert-${Date.now()}`;
-            const alertHtml = `
-                <div class="alert alert-${type} alert-dismissible fade show" role="alert" id="${alertId}">
-                    ${message}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-            `;
-            alertContainer.insertAdjacentHTML('beforeend', alertHtml);
+            showLoading(true);
             
-            // 3 秒後自動關閉
-            setTimeout(() => {
-                const elem = document.getElementById(alertId);
-                if (elem) elem.remove();
-            }, 3000);
-        }
-
-        /**
-         * 加載卡牌列表
-         */
-        async function loadCards() {
             try {
-                const response = await fetch('/api/cards');
-                const cards = await response.json();
-                
-                if (!cards || cards.length === 0) {
-                    cardsContainer.innerHTML = `
-                        <div class="no-cards" style="grid-column: 1/-1;">
-                            <div class="no-cards-icon">🔍</div>
-                            <h3>尚無卡牌數據</h3>
-                            <div class="card-actions">
-                                <button class="btn-platform btn-shopee" onclick="searchPlatform('${card.name}', 'shopee')" title="在蝦皮查詢">🦐 蝦皮</button>
-                                <button class="btn-platform btn-ruten" onclick="searchPlatform('${card.name}', 'ruten')" title="在露天查詢">🏪 露天</button>
-                            </div>
-                            <p>點擊「更新卡牌」按鈕來加載卡牌信息</p>
-                        </div>
-                    `;
+                const response = await fetch(`/api/search?keyword=${encodeURIComponent(keyword)}`);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    alert(data.error || '搜尋失敗，請稍後重試');
+                    showLoading(false);
                     return;
                 }
+
+                currentSearchResults = data.results;
+                currentFilter = 'all';
+                updatePlatformButtons();
+                displayResults(data.results);
                 
-                cardsContainer.innerHTML = cards.map(card => `
-                    <div class="card-item">
-                        <img src="${card.image_url || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22280%22%3E%3Crect fill=%22%23334155%22 width=%22200%22 height=%22280%22/%3E%3C/svg%3E'}" 
-                             alt="${card.name}" class="card-image">
-                        <div class="card-content">
-                            <h3 class="card-name">${card.name}</h3>
-                            <div class="card-price">NT\$ ${card.current_price.toLocaleString('zh-TW', {minimumFractionDigits: 0})}</div>
-                            <p class="card-description">${card.description || '暫無描述'}</p>
-                            <button class="btn-view-chart" onclick="loadPriceHistory(${card.id}, '${card.name}')">
-                                📈 查看價格圖表
-                            </button>
+                document.getElementById('resultsSection').classList.add('active');
+            } catch (error) {
+                console.error('搜尋錯誤:', error);
+                alert('搜尋失敗，請檢查網路連線');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        /**
+         * 鍵盤搜尋
+         */
+        function handleKeyboardSearch(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        }
+
+        /**
+         * 顯示/隱藏載入狀態
+         */
+        function showLoading(show) {
+            document.getElementById('loadingSection').style.display = show ? 'block' : 'none';
+        }
+
+        /**
+         * 顯示搜尋結果
+         */
+        function displayResults(results) {
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+
+            const platformConfig = {
+                'shopee': {
+                    name: '🦐 蝦皮 Shopee',
+                    icon: '🦐',
+                    color: '#ee7752'
+                },
+                'ruten': {
+                    name: '🏪 露天拍賣',
+                    icon: '🏪',
+                    color: '#d32f2f'
+                },
+                'yahoo': {
+                    name: '🔨 Yahoo 奇摩',
+                    icon: '🔨',
+                    color: '#ffd700'
+                },
+                'pchome': {
+                    name: '🛒 PChome 24h',
+                    icon: '🛒',
+                    color: '#00b4d8'
+                }
+            };
+
+            // 過濾結果
+            const filteredResults = {};
+            for (const [platform, items] of Object.entries(results)) {
+                if (currentFilter === 'all' || currentFilter === platform) {
+                    if (items.length > 0) {
+                        filteredResults[platform] = items;
+                    }
+                }
+            }
+
+            // 如果沒有結果
+            if (Object.keys(filteredResults).length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>未找到符合的商品</h3>
+                        <p>請嘗試其他搜尋關鍵字</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // 顯示各平台結果
+            for (const [platform, items] of Object.entries(filteredResults)) {
+                const config = platformConfig[platform];
+                
+                const platformHtml = `
+                    <div class="platform-results">
+                        <div class="platform-header platform-${platform}">
+                            <span class="platform-icon">${config.icon}</span>
+                            <h2>${config.name}</h2>
+                            <span class="result-count">${items.length} 個商品</span>
+                        </div>
+
+                        <div class="product-grid">
+                            ${items.map(item => createProductCard(item)).join('')}
                         </div>
                     </div>
-                `).join('');
-            } catch (error) {
-                console.error('加載卡牌失敗:', error);
-                showAlert('加載卡牌失敗', 'danger');
+                `;
+                
+                resultsContainer.innerHTML += platformHtml;
             }
         }
 
         /**
-         * 加載統計信息
+         * 創建商品卡片 HTML
          */
-        async function loadStats() {
-            try {
-                const response = await fetch('/api/stats');
-                const stats = await response.json();
-                
-                document.getElementById('totalCards').textContent = stats.total_cards;
-                document.getElementById('priceHistory').textContent = stats.price_history_count;
-                document.getElementById('avgPrice').textContent = `NT\$ ${stats.average_price.toLocaleString('zh-TW')}`;
-            } catch (error) {
-                console.error('加載統計信息失敗:', error);
-            }
+        function createProductCard(item) {
+            const hasImage = item.image && item.image !== '';
+            const imageHtml = hasImage 
+                ? `<img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/280x220?text=No+Image'">`
+                : `<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: var(--text-secondary);"><i class="fas fa-image" style="font-size: 3rem; opacity: 0.3;"></i></div>`;
+
+            const ratingHtml = item.rating && item.rating > 0 
+                ? `<div class="rating">⭐ ${item.rating.toFixed(1)} (${item.rating > 4 ? '推薦' : '普通'})</div>`
+                : '';
+
+            return `
+                <div class="product-card">
+                    <div class="product-image">
+                        ${imageHtml}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">${item.name}</div>
+                        ${item.shop ? `<div class="product-shop"><i class="fas fa-store"></i> ${item.shop}</div>` : ''}
+                        ${ratingHtml}
+                        <div class="product-price">NT$ ${formatPrice(item.price)}</div>
+                        <div class="product-footer">
+                            <a href="${item.url}" target="_blank" class="btn-visit">
+                                <i class="fas fa-external-link-alt"></i> 查看商品
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
         /**
-         * 加載單張卡牌的價格歷史
+         * 格式化價格
          */
-        async function loadPriceHistory(cardId, cardName) {
-            try {
-                const response = await fetch(`/api/cards/${cardId}/price-history`);
-                const data = await response.json();
-                
-                document.getElementById('modalTitle').textContent = `${cardName} - 價格歷史`;
-                
-                // 準備圖表數據
-                const dates = data.history.map(h => h.date);
-                const prices = data.history.map(h => h.price);
-                
-                // 銷毀舊圖表
-                if (chartInstance) {
-                    chartInstance.destroy();
-                }
-                
-                // 創建新圖表
-                const ctx = document.getElementById('priceChart').getContext('2d');
-                chartInstance = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: dates,
-                        datasets: [{
-                            label: '價格 (NT$)',
-                            data: prices,
-                            borderColor: '#6366f1',
-                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                            borderWidth: 2,
-                            tension: 0.4,
-                            fill: true,
-                            pointBackgroundColor: '#8b5cf6',
-                            pointBorderColor: '#6366f1',
-                            pointRadius: 5,
-                            pointHoverRadius: 7
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    color: '#e2e8f0',
-                                    font: {
-                                        size: 14,
-                                        weight: '600'
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                ticks: {
-                                    color: '#94a3b8',
-                                    callback: function(value) {
-                                        return 'NT\$ ' + value.toLocaleString('zh-TW');
-                                    }
-                                },
-                                grid: {
-                                    color: '#334155'
-                                }
-                            },
-                            x: {
-                                ticks: {
-                                    color: '#94a3b8'
-                                },
-                                grid: {
-                                    color: '#334155'
-                                }
-                            }
-                        }
-                    }
-                });
-                
-                // 顯示 Modal
-                const modal = new bootstrap.Modal(document.getElementById('priceChartModal'));
-                modal.show();
-            } catch (error) {
-                console.error('加載價格歷史失敗:', error);
-                showAlert('加載價格歷史失敗', 'danger');
-            }
+        function formatPrice(price) {
+            return parseFloat(price).toLocaleString('zh-TW', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
         }
 
         /**
-         * 觸發爬蟲更新
+         * 按平台篩選結果
          */
-        async function triggerUpdate() {
-            const updateBtn = document.getElementById('updateBtn');
-            const updateSpinner = document.getElementById('updateSpinner');
-            const updateText = document.getElementById('updateText');
+        function filterByPlatform(platform) {
+            currentFilter = platform;
+            updatePlatformButtons();
             
-            updateBtn.disabled = true;
-            updateSpinner.style.display = 'inline-block';
-            updateText.textContent = '更新中...';
-            
-            try {
-                const response = await fetch('/update', { method: 'POST' });
-                const data = await response.json();
-                
-                if (data.success) {
-                    showAlert(`✅ ${data.message}`, 'success');
-                    loadCards();
-                    loadStats();
-                    updateLastUpdateTime();
-                } else {
-                    showAlert(`❌ 更新失敗: ${data.error}`, 'danger');
+            const results = {};
+            for (const [p, items] of Object.entries(currentSearchResults)) {
+                if (platform === 'all' || platform === p) {
+                    results[p] = items;
                 }
-            } catch (error) {
-                console.error('更新卡牌失敗:', error);
-                showAlert('更新卡牌失敗，請檢查服務器', 'danger');
-            } finally {
-                updateBtn.disabled = false;
-                updateSpinner.style.display = 'none';
-                updateText.textContent = '更新卡牌';
+            }
+            
+            displayResults(results);
+        }
+
+        /**
+         * 更新平台按鈕狀態
+         */
+        function updatePlatformButtons() {
+            document.querySelectorAll('.platform-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            const activeBtn = Array.from(document.querySelectorAll('.platform-btn')).find(btn => {
+                if (currentFilter === 'all') {
+                    return btn.textContent.includes('全部');
+                }
+                return btn.onclick.toString().includes(currentFilter);
+            });
+            
+            if (activeBtn) {
+                activeBtn.classList.add('active');
             }
         }
 
         /**
-         * 更新最後更新時間
+         * 頁面載入時自動聚焦搜尋框
          */
-        function updateLastUpdateTime() {
-            const now = new Date();
-            document.getElementById('lastUpdate').textContent = now.toLocaleString('zh-TW');
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('searchKeyword').focus();
+            
+            // 檢查 URL 參數
+            const params = new URLSearchParams(window.location.search);
+            const keyword = params.get('q');
+            if (keyword) {
+                document.getElementById('searchKeyword').value = keyword;
+                performSearch();
+            }
+        });
     </script>
 </body>
 </html>
