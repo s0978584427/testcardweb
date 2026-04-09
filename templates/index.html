@@ -631,8 +631,11 @@
                         ${ratingHtml}
                         <div class="product-price">NT$ ${formatPrice(item.price)}</div>
                         <div class="product-footer">
+                            <button class="btn-visit" style="background-color: var(--secondary-color); margin-right: 0.5rem;" onclick="showProductDetail('${item.product_id || ''}', '${item.name.replace(/'/g, "\\'")}', '${item.price}', '${item.image.replace(/'/g, "\\'") || ''}', '${item.shop.replace(/'/g, "\\'") || ''}', '${item.rating || 0}')">
+                                <i class="fas fa-eye"></i> 詳情
+                            </button>
                             <a href="${item.url}" target="_blank" class="btn-visit">
-                                <i class="fas fa-external-link-alt"></i> 查看商品
+                                <i class="fas fa-external-link-alt"></i> 購買
                             </a>
                         </div>
                     </div>
@@ -701,6 +704,73 @@
                 performSearch();
             }
         });
+
+        /**
+         * 顯示商品詳情
+         */
+        function showProductDetail(productId, name, price, image, shop, rating) {
+            const modal = document.getElementById('productDetailModal');
+            const detailName = document.getElementById('detailProductName');
+            const detailImage = document.getElementById('detailProductImage');
+            const detailPrice = document.getElementById('detailProductPrice');
+            const detailShop = document.getElementById('detailProductShop');
+            const detailRating = document.getElementById('detailProductRating');
+            
+            detailName.textContent = name;
+            detailPrice.textContent = `NT$ ${formatPrice(parseFloat(price))}`;
+            detailShop.textContent = shop || '未提供';
+            detailRating.textContent = rating > 0 ? `⭐ ${parseFloat(rating).toFixed(1)} 星` : '暫無評分';
+            
+            if (image) {
+                detailImage.src = image;
+                detailImage.style.display = 'block';
+            } else {
+                detailImage.style.display = 'none';
+            }
+            
+            const bootstrapModal = new bootstrap.Modal(modal);
+            bootstrapModal.show();
+        }
     </script>
+
+    <!-- 商品詳情模態框 -->
+    <div class="modal fade" id="productDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="background-color: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary);">
+                <div class="modal-header" style="border-bottom: 1px solid var(--border-color);">
+                    <h5 class="modal-title">商品詳情</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" style="filter: invert(1);"></button>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <img id="detailProductImage" src="" alt="商品圖片" style="max-width: 100%; max-height: 300px; border-radius: 0.5rem; display: none;">
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 id="detailProductName" style="color: var(--text-primary); margin-bottom: 1rem;"></h4>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <small style="color: var(--text-secondary);">價格</small>
+                                <p id="detailProductPrice" style="font-size: 1.5rem; font-weight: 700; color: var(--success-color);"></p>
+                            </div>
+                            <div>
+                                <small style="color: var(--text-secondary);">評分</small>
+                                <p id="detailProductRating" style="font-size: 1.2rem; color: var(--warning-color);"></p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <small style="color: var(--text-secondary);">店家</small>
+                            <p id="detailProductShop" style="color: var(--text-primary);"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border-top: 1px solid var(--border-color);">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

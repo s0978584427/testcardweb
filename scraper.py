@@ -1,6 +1,6 @@
 """
 卡牌價格監控系統 - 網頁爬蟲模組（改進版）
-支持多平台即時搜索
+支持多平台即時搜索和多頁爬取
 """
 import requests
 from bs4 import BeautifulSoup
@@ -8,6 +8,7 @@ import logging
 from typing import List, Dict, Optional
 import time
 from urllib.parse import quote
+import json
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -298,83 +299,139 @@ def search_cards_multi_platform(keyword: str) -> Dict[str, List[Dict]]:
     return results
 
 
-def search_shopee(keyword: str) -> List[Dict]:
-    """搜索蝦皮卡牌"""
+def search_shopee(keyword: str, pages: int = 3) -> List[Dict]:
+    """搜索蝦皮卡牌 - 支持多頁爬取"""
     try:
         session = requests.Session()
         session.headers.update(DEFAULT_HEADERS)
         
-        # 蝦皮搜索 API
-        url = f"https://shopee.tw/api/v2/search_items/?by=relevancy&keyword={quote(keyword)}&limit=10&offset=0&order=desc&page_type=search"
+        results = []
         
-        response = session.get(url, timeout=10)
-        if response.status_code != 200:
-            return get_sample_search_results('shopee')
+        # 爬取多頁
+        for page in range(pages):
+            offset = page * 10
+            url = f"https://shopee.tw/api/v2/search_items/?by=relevancy&keyword={quote(keyword)}&limit=10&offset={offset}&order=desc&page_type=search"
+            
+            try:
+                response = session.get(url, timeout=10)
+                if response.status_code != 200:
+                    break
+                
+                data = response.json()
+                items = data.get('items', [])
+                
+                if not items:
+                    break
+                
+                for item in items:
+                    try:
+                        product = {
+                            'product_id': f"shopee_{item.get('itemid', '')}",
+                            'platform': 'shopee',
+                            'name': item.get('name', ''),
+                            'price': item.get('price', 0) / 100000.0,
+                            'image': item.get('image', ''),
+                            'shop': item.get('shop_name', ''),
+                            'rating': item.get('item_rating', {}).get('rating_star', 0),
+                            'url': f"https://shopee.tw/product/{item.get('shopid', '')}/{item.get('itemid', '')}",
+                            'description': item.get('name', '')
+                        }
+                        results.append(product)
+                        
+                        # 保存到數據庫
+                        from models import Product
+                        Product.add_or_update(
+                            product_id=product['product_id'],
+                            platform=product['platform'],
+                            name=product['name'],
+                            price=product['price'],
+                            image_url=product['image'],
+                            shop_name=product['shop'],
+                            rating=product['rating'],
+                            url=product['url'],
+                            description=product['description']
+                        )
+                    except Exception as e:
+                        logger.warning(f"蝦皮商品解析失敗: {e}")
+                        continue
+                
+                time.sleep(1)  # 避免被限制
+            
+            except Exception as e:
+                logger.warning(f"蝦皮爬蟲 (頁 {page}) 錯誤: {e}")
+                continue
         
-        try:
-            data = response.json()
-            items = data.get('items', [])
-            results = []
-            
-            for item in items[:8]:
-                try:
-                    results.append({
-                        'name': item.get('name', ''),
-                        'price': item.get('price', 0) / 100000.0,  # 蝦皮價格單位
-                        'platform': 'shopee',
-                        'url': f"https://shopee.tw/product/{item.get('shopid', '')}/{item.get('itemid', '')}",
-                        'image': item.get('image', ''),
-                        'shop': item.get('shop_name', ''),
-                        'rating': item.get('item_rating', {}).get('rating_star', 0)
-                    })
-                except:
-                    continue
-            
-            return results if results else get_sample_search_results('shopee')
-        except:
-            return get_sample_search_results('shopee')
+        return results if results else get_sample_search_results('shopee')
     
     except Exception as e:
         logger.error(f"蝦皮搜索錯誤: {str(e)}")
         return get_sample_search_results('shopee')
 
 
-def search_ruten(keyword: str) -> List[Dict]:
-    """搜索露天卡牌"""
+def search_ruten(keyword: str, pages: int = 3) -> List[Dict]:
+    """搜索露天卡牌 - 支持多頁爬取"""
     try:
         session = requests.Session()
         session.headers.update(DEFAULT_HEADERS)
         
-        url = f"https://www.ruten.com.tw/find/?q={quote(keyword)}"
-        response = session.get(url, timeout=10)
-        
-        if response.status_code != 200:
-            return get_sample_search_results('ruten')
-        
-        soup = BeautifulSoup(response.content, 'html.parser')
         results = []
         
-        # 查找商品項目
-        items = soup.find_all('div', class_='item')[:8]
-        
-        for item in items:
+        for page in range(1, pages + 1):
             try:
-                name_elem = item.find('h3', class_='title')
-                price_elem = item.find('span', class_='price')
-                url_elem = item.find('a', class_='link')
+                url = f"https://www.ruten.com.tw/find/?q={quote(keyword)}&page={page}"
+                response = session.get(url, timeout=10)
                 
-                if name_elem and price_elem:
-                    price_text = price_elem.get_text(strip=True).replace('NT$', '').replace(',', '')
-                    results.append({
-                        'name': name_elem.get_text(strip=True),
-                        'price': float(price_text) if price_text.isdigit() else 0,
-                        'platform': 'ruten',
-                        'url': url_elem.get('href', '') if url_elem else '',
-                        'image': '',
-                        'shop': '',
-                        'rating': 0
-                    })
-            except:
+                if response.status_code != 200:
+                    break
+                
+                soup = BeautifulSoup(response.content, 'html.parser')
+                items = soup.find_all('div', class_='item')
+                
+                if not items:
+                    break
+                
+                for item in items:
+                    try:
+                        name_elem = item.find('h3', class_='title')
+                        price_elem = item.find('span', class_='price')
+                        url_elem = item.find('a', class_='link')
+                        img_elem = item.find('img')
+                        
+                        if name_elem and price_elem:
+                            price_text = price_elem.get_text(strip=True).replace('NT$', '').replace(',', '').strip()
+                            product = {
+                                'product_id': f"ruten_{url_elem.get('href', '').split('/')[-1] if url_elem else ''}",
+                                'platform': 'ruten',
+                                'name': name_elem.get_text(strip=True),
+                                'price': float(price_text) if price_text.replace('.', '').isdigit() else 0,
+                                'image': img_elem.get('src', '') if img_elem else '',
+                                'shop': '',
+                                'rating': 0,
+                                'url': url_elem.get('href', '') if url_elem else '',
+                                'description': name_elem.get_text(strip=True)
+                            }
+                            results.append(product)
+                            
+                            # 保存到數據庫
+                            from models import Product
+                            Product.add_or_update(
+                                product_id=product['product_id'],
+                                platform=product['platform'],
+                                name=product['name'],
+                                price=product['price'],
+                                image_url=product['image'],
+                                rating=product['rating'],
+                                url=product['url'],
+                                description=product['description']
+                            )
+                    except Exception as e:
+                        logger.warning(f"露天商品解析失敗: {e}")
+                        continue
+                
+                time.sleep(1)
+            
+            except Exception as e:
+                logger.warning(f"露天爬蟲 (頁 {page}) 錯誤: {e}")
                 continue
         
         return results if results else get_sample_search_results('ruten')
@@ -471,6 +528,7 @@ def get_sample_search_results(platform: str) -> List[Dict]:
     sample_data = {
         'shopee': [
             {
+                'product_id': 'shopee_sample_001',
                 'name': '藍眼白龍 - 經典版',
                 'price': 1200,
                 'platform': 'shopee',
@@ -480,6 +538,7 @@ def get_sample_search_results(platform: str) -> List[Dict]:
                 'rating': 4.8
             },
             {
+                'product_id': 'shopee_sample_002',
                 'name': '黑魔法師 - 初版',
                 'price': 950,
                 'platform': 'shopee',
@@ -491,6 +550,7 @@ def get_sample_search_results(platform: str) -> List[Dict]:
         ],
         'ruten': [
             {
+                'product_id': 'ruten_sample_001',
                 'name': '青眼亞白龍',
                 'price': 850,
                 'platform': 'ruten',
@@ -500,6 +560,7 @@ def get_sample_search_results(platform: str) -> List[Dict]:
                 'rating': 4.7
             },
             {
+                'product_id': 'ruten_sample_002',
                 'name': '混沌儀式',
                 'price': 580,
                 'platform': 'ruten',
@@ -511,6 +572,7 @@ def get_sample_search_results(platform: str) -> List[Dict]:
         ],
         'yahoo': [
             {
+                'product_id': 'yahoo_sample_001',
                 'name': '無限深淵',
                 'price': 520,
                 'platform': 'yahoo',
@@ -522,6 +584,7 @@ def get_sample_search_results(platform: str) -> List[Dict]:
         ],
         'pchome': [
             {
+                'product_id': 'pchome_sample_001',
                 'name': '聖劍騎士',
                 'price': 680,
                 'platform': 'pchome',

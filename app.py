@@ -3,7 +3,7 @@
 """
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
-from models import Card, PriceHistory, Stats, init_db
+from models import Card, PriceHistory, Stats, Product, SearchCache, init_db
 from scraper import scrape_cards, search_cards_multi_platform
 from scheduler import start_scheduler
 import logging
@@ -170,6 +170,43 @@ def search_cards():
     except Exception as e:
         logger.error(f"搜索卡牌失敗: {str(e)}")
         return jsonify({'error': '搜索失敗，請稍後重試'}), 500
+
+
+@app.route('/api/product/<product_id>', methods=['GET'])
+def get_product_detail(product_id):
+    """
+    API 端點 - 取得商品詳情
+    """
+    try:
+        product = Product.get_by_id(product_id)
+        
+        if not product:
+            return jsonify({'error': '商品未找到'}), 404
+        
+        return jsonify(product)
+    
+    except Exception as e:
+        logger.error(f"取得商品詳情失敗: {str(e)}")
+        return jsonify({'error': '取得商品詳情失敗'}), 500
+
+
+@app.route('/api/stats/products', methods=['GET'])
+def get_product_stats():
+    """
+    API 端點 - 取得商品統計信息
+    """
+    try:
+        total = Product.count()
+        by_platform = Product.count_by_platform()
+        
+        return jsonify({
+            'total_products': total,
+            'by_platform': by_platform
+        })
+    
+    except Exception as e:
+        logger.error(f"取得商品統計失敗: {str(e)}")
+        return jsonify({'error': '取得統計失敗'}), 500
 
 
 @app.errorhandler(404)
