@@ -1,19 +1,19 @@
 # 卡牌價格監控系統 - 依賴項
 
 # Web 框架
-Flask==2.3.3
-Flask-SQLAlchemy==3.0.5
+Flask==3.0.0
+Flask-SQLAlchemy==3.1.1
 Flask-CORS==4.0.0
 
 # 資料庫
-SQLAlchemy==2.0.21
+SQLAlchemy==2.1.0
 
 # 網頁爬蟲
-requests==2.31.0
-beautifulsoup4==4.12.2
+requests==2.32.0
+beautifulsoup4==4.12.3
 
 # 其他工具
 python-dotenv==1.0.0
 
 # 開發工具 (可選)
-gunicorn==21.2.0  # 生產環境 WSGI 伺服器
+gunicorn==22.0.0  # 生產環境 WSGI 伺服器
