@@ -76,11 +76,29 @@
         }
 
         .stat-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border: 2px solid var(--primary-color);
             border-radius: 0.5rem;
             padding: 1.5rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            animation: slide 3s infinite;
+        }
+
+        @keyframes slide {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
         }
 
         .stat-card h3 {
@@ -284,9 +302,11 @@
         <!-- 消息提示 -->
         <div id="alertContainer" style="position: fixed; top: 80px; right: 20px; z-index: 9999; width: 100%; max-width: 400px;"></div>
 
-        <!-- 統計信息 -->
+        <!-- 卡牌達人面板 -->
         <div class="header-section">
-            <h1>📊 卡牌市場監要</h1>
+            <div style="text-align: center; margin-bottom: 1rem;">
+                <h1 style="font-size: 2.5rem; color: var(--primary-color);">👑 卡牌達人市場監要</h1>
+            </div>
             <div class="stats-container">
                 <div class="stat-card">
                     <h3 id="totalCards">0</h3>
