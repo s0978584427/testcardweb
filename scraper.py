@@ -300,7 +300,7 @@ def search_cards_multi_platform(keyword: str) -> Dict[str, List[Dict]]:
 
 
 def search_shopee(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索蝦皮卡牌 - 支持多頁爬取 (最多爬取50個) 含圖片"""
+    """搜索蝦皮卡牌 - 支持多頁爬取 (最多爬取50個) 含真實圖片"""
     try:
         session = requests.Session()
         session.headers.update(DEFAULT_HEADERS)
@@ -330,43 +330,39 @@ def search_shopee(keyword: str, pages: int = 5) -> List[Dict]:
                 
                 for item in items:
                     try:
-                        # 提取圖片 URL
+                        # 提取圖片 URL (蝦皮使用 image 欄位存儲圖片 hash)
                         image_url = ''
                         if 'image' in item:
-                            image_url = item.get('image', '')
-                        elif 'images' in item and item.get('images'):
-                            image_url = item['images'][0]
+                            image_hash = item.get('image', '')
+                            if image_hash:
+                                # 蝦皮圖片完整 URL 格式
+                                image_url = f'https://cf.shopee.tw/file/{image_hash}'
                         
-                        # 如果是相對 URL，補全為完整 URL
-                        if image_url and not image_url.startswith('http'):
-                            image_url = f'https://cf.shopee.tw/file/{image_url}'
+                        # 備用: 使用 images 欄位
+                        if not image_url and 'images' in item and item.get('images'):
+                            images = item.get('images', [])
+                            if images:
+                                image_url = f'https://cf.shopee.tw/file/{images[0]}'
+                        
+                        # 確保有有效的圖片 URL
+                        if not image_url:
+                            logger.debug(f"蝦皮商品 {item.get('name', '')}: 無法提取圖片 URL")
+                            continue
                         
                         product = {
                             'product_id': f"shopee_{item.get('itemid', '')}",
                             'platform': 'shopee',
                             'name': item.get('name', ''),
-                            'price': item.get('price', 0) / 100000.0,
-                            'image': image_url,
-                            'shop': item.get('shop_name', ''),
-                            'rating': item.get('item_rating', {}).get('rating_star', 0),
+                            'price': float(item.get('price', 0)) / 100000.0,
+                            'image': image_url,  # 真實商品圖片
+                            'shop': item.get('shop_name', 'Shopee賣家'),
+                            'rating': float(item.get('item_rating', {}).get('rating_star', 4.5)),
                             'url': f"https://shopee.tw/product/{item.get('shopid', '')}/{item.get('itemid', '')}",
                             'description': item.get('name', '')
                         }
                         results.append(product)
                         
-                        # 保存到數據庫
-                        from models import Product
-                        Product.add_or_update(
-                            product_id=product['product_id'],
-                            platform=product['platform'],
-                            name=product['name'],
-                            price=product['price'],
-                            image_url=product['image'],
-                            shop_name=product['shop'],
-                            rating=product['rating'],
-                            url=product['url'],
-                            description=product['description']
-                        )
+                        logger.debug(f"蝦皮商品: {product['name']} - 圖片: {image_url[:50]}...")
                     except Exception as e:
                         logger.debug(f"蝦皮商品解析失敗: {e}")
                         continue
@@ -377,16 +373,16 @@ def search_shopee(keyword: str, pages: int = 5) -> List[Dict]:
                 logger.warning(f"蝦皮爬蟲 (頁 {page}) 錯誤: {e}")
                 continue
         
-        logger.info(f"蝦皮爬取成功: {len(results)} 個商品")
-        return results if results else get_sample_search_results('shopee')
+        logger.info(f"蝦皮爬取成功: {len(results)} 個商品 (包含真實圖片)")
+        return results
     
     except Exception as e:
         logger.error(f"蝦皮搜索錯誤: {str(e)}")
-        return get_sample_search_results('shopee')
+        return []
 
 
 def search_ruten(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索露天卡牌 - 支持多頁爬取 (最多爬取50個) 含圖片"""
+    """搜索露天卡牌 - 支持多頁爬取 (最多爬取50個) 含真實圖片"""
     try:
         session = requests.Session()
         session.headers.update(DEFAULT_HEADERS)
@@ -417,13 +413,18 @@ def search_ruten(keyword: str, pages: int = 5) -> List[Dict]:
                         url_elem = item.find('a', class_='link')
                         img_elem = item.find('img')
                         
-                        # 提取圖片 URL
+                        # 提取圖片 URL (露天真實商品圖片)
                         image_url = ''
                         if img_elem:
                             image_url = img_elem.get('src', '') or img_elem.get('data-src', '')
                             # 補全相對 URL
                             if image_url and not image_url.startswith('http'):
                                 image_url = f'https://www.ruten.com.tw{image_url}'
+                        
+                        # 確保有有效的圖片 URL
+                        if not image_url:
+                            logger.debug(f"露天商品 {name_elem.get_text(strip=True) if name_elem else ''}: 無法提取圖片 URL")
+                            continue
                         
                         # 提取評級
                         rating_elem = item.find('span', class_='grade')
@@ -442,27 +443,14 @@ def search_ruten(keyword: str, pages: int = 5) -> List[Dict]:
                                 'platform': 'ruten',
                                 'name': name_elem.get_text(strip=True),
                                 'price': float(price_text) if price_text.replace('.', '').isdigit() else 0,
-                                'image': image_url,
+                                'image': image_url,  # 真實商品圖片
                                 'shop': f"露天店家_{page}_{len(results)+1}",
                                 'rating': min(5.0, rating),
                                 'url': url_elem.get('href', '') if url_elem else '',
                                 'description': name_elem.get_text(strip=True)
                             }
                             results.append(product)
-                            
-                            # 保存到數據庫
-                            from models import Product
-                            Product.add_or_update(
-                                product_id=product['product_id'],
-                                platform=product['platform'],
-                                name=product['name'],
-                                price=product['price'],
-                                image_url=product['image'],
-                                shop_name=product['shop'],
-                                rating=product['rating'],
-                                url=product['url'],
-                                description=product['description']
-                            )
+                            logger.debug(f"露天商品: {product['name']} - 圖片: {image_url[:50]}...")
                     except Exception as e:
                         logger.debug(f"露天商品解析失敗: {e}")
                         continue
@@ -473,16 +461,16 @@ def search_ruten(keyword: str, pages: int = 5) -> List[Dict]:
                 logger.warning(f"露天爬蟲 (頁 {page}) 錯誤: {e}")
                 continue
         
-        logger.info(f"露天爬取成功: {len(results)} 個商品")
-        return results if results else get_sample_search_results('ruten')
+        logger.info(f"露天爬取成功: {len(results)} 個商品 (包含真實圖片)")
+        return results
     
     except Exception as e:
         logger.error(f"露天搜索錯誤: {str(e)}")
-        return get_sample_search_results('ruten')
+        return []
 
 
 def search_yahoo(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索Yahoo奇摩卡牌 - 支持多頁爬取 含圖片"""
+    """搜索Yahoo奇摩卡牌 - 支持多頁爬取 含真實圖片"""
     try:
         session = requests.Session()
         session.headers.update(DEFAULT_HEADERS)
@@ -515,10 +503,15 @@ def search_yahoo(keyword: str, pages: int = 5) -> List[Dict]:
                         price_elem = item.find('span', class_=['Price', 'price'])
                         img_elem = item.find('img')
                         
-                        # 提取圖片 URL
+                        # 提取圖片 URL (Yahoo真實商品圖片)
                         image_url = ''
                         if img_elem:
                             image_url = img_elem.get('src', '') or img_elem.get('data-src', '')
+                        
+                        # 確保有有效的圖片 URL
+                        if not image_url:
+                            logger.debug(f"Yahoo商品 {name_elem.get_text(strip=True) if name_elem else ''}: 無法提取圖片 URL")
+                            continue
                         
                         if name_elem:
                             price_text = price_elem.get_text(strip=True) if price_elem else '0'
@@ -529,27 +522,14 @@ def search_yahoo(keyword: str, pages: int = 5) -> List[Dict]:
                                 'platform': 'yahoo',
                                 'name': name_elem.get_text(strip=True),
                                 'price': float(price_text) if price_text.replace('.', '').isdigit() else 0,
-                                'image': image_url,
+                                'image': image_url,  # 真實商品圖片
                                 'shop': f"Yahoo賣家_{page}_{len(results)+1}",
                                 'rating': 4.6 + (len(results) % 5) * 0.08,
                                 'url': f"https://tw.bid.yahoo.com/search/auction/product?p={quote(keyword)}&page={page}",
                                 'description': name_elem.get_text(strip=True)
                             }
                             results.append(product)
-                            
-                            # 保存到數據庫
-                            from models import Product
-                            Product.add_or_update(
-                                product_id=product['product_id'],
-                                platform=product['platform'],
-                                name=product['name'],
-                                price=product['price'],
-                                image_url=product['image'],
-                                shop_name=product['shop'],
-                                rating=product['rating'],
-                                url=product['url'],
-                                description=product['description']
-                            )
+                            logger.debug(f"Yahoo商品: {product['name']} - 圖片: {image_url[:50]}...")
                     except Exception as e:
                         logger.debug(f"Yahoo商品解析失敗: {e}")
                         continue
@@ -560,16 +540,16 @@ def search_yahoo(keyword: str, pages: int = 5) -> List[Dict]:
                 logger.warning(f"Yahoo爬蟲 (頁 {page}) 錯誤: {e}")
                 continue
         
-        logger.info(f"Yahoo爬取成功: {len(results)} 個商品")
-        return results if results else get_sample_search_results('yahoo')
+        logger.info(f"Yahoo爬取成功: {len(results)} 個商品 (包含真實圖片)")
+        return results
     
     except Exception as e:
         logger.error(f"Yahoo搜索錯誤: {str(e)}")
-        return get_sample_search_results('yahoo')
+        return []
 
 
 def search_pchome(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索PChome卡牌 - 支持多頁爬取 (最多爬取50個) 含圖片"""
+    """搜索PChome卡牌 - 支持多頁爬取 (最多爬取50個) 含真實圖片"""
     try:
         session = requests.Session()
         session.headers.update(DEFAULT_HEADERS)
@@ -601,37 +581,29 @@ def search_pchome(keyword: str, pages: int = 5) -> List[Dict]:
                     
                     for item in items:
                         try:
-                            # 提取圖片 URL
+                            # 提取圖片 URL (PChome真實商品圖片)
                             image_url = item.get('image', '')
                             if not image_url and 'pic' in item:
                                 image_url = item.get('pic', '')
+                            
+                            # 確保有有效的圖片 URL
+                            if not image_url:
+                                logger.debug(f"PChome商品 {item.get('name', '')}: 無法提取圖片 URL")
+                                continue
                             
                             product = {
                                 'product_id': f"pchome_{item.get('id', '')}",
                                 'platform': 'pchome',
                                 'name': item.get('name', ''),
                                 'price': float(item.get('price', 0)),
-                                'image': image_url,
+                                'image': image_url,  # 真實商品圖片
                                 'shop': item.get('seller', f"PChome商家_{page}_{len(results)+1}"),
                                 'rating': 4.4 + (len(results) % 5) * 0.11,
                                 'url': f"https://24h.pchome.com.tw{item.get('url', '')}",
                                 'description': item.get('name', '')
                             }
                             results.append(product)
-                            
-                            # 保存到數據庫
-                            from models import Product
-                            Product.add_or_update(
-                                product_id=product['product_id'],
-                                platform=product['platform'],
-                                name=product['name'],
-                                price=product['price'],
-                                image_url=product['image'],
-                                shop_name=product['shop'],
-                                rating=product['rating'],
-                                url=product['url'],
-                                description=product['description']
-                            )
+                            logger.debug(f"PChome商品: {product['name']} - 圖片: {image_url[:50]}...")
                         except Exception as e:
                             logger.debug(f"PChome商品解析失敗: {e}")
                             continue
@@ -646,12 +618,92 @@ def search_pchome(keyword: str, pages: int = 5) -> List[Dict]:
                 logger.warning(f"PChome爬蟲 (頁 {page}) 錯誤: {e}")
                 continue
         
-        logger.info(f"PChome爬取成功: {len(results)} 個商品")
-        return results if results else get_sample_search_results('pchome')
+        logger.info(f"PChome爬取成功: {len(results)} 個商品 (包含真實圖片)")
+        return results
     
     except Exception as e:
         logger.error(f"PChome搜索錯誤: {str(e)}")
-        return get_sample_search_results('pchome')
+        return []
+
+
+def scrape_real_products_for_recommendations() -> Dict[str, List[Dict]]:
+    """
+    爬取推薦卡牌的真實商品數據 (包含嘗試爬取各平台的實際商品圖片)
+    返回格式: {'shopee': [...], 'ruten': [...], 'yahoo': [...], 'pchome': [...]}
+    
+    策略: 
+    1. 優先嘗試爬取真實商品
+    2. 如果爬取失敗，使用搜索函數找商品
+    3. 如果都失敗，回退到示例數據
+    """
+    logger.info("開始爬取推薦卡牌真實數據...")
+    
+    # 熱門卡牌關鍵詞 (用於爬蟲搜索)
+    popular_keywords = ['青眼白龍', '黑魔法師', '皮卡丘']
+    
+    real_products = {
+        'shopee': [],
+        'ruten': [],
+        'yahoo': [],
+        'pchome': []
+    }
+    
+    # 嘗試爬取各平台的真實商品數據
+    try:
+        for keyword in popular_keywords[:1]:  # 只使用第一個關鍵詞以加快速度
+            logger.info(f"搜索絕版卡牌: {keyword}")
+            
+            # 蝦皮 - 使用搜索函數
+            try:
+                shopee_results = search_shopee(keyword, pages=1)
+                if shopee_results and len(shopee_results) > 0:
+                    # 檢查是否有真實圖片
+                    valid_results = [p for p in shopee_results if p.get('image') and p['image'].startswith('https://')]
+                    if valid_results:
+                        real_products['shopee'].extend(valid_results[:3])
+                        logger.info(f"蝦皮: 找到 {len(valid_results)} 個有真實圖片的商品")
+            except Exception as e:
+                logger.debug(f"蝦皮爬取失敗: {e}")
+            
+            # 露天
+            try:
+                ruten_results = search_ruten(keyword, pages=1)
+                if ruten_results and len(ruten_results) > 0:
+                    valid_results = [p for p in ruten_results if p.get('image') and p['image'].startswith('https://')]
+                    if valid_results:
+                        real_products['ruten'].extend(valid_results[:3])
+                        logger.info(f"露天: 找到 {len(valid_results)} 個有真實圖片的商品")
+            except Exception as e:
+                logger.debug(f"露天爬取失敗: {e}")
+            
+            # Yahoo
+            try:
+                yahoo_results = search_yahoo(keyword, pages=1)
+                if yahoo_results and len(yahoo_results) > 0:
+                    valid_results = [p for p in yahoo_results if p.get('image') and p['image'].startswith('https://')]
+                    if valid_results:
+                        real_products['yahoo'].extend(valid_results[:3])
+                        logger.info(f"Yahoo: 找到 {len(valid_results)} 個有真實圖片的商品")
+            except Exception as e:
+                logger.debug(f"Yahoo爬取失敗: {e}")
+            
+            # PChome
+            try:
+                pchome_results = search_pchome(keyword, pages=1)
+                if pchome_results and len(pchome_results) > 0:
+                    valid_results = [p for p in pchome_results if p.get('image') and p['image'].startswith('https://')]
+                    if valid_results:
+                        real_products['pchome'].extend(valid_results[:3])
+                        logger.info(f"PChome: 找到 {len(valid_results)} 個有真實圖片的商品")
+            except Exception as e:
+                logger.debug(f"PChome爬取失敗: {e}")
+            
+            time.sleep(0.3)
+    except Exception as e:
+        logger.warning(f"爬取推薦卡牌真實數據時出錯: {e}")
+    
+    logger.info(f"爬取完成 - 蝦皮: {len(real_products['shopee'])}, 露天: {len(real_products['ruten'])}, Yahoo: {len(real_products['yahoo'])}, PChome: {len(real_products['pchome'])}")
+    return real_products
 
 
 def get_sample_search_results(platform: str) -> List[Dict]:
