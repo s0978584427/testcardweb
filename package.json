@@ -1,0 +1,28 @@
+{
+  "name": "card-price-monitor",
+  "version": "1.0.0",
+  "description": "A complete card price monitoring system with web scraping, database storage, and real-time price tracking.",
+  "author": "Your Name",
+  "license": "MIT",
+  "keywords": [
+    "flask",
+    "web-scraping",
+    "price-monitoring",
+    "sqlite",
+    "chart.js",
+    "bootstrap5"
+  ],
+  "python_requires": ">=3.8",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/card-price-monitor"
+  },
+  "technologies": [
+    "Python 3.8+",
+    "Flask 2.3",
+    "SQLAlchemy 2.0",
+    "BeautifulSoup4 4.12",
+    "Bootstrap 5.3",
+    "Chart.js 4.4"
+  ]
+}
