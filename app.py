@@ -149,16 +149,33 @@ def get_stats():
 def get_recommended_cards():
     """
     API 端點 - 取得推薦卡牌 (首頁展示)
+    混合遊戲王 & 寶可夢卡牌
     """
     try:
         from scraper import get_sample_search_results
         
-        # 取得推薦卡牌 - 顯示每個平台的前 5 個卡牌
+        def get_mixed_recommended(platform, count=5):
+            """取得混合的推薦卡牌 (交替顯示遊戲王 & 寶可夢)"""
+            all_cards = get_sample_search_results(platform)
+            # 分離遊戲王和寶可夢卡牌
+            yugioh = [c for c in all_cards if c.get('image', '').startswith('https://images.ygoprodeck.com')]
+            pokemon = [c for c in all_cards if c.get('image', '').startswith('https://raw.githubusercontent.com/PokeAPI')]
+            
+            # 交替混合 (1個遊戲王 + 1個寶可夢)
+            mixed = []
+            for i in range(count):
+                if i % 2 == 0 and i // 2 < len(yugioh):
+                    mixed.append(yugioh[i // 2])
+                elif i % 2 == 1 and i // 2 < len(pokemon):
+                    mixed.append(pokemon[i // 2])
+            return mixed[:count]
+        
+        # 取得推薦卡牌 - 每個平台 5 個，混合遊戲王和寶可夢
         recommended = {
-            'shopee': get_sample_search_results('shopee')[:5],
-            'ruten': get_sample_search_results('ruten')[:5],
-            'yahoo': get_sample_search_results('yahoo')[:5],
-            'pchome': get_sample_search_results('pchome')[:5],
+            'shopee': get_mixed_recommended('shopee', 5),
+            'ruten': get_mixed_recommended('ruten', 5),
+            'yahoo': get_mixed_recommended('yahoo', 5),
+            'pchome': get_mixed_recommended('pchome', 5),
         }
         
         return jsonify({
