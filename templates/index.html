@@ -434,7 +434,7 @@
                 <input 
                     type="text" 
                     id="searchKeyword" 
-                    placeholder="輸入卡牌名稱 (例：藍眼白龍、黑魔法師)..." 
+                    placeholder="輸入卡牌名稱 (例：青眼白龍、皮卡丘)..." 
                     onkeyup="handleKeyboardSearch(event)"
                 >
                 <button onclick="performSearch()" id="searchBtn">
@@ -612,32 +612,35 @@
          */
         function createProductCard(item) {
             const hasImage = item.image && item.image !== '';
-            const imageHtml = hasImage 
-                ? `<img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/280x220?text=No+Image'">`
-                : `<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: var(--text-secondary);"><i class="fas fa-image" style="font-size: 3rem; opacity: 0.3;"></i></div>`;
+            
+            // 改進圖片加載，支持跨域和備用方案
+            let imageHtml = '';
+            if (hasImage) {
+                const fallbackImg = `https://picsum.photos/280/220?random=${Math.floor(Math.random()*1000)}`;
+                imageHtml = `<img src="${item.image}" alt="${(item.name || 'Product').replace(/"/g, '')}" loading="lazy" onerror="this.src='${fallbackImg}'; this.style.opacity='0.7';" crossorigin="anonymous" style="width:100%; height:100%; object-fit:cover;">`;
+            } else {
+                imageHtml = `<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); color: var(--text-secondary);"><i class="fas fa-image" style="font-size: 3rem; opacity: 0.3;"></i></div>`;
+            }
 
             const ratingHtml = item.rating && item.rating > 0 
-                ? `<div class="rating">⭐ ${item.rating.toFixed(1)} (${item.rating > 4 ? '推薦' : '普通'})</div>`
+                ? `<div class="rating">⭐ ${parseFloat(item.rating).toFixed(1)} (${item.rating > 4 ? '推薦' : '普通'})</div>`
                 : '';
 
-            // 安全的數據傳遞方式
-            const cardId = `card-${Math.random().toString(36).substr(2, 9)}`;
-            
             return `
-                <div class="product-card" data-product-id="${item.product_id || ''}" data-product-name="${(item.name || '').replace(/"/g, '&quot;')}" data-product-price="${item.price || 0}" data-product-image="${(item.image || '').replace(/"/g, '&quot;')}" data-product-shop="${(item.shop || '').replace(/"/g, '&quot;')}" data-product-rating="${item.rating || 0}">
+                <div class="product-card" data-product-id="${(item.product_id || '').replace(/"/g, '&quot;')}" data-product-name="${(item.name || '').replace(/"/g, '&quot;')}" data-product-price="${item.price || 0}" data-product-image="${(item.image || '').replace(/"/g, '&quot;')}" data-product-shop="${(item.shop || '').replace(/"/g, '&quot;')}" data-product-rating="${item.rating || 0}">
                     <div class="product-image">
                         ${imageHtml}
                     </div>
                     <div class="product-info">
-                        <div class="product-name">${item.name || '未知商品'}</div>
-                        ${item.shop ? `<div class="product-shop"><i class="fas fa-store"></i> ${item.shop}</div>` : ''}
+                        <div class="product-name">${(item.name || '未知商品').substring(0, 50)}</div>
+                        ${item.shop ? `<div class="product-shop"><i class="fas fa-store"></i> ${(item.shop || '').substring(0, 30)}</div>` : ''}
                         ${ratingHtml}
                         <div class="product-price">NT$ ${formatPrice(item.price)}</div>
                         <div class="product-footer">
-                            <button class="btn-detail" style="background-color: var(--secondary-color); margin-right: 0.5rem;">
+                            <button class="btn-detail" style="background-color: var(--secondary-color); margin-right: 0.5rem; flex: 1; padding: 0.75rem; border: none; border-radius: 0.5rem; color: white; cursor: pointer; font-weight: 600;">
                                 <i class="fas fa-eye"></i> 詳情
                             </button>
-                            <a href="${item.url || 'javascript:void(0)'}" target="_blank" class="btn-visit">
+                            <a href="${(item.url || 'javascript:void(0)').replace(/"/g, '&quot;')}" target="_blank" class="btn-visit" style="flex: 1; padding: 0.75rem; background-color: var(--primary-color); color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
                                 <i class="fas fa-external-link-alt"></i> 購買
                             </a>
                         </div>

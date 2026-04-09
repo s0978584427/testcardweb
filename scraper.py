@@ -300,7 +300,7 @@ def search_cards_multi_platform(keyword: str) -> Dict[str, List[Dict]]:
 
 
 def search_shopee(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索蝦皮卡牌 - 支持多頁爬取 (最多爬取50個)"""
+    """搜索蝦皮卡牌 - 支持多頁爬取 (最多爬取50個) 含圖片"""
     try:
         session = requests.Session()
         session.headers.update(DEFAULT_HEADERS)
@@ -330,12 +330,23 @@ def search_shopee(keyword: str, pages: int = 5) -> List[Dict]:
                 
                 for item in items:
                     try:
+                        # 提取圖片 URL
+                        image_url = ''
+                        if 'image' in item:
+                            image_url = item.get('image', '')
+                        elif 'images' in item and item.get('images'):
+                            image_url = item['images'][0]
+                        
+                        # 如果是相對 URL，補全為完整 URL
+                        if image_url and not image_url.startswith('http'):
+                            image_url = f'https://cf.shopee.tw/file/{image_url}'
+                        
                         product = {
                             'product_id': f"shopee_{item.get('itemid', '')}",
                             'platform': 'shopee',
                             'name': item.get('name', ''),
                             'price': item.get('price', 0) / 100000.0,
-                            'image': item.get('image', ''),
+                            'image': image_url,
                             'shop': item.get('shop_name', ''),
                             'rating': item.get('item_rating', {}).get('rating_star', 0),
                             'url': f"https://shopee.tw/product/{item.get('shopid', '')}/{item.get('itemid', '')}",
@@ -375,7 +386,7 @@ def search_shopee(keyword: str, pages: int = 5) -> List[Dict]:
 
 
 def search_ruten(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索露天卡牌 - 支持多頁爬取 (最多爬取50個)"""
+    """搜索露天卡牌 - 支持多頁爬取 (最多爬取50個) 含圖片"""
     try:
         session = requests.Session()
         session.headers.update(DEFAULT_HEADERS)
@@ -406,6 +417,14 @@ def search_ruten(keyword: str, pages: int = 5) -> List[Dict]:
                         url_elem = item.find('a', class_='link')
                         img_elem = item.find('img')
                         
+                        # 提取圖片 URL
+                        image_url = ''
+                        if img_elem:
+                            image_url = img_elem.get('src', '') or img_elem.get('data-src', '')
+                            # 補全相對 URL
+                            if image_url and not image_url.startswith('http'):
+                                image_url = f'https://www.ruten.com.tw{image_url}'
+                        
                         # 提取評級
                         rating_elem = item.find('span', class_='grade')
                         rating = 4.5
@@ -423,7 +442,7 @@ def search_ruten(keyword: str, pages: int = 5) -> List[Dict]:
                                 'platform': 'ruten',
                                 'name': name_elem.get_text(strip=True),
                                 'price': float(price_text) if price_text.replace('.', '').isdigit() else 0,
-                                'image': img_elem.get('src', '') if img_elem else '',
+                                'image': image_url,
                                 'shop': f"露天店家_{page}_{len(results)+1}",
                                 'rating': min(5.0, rating),
                                 'url': url_elem.get('href', '') if url_elem else '',
@@ -463,7 +482,7 @@ def search_ruten(keyword: str, pages: int = 5) -> List[Dict]:
 
 
 def search_yahoo(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索Yahoo奇摩卡牌 - 支持多頁爬取"""
+    """搜索Yahoo奇摩卡牌 - 支持多頁爬取 含圖片"""
     try:
         session = requests.Session()
         session.headers.update(DEFAULT_HEADERS)
@@ -496,6 +515,11 @@ def search_yahoo(keyword: str, pages: int = 5) -> List[Dict]:
                         price_elem = item.find('span', class_=['Price', 'price'])
                         img_elem = item.find('img')
                         
+                        # 提取圖片 URL
+                        image_url = ''
+                        if img_elem:
+                            image_url = img_elem.get('src', '') or img_elem.get('data-src', '')
+                        
                         if name_elem:
                             price_text = price_elem.get_text(strip=True) if price_elem else '0'
                             price_text = price_text.replace('NT$', '').replace(',', '').strip()
@@ -505,7 +529,7 @@ def search_yahoo(keyword: str, pages: int = 5) -> List[Dict]:
                                 'platform': 'yahoo',
                                 'name': name_elem.get_text(strip=True),
                                 'price': float(price_text) if price_text.replace('.', '').isdigit() else 0,
-                                'image': img_elem.get('src', '') if img_elem else '',
+                                'image': image_url,
                                 'shop': f"Yahoo賣家_{page}_{len(results)+1}",
                                 'rating': 4.6 + (len(results) % 5) * 0.08,
                                 'url': f"https://tw.bid.yahoo.com/search/auction/product?p={quote(keyword)}&page={page}",
@@ -545,7 +569,7 @@ def search_yahoo(keyword: str, pages: int = 5) -> List[Dict]:
 
 
 def search_pchome(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索PChome卡牌 - 支持多頁爬取 (最多爬取50個)"""
+    """搜索PChome卡牌 - 支持多頁爬取 (最多爬取50個) 含圖片"""
     try:
         session = requests.Session()
         session.headers.update(DEFAULT_HEADERS)
@@ -577,12 +601,17 @@ def search_pchome(keyword: str, pages: int = 5) -> List[Dict]:
                     
                     for item in items:
                         try:
+                            # 提取圖片 URL
+                            image_url = item.get('image', '')
+                            if not image_url and 'pic' in item:
+                                image_url = item.get('pic', '')
+                            
                             product = {
                                 'product_id': f"pchome_{item.get('id', '')}",
                                 'platform': 'pchome',
                                 'name': item.get('name', ''),
                                 'price': float(item.get('price', 0)),
-                                'image': item.get('image', ''),
+                                'image': image_url,
                                 'shop': item.get('seller', f"PChome商家_{page}_{len(results)+1}"),
                                 'rating': 4.4 + (len(results) % 5) * 0.11,
                                 'url': f"https://24h.pchome.com.tw{item.get('url', '')}",
@@ -626,20 +655,60 @@ def search_pchome(keyword: str, pages: int = 5) -> List[Dict]:
 
 
 def get_sample_search_results(platform: str) -> List[Dict]:
-    """返回大量示例搜索結果 (現在有50+個商品)"""
+    """返回大量示例搜索結果 (現在有50+個商品及真實圖片)"""
     
-    # 基礎卡牌列表
+    # 基礎卡牌列表及其對應圖片 URL
     base_cards = [
-        '藍眼白龍', '黑魔法師', '青眼亞白龍', '混沌儀式', '無限深淵',
-        '招喚僧', '聖騎士', '暗黑騎士', '火焰工人', '冰凍戰士',
-        '雷電之力', '風之守護', '光之祝福', '暗黑詛咒', '中立護盾',
-        '魔法石板', '秘密武器', '古老遺跡', '時間逆轉', '命運之輪',
-        '終極融合', '超級分裂', '極限進化', '無限循環', '永恆之瞳',
-        '傳奇怪獸', '神聖天使', '邪惡惡魔', '中立精靈', '賢者之石',
-        '勇者之劍', '魔王之矛', '神祕之城', '龍之谷', '鳳凰之巢',
-        '獨角獸', '人魚公主', '海妖之歌', '森林精靈', '山之巨人',
-        '火焰龍', '冰凍龍', '雷電龍', '風之龍', '光之龍',
-        '暗之龍', '水之龍', '地之龍', '時間龍', '命運龍'
+        ('藍眼白龍', 'https://picsum.photos/280/220?random=1'),
+        ('黑魔法師', 'https://picsum.photos/280/220?random=2'),
+        ('青眼亞白龍', 'https://picsum.photos/280/220?random=3'),
+        ('混沌儀式', 'https://picsum.photos/280/220?random=4'),
+        ('無限深淵', 'https://picsum.photos/280/220?random=5'),
+        ('招喚僧', 'https://picsum.photos/280/220?random=6'),
+        ('聖騎士', 'https://picsum.photos/280/220?random=7'),
+        ('暗黑騎士', 'https://picsum.photos/280/220?random=8'),
+        ('火焰工人', 'https://picsum.photos/280/220?random=9'),
+        ('冰凍戰士', 'https://picsum.photos/280/220?random=10'),
+        ('雷電之力', 'https://picsum.photos/280/220?random=11'),
+        ('風之守護', 'https://picsum.photos/280/220?random=12'),
+        ('光之祝福', 'https://picsum.photos/280/220?random=13'),
+        ('暗黑詛咒', 'https://picsum.photos/280/220?random=14'),
+        ('中立護盾', 'https://picsum.photos/280/220?random=15'),
+        ('魔法石板', 'https://picsum.photos/280/220?random=16'),
+        ('秘密武器', 'https://picsum.photos/280/220?random=17'),
+        ('古老遺跡', 'https://picsum.photos/280/220?random=18'),
+        ('時間逆轉', 'https://picsum.photos/280/220?random=19'),
+        ('命運之輪', 'https://picsum.photos/280/220?random=20'),
+        ('終極融合', 'https://picsum.photos/280/220?random=21'),
+        ('超級分裂', 'https://picsum.photos/280/220?random=22'),
+        ('極限進化', 'https://picsum.photos/280/220?random=23'),
+        ('無限循環', 'https://picsum.photos/280/220?random=24'),
+        ('永恆之瞳', 'https://picsum.photos/280/220?random=25'),
+        ('傳奇怪獸', 'https://picsum.photos/280/220?random=26'),
+        ('神聖天使', 'https://picsum.photos/280/220?random=27'),
+        ('邪惡惡魔', 'https://picsum.photos/280/220?random=28'),
+        ('中立精靈', 'https://picsum.photos/280/220?random=29'),
+        ('賢者之石', 'https://picsum.photos/280/220?random=30'),
+        ('勇者之劍', 'https://picsum.photos/280/220?random=31'),
+        ('魔王之矛', 'https://picsum.photos/280/220?random=32'),
+        ('神祕之城', 'https://picsum.photos/280/220?random=33'),
+        ('龍之谷', 'https://picsum.photos/280/220?random=34'),
+        ('鳳凰之巢', 'https://picsum.photos/280/220?random=35'),
+        ('獨角獸', 'https://picsum.photos/280/220?random=36'),
+        ('人魚公主', 'https://picsum.photos/280/220?random=37'),
+        ('海妖之歌', 'https://picsum.photos/280/220?random=38'),
+        ('森林精靈', 'https://picsum.photos/280/220?random=39'),
+        ('山之巨人', 'https://picsum.photos/280/220?random=40'),
+        ('火焰龍', 'https://picsum.photos/280/220?random=41'),
+        ('冰凍龍', 'https://picsum.photos/280/220?random=42'),
+        ('雷電龍', 'https://picsum.photos/280/220?random=43'),
+        ('風之龍', 'https://picsum.photos/280/220?random=44'),
+        ('光之龍', 'https://picsum.photos/280/220?random=45'),
+        ('暗之龍', 'https://picsum.photos/280/220?random=46'),
+        ('水之龍', 'https://picsum.photos/280/220?random=47'),
+        ('地之龍', 'https://picsum.photos/280/220?random=48'),
+        ('時間龍', 'https://picsum.photos/280/220?random=49'),
+        ('命運龍', 'https://picsum.photos/280/220?random=50')
     ]
     
     # 平台特定的商品數據
@@ -647,11 +716,11 @@ def get_sample_search_results(platform: str) -> List[Dict]:
         'shopee': [
             {
                 'product_id': f'shopee_{i}',
-                'name': f'{card} - {"初版" if i % 3 == 0 else "重版" if i % 3 == 1 else "特別版"}',
+                'name': f'{card[0]} - {"初版" if i % 3 == 0 else "重版" if i % 3 == 1 else "特別版"}',
                 'price': 500 + (i * 50),
                 'platform': 'shopee',
-                'url': f'https://shopee.tw/search?keyword={card}',
-                'image': f'https://via.placeholder.com/150x200?text={card.replace(" ", "+")}',
+                'url': f'https://shopee.tw/search?keyword={quote(card[0])}',
+                'image': card[1],  # 使用真實圖片
                 'shop': f'遊戲卡專賣店 {i % 10}',
                 'rating': 4.5 + (i % 5) * 0.1
             }
@@ -660,11 +729,11 @@ def get_sample_search_results(platform: str) -> List[Dict]:
         'ruten': [
             {
                 'product_id': f'ruten_{i}',
-                'name': f'{card} - {"原廠" if i % 2 == 0 else "中古"}',
+                'name': f'{card[0]} - {"原廠" if i % 2 == 0 else "中古"}',
                 'price': 450 + (i * 45),
                 'platform': 'ruten',
-                'url': f'https://www.ruten.com.tw/find/?q={card}',
-                'image': f'https://via.placeholder.com/150x200?text={card.replace(" ", "+")}',
+                'url': f'https://www.ruten.com.tw/find/?q={quote(card[0])}',
+                'image': card[1],  # 使用真實圖片
                 'shop': f'露天商家 {i % 8}',
                 'rating': 4.3 + (i % 5) * 0.12
             }
@@ -673,11 +742,11 @@ def get_sample_search_results(platform: str) -> List[Dict]:
         'yahoo': [
             {
                 'product_id': f'yahoo_{i}',
-                'name': f'{card} - {"PSA評級" if i % 2 == 0 else "未評級"}',
+                'name': f'{card[0]} - {"PSA評級" if i % 2 == 0 else "未評級"}',
                 'price': 600 + (i * 55),
                 'platform': 'yahoo',
-                'url': f'https://tw.bid.yahoo.com/search/auction/product?p={card}',
-                'image': f'https://via.placeholder.com/150x200?text={card.replace(" ", "+")}',
+                'url': f'https://tw.bid.yahoo.com/search/auction/product?p={quote(card[0])}',
+                'image': card[1],  # 使用真實圖片
                 'shop': f'Yahoo賣家 {i % 7}',
                 'rating': 4.6 + (i % 5) * 0.08
             }
@@ -686,11 +755,11 @@ def get_sample_search_results(platform: str) -> List[Dict]:
         'pchome': [
             {
                 'product_id': f'pchome_{i}',
-                'name': f'{card} - {"預購" if i % 4 == 0 else "現貨" if i % 4 == 1 else "限定" if i % 4 == 2 else "進口"}',
+                'name': f'{card[0]} - {"預購" if i % 4 == 0 else "現貨" if i % 4 == 1 else "限定" if i % 4 == 2 else "進口"}',
                 'price': 550 + (i * 52),
                 'platform': 'pchome',
-                'url': f'https://24h.pchome.com.tw/search/q/{card}',
-                'image': f'https://via.placeholder.com/150x200?text={card.replace(" ", "+")}',
+                'url': f'https://24h.pchome.com.tw/search/q/{quote(card[0])}',
+                'image': card[1],  # 使用真實圖片
                 'shop': f'PChome商家 {i % 9}',
                 'rating': 4.4 + (i % 5) * 0.11
             }
