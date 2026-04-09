@@ -620,21 +620,24 @@
                 ? `<div class="rating">⭐ ${item.rating.toFixed(1)} (${item.rating > 4 ? '推薦' : '普通'})</div>`
                 : '';
 
+            // 安全的數據傳遞方式
+            const cardId = `card-${Math.random().toString(36).substr(2, 9)}`;
+            
             return `
-                <div class="product-card">
+                <div class="product-card" data-product-id="${item.product_id || ''}" data-product-name="${(item.name || '').replace(/"/g, '&quot;')}" data-product-price="${item.price || 0}" data-product-image="${(item.image || '').replace(/"/g, '&quot;')}" data-product-shop="${(item.shop || '').replace(/"/g, '&quot;')}" data-product-rating="${item.rating || 0}">
                     <div class="product-image">
                         ${imageHtml}
                     </div>
                     <div class="product-info">
-                        <div class="product-name">${item.name}</div>
+                        <div class="product-name">${item.name || '未知商品'}</div>
                         ${item.shop ? `<div class="product-shop"><i class="fas fa-store"></i> ${item.shop}</div>` : ''}
                         ${ratingHtml}
                         <div class="product-price">NT$ ${formatPrice(item.price)}</div>
                         <div class="product-footer">
-                            <button class="btn-visit" style="background-color: var(--secondary-color); margin-right: 0.5rem;" onclick="showProductDetail('${item.product_id || ''}', '${item.name.replace(/'/g, "\\'")}', '${item.price}', '${item.image.replace(/'/g, "\\'") || ''}', '${item.shop.replace(/'/g, "\\'") || ''}', '${item.rating || 0}')">
+                            <button class="btn-detail" style="background-color: var(--secondary-color); margin-right: 0.5rem;">
                                 <i class="fas fa-eye"></i> 詳情
                             </button>
-                            <a href="${item.url}" target="_blank" class="btn-visit">
+                            <a href="${item.url || 'javascript:void(0)'}" target="_blank" class="btn-visit">
                                 <i class="fas fa-external-link-alt"></i> 購買
                             </a>
                         </div>
@@ -703,6 +706,23 @@
                 document.getElementById('searchKeyword').value = keyword;
                 performSearch();
             }
+            
+            // 使用事件委託處理詳情按鈕點擊
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.btn-detail')) {
+                    const card = e.target.closest('.product-card');
+                    if (card) {
+                        const productId = card.dataset.productId;
+                        const name = card.dataset.productName;
+                        const price = card.dataset.productPrice;
+                        const image = card.dataset.productImage;
+                        const shop = card.dataset.productShop;
+                        const rating = card.dataset.productRating;
+                        
+                        showProductDetail(productId, name, price, image, shop, rating);
+                    }
+                }
+            });
         });
 
         /**
