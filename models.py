@@ -1,72 +1,178 @@
 """
-卡牌價格監控系統 - 資料庫模型
+卡牌價格監控系統 - 資料庫模型 (簡化版)
 """
-from flask_sqlalchemy import SQLAlchemy
+import sqlite3
 from datetime import datetime
 import os
+import json
 
-db = SQLAlchemy()
+DATABASE_PATH = os.path.join(os.path.dirname(__file__), 'cards.db')
 
-class Card(db.Model):
-    """卡牌表"""
-    __tablename__ = 'cards'
-    
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False, unique=True, index=True)
-    description = db.Column(db.Text)
-    image_url = db.Column(db.String(500))
-    current_price = db.Column(db.Float, nullable=False, default=0)
-    last_updated = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    
-    # 關係
-    price_history = db.relationship('PriceHistory', backref='card', lazy=True, cascade='all, delete-orphan')
-    
-    def __repr__(self):
-        return f'<Card {self.name}>'
-    
-    def to_dict(self):
-        """轉換為字典格式"""
-        return {
-            'id': self.id,
-            'name': self.name,
-            'description': self.description,
-            'image_url': self.image_url,
-            'current_price': self.current_price,
-            'last_updated': self.last_updated.isoformat() if self.last_updated else None,
-            'created_at': self.created_at.isoformat() if self.created_at else None
-        }
+def get_db_connection():
+    """取得資料庫連接"""
+    conn = sqlite3.connect(DATABASE_PATH)
+    conn.row_factory = sqlite3.Row
+    return conn
 
-
-class PriceHistory(db.Model):
-    """價格歷史記錄表"""
-    __tablename__ = 'price_history'
-    
-    id = db.Column(db.Integer, primary_key=True)
-    card_id = db.Column(db.Integer, db.ForeignKey('cards.id'), nullable=False, index=True)
-    price = db.Column(db.Float, nullable=False)
-    recorded_at = db.Column(db.DateTime, default=datetime.utcnow, index=True)
-    
-    def __repr__(self):
-        return f'<PriceHistory card_id={self.card_id}, price={self.price}>'
-    
-    def to_dict(self):
-        """轉換為字典格式"""
-        return {
-            'id': self.id,
-            'card_id': self.card_id,
-            'price': self.price,
-            'recorded_at': self.recorded_at.isoformat() if self.recorded_at else None
-        }
-
-
-def init_db(app):
+def init_db():
     """初始化資料庫"""
-    with app.app_context():
-        db.create_all()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    # 建立卡牌表
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS cards (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT UNIQUE NOT NULL,
+            description TEXT,
+            image_url TEXT,
+            current_price REAL NOT NULL DEFAULT 0,
+            last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # 建立價格歷史表
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS price_history (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            card_id INTEGER NOT NULL,
+            price REAL NOT NULL,
+            recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (card_id) REFERENCES cards(id)
+        )
+    ''')
+    
+    conn.commit()
+    conn.close()
 
+class Card:
+    """卡牌類"""
+    
+    @staticmethod
+    def get_all():
+        """取得所有卡牌"""
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM cards')
+        rows = cursor.fetchall()
+        conn.close()
+        return [dict(row) for row in rows]
+    
+    @staticmethod
+    def get_by_id(card_id):
+        """根據 ID 取得卡牌"""
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM cards WHERE id = ?', (card_id,))
+        row = cursor.fetchone()
+        conn.close()
+        return dict(row) if row else None
+    
+    @staticmethod
+    def create_or_update(name, price, image_url=None, description=None):
+        """新增或更新卡牌"""
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # 檢查是否已存在
+        cursor.execute('SELECT id FROM cards WHERE name = ?', (name,))
+        existing = cursor.fetchone()
+        
+        if existing:
+            card_id = existing[0]
+            cursor.execute(
+                'UPDATE cards SET current_price = ?, image_url = ?, description = ?, last_updated = CURRENT_TIMESTAMP WHERE id = ?',
+                (price, image_url, description, card_id)
+            )
+        else:
+            cursor.execute(
+                'INSERT INTO cards (name, description, image_url, current_price) VALUES (?, ?, ?, ?)',
+                (name, description, image_url, price)
+            )
+            card_id = cursor.lastrowid
+        
+        conn.commit()
+        
+        # 新增價格歷史記錄
+        cursor.execute(
+            'INSERT INTO price_history (card_id, price) VALUES (?, ?)',
+            (card_id, price)
+        )
+        conn.commit()
+        conn.close()
+        
+        return card_id
+    
+    @staticmethod
+    def to_dict(row=None, card_id=None):
+        """轉換為字典"""
+        if not row:
+            row = Card.get_by_id(card_id)
+        if not row:
+            return None
+        
+        return {
+            'id': row.get('id') or row[0],
+            'name': row.get('name') or row[1],
+            'description': row.get('description') or row[2],
+            'image_url': row.get('image_url') or row[3],
+            'current_price': row.get('current_price') or row[4],
+            'last_updated': row.get('last_updated') or row[5],
+            'created_at': row.get('created_at') or row[6]
+        }
 
-def get_database_path():
-    """取得資料庫路徑"""
-    base_dir = os.path.abspath(os.path.dirname(__file__))
-    return os.path.join(base_dir, 'cards.db')
+class PriceHistory:
+    """價格歷史類"""
+    
+    @staticmethod
+    def get_by_card(card_id, days=30):
+        """取得卡牌的價格歷史"""
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('''
+            SELECT * FROM price_history 
+            WHERE card_id = ? 
+            AND recorded_at >= datetime('now', '-' || ? || ' days')
+            ORDER BY recorded_at ASC
+        ''', (card_id, days))
+        rows = cursor.fetchall()
+        conn.close()
+        return [dict(row) for row in rows]
+    
+    @staticmethod
+    def count():
+        """統計價格歷史記錄總數"""
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT COUNT(*) FROM price_history')
+        count = cursor.fetchone()[0]
+        conn.close()
+        return count
+
+class Stats:
+    """統計類"""
+    
+    @staticmethod
+    def get_all():
+        """取得統計信息"""
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute('SELECT COUNT(*) FROM cards')
+        total_cards = cursor.fetchone()[0]
+        
+        cursor.execute('SELECT COUNT(*) FROM price_history')
+        price_history_count = cursor.fetchone()[0]
+        
+        cursor.execute('SELECT AVG(current_price) FROM cards')
+        avg_price = cursor.fetchone()[0] or 0
+        
+        conn.close()
+        
+        return {
+            'total_cards': total_cards,
+            'price_history_count': price_history_count,
+            'average_price': round(float(avg_price), 2)
+        }
+
