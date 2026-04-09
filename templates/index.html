@@ -485,6 +485,7 @@
          */
         async function performSearch() {
             const keyword = document.getElementById('searchKeyword').value.trim();
+            console.log('開始搜尋:', keyword);
             
             if (!keyword || keyword.length < 2) {
                 alert('請輸入至少 2 個字符');
@@ -492,10 +493,17 @@
             }
 
             showLoading(true);
+            console.log('顯示載入狀態');
             
             try {
-                const response = await fetch(`/api/search?keyword=${encodeURIComponent(keyword)}`);
+                const url = `/api/search?keyword=${encodeURIComponent(keyword)}`;
+                console.log('API 請求:', url);
+                
+                const response = await fetch(url);
+                console.log('API 回應狀態:', response.status);
+                
                 const data = await response.json();
+                console.log('API 數據:', data);
 
                 if (!response.ok) {
                     alert(data.error || '搜尋失敗，請稍後重試');
@@ -505,15 +513,19 @@
 
                 currentSearchResults = data.results;
                 currentFilter = 'all';
+                console.log('搜尋結果:', currentSearchResults);
+                
                 updatePlatformButtons();
                 displayResults(data.results);
                 
                 document.getElementById('resultsSection').classList.add('active');
+                console.log('結果區域已啟用');
             } catch (error) {
                 console.error('搜尋錯誤:', error);
-                alert('搜尋失敗，請檢查網路連線');
+                alert('搜尋失敗，請檢查網路連線\n錯誤: ' + error.message);
             } finally {
                 showLoading(false);
+                console.log('隱藏載入狀態');
             }
         }
 
