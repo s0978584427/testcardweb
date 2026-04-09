@@ -145,6 +145,32 @@ def get_stats():
         return jsonify({'error': '取得統計信息失敗'}), 500
 
 
+@app.route('/api/recommended', methods=['GET'])
+def get_recommended_cards():
+    """
+    API 端點 - 取得推薦卡牌 (首頁展示)
+    """
+    try:
+        from scraper import get_sample_search_results
+        
+        # 取得推薦卡牌 - 顯示每個平台的前 5 個卡牌
+        recommended = {
+            'shopee': get_sample_search_results('shopee')[:5],
+            'ruten': get_sample_search_results('ruten')[:5],
+            'yahoo': get_sample_search_results('yahoo')[:5],
+            'pchome': get_sample_search_results('pchome')[:5],
+        }
+        
+        return jsonify({
+            'recommended': recommended,
+            'total_featured': sum(len(items) for items in recommended.values())
+        })
+    
+    except Exception as e:
+        logger.error(f"取得推薦卡牌失敗: {str(e)}")
+        return jsonify({'error': '取得推薦卡牌失敗'}), 500
+
+
 @app.route('/api/search', methods=['GET'])
 def search_cards():
     """

@@ -720,6 +720,9 @@
             if (keyword) {
                 document.getElementById('searchKeyword').value = keyword;
                 performSearch();
+            } else {
+                // 自動加載示例商品
+                autoLoadSampleResults();
             }
             
             // 使用事件委託處理詳情按鈕點擊
@@ -739,6 +742,43 @@
                 }
             });
         });
+
+        /**
+         * 自動加載示例結果
+         */
+        /**
+         * 自動加載推薦卡牌
+         */
+        function autoLoadSampleResults() {
+            console.log('自動加載推薦卡牌...');
+            
+            try {
+                fetch('/api/recommended')
+                    .then(response => {
+                        if (!response.ok) throw new Error('無法載入推薦卡牌');
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('推薦卡牌已載入:', data);
+                        
+                        currentSearchResults = data.recommended;
+                        currentFilter = 'all';
+                        updatePlatformButtons();
+                        displayResults(data.recommended);
+                        
+                        document.getElementById('resultsSection').classList.add('active');
+                        console.log('推薦卡牌已顯示');
+                    })
+                    .catch(error => {
+                        console.error('載入推薦卡牌失敗:', error);
+                        // 備用方案：搜尋"卡牌"
+                        document.getElementById('searchKeyword').value = '卡牌';
+                        performSearch();
+                    });
+            } catch (error) {
+                console.error('自動載入錯誤:', error);
+            }
+        }
 
         /**
          * 顯示商品詳情
