@@ -274,6 +274,36 @@
         </div>
     </nav>
 
+    <!-- 卡牌詳情模態框 -->
+    <div id="cardModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cardModalTitle">卡牌詳情</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img id="cardModalImage" src="" alt="卡牌" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        </div>
+                        <div class="col-md-7">
+                            <div id="cardModalDetails" style="max-height: 500px; overflow-y: auto;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 發行版本清單 -->
+                    <div style="margin-top: 2rem; border-top: 1px solid #ddd; padding-top: 1rem;">
+                        <h6>發行版本清單</h6>
+                        <div id="cardModalSeries" style="max-height: 300px; overflow-y: auto;">
+                            <p class="text-muted">無版本信息</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 主容器 -->
     <div class="container-main">
         <!-- 搜索區域 -->
@@ -323,6 +353,76 @@
     <script>
         let currentSearchResults = {};
         let searchMode = 'ecommerce';
+        
+        // 分頁狀態
+        let currentCardSearch = {
+            keyword: '',
+            source: 'all',
+            page: 1,
+            limit: 20,
+            results: null
+        };
+
+        /** 打開卡牌詳情模態框 */
+        function showCardDetail(card) {
+            const modal = new bootstrap.Modal(document.getElementById('cardModal'));
+            document.getElementById('cardModalTitle').textContent = card.title;
+            document.getElementById('cardModalImage').src = card.img_large || card.img_url || '';
+            
+            // 構建詳細信息
+            let detailsHTML = `<h6>${card.title}</h6>`;
+            detailsHTML += `<p style="color: #888; margin: 0.5rem 0;"><strong>來源:</strong> ${getSourceName(card.source)}</p>`;
+            detailsHTML += `<p style="margin: 0.5rem 0;"><strong>價格:</strong> $${card.price || 'N/A'}</p>`;
+            
+            // 根據卡牌類型顯示不同的屬性
+            const stats = card.stats || {};
+            
+            if (card.source === 'pokemon') {
+                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>HP:</strong> ${stats.hp || 'N/A'}</p>`;
+                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>屬性:</strong> ${stats.types ? stats.types.join(', ') : 'N/A'}</p>`;
+                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>系列:</strong> ${stats.set || 'N/A'}</p>`;
+                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>稀有度:</strong> ${stats.rarity || 'N/A'}</p>`;
+            } else if (card.source === 'yugioh') {
+                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>類型:</strong> ${stats.type || 'N/A'}</p>`;
+                if (stats.level) detailsHTML += `<p style="margin: 0.5rem 0;"><strong>等級:</strong> ${stats.level}</p>`;
+                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>屬性:</strong> ${stats.attribute || 'N/A'}</p>`;
+                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>攻防:</strong> ${stats.atk} / ${stats.def}</p>`;
+                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>種族:</strong> ${stats.race || 'N/A'}</p>`;
+            } else if (card.source === 'mtg') {
+                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>法力費:</strong> ${stats.mana_cost || 'N/A'}</p>`;
+                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>類型:</strong> ${stats.type || 'N/A'}</p>`;
+                if (stats.power || stats.toughness) {
+                    detailsHTML += `<p style="margin: 0.5rem 0;"><strong>攻防:</strong> ${stats.power} / ${stats.toughness}</p>`;
+                }
+                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>稀有度:</strong> ${stats.rarity || 'N/A'}</p>`;
+            }
+            
+            detailsHTML += `<hr>`;
+            detailsHTML += `<p style="font-size: 0.9rem; color: #666;">${card.description || '無描述'}</p>`;
+            
+            document.getElementById('cardModalDetails').innerHTML = detailsHTML;
+            
+            // 顯示發行版本清單
+            if (card.series && card.series.length > 0) {
+                let seriesHTML = '<table class="table table-sm" style="font-size: 0.9rem;"><thead><tr><th>版本</th><th>日期</th><th>價格</th></tr></thead><tbody>';
+                card.series.forEach(s => {
+                    seriesHTML += `<tr><td>${s.name}</td><td>${s.release_date || 'N/A'}</td><td>$${s.price || 'N/A'}</td></tr>`;
+                });
+                seriesHTML += '</tbody></table>';
+                document.getElementById('cardModalSeries').innerHTML = seriesHTML;
+            }
+            
+            modal.show();
+        }
+        
+        function getSourceName(source) {
+            const names = {
+                'pokemon': '寶可夢 TCG',
+                'yugioh': '遊戲王',
+                'mtg': 'Magic 風雲會'
+            };
+            return names[source] || source;
+        }
 
         /** 設定搜尋模式 */
         function setSearchMode(mode) {
@@ -373,11 +473,17 @@
                 return;
             }
 
+            // 如果是國際卡牌搜尋，使用新的分頁 API
+            if (searchMode === 'international') {
+                currentCardSearch.keyword = keyword;
+                currentCardSearch.page = 1;  // 重置を第 1 頁
+                await performCardSearch();
+                return;
+            }
+
             try {
                 let url;
-                if (searchMode === 'international') {
-                    url = `/api/card-references?keyword=${encodeURIComponent(keyword)}`;
-                } else if (searchMode === 'combined') {
+                if (searchMode === 'combined') {
                     url = `/api/combined-search?keyword=${encodeURIComponent(keyword)}`;
                 } else {
                     url = `/api/search?keyword=${encodeURIComponent(keyword)}`;
@@ -392,9 +498,7 @@
                     return;
                 }
 
-                if (searchMode === 'international') {
-                    displayInternationalResults(data);
-                } else if (searchMode === 'combined') {
+                if (searchMode === 'combined') {
                     displayCombinedResults(data);
                 } else {
                     currentSearchResults = data.results || {};
@@ -404,6 +508,141 @@
                 console.error('搜尋錯誤:', error);
                 alert('搜尋失敗: ' + error.message);
             }
+        }
+        
+        /** 國際卡牌搜尋（支持分頁） */
+        async function performCardSearch() {
+            const { keyword, source, page, limit } = currentCardSearch;
+            
+            try {
+                const url = `/api/cards/search?keyword=${encodeURIComponent(keyword)}&source=${source}&page=${page}&limit=${limit}`;
+                console.log('卡牌搜尋:', url);
+                
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    alert(data.error || '搜尋失敗');
+                    return;
+                }
+                
+                currentCardSearch.results = data;
+                displayCardSearchResults(data);
+            } catch (error) {
+                console.error('搜尋錯誤:', error);
+                alert('搜尋失敗: ' + error.message);
+            }
+        }
+        
+        /** 顯示卡牌搜尋結果 */
+        function displayCardSearchResults(data) {
+            const container = document.getElementById('searchResults');
+            const source = data.source;
+            
+            let html = '';
+            
+            // 顯示來源標題
+            if (source === 'all') {
+                // 顯示所有來源的結果
+                const sources = ['pokemon', 'yugioh', 'mtg'];
+                const results = data.results || {};
+                
+                sources.forEach(src => {
+                    const srcData = results[src] || {};
+                    if (srcData.cards && srcData.cards.length > 0) {
+                        html += displayCardSource(src, srcData);
+                    }
+                });
+            } else {
+                // 顯示單一來源
+                html += displayCardSource(source, data);
+            }
+            
+            if (!html) {
+                container.innerHTML = '<div class="no-results"><i class="fas fa-search"></i><h3>未找到卡牌</h3></div>';
+                return;
+            }
+            
+            container.innerHTML = html;
+        }
+        
+        /** 顯示單一卡牌來源及其分頁 */
+        function displayCardSource(source, data) {
+            const cards = data.cards || [];
+            const total = data.total || 0;
+            const pages = data.pages || 0;
+            const currentPage = data.current_page || 1;
+            
+            const sourceNames = {
+                'pokemon': '⚡ 寶可夢 TCG',
+                'yugioh': '🎴 遊戲王',
+                'mtg': '🪄 魔法風雲會'
+            };
+            
+            let html = `
+                <div class="platform-results">
+                    <div class="platform-header" style="border-bottom-color: ${source === 'pokemon' ? '#FF6B6B' : source === 'yugioh' ? '#FFD700' : '#9932CC'};">
+                        <h2>${sourceNames[source]}</h2>
+                        <span class="result-count">${cards.length} / ${total}</span>
+                    </div>
+                    <div class="product-grid">
+                        ${cards.map(card => createCardElement(card, source)).join('')}
+                    </div>
+                    
+                    <!-- 分頁控制 -->
+                    ${pages > 1 ? createPaginationControls(source, currentPage, pages) : ''}
+                </div>
+            `;
+            
+            return html;
+        }
+        
+        /** 創建卡牌元素 */
+        function createCardElement(card, source) {
+            return `
+                <div class="product-card" style="cursor: pointer;" onclick="showCardDetail(${JSON.stringify(card).replace(/"/g, '&quot;')})">
+                    <div class="product-image">
+                        <img src="${card.img_url || ''}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'" style="cursor: pointer;">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">${card.title}</div>
+                        <div style="font-size: 0.8rem; color: #888; margin: 0.3rem 0;">
+                            $${card.price || 'N/A'}
+                        </div>
+                        <div style="font-size: 0.75rem; color: #aaa;">
+                            ${card.stats?.set || card.stats?.type || ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        /** 生成分頁控制按鈕 */
+        function createPaginationControls(source, currentPage, totalPages) {
+            let html = `<div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">`;
+            
+            // 上一頁
+            if (currentPage > 1) {
+                html += `<button class="btn btn-sm btn-outline-primary" onclick="goToPage(${currentPage - 1})">← 上一頁</button>`;
+            }
+            
+            // 頁碼顯示
+            html += `<span style="padding: 0.4rem 0.8rem; background: #f0f0f0; border-radius: 4px;">第 ${currentPage} / ${totalPages} 頁</span>`;
+            
+            // 下一頁
+            if (currentPage < totalPages) {
+                html += `<button class="btn btn-sm btn-outline-primary" onclick="goToPage(${currentPage + 1})">下一頁 →</button>`;
+            }
+            
+            html += '</div>';
+            return html;
+        }
+        
+        /** 轉到指定頁數 */
+        function goToPage(page) {
+            currentCardSearch.page = page;
+            performCardSearch();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         /** 顯示 PChome 結果 */
