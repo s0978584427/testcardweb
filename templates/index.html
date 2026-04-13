@@ -455,22 +455,10 @@
                 </button>
             </div>
             
-            <!-- 商品平台篩選 (台灣平台模式) -->
-            <div id="ecommerceTabs" class="platform-tabs" style="display: none; margin-top: 1rem;">
+            <!-- 平台篩選 -->
+            <div class="platform-tabs">
                 <button class="platform-btn active" onclick="filterByPlatform('all')">
-                    <i class="fas fa-th"></i> 全部平台
-                </button>
-                <button class="platform-btn" onclick="filterByPlatform('pchome')">
-                    <i class="fas fa-shopping-cart"></i> PChome
-                </button>
-                <button class="platform-btn" onclick="filterByPlatform('shopee')">
-                    <i class="fas fa-shrimp"></i> 蝦皮
-                </button>
-                <button class="platform-btn" onclick="filterByPlatform('ruten')">
-                    <i class="fas fa-store"></i> 露天
-                </button>
-                <button class="platform-btn" onclick="filterByPlatform('yahoo')">
-                    <i class="fas fa-gavel"></i> Yahoo
+                    <i class="fas fa-shopping-cart"></i> PChome 24h
                 </button>
             </div>
         </div>
@@ -516,14 +504,6 @@
                 }
             });
             
-            // 顯示/隱藏商品平台篩選器
-            const ecommerceTabs = document.getElementById('ecommerceTabs');
-            if (mode === 'ecommerce' || mode === 'combined') {
-                ecommerceTabs.style.display = 'flex';
-            } else {
-                ecommerceTabs.style.display = 'none';
-            }
-            
             // 清空結果
             document.getElementById('searchResults').innerHTML = '';
             document.getElementById('resultsSection').classList.remove('active');
@@ -531,7 +511,7 @@
         }
 
         /**
-         * 執行搜尋
+         * 執行搜尋 (方案 B - 只支援 PChome + 國際卡牌)
          */
         async function performSearch() {
             const keyword = document.getElementById('searchKeyword').value.trim();
@@ -553,7 +533,7 @@
                     // 組合搜索
                     url = `/api/combined-search?keyword=${encodeURIComponent(keyword)}`;
                 } else {
-                    // 台灣平台搜尋
+                    // 台灣平台搜尋 - 只有 PChome
                     url = `/api/search?keyword=${encodeURIComponent(keyword)}`;
                 }
                 
@@ -576,11 +556,15 @@
                     // 顯示組合結果
                     displayCombinedResults(data);
                 } else {
-                    // 顯示台灣平台結果
-                    currentSearchResults = data.results;
-                    currentFilter = 'all';
-                    updatePlatformButtons();
-                    displayResults(data.results);
+                    // 顯示 PChome 結果
+                    if (data.results && data.results.pchome) {
+                        const pchomeOnly = { pchome: data.results.pchome };
+                        currentSearchResults = pchomeOnly;
+                        displayResults(pchomeOnly);
+                    } else {
+                        currentSearchResults = {};
+                        displayResults({});
+                    }
                 }
                 
                 document.getElementById('resultsSection').classList.add('active');

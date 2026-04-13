@@ -149,43 +149,28 @@ def get_stats():
 def get_recommended_cards():
     """
     API 端點 - 取得推薦卡牌 (首頁展示)
-    從所有平台獲取真實數據
+    方案 B: 只使用 PChome (官方 API)
     """
     try:
-        from scraper import search_pchome, search_shopee, search_ruten, search_yahoo, get_sample_search_results
+        from scraper import search_pchome, get_sample_search_results
         
-        # 試圖從所有四個平台獲取真實數據
-        logger.info("從多個平台獲取卡牌數據...")
+        logger.info("從 PChome 獲取推薦卡牌...")
         
-        # PChome - 真實 API
+        # PChome - 真實 API (唯一的來源)
         pchome_results = search_pchome('卡牌', pages=1)
         
-        # Shopee - API
-        shopee_results = search_shopee('卡牌', pages=1)
+        logger.info(f"PChome: {len(pchome_results)} 個商品")
         
-        # Ruten - HTML 爬蟲
-        ruten_results = search_ruten('卡牌', pages=1)
-        
-        # Yahoo - HTML 爬蟲
-        yahoo_results = search_yahoo('卡牌', pages=1)
-        
-        logger.info(f"PChome: {len(pchome_results)} 個商品, Shopee: {len(shopee_results)} 個商品, Ruten: {len(ruten_results)} 個商品, Yahoo: {len(yahoo_results)} 個商品")
-        
-        # 構建推薦卡牌 (用真實數據或備用示例)
+        # 構建推薦卡牌
         recommended = {
             'pchome': pchome_results[:5] if pchome_results else get_sample_search_results('pchome')[:5],
-            'shopee': shopee_results[:5] if shopee_results else get_sample_search_results('shopee')[:5],
-            'ruten': ruten_results[:5] if ruten_results else get_sample_search_results('ruten')[:5],
-            'yahoo': yahoo_results[:5] if yahoo_results else get_sample_search_results('yahoo')[:5],
         }
-        
-        # 判斷是否有真實數據
-        has_real = len(pchome_results) > 0 or len(shopee_results) > 0 or len(ruten_results) > 0 or len(yahoo_results) > 0
         
         return jsonify({
             'recommended': recommended,
-            'total_featured': sum(len(items) for items in recommended.values()),
-            'has_real_data': has_real
+            'total_featured': len(pchome_results),
+            'has_real_data': len(pchome_results) > 0,
+            'note': '方案 B: 只提供 PChome 官方 API 商品 + 國際卡牌參考'
         })
     
     except Exception as e:
@@ -196,23 +181,32 @@ def get_recommended_cards():
 @app.route('/api/search', methods=['GET'])
 def search_cards():
     """
-    API 端點 - 在多個平台搜索卡牌
+    API 端點 - 搜索卡牌 (方案 B: 只使用 PChome)
     參數: keyword (搜索關鍵字)
-    返回: 來自 Shopee, Ruten, Yahoo, PChome 的搜索結果
+    返回: PChome 搜索結果
     """
     try:
+        from scraper import search_pchome
+        
         keyword = request.args.get('keyword', '').strip()
         
         if not keyword or len(keyword) < 2:
             return jsonify({'error': '搜索關鍵字至少 2 個字符'}), 400
         
-        # 搜索多個平台
-        results = search_cards_multi_platform(keyword)
+        logger.info(f"搜尋 PChome: {keyword}")
+        
+        # 只搜索 PChome
+        pchome_results = search_pchome(keyword, pages=1)
+        
+        results = {
+            'pchome': pchome_results
+        }
         
         return jsonify({
             'keyword': keyword,
             'results': results,
-            'total_results': sum(len(items) for items in results.values())
+            'total_results': len(pchome_results),
+            'note': '方案 B: 只提供 PChome 官方 API 商品。若需多平台支援，請使用組合搜尋。'
         })
     
     except Exception as e:
