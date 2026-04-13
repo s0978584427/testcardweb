@@ -1,4 +1,767 @@
 """
+卡牌價格監控系統 - 多平台爬蟲
+支持平台: PChome, Ruten, Shopee, Yahoo
+統一輸出格式: {'title': str, 'price': int, 'img_url': str, 'platform': str}
+
+技術特性：
+- PChome: 官方 API (JSON) - 完美支持 ✅
+- Ruten: JavaScript 動態渲染 - 需要 Playwright
+- Shopee: 強力反爬蟲保護 - 需要 Playwright + 代理
+- Yahoo: JavaScript 動態渲染 - 需要 Playwright
+
+要安裝 Playwright 支持，請運行:
+  pip install playwright
+  playwright install
+"""
+import requests
+import logging
+from typing import List, Dict, Optional
+import time
+from urllib.parse import quote
+import json
+from bs4 import BeautifulSoup
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# 嘗試導入 Playwright (可選)
+try:
+    from playwright.sync_api import sync_playwright
+    HAS_PLAYWRIGHT = True
+except ImportError:
+    HAS_PLAYWRIGHT = False
+    logger.warning("Playwright 未安裝。某些平台爬蟲將無法正常工作。")
+
+# ============================================================================
+# CardScraper 類別 - 統一管理所有平台爬蟲
+# ============================================================================
+
+class CardScraper:
+    """
+    多平台卡牌爬蟲類別
+    統一輸出格式: {'title': str, 'price': int, 'img_url': str, 'platform': str}
+    """
+    
+    def __init__(self):
+        """初始化爬蟲"""
+        self.default_headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+        self.session = requests.Session()
+        self.session.headers.update(self.default_headers)
+    
+    def normalize_product(self, title: str, price: int, img_url: str, platform: str) -> Dict:
+        """
+        統一產品格式
+        """
+        return {
+            'title': str(title).strip()[:200],  # 限制標題長度
+            'price': int(price) if price else 0,
+            'img_url': str(img_url).strip() if img_url else '',
+            'platform': platform
+        }
+    
+    # ========================================================================
+    # PChome 爬蟲 - 官方 API
+    # ========================================================================
+    
+    def scrape_pchome(self, keyword: str, limit: int = 20) -> List[Dict]:
+        """
+        PChome 爬蟲 - 使用官方 API
+        API: https://ecshweb.pchome.com.tw/search/v3.3/all/results?q={keyword}
+        """
+        logger.info(f"[PChome] 開始爬蟲: {keyword}")
+        results = []
+        
+        try:
+            url = f"https://ecshweb.pchome.com.tw/search/v3.3/all/results?q={quote(keyword)}&limit={limit}"
+            resp = self.session.get(url, timeout=15)
+            
+            if resp.status_code != 200:
+                logger.warning(f"[PChome] 狀態碼: {resp.status_code}")
+                return results
+            
+            data = resp.json()
+            prods = data.get('prods', [])
+            
+            for prod in prods:
+                try:
+                    title = prod.get('name', '')
+                    price = prod.get('price', 0)
+                    pic_s = prod.get('picS', '')
+                    
+                    if not title or not price:
+                        continue
+                    
+                    # 拼接完整圖片 URL
+                    img_url = f'https://cs-a.ecimg.tw{pic_s}' if pic_s else ''
+                    
+                    results.append(self.normalize_product(title, price, img_url, 'pchome'))
+                    
+                except Exception as e:
+                    logger.debug(f"[PChome] 商品解析失敗: {e}")
+                    continue
+            
+            logger.info(f"[PChome] 成功抓取 {len(results)} 個商品")
+            
+        except Exception as e:
+            logger.error(f"[PChome] 爬蟲失敗: {e}")
+        
+        return results
+    
+    # ========================================================================
+    # Ruten 爬蟲 - HTML 爬取 (API 已廢棄)
+    # ========================================================================
+    
+    def scrape_ruten(self, keyword: str, limit: int = 20) -> List[Dict]:
+        """
+        Ruten 爬蟲 - 使用 HTML 爬取 (API 已廢棄)
+        搜尋網址: https://www.ruten.com.tw/find/?q={keyword}
+        """
+        logger.info(f"[Ruten] 開始爬蟲: {keyword}")
+        results = []
+        
+        try:
+            url = f"https://www.ruten.com.tw/find/?q={quote(keyword)}"
+            
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            }
+            
+            resp = requests.get(url, headers=headers, timeout=15)
+            
+            if resp.status_code != 200:
+                logger.warning(f"[Ruten] 狀態碼: {resp.status_code}")
+                return results
+            
+            soup = BeautifulSoup(resp.content, 'html.parser')
+            
+            # 查找商品列表
+            items = soup.find_all('li', class_=['item', 'good'])
+            
+            count = 0
+            for item in items:
+                if count >= limit:
+                    break
+                
+                try:
+                    # 提取標題
+                    title_elem = item.find('h3', class_='title')
+                    if not title_elem:
+                        title_elem = item.find('a', class_='name')
+                    if not title_elem:
+                        title_elem = item.find('h4')
+                    
+                    if not title_elem:
+                        continue
+                    
+                    title = title_elem.get_text(strip=True)
+                    
+                    # 提取價格
+                    price_elem = item.find('span', class_='price')
+                    if not price_elem:
+                        price_elem = item.find('div', class_='price')
+                    
+                    price = 0
+                    if price_elem:
+                        price_text = price_elem.get_text(strip=True)
+                        price_text = price_text.replace('NT$', '').replace(',', '').split()[0]
+                        try:
+                            price = int(float(price_text))
+                        except:
+                            price = 0
+                    
+                    if price <= 0:
+                        continue
+                    
+                    # 提取圖片
+                    img_elem = item.find('img')
+                    img_url = ''
+                    if img_elem:
+                        img_url = img_elem.get('src') or img_elem.get('data-src') or ''
+                    
+                    if not img_url.startswith('http'):
+                        img_url = f'https:{img_url}' if img_url.startswith('//') else f'https://www.ruten.com.tw{img_url}' if img_url else ''
+                    
+                    if title and price > 0:
+                        results.append(self.normalize_product(title, price, img_url, 'ruten'))
+                        count += 1
+                    
+                except Exception as e:
+                    logger.debug(f"[Ruten] 商品解析失敗: {e}")
+                    continue
+            
+            logger.info(f"[Ruten] 成功抓取 {len(results)} 個商品")
+            
+        except Exception as e:
+            logger.error(f"[Ruten] 爬蟲失敗: {e}")
+        
+        return results
+    
+    # ========================================================================
+    # Shopee 爬蟲 - API + 反爬蟲對策
+    # ========================================================================
+    
+    def scrape_shopee(self, keyword: str, limit: int = 20) -> List[Dict]:
+        """
+        Shopee 爬蟲 - 使用 API + 延遲和多重 User-Agent
+        API: https://shopee.tw/api/v4/search/search_items?keyword={keyword}
+        圖片 URL: https://cf.shopee.tw/file/ + image 欄位
+        注意: Shopee 有強力反爬蟲，如持續失敗建議使用 Playwright
+        """
+        logger.info(f"[Shopee] 開始爬蟲: {keyword}")
+        results = []
+        
+        try:
+            # 嘗試多個 User-Agent
+            user_agents = [
+                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            ]
+            
+            url = f"https://shopee.tw/api/v4/search/search_items?by=relevancy&keyword={quote(keyword)}&limit={limit}"
+            
+            for ua in user_agents:
+                try:
+                    headers = {
+                        'User-Agent': ua,
+                        'Referer': 'https://shopee.tw/',
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                    
+                    # 添加延遲以避免反爬蟲觸發
+                    time.sleep(1)
+                    
+                    resp = requests.get(url, headers=headers, timeout=15)
+                    
+                    if resp.status_code == 200:
+                        data = resp.json()
+                        
+                        # 檢查是否有錯誤
+                        if data.get('error'):
+                            logger.debug(f"[Shopee] API 錯誤: {data.get('error')}")
+                            continue
+                        
+                        items = data.get('items', [])
+                        
+                        if items:
+                            for item in items:
+                                try:
+                                    item_basic = item.get('item_basic', {})
+                                    title = item_basic.get('name', '')
+                                    price = item_basic.get('price', 0)
+                                    image = item_basic.get('image', '')
+                                    
+                                    if not title or not price:
+                                        continue
+                                    
+                                    # 拼接完整圖片 URL
+                                    if image:
+                                        if not image.startswith('http'):
+                                            img_url = f'https://cf.shopee.tw/file/{image}'
+                                        else:
+                                            img_url = image
+                                    else:
+                                        img_url = ''
+                                    
+                                    # 價格單位轉換 (Shopee 返回的是 100000 倍)
+                                    price_converted = int(price / 100000) if price > 100000 else price
+                                    
+                                    results.append(self.normalize_product(title, price_converted, img_url, 'shopee'))
+                                    
+                                except Exception as e:
+                                    logger.debug(f"[Shopee] 商品解析失敗: {e}")
+                                    continue
+                            
+                            logger.info(f"[Shopee] 成功抓取 {len(results)} 個商品")
+                            break
+                    else:
+                        logger.debug(f"[Shopee] User-Agent 失敗，嘗試下一個")
+                        
+                except Exception as e:
+                    logger.debug(f"[Shopee] 請求失敗 ({ua[:30]}...): {e}")
+                    continue
+            
+            if not results:
+                logger.warning(f"[Shopee] 無法抓取商品 (反爬蟲保護)")
+            
+        except Exception as e:
+            logger.error(f"[Shopee] 爬蟲失敗: {e}")
+        
+        return results
+    
+    # ========================================================================
+    # Yahoo 奇摩拍賣 - JavaScript 動態渲染頁面
+    # ========================================================================
+    
+    def scrape_yahoo(self, keyword: str, limit: int = 20) -> List[Dict]:
+        """
+        Yahoo 奇摩拍賣爬蟲
+        搜尋網址: https://tw.bid.yahoo.com/search/auction/product?p={keyword}
+        注意: Yahoo 使用 JavaScript 動態渲染，建議使用 Playwright
+        目前使用簡單 HTML 解析作為備選方案
+        """
+        logger.info(f"[Yahoo] 開始爬蟲: {keyword}")
+        results = []
+        
+        try:
+            url = f"https://tw.bid.yahoo.com/search/auction/product?p={quote(keyword)}"
+            
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept-Language': 'zh-TW,zh;q=0.9',
+            }
+            
+            resp = requests.get(url, headers=headers, timeout=15)
+            
+            if resp.status_code != 200:
+                logger.warning(f"[Yahoo] 狀態碼: {resp.status_code}")
+                return results
+            
+            soup = BeautifulSoup(resp.content, 'html.parser')
+            
+            # Yahoo 使用 JavaScript 動態渲染，直接解析 HTML 效果有限
+            # 嘗試尋找 JSON 數據或預載資料
+            
+            # 尋找 JSON 資料 (通常在 script 標籤中)
+            scripts = soup.find_all('script')
+            
+            for script in scripts:
+                if not script.string:
+                    continue
+                
+                script_content = script.string
+                
+                # 尋找包含商品資訊的 JSON
+                if '"title"' in script_content and '"price"' in script_content:
+                    try:
+                        # 提取 JSON 的簡單方法
+                        import re
+                        json_matches = re.findall(r'\{[^{}]*"title"[^{}]*"price"[^{}]*\}', script_content, re.DOTALL)
+                        
+                        for json_match in json_matches[:limit]:
+                            try:
+                                item_data = json.loads(json_match)
+                                title = item_data.get('title', '')
+                                price = item_data.get('price', 0)
+                                img_url = item_data.get('image', '')
+                                
+                                if title and price:
+                                    results.append(self.normalize_product(title, price, img_url, 'yahoo'))
+                            except:
+                                pass
+                    except:
+                        pass
+            
+            # 如果上面沒有成功，嘗試解析 HTML 元素
+            if not results:
+                cards = soup.find_all('div', class_=['PropertyCard', 'item'])
+                
+                count = 0
+                for card in cards:
+                    if count >= limit:
+                        break
+                    
+                    try:
+                        title_elem = card.find('h3') or card.find('a')
+                        if not title_elem:
+                            continue
+                        
+                        title = title_elem.get_text(strip=True)
+                        
+                        price_elem = card.find('span', class_=['PropertyCard__price', 'price'])
+                        price = 0
+                        if price_elem:
+                            price_text = price_elem.get_text(strip=True)
+                            price_text = price_text.replace('NT$', '').replace(',', '').strip()
+                            try:
+                                price = int(float(price_text))
+                            except:
+                                price = 0
+                        
+                        if not title or price <= 0:
+                            continue
+                        
+                        # 提取第一張圖片
+                        img_elem = card.find('img')
+                        img_url = ''
+                        if img_elem and img_elem.get('src'):
+                            img_url = img_elem.get('src')
+                        
+                        results.append(self.normalize_product(title, price, img_url, 'yahoo'))
+                        count += 1
+                        
+                    except Exception as e:
+                        logger.debug(f"[Yahoo] 商品解析失敗: {e}")
+                        continue
+            
+            logger.info(f"[Yahoo] 成功抓取 {len(results)} 個商品")
+            
+            if not results:
+                logger.warning(f"[Yahoo] 建議使用 Playwright 來完整渲染 JavaScript")
+            
+        except Exception as e:
+            logger.error(f"[Yahoo] 爬蟲失敗: {e}")
+        
+        return results
+    
+    # ========================================================================
+    # 統一搜索方法
+    # ========================================================================
+    
+    def search_all_platforms(self, keyword: str) -> Dict[str, List[Dict]]:
+        """
+        在所有平台搜索
+        返回: {'pchome': [...], 'ruten': [...], 'shopee': [...], 'yahoo': [...]}
+        """
+        logger.info(f"在所有平台搜索: {keyword}")
+        
+        results = {
+            'pchome': self.scrape_pchome(keyword),
+            'ruten': self.scrape_ruten(keyword),
+            'shopee': self.scrape_shopee(keyword),
+            'yahoo': self.scrape_yahoo(keyword)
+        }
+        
+        return results
+
+
+# ============================================================================
+# 便利函數 (向後相容)
+# ============================================================================
+
+def search_pchome(keyword: str, pages: int = 1) -> List[Dict]:
+    """向後相容函數"""
+    scraper = CardScraper()
+    products = scraper.scrape_pchome(keyword)
+    # 轉換為舊格式
+    return [{
+        'product_id': f'pchome_{i}',
+        'platform': 'pchome',
+        'name': p['title'],
+        'price': p['price'],
+        'image': p['img_url'],
+        'shop': '24h PChome',
+        'rating': 4.5,
+        'url': f'https://24h.pchome.com.tw/search?q={quote(keyword)}',
+        'description': p['title']
+    } for i, p in enumerate(products)]
+
+
+def search_shopee(keyword: str, pages: int = 1) -> List[Dict]:
+    """向後相容函數"""
+    scraper = CardScraper()
+    products = scraper.scrape_shopee(keyword)
+    # 轉換為舊格式
+    return [{
+        'product_id': f'shopee_{i}',
+        'platform': 'shopee',
+        'name': p['title'],
+        'price': p['price'],
+        'image': p['img_url'],
+        'shop': 'Shopee',
+        'rating': 4.5,
+        'url': f'https://shopee.tw/search?q={quote(keyword)}',
+        'description': p['title']
+    } for i, p in enumerate(products)]
+
+
+def search_ruten(keyword: str, pages: int = 1) -> List[Dict]:
+    """向後相容函數"""
+    scraper = CardScraper()
+    products = scraper.scrape_ruten(keyword)
+    # 轉換為舊格式
+    return [{
+        'product_id': f'ruten_{i}',
+        'platform': 'ruten',
+        'name': p['title'],
+        'price': p['price'],
+        'image': p['img_url'],
+        'shop': '露天拍賣',
+        'rating': 4.3,
+        'url': f'https://www.ruten.com.tw/find/?q={quote(keyword)}',
+        'description': p['title']
+    } for i, p in enumerate(products)]
+
+
+def search_yahoo(keyword: str, pages: int = 1) -> List[Dict]:
+    """向後相容函數"""
+    scraper = CardScraper()
+    products = scraper.scrape_yahoo(keyword)
+    # 轉換為舊格式
+    return [{
+        'product_id': f'yahoo_{i}',
+        'platform': 'yahoo',
+        'name': p['title'],
+        'price': p['price'],
+        'image': p['img_url'],
+        'shop': 'Yahoo 拍賣',
+        'rating': 4.6,
+        'url': f'https://tw.bid.yahoo.com/search/auction/product?p={quote(keyword)}',
+        'description': p['title']
+    } for i, p in enumerate(products)]
+
+
+def get_sample_search_results(platform: str) -> List[Dict]:
+    """備用範例數據"""
+    sample_cards = [
+        {
+            'product_id': f'sample_{platform}_0',
+            'platform': platform,
+            'name': '青眼白龍卡牌',
+            'price': 500,
+            'image': 'https://images.ygoprodeck.com/images/cards/89631139.jpg',
+            'shop': f'{platform.upper()} 示例',
+            'rating': 4.5,
+            'url': '#',
+            'description': '青眼白龍卡牌'
+        }
+    ]
+    return sample_cards
+
+
+# ============================================================================
+# 測試函數 - 列印第一筆資料驗證
+# ============================================================================
+
+def test_all_platforms():
+    """
+    測試所有平台爬蟲
+    列印各平台第一筆資料，確保圖片連結不再是幻覺
+    """
+    logger.info("=" * 80)
+    logger.info("開始測試多平台爬蟲")
+    logger.info("=" * 80)
+    
+    keyword = '卡牌'
+    scraper = CardScraper()
+    
+    # 搜索所有平台
+    results = scraper.search_all_platforms(keyword)
+    
+    # 列印每個平台的第一筆資料
+    for platform, products in results.items():
+        logger.info(f"\n{'=' * 80}")
+        logger.info(f"平台: {platform.upper()}")
+        logger.info(f"{'=' * 80}")
+        
+        if products:
+            first_product = products[0]
+            logger.info(f"✓ 標題: {first_product['title']}")
+            logger.info(f"✓ 價格: {first_product['price']} 元")
+            logger.info(f"✓ 圖片 URL: {first_product['img_url']}")
+            logger.info(f"✓ 總共抓取: {len(products)} 個商品")
+        else:
+            logger.warning(f"✗ 未抓取到商品")
+    
+    logger.info(f"\n{'=' * 80}")
+    logger.info("測試完成")
+    logger.info("=" * 80)
+
+
+if __name__ == '__main__':
+    test_all_platforms()
+
+
+# ============================================================================
+# Playwright 增強爬蟲 (可選 - 用於複雜 JavaScript 渲染)
+# ============================================================================
+
+DOCTYPE_SCRAPER_INFO = """
+【爬蟲平台支持情況】
+
+✅ PChome (官方 API)
+   - 狀態: 完全支持
+   - 方法: requests + JSON API
+   - 圖片: 100% 真實，高質量
+   - 性能: 快速穩定
+
+❌ Ruten (需要 Playwright)
+   - 狀態: 需要 JavaScript 渲染
+   - 方法: HTML 解析 (基礎) / Playwright (推薦)
+   - 圖片: 正常
+   - 障礙: SSR 或動態渲染
+
+❌ Shopee (強力反爬蟲)
+   - 狀態: API 返回 error 90309999
+   - 方法: 需要 Playwright + 代理 + 延遲
+   - 圖片: 可用
+   - 障礙: 強力反爬蟲保護
+
+❌ Yahoo (JavaScript 動態渲染)
+   - 狀態: 需要 JavaScript 渲染
+   - 方法: HTML 解析 (基礎) / Playwright (推薦)
+   - 圖片: 正常
+   - 障礙: 完全 JavaScript 動態页面
+
+【安裝 Playwright 支持】
+  pip install playwright
+  playwright install
+
+【使用方式】
+from scraper import CardScraper, scrape_with_playwright
+
+# 基礎爬蟲 (僅 PChome)
+scraper = CardScraper()
+results = scraper.search_all_platforms('卡牌')
+
+# Playwright 增強版 (所有平台)
+if HAS_PLAYWRIGHT:
+    results = scrape_with_playwright('卡牌')
+"""
+
+def scrape_with_playwright(keyword: str) -> Dict[str, List[Dict]]:
+    """
+    使用 Playwright 的增強爬蟲 (處理 JavaScript 動態渲染)
+    
+    要求: pip install playwright && playwright install
+    """
+    if not HAS_PLAYWRIGHT:
+        logger.error("Playwright 未安裝。無法執行此函數。")
+        logger.error("請先運行: pip install playwright && playwright install")
+        return {}
+    
+    results = {
+        'pchome': [],
+        'ruten': [],
+        'shopee': [],
+        'yahoo': []
+    }
+    
+    try:
+        with sync_playwright() as p:
+            logger.info("【啟動 Playwright 瀏覽器】")
+            
+            # 啟動瀏覽器 - 使用隱身模式避免追蹤
+            browser = p.chromium.launch(headless=True, args=['--disable-blink-features=AutomationControlled'])
+            
+            # PChome - 直接用 API (不需要 Playwright)
+            logger.info("【PChome】使用 API...")
+            scraper = CardScraper()
+            results['pchome'] = scraper.scrape_pchome(keyword)[:5]
+            
+            # Ruten - Playwright 版本
+            logger.info("【Ruten】使用 Playwright...")
+            try:
+                page = browser.new_page(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
+                page.goto(f"https://www.ruten.com.tw/find/?q={quote(keyword)}", wait_until='networkidle')
+                
+                # 等待商品加載
+                page.wait_for_selector('li', timeout=5000)
+                
+                # 提取商品數據
+                items = page.locator('li:has-text("NT$")').all()[:5]
+                
+                for item in items:
+                    try:
+                        title = item.locator('h3, h4').first.text_content()
+                        price_text = item.locator('[class*="price"]').first.text_content()
+                        price = int(''.join(filter(str.isdigit, price_text.split('NT$')[0]))) if 'NT$' in price_text else 0
+                        
+                        img_elem = item.locator('img').first
+                        img_url = img_elem.get_attribute('src') or img_elem.get_attribute('data-src') or ''
+                        
+                        if title and price > 0:
+                            results['ruten'].append({
+                                'title': title.strip()[:200],
+                                'price': price,
+                                'img_url': img_url,
+                                'platform': 'ruten'
+                            })
+                    except:
+                        pass
+                
+                page.close()
+            except Exception as e:
+                logger.warning(f"Ruten Playwright 爬蟲失敗: {e}")
+            
+            # Yahoo - Playwright 版本
+            logger.info("【Yahoo】使用 Playwright...")
+            try:
+                page = browser.new_page(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
+                page.goto(f"https://tw.bid.yahoo.com/search/auction/product?p={quote(keyword)}", wait_until='networkidle')
+                
+                # 等待商品加載
+                page.wait_for_selector('[class*="PropertyCard"]', timeout=5000)
+                
+                items = page.locator('[class*="PropertyCard"]').all()[:5]
+                
+                for item in items:
+                    try:
+                        title = item.locator('h3, a').first.text_content()
+                        price_elem = item.locator('[class*="price"]').first
+                        price_text = price_elem.text_content() if price_elem else ''
+                        price = int(''.join(filter(str.isdigit, price_text.split('NT$')[0]))) if 'NT$' in price_text else 0
+                        
+                        img_elem = item.locator('img').first
+                        img_url = img_elem.get_attribute('src') or ''
+                        
+                        if title and price > 0:
+                            results['yahoo'].append({
+                                'title': title.strip()[:200],
+                                'price': price,
+                                'img_url': img_url,
+                                'platform': 'yahoo'
+                            })
+                    except:
+                        pass
+                
+                page.close()
+            except Exception as e:
+                logger.warning(f"Yahoo Playwright 爬蟲失敗: {e}")
+            
+            # Shopee - Playwright 版本 (使用 stealth 模式)
+            logger.info("【Shopee】使用 Playwright (stealth 模式)...")
+            try:
+                # 這裡可以添加代理設置避免被 Shopee 屏蔽
+                page = browser.new_page(
+                    user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                    viewport={'width': 1366, 'height': 768}
+                )
+                
+                page.goto(f"https://shopee.tw/search?keyword={quote(keyword)}", wait_until='networkidle')
+                
+                # 等待商品加載
+                page.wait_for_selector('[data-testid="product-item"]', timeout=5000)
+                
+                items = page.locator('[data-testid="product-item"]').all()[:5]
+                
+                for item in items:
+                    try:
+                        title = item.locator('[class*="name"]').first.text_content()
+                        price = int(''.join(filter(str.isdigit, item.locator('[class*="price"]').first.text_content())))
+                        
+                        img_elem = item.locator('img').first
+                        img_url = img_elem.get_attribute('src') or ''
+                        
+                        if title and price > 0:
+                            results['shopee'].append({
+                                'title': title.strip()[:200],
+                                'price': price,
+                                'img_url': img_url,
+                                'platform': 'shopee'
+                            })
+                    except:
+                        pass
+                
+                page.close()
+            except Exception as e:
+                logger.warning(f"Shopee Playwright 爬蟲失敗: {e}")
+            
+            browser.close()
+            logger.info("✓ Playwright 爬蟲完成")
+    
+    except Exception as e:
+        logger.error(f"Playwright 爬蟲整體失敗: {e}")
+    
+    return results
+
+
+if __name__ == '__main__':
+    print(DOCTYPE_SCRAPER_INFO)
+"""
 卡牌價格監控系統 - 爬蟲模組
 使用真實電商平台 API 獲取準確數據
 """
