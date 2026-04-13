@@ -444,20 +444,33 @@
 
             <!-- 平台篩選 -->
             <div class="platform-tabs">
+                <button class="platform-btn active" onclick="setSearchMode('ecommerce')">
+                    <i class="fas fa-shopping-cart"></i> 台灣平台
+                </button>
+                <button class="platform-btn" onclick="setSearchMode('international')">
+                    <i class="fas fa-globe"></i> 國際卡牌 API
+                </button>
+                <button class="platform-btn" onclick="setSearchMode('combined')">
+                    <i class="fas fa-plus"></i> 組合搜索
+                </button>
+            </div>
+            
+            <!-- 商品平台篩選 (台灣平台模式) -->
+            <div id="ecommerceTabs" class="platform-tabs" style="display: none; margin-top: 1rem;">
                 <button class="platform-btn active" onclick="filterByPlatform('all')">
                     <i class="fas fa-th"></i> 全部平台
                 </button>
-                <button class="platform-btn" onclick="filterByPlatform('shopee')">
-                    <i class="fas fa-shrimp"></i> 蝦皮 Shopee
-                </button>
-                <button class="platform-btn" onclick="filterByPlatform('ruten')">
-                    <i class="fas fa-store"></i> 露天拍賣
-                </button>
-                <button class="platform-btn" onclick="filterByPlatform('yahoo')">
-                    <i class="fas fa-gavel"></i> Yahoo 奇摩
-                </button>
                 <button class="platform-btn" onclick="filterByPlatform('pchome')">
                     <i class="fas fa-shopping-cart"></i> PChome
+                </button>
+                <button class="platform-btn" onclick="filterByPlatform('shopee')">
+                    <i class="fas fa-shrimp"></i> 蝦皮
+                </button>
+                <button class="platform-btn" onclick="filterByPlatform('ruten')">
+                    <i class="fas fa-store"></i> 露天
+                </button>
+                <button class="platform-btn" onclick="filterByPlatform('yahoo')">
+                    <i class="fas fa-gavel"></i> Yahoo
                 </button>
             </div>
         </div>
@@ -479,13 +492,50 @@
     <script>
         let currentSearchResults = {};
         let currentFilter = 'all';
+        let searchMode = 'ecommerce';  // 新增：搜尋模式
+
+        /**
+         * 設定搜尋模式
+         */
+        function setSearchMode(mode) {
+            searchMode = mode;
+            console.log('搜尋模式已改為:', mode);
+            
+            // 更新按鈕狀態
+            document.querySelectorAll('.platform-tabs').forEach((tabs, idx) => {
+                if (idx === 0) {
+                    // 第一個 tab 組是搜尋模式選擇器
+                    Array.from(tabs.querySelectorAll('.platform-btn')).forEach((btn, i) => {
+                        const modes = ['ecommerce', 'international', 'combined'];
+                        if (modes[i] === mode) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
+                }
+            });
+            
+            // 顯示/隱藏商品平台篩選器
+            const ecommerceTabs = document.getElementById('ecommerceTabs');
+            if (mode === 'ecommerce' || mode === 'combined') {
+                ecommerceTabs.style.display = 'flex';
+            } else {
+                ecommerceTabs.style.display = 'none';
+            }
+            
+            // 清空結果
+            document.getElementById('searchResults').innerHTML = '';
+            document.getElementById('resultsSection').classList.remove('active');
+            currentFilter = 'all';
+        }
 
         /**
          * 執行搜尋
          */
         async function performSearch() {
             const keyword = document.getElementById('searchKeyword').value.trim();
-            console.log('開始搜尋:', keyword);
+            console.log('開始搜尋:', keyword, '模式:', searchMode);
             
             if (!keyword || keyword.length < 2) {
                 alert('請輸入至少 2 個字符');
@@ -493,17 +543,23 @@
             }
 
             showLoading(true);
-            console.log('顯示載入狀態');
             
             try {
-                const url = `/api/search?keyword=${encodeURIComponent(keyword)}`;
+                let url;
+                if (searchMode === 'international') {
+                    // 搜尋國際卡牌 API
+                    url = `/api/card-references?keyword=${encodeURIComponent(keyword)}`;
+                } else if (searchMode === 'combined') {
+                    // 組合搜索
+                    url = `/api/combined-search?keyword=${encodeURIComponent(keyword)}`;
+                } else {
+                    // 台灣平台搜尋
+                    url = `/api/search?keyword=${encodeURIComponent(keyword)}`;
+                }
+                
                 console.log('API 請求:', url);
-                
                 const response = await fetch(url);
-                console.log('API 回應狀態:', response.status);
-                
                 const data = await response.json();
-                console.log('API 數據:', data);
 
                 if (!response.ok) {
                     alert(data.error || '搜尋失敗，請稍後重試');
@@ -511,22 +567,231 @@
                     return;
                 }
 
-                currentSearchResults = data.results;
-                currentFilter = 'all';
-                console.log('搜尋結果:', currentSearchResults);
+                console.log('搜尋結果:', data);
                 
-                updatePlatformButtons();
-                displayResults(data.results);
+                if (searchMode === 'international') {
+                    // 顯示國際卡牌結果
+                    displayInternationalResults(data);
+                } else if (searchMode === 'combined') {
+                    // 顯示組合結果
+                    displayCombinedResults(data);
+                } else {
+                    // 顯示台灣平台結果
+                    currentSearchResults = data.results;
+                    currentFilter = 'all';
+                    updatePlatformButtons();
+                    displayResults(data.results);
+                }
                 
                 document.getElementById('resultsSection').classList.add('active');
-                console.log('結果區域已啟用');
             } catch (error) {
                 console.error('搜尋錯誤:', error);
                 alert('搜尋失敗，請檢查網路連線\n錯誤: ' + error.message);
             } finally {
                 showLoading(false);
-                console.log('隱藏載入狀態');
             }
+        }
+
+        /**
+         * 顯示國際卡牌 API 結果
+         */
+        function displayInternationalResults(data) {
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+
+            const cardConfig = {
+                'yugioh': {
+                    name: '🎴 遊戲王 (YGOProDeck)',
+                    icon: '🎴',
+                    color: '#FFD700'
+                },
+                'pokemon': {
+                    name: '⚡ 寶可夢 (PokeAPI)',
+                    icon: '⚡',
+                    color: '#FF6B6B'
+                },
+                'mtg': {
+                    name: '🪄 魔法風雲會 (Scryfall)',
+                    icon: '🪄',
+                    color: '#9932CC'
+                }
+            };
+
+            // 過濾有結果的卡牌源
+            const references = data.references || {};
+            const hasResults = Object.values(references).some(arr => arr && arr.length > 0);
+
+            if (!hasResults) {
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>未找到符合的卡牌</h3>
+                        <p>請嘗試其他搜尋關鍵字</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // 顯示各來源結果
+            for (const [source, cards] of Object.entries(references)) {
+                if (!cards || cards.length === 0) continue;
+
+                const config = cardConfig[source];
+                const cardsHtml = cards.map(card => createCardReferenceCard(card, source)).join('');
+
+                const platformHtml = `
+                    <div class="platform-results">
+                        <div class="platform-header" style="border-bottom-color: ${config.color};">
+                            <span class="platform-icon">${config.icon}</span>
+                            <h2>${config.name}</h2>
+                            <span class="result-count">${cards.length} 張卡牌</span>
+                        </div>
+                        <div class="product-grid">
+                            ${cardsHtml}
+                        </div>
+                    </div>
+                `;
+                
+                resultsContainer.innerHTML += platformHtml;
+            }
+        }
+
+        /**
+         * 創建卡牌參考卡片 HTML
+         */
+        function createCardReferenceCard(card, source) {
+            let cardDetails = '';
+            
+            if (source === 'yugioh') {
+                cardDetails = `
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                        <div><strong>類型:</strong> ${card.type || 'unknown'}</div>
+                        <div><strong>ATK/DEF:</strong> ${card.atk || 0}/${card.def || 0}</div>
+                        ${card.attribute ? `<div><strong>屬性:</strong> ${card.attribute}</div>` : ''}
+                    </div>
+                `;
+            } else if (source === 'pokemon') {
+                cardDetails = `
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                        <div><strong>棲息地:</strong> ${card.habitat || 'unknown'}</div>
+                        <div><strong>顏色:</strong> ${card.color || 'unknown'}</div>
+                    </div>
+                `;
+            } else if (source === 'mtg') {
+                cardDetails = `
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                        <div><strong>類型:</strong> ${card.type || 'unknown'}</div>
+                        ${card.mana_cost ? `<div><strong>魔力值:</strong> ${card.mana_cost}</div>` : ''}
+                        ${card.power ? `<div><strong>力量/防禦:</strong> ${card.power}/${card.toughness}</div>` : ''}
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${card.img_url}" alt="${card.title}" loading="lazy" onerror="this.src='https://picsum.photos/280/220?random=${Math.floor(Math.random()*1000)}';" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">${card.title || 'Unknown'}</div>
+                        ${cardDetails}
+                        ${card.desc ? `<div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.3; height: 2.4em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">${card.desc}</div>` : ''}
+                        <div style="color: var(--primary-color); font-size: 0.85rem; margin-top: auto; padding-top: 0.5rem;">
+                            來源: ${source.toUpperCase()}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        /**
+         * 顯示組合搜索結果
+         */
+        function displayCombinedResults(data) {
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+
+            let html = '';
+
+            // 顯示台灣平台價格
+            const taipeiPrices = data.taipei_prices || {};
+            if (Object.keys(taipeiPrices).length > 0) {
+                const pchomeItems = taipeiPrices.pchome || [];
+                if (pchomeItems.length > 0) {
+                    html += `
+                        <div class="platform-results">
+                            <div class="platform-header platform-pchome">
+                                <span class="platform-icon">🇹🇼</span>
+                                <h2>台灣價格 (PChome)</h2>
+                                <span class="result-count">${pchomeItems.length} 個商品</span>
+                            </div>
+                            <div class="product-grid">
+                                ${pchomeItems.map(item => createProductCard(item)).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            // 顯示國際卡牌資料
+            const references = data.international_references || {};
+            const cardConfig = {
+                'yugioh': { name: '🎴 遊戲王', icon: '🎴', color: '#FFD700' },
+                'pokemon': { name: '⚡ 寶可夢', icon: '⚡', color: '#FF6B6B' },
+                'mtg': { name: '🪄 魔法風雲會', icon: '🪄', color: '#9932CC' }
+            };
+
+            for (const [source, cards] of Object.entries(references)) {
+                if (!cards || cards.length === 0) continue;
+                
+                const config = cardConfig[source];
+                html += `
+                    <div class="platform-results">
+                        <div class="platform-header" style="border-bottom-color: ${config.color};">
+                            <span class="platform-icon">${config.icon}</span>
+                            <h2>${config.name}</h2>
+                            <span class="result-count">${cards.length} 張參考卡</span>
+                        </div>
+                        <div class="product-grid">
+                            ${cards.map(card => createCardReferenceCard(card, source)).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            resultsContainer.innerHTML = html || `
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <h3>未找到符合的結果</h3>
+                </div>
+            `;
+        }
+
+        /**
+         * 顯示/隱藏載入狀態
+         */
+        function showLoading(show) {
+            document.getElementById('loadingSection') = document.getElementById('loadingSection') || createLoadingElement();
+            const loadingElement = document.getElementById('loadingSection');
+            if (!loadingElement) {
+                const section = document.getElementById('resultsSection');
+                const div = document.createElement('div');
+                div.id = 'loadingSection';
+                div.className = 'loading';
+                div.innerHTML = '<div class="spinner-border" role="status"></div><p>正在搜尋...</p>';
+                section.appendChild(div);
+            }
+            document.getElementById('loadingSection').style.display = show ? 'block' : 'none';
+        }
+
+        function createLoadingElement() {
+            const section = document.getElementById('resultsSection');
+            const div = document.createElement('div');
+            div.id = 'loadingSection';
+            div.className = 'loading';
+            div.innerHTML = '<div class="spinner-border" role="status"></div><p>正在搜尋...</p>';
+            section.appendChild(div);
+            return div;
         }
 
         /**
@@ -539,16 +804,7 @@
         }
 
         /**
-         * 顯示/隱藏載入狀態
-         */
-        function showLoading(show) {
-            document.getElementById('loadingSection').style.display = show ? 'block' : 'none';
-        }
-
-        /**
-         * 顯示搜尋結果
-         */
-        function displayResults(results) {
+         * 顯示搜尋結果 (台灣平台)
             const resultsContainer = document.getElementById('searchResults');
             resultsContainer.innerHTML = '';
 
@@ -712,6 +968,9 @@
          * 頁面載入時自動聚焦搜尋框
          */
         document.addEventListener('DOMContentLoaded', function() {
+            // 初始化搜尋模式
+            setSearchMode('ecommerce');
+            
             document.getElementById('searchKeyword').focus();
             
             // 檢查 URL 參數
@@ -721,7 +980,7 @@
                 document.getElementById('searchKeyword').value = keyword;
                 performSearch();
             } else {
-                // 自動加載示例商品
+                // 自動加載推薦卡牌
                 autoLoadSampleResults();
             }
             
