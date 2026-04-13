@@ -86,28 +86,37 @@ def get_pokemon_tcg_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
                 set_name = set_data.get('name', 'Unknown Set')
                 rarity = card.get('rarity', 'Unknown')
                 
+                # 提取圖片 URL
+                images = card.get('images', {})
+                img_url = images.get('large', '') or images.get('small', '')
+                img_large = images.get('large', '')
+                
+                # 如果沒有圖片 URL，使用空字符串（仍然返回卡牌）
+                if not img_url:
+                    logger.debug(f"[Pokémon TCG] 卡牌 {card.get('name')} 無圖片 URL")
+                
                 # 構建卡牌數據
                 card_data = {
                     'id': card.get('id', ''),
                     'title': card.get('name', 'Unknown'),
                     'source': 'pokemon',
-                    'img_url': card.get('images', {}).get('large', '') or card.get('images', {}).get('small', ''),
-                    'img_large': card.get('images', {}).get('large', ''),
+                    'img_url': img_url,
+                    'img_large': img_large,
                     'price': 0.0,  # pokemontcg.io 不提供價格
                     'stats': {
                         'type': 'Pokémon Card',
                         'rarity': rarity,
                         'set': set_name,
                         'hp': card.get('hp', ''),
-                        'types': [t.get('name', '') for t in card.get('types', [])],
+                        'types': [t if isinstance(t, str) else t.get('name', '') for t in card.get('types', [])],
                         'card_number': card.get('number', ''),
                     },
                     'series': [],  # TODO: 如需發行版本，需額外查詢
                     'description': f"{set_name} - {rarity}",
                 }
                 
-                if card_data['img_url']:
-                    results.append(card_data)
+                # 總是返回卡牌，即使沒有圖片 URL
+                results.append(card_data)
             except Exception as e:
                 logger.debug(f"[Pokémon TCG] 卡牌解析失敗: {e}")
                 continue
@@ -134,8 +143,12 @@ def get_yugioh_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
     從 ygoprodeck.com 獲取遊戲王卡牌
     API: https://db.ygoprodeck.com/api/v7/cardinfo.php
     
+    支持兩種搜尋模式：
+    1. 精確搜尋 (name 參數) - 用於完整的卡牌名稱
+    2. 模糊搜尋 (fname 參數) - 用於部分名稱搜尋
+    
     Args:
-        keyword: 搜尋關鍵字 (支援模糊搜尋)
+        keyword: 搜尋關鍵字
         limit: 每頁結果數
         page: 頁碼 (1-based)
     
@@ -146,17 +159,23 @@ def get_yugioh_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
         logger.info(f"[YuGiOh] 搜尋: {keyword}, 頁碼: {page}")
         
         url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
-        params = {
-            'fname': keyword,  # 模糊搜尋卡牌名稱
-            'num': limit,      # 返回數量
-            'offset': (page - 1) * limit  # 分頁
-        }
-        
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         }
         
+        # 首先嘗試精確搜尋 (name 參數)
+        logger.debug(f"[YuGiOh] 嘗試精確搜尋: {keyword}")
+        params = {'name': keyword}
         resp = requests.get(url, params=params, headers=headers, timeout=10)
+        
+        if resp.status_code != 200:
+            logger.warning(f"[YuGiOh] 精確搜尋失敗: {resp.status_code}, 改用模糊搜尋")
+            # 如果精確搜尋失敗，改用模糊搜尋
+            params = {
+                'fname': keyword,  # 模糊搜尋卡牌名稱
+            }
+            resp = requests.get(url, params=params, headers=headers, timeout=10)
+        
         if resp.status_code != 200:
             logger.warning(f"[YuGiOh] API 返回 {resp.status_code}")
             return {'cards': [], 'total': 0, 'pages': 0}
@@ -164,10 +183,16 @@ def get_yugioh_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
         data = resp.json()
         cards = data.get('data', []) if isinstance(data, dict) else data if isinstance(data, list) else []
         
+        # 計算分頁
+        offset = (page - 1) * limit
+        total = len(cards)
+        paginated_cards = cards[offset:offset + limit]
+        pages = (total + limit - 1) // limit if total > 0 else 1
+        
         results = []
         all_prices = {}
         
-        for card in cards[:limit]:
+        for card in paginated_cards:
             try:
                 # 提取價格信息
                 card_sets = card.get('card_sets', [])
@@ -213,16 +238,13 @@ def get_yugioh_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
                     'description': card.get('desc', '')[:300],
                 }
                 
-                if card_data['img_url']:
-                    results.append(card_data)
+                # 總是返回卡牌，即使沒有圖片 URL
+                results.append(card_data)
             except Exception as e:
                 logger.debug(f"[YuGiOh] 卡牌解析失敗: {e}")
                 continue
         
-        total = len(results)  # 實際獲取的卡牌數
-        pages = (total + limit - 1) // limit if total > 0 else 1
-        
-        logger.info(f"[YuGiOh] 成功獲取 {len(results)} 張卡牌")
+        logger.info(f"[YuGiOh] 成功獲取 {len(results)} 張卡牌 (共 {total} 筆, 第 {page} 頁)")
         return {
             'cards': results,
             'total': total,
@@ -327,8 +349,8 @@ def get_magic_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
                     'description': card.get('oracle_text', '')[:300],
                 }
                 
-                if card_data['img_url']:
-                    results.append(card_data)
+                # 總是返回卡牌，即使沒有圖片 URL
+                results.append(card_data)
             except Exception as e:
                 logger.debug(f"[MTG] 卡牌解析失敗: {e}")
                 continue
