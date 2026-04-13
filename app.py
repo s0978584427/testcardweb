@@ -95,6 +95,77 @@ def get_card_references():
         return jsonify({'error': '取得卡牌資料失敗'}), 500
 
 
+# ==================== 新版分頁搜尋 (支持三個平台) ====================
+@app.route('/api/cards/search', methods=['GET'])
+def search_cards_paginated():
+    """
+    新版卡牌搜尋 API - 支持分頁、詳細信息、發行版本清單
+    
+    查詢參數:
+        keyword: 搜尋關鍵字
+        source: 卡牌來源 ('pokemon' | 'yugioh' | 'mtg' | 'all')
+        page: 頁碼 (預設 1)
+        limit: 每頁結果數 (預設 20)
+    """
+    try:
+        from card_apis import (
+            get_pokemon_tcg_cards, 
+            get_yugioh_cards, 
+            get_magic_cards,
+            search_all_cards_paginated
+        )
+        
+        keyword = request.args.get('keyword', '').strip()
+        source = request.args.get('source', 'all').lower()
+        page = int(request.args.get('page', '1'))
+        limit = min(int(request.args.get('limit', '20')), 20)  # 最多 20 筆
+        
+        if not keyword or len(keyword) < 2:
+            return jsonify({'error': '搜索關鍵字至少 2 個字符'}), 400
+        
+        if page < 1:
+            page = 1
+        
+        logger.info(f"搜尋卡牌: keyword={keyword}, source={source}, page={page}")
+        
+        # 根據來源進行搜索
+        if source == 'pokemon':
+            result = get_pokemon_tcg_cards(keyword, limit, page)
+            return jsonify({
+                'keyword': keyword,
+                'source': 'pokemon',
+                **result
+            })
+        
+        elif source == 'yugioh':
+            result = get_yugioh_cards(keyword, limit, page)
+            return jsonify({
+                'keyword': keyword,
+                'source': 'yugioh',
+                **result
+            })
+        
+        elif source == 'mtg':
+            result = get_magic_cards(keyword, limit, page)
+            return jsonify({
+                'keyword': keyword,
+                'source': 'mtg',
+                **result
+            })
+        
+        else:  # 'all'
+            results = search_all_cards_paginated(keyword, limit, page)
+            return jsonify({
+                'keyword': keyword,
+                'source': 'all',
+                'results': results
+            })
+    
+    except Exception as e:
+        logger.error(f"卡牌搜尋失敗: {str(e)}")
+        return jsonify({'error': '搜尋失敗'}), 500
+
+
 # ==================== 組合搜尋 ====================
 @app.route('/api/combined-search', methods=['GET'])
 def combined_search():

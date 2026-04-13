@@ -1,350 +1,358 @@
 """
-開源卡牌 API 模組
-支持 YGOProDeck, PokeAPI, Scryfall
-無需爬蟲，官方 API 提供
+國際卡牌 API 整合系統 - v2.0
+支持：寶可夢 TCG (pokemontcg.io)、遊戲王 (ygoprodeck.com)、MTG (scryfall.com)
+
+統一格式：
+{
+    'id': str,                    # 卡牌唯一識別碼
+    'title': str,                 # 卡牌名稱
+    'source': str,                # 來源: 'pokemon', 'yugioh', 'mtg'
+    'img_url': str,               # 卡面圖 URL
+    'price': float | str,         # 卡牌價格 (USD)
+    'stats': {                    # 卡牌屬性
+        'type': str,              # 卡牌類型
+        'rarity': str,            # 稀有度
+        'set': str,               # 系列名稱
+        'attribute': str,         # (YuGiOh) 屬性
+        'level': int,             # (YuGiOh) 等級
+        'atk': int,               # (YuGiOh/MTG) 攻擊力
+        'def': int,               # (YuGiOh) 防禦力
+        'mana_cost': str,         # (MTG) 法力費
+        'abilities': list,        # (Pokémon) 能力
+        'hp': int,                # (Pokémon) 血量
+    },
+    'series': list,               # 發行版本清單 [{'name': str, 'set_id': str, 'release_date': str, 'price': float}]
+    'description': str,           # 卡牌描述
+}
 """
 import requests
 import logging
-from typing import List, Dict
+from typing import List, Dict, Optional
+from datetime import datetime
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def get_yugioh_cards(name: str, limit: int = 5) -> List[Dict]:
+
+
+# ============================================================================
+# 寶可夢 TCG API (pokemontcg.io)
+# ============================================================================
+
+def get_pokemon_tcg_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
     """
-    從 YGOProDeck API 獲取遊戲王卡牌信息
-    API: https://api.ygoprodeckdb.com/v8.0/cardinfo
+    從 pokemontcg.io 獲取寶可夢卡牌
+    文檔: https://docs.pokemontcg.io/
+    
+    Args:
+        keyword: 搜尋關鍵字
+        limit: 每頁結果數 (最多 20)
+        page: 頁碼 (1-based)
+    
+    Returns:
+        {'cards': [...], 'total': int, 'pages': int}
     """
     try:
-        logger.info(f"[YGOProDeck] 搜尋: {name}")
-        url = "https://api.ygoprodeckdb.com/v8.0/cardinfo"
-        params = {
-            'name': name,
-            'num': min(limit, 10)  # API 最多返回 10 個
+        logger.info(f"[Pokémon TCG] 搜尋: {keyword}, 頁碼: {page}")
+        
+        # 查詢參數：搜尋卡牌名稱
+        query = f'q=name:"{keyword}"'
+        
+        # 計算分頁
+        offset = (page - 1) * limit
+        
+        url = f'https://api.pokemontcg.io/v2/cards?{query}&pageSize={limit}&pageOffset={offset}'
+        
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         }
         
-        resp = requests.get(url, params=params, timeout=10)
+        resp = requests.get(url, headers=headers, timeout=10)
         if resp.status_code != 200:
-            logger.warning(f"[YGOProDeck] API 返回狀態碼: {resp.status_code}")
-            return []
+            logger.warning(f"[Pokémon TCG] API 返回 {resp.status_code}")
+            return {'cards': [], 'total': 0, 'pages': 0}
         
         data = resp.json()
         cards = data.get('data', [])
+        total = data.get('totalCount', 0)
+        pages = (total + limit - 1) // limit  # 計算總頁數
         
         results = []
         for card in cards[:limit]:
             try:
+                # 取得集合名稱
+                set_data = card.get('set', {})
+                set_name = set_data.get('name', 'Unknown Set')
+                rarity = card.get('rarity', 'Unknown')
+                
+                # 構建卡牌數據
                 card_data = {
+                    'id': card.get('id', ''),
                     'title': card.get('name', 'Unknown'),
-                    'type': card.get('type', 'Unknown'),
-                    'attribute': card.get('attribute', ''),
-                    'atk': card.get('atk', 0),
-                    'def': card.get('def', 0),
-                    'desc': card.get('desc', '')[:200],  # 限制描述長度
-                    'img_url': card.get('card_images', [{}])[0].get('image_url', ''),
-                    'source': 'yugioh'
+                    'source': 'pokemon',
+                    'img_url': card.get('images', {}).get('large', '') or card.get('images', {}).get('small', ''),
+                    'img_large': card.get('images', {}).get('large', ''),
+                    'price': 0.0,  # pokemontcg.io 不提供價格
+                    'stats': {
+                        'type': 'Pokémon Card',
+                        'rarity': rarity,
+                        'set': set_name,
+                        'hp': card.get('hp', ''),
+                        'types': [t.get('name', '') for t in card.get('types', [])],
+                        'card_number': card.get('number', ''),
+                    },
+                    'series': [],  # TODO: 如需發行版本，需額外查詢
+                    'description': f"{set_name} - {rarity}",
                 }
+                
                 if card_data['img_url']:
                     results.append(card_data)
             except Exception as e:
-                logger.debug(f"[YGOProDeck] 卡牌解析失敗: {e}")
+                logger.debug(f"[Pokémon TCG] 卡牌解析失敗: {e}")
                 continue
         
-        logger.info(f"[YGOProDeck] 成功獲取 {len(results)} 張卡牌")
-        return results
+        logger.info(f"[Pokémon TCG] 成功獲取 {len(results)} 張卡牌 (共 {total} 筆)")
+        return {
+            'cards': results,
+            'total': total,
+            'pages': pages,
+            'current_page': page
+        }
     
     except Exception as e:
-        logger.error(f"[YGOProDeck] API 呼叫失敗: {e}")
-        return []
+        logger.error(f"[Pokémon TCG] 查詢失敗: {e}")
+        return {'cards': [], 'total': 0, 'pages': 0}
 
 
-def get_pokemon_cards(name: str, limit: int = 5) -> List[Dict]:
+# ============================================================================
+# 遊戲王 API (ygoprodeck.com) - 新版本
+# ============================================================================
+
+def get_yugioh_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
     """
-    從 PokeAPI 獲取寶可夢信息和卡牌數據
-    API: https://pokeapi.co/api/v2/pokemon
-    返回: 寶可夢的屬性、能力、進化等卡牌相關信息
-    """
-    try:
-        logger.info(f"[PokeAPI] 搜尋: {name}")
-        
-        # 寶可夢 API 不支援直接搜尋，需轉換為英文對應名
-        # 檢查是否是通用詞搜尋
-        is_generic = any(word in name.lower() for word in ['pokemon', '寶可夢', 'pocket monster'])
-        
-        def build_pokemon_card(pokemon_data: dict, pokemon_name: str = '') -> dict:
-            """構建寶可夢卡牌數據"""
-            img_url = pokemon_data.get('sprites', {}).get('front_default', '')
-            if not img_url:
-                img_url = pokemon_data.get('sprites', {}).get('other', {}).get('official-artwork', {}).get('front_default', '')
-            
-            # 提取屬性 (types)
-            types = []
-            for type_info in pokemon_data.get('types', []):
-                type_name = type_info.get('type', {}).get('name', '')
-                if type_name:
-                    types.append(type_name.capitalize())
-            
-            # 提取能力 (abilities)
-            abilities = []
-            for ability_info in pokemon_data.get('abilities', []):
-                ability_name = ability_info.get('ability', {}).get('name', '')
-                is_hidden = ability_info.get('is_hidden', False)
-                if ability_name:
-                    abilities.append({
-                        'name': ability_name.replace('-', ' ').title(),
-                        'is_hidden': is_hidden
-                    })
-            
-            # 提取基礎數據 (stats)
-            stats = {}
-            for stat_info in pokemon_data.get('stats', []):
-                stat_name = stat_info.get('stat', {}).get('name', '').upper()
-                stat_value = stat_info.get('base_stat', 0)
-                if stat_name:
-                    stats[stat_name] = stat_value
-            
-            # 獲取物種信息（進化、特性等）
-            species_info = {}
-            try:
-                species_url = pokemon_data.get('species', {}).get('url', '')
-                if species_url:
-                    species_resp = requests.get(species_url, timeout=5)
-                    if species_resp.status_code == 200:
-                        species_data = species_resp.json()
-                        # 進化鏈
-                        evolution_chain_url = species_data.get('evolution_chain', {}).get('url', '')
-                        if evolution_chain_url:
-                            species_info['generation'] = species_data.get('generation', {}).get('name', '')
-                            species_info['habitat'] = species_data.get('habitat', {}).get('name', '')
-                            
-                            # 簡略的進化信息
-                            try:
-                                evo_resp = requests.get(evolution_chain_url, timeout=5)
-                                if evo_resp.status_code == 200:
-                                    evo_data = evo_resp.json()
-                                    evo_chain = evo_data.get('chain', {})
-                                    evolutions = []
-                                    
-                                    # 遞歸提取進化鏈
-                                    def extract_evolution(chain):
-                                        if chain.get('species'):
-                                            evolutions.append(chain['species'].get('name', '').title())
-                                        for evo in chain.get('evolves_to', []):
-                                            extract_evolution(evo)
-                                    
-                                    extract_evolution(evo_chain)
-                                    if evolutions:
-                                        species_info['evolution_line'] = ' → '.join(evolutions)
-                            except:
-                                pass
-            except:
-                pass
-            
-            card_data = {
-                'title': pokemon_data.get('name', pokemon_name).capitalize(),
-                'id': pokemon_data.get('id', 0),
-                'type': 'Pokémon Card',
-                'types': types if types else ['Normal'],
-                'height': f"{pokemon_data.get('height', 0) / 10:.1f}m",  # 公尺
-                'weight': f"{pokemon_data.get('weight', 0) / 10:.1f}kg",  # 公斤
-                'abilities': abilities[:3],  # 最多 3 個能力
-                'stats': stats,  # HP, ATK, DEF, SP.ATK, SP.DEF, SPEED
-                'generation': species_info.get('generation', 'Unknown'),
-                'habitat': species_info.get('habitat', 'Unknown'),
-                'evolution_line': species_info.get('evolution_line', 'N/A'),
-                'img_url': img_url,
-                'source': 'pokemon'
-            }
-            return card_data
-        
-        if is_generic or not name or len(name.strip()) < 2:
-            # 通用搜尋或空搜尋 - 返回熱門寶可夢
-            popular_pokemon = ['pikachu', 'charizard', 'dragonite', 'alakazam', 'blastoise']
-            results = []
-            for poke_name in popular_pokemon:
-                try:
-                    url = f"https://pokeapi.co/api/v2/pokemon/{poke_name}"
-                    resp = requests.get(url, timeout=10)
-                    if resp.status_code == 200:
-                        pokemon_data = resp.json()
-                        img_url = pokemon_data.get('sprites', {}).get('front_default', '')
-                        if not img_url:
-                            img_url = pokemon_data.get('sprites', {}).get('other', {}).get('official-artwork', {}).get('front_default', '')
-                        if img_url:
-                            card = build_pokemon_card(pokemon_data, poke_name)
-                            results.append(card)
-                        if len(results) >= limit:
-                            break
-                except:
-                    continue
-            
-            if results:
-                logger.info(f"[PokeAPI] 返回 {len(results)} 隻熱門寶可夢卡牌")
-                return results
-            return []
-        
-        # 具體搜尋 - 移除多餘詞彙
-        name_en = name.lower()
-        for word in ['寶可夢', 'pokemon']:
-            name_en = name_en.replace(word, '').strip()
-        
-        if not name_en or len(name_en) < 2:
-            # 如果移除後沒有內容，返回熱門寶可夢
-            return get_pokemon_cards('pokemon', limit)
-        
-        url = f"https://pokeapi.co/api/v2/pokemon/{name_en}"
-        resp = requests.get(url, timeout=10)
-        
-        pokemon_data = None
-        if resp.status_code == 200:
-            pokemon_data = resp.json()
-        else:
-            # 嘗試用物種搜尋，然後找到對應的 pokemon
-            logger.debug(f"[PokeAPI] 直接搜尋失敗，嘗試物種...")
-            url = f"https://pokeapi.co/api/v2/pokemon-species/{name_en}"
-            resp = requests.get(url, timeout=10)
-            
-            if resp.status_code == 200:
-                species_data = resp.json()
-                # 從物種找到對應的 pokemon
-                varieties = species_data.get('varieties', [])
-                if varieties:
-                    pokemon_url = varieties[0].get('pokemon', {}).get('url', '')
-                    if pokemon_url:
-                        pokemon_resp = requests.get(pokemon_url, timeout=10)
-                        if pokemon_resp.status_code == 200:
-                            pokemon_data = pokemon_resp.json()
-        
-        if not pokemon_data:
-            logger.warning(f"[PokeAPI] 找不到寶可夢: {name}")
-            return []
-        
-        # 獲取圖片 URL
-        img_url = pokemon_data.get('sprites', {}).get('front_default', '')
-        
-        if not img_url:
-            # 嘗試使用官方圖集
-            img_url = pokemon_data.get('sprites', {}).get('other', {}).get('official-artwork', {}).get('front_default', '')
-        
-        if not img_url:
-            logger.warning(f"[PokeAPI] {name_en} 沒有圖片")
-            return []
-        
-        result = [build_pokemon_card(pokemon_data, name_en)]
-        
-        logger.info(f"[PokeAPI] 成功獲取: {pokemon_data.get('name', name_en)} 卡牌信息")
-        return result
+    從 ygoprodeck.com 獲取遊戲王卡牌
+    API: https://db.ygoprodeck.com/api/v7/cardinfo.php
     
-    except Exception as e:
-        logger.error(f"[PokeAPI] API 呼叫失敗: {e}")
-        return []
-
-
-def get_magic_cards(name: str, limit: int = 5) -> List[Dict]:
-    """
-    從 Scryfall API 獲取魔法風雲會卡牌信息
-    API: https://api.scryfall.com/cards/search
+    Args:
+        keyword: 搜尋關鍵字 (支援模糊搜尋)
+        limit: 每頁結果數
+        page: 頁碼 (1-based)
+    
+    Returns:
+        {'cards': [...], 'total': int, 'pages': int}
     """
     try:
-        logger.info(f"[Scryfall] 搜尋: {name}")
+        logger.info(f"[YuGiOh] 搜尋: {keyword}, 頁碼: {page}")
         
-        if not name or len(name.strip()) < 2:
-            # 通用搜尋 - 返回熱門 MTG 卡牌
-            popular_cards = ['black lotus', 'blue eyes white dragon', 'forest', 'mountain']
-            results = []
-            for card_name in popular_cards:
-                try:
-                    url = "https://api.scryfall.com/cards/search"
-                    params = {
-                        'q': f'name:"{card_name}"',
-                        'order': 'released',
-                        'dir': 'desc',
-                        'unique': 'prints'
-                    }
-                    resp = requests.get(url, params=params, timeout=10)
-                    if resp.status_code == 200:
-                        data = resp.json()
-                        cards = data.get('data', [])
-                        if cards:
-                            card = cards[0]
-                            results.append({
-                                'title': card.get('name', card_name),
-                                'type': card.get('type_line', 'Card'),
-                                'mana_cost': card.get('mana_cost', ''),
-                                'text': card.get('oracle_text', '')[:200],
-                                'img_url': card.get('image_uris', {}).get('normal', ''),
-                                'source': 'mtg'
-                            })
-                        if len(results) >= limit:
-                            break
-                except:
-                    continue
-            
-            if results:
-                logger.info(f"[Scryfall] 返回 {len(results)} 張熱門卡牌")
-                return results
-            return []
-        
-        # 具體搜尋
-        url = "https://api.scryfall.com/cards/search"
+        url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
         params = {
-            'q': f'name:{name}',
-            'order': 'released',
-            'dir': 'desc',
-            'unique': 'prints'
+            'fname': keyword,  # 模糊搜尋卡牌名稱
+            'num': limit,      # 返回數量
+            'offset': (page - 1) * limit  # 分頁
         }
         
-        resp = requests.get(url, params=params, timeout=10)
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
         
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
         if resp.status_code != 200:
-            # 嘗試模糊搜尋
-            logger.debug(f"[Scryfall] 精確搜尋失敗，嘗試模糊搜尋...")
-            params['q'] = name
-            resp = requests.get(url, params=params, timeout=10)
-        
-        if resp.status_code != 200:
-            logger.warning(f"[Scryfall] API 返回狀態碼: {resp.status_code}")
-            return []
+            logger.warning(f"[YuGiOh] API 返回 {resp.status_code}")
+            return {'cards': [], 'total': 0, 'pages': 0}
         
         data = resp.json()
-        cards = data.get('data', [])
+        cards = data.get('data', []) if isinstance(data, dict) else data if isinstance(data, list) else []
         
         results = []
+        all_prices = {}
+        
         for card in cards[:limit]:
             try:
-                img_url = card.get('image_uris', {}).get('normal', '')
-                if not img_url and 'card_faces' in card:
-                    # 雙面卡
-                    img_url = card['card_faces'][0].get('image_uris', {}).get('normal', '')
+                # 提取價格信息
+                card_sets = card.get('card_sets', [])
+                prices = []
+                price_usd = 0.0
                 
-                if img_url:
-                    card_data = {
-                        'title': card.get('name', 'Unknown'),
+                for card_set in card_sets[:5]:  # 只顯示最近 5 個版本
+                    set_name = card_set.get('set_name', '')
+                    set_price = card_set.get('set_price', '0')
+                    
+                    try:
+                        price_val = float(set_price) if set_price else 0.0
+                    except:
+                        price_val = 0.0
+                    
+                    if not price_usd or price_val > price_usd:
+                        price_usd = price_val
+                    
+                    prices.append({
+                        'name': set_name,
+                        'set_id': card_set.get('set_code', ''),
+                        'release_date': card_set.get('set_rarity_code', ''),
+                        'price': price_val
+                    })
+                
+                # 構建卡牌數據
+                card_data = {
+                    'id': str(card.get('id', '')),
+                    'title': card.get('name', 'Unknown'),
+                    'source': 'yugioh',
+                    'img_url': card.get('card_images', [{}])[0].get('image_url', ''),
+                    'img_large': card.get('card_images', [{}])[0].get('image_url_cropped', '') or card.get('card_images', [{}])[0].get('image_url', ''),
+                    'price': price_usd,
+                    'stats': {
+                        'type': card.get('type', 'Unknown'),
+                        'attribute': card.get('attribute', ''),
+                        'level': card.get('level', 0),
+                        'atk': card.get('atk', 0),
+                        'def': card.get('def', 0),
+                        'race': card.get('race', ''),
+                    },
+                    'series': prices,
+                    'description': card.get('desc', '')[:300],
+                }
+                
+                if card_data['img_url']:
+                    results.append(card_data)
+            except Exception as e:
+                logger.debug(f"[YuGiOh] 卡牌解析失敗: {e}")
+                continue
+        
+        total = len(results)  # 實際獲取的卡牌數
+        pages = (total + limit - 1) // limit if total > 0 else 1
+        
+        logger.info(f"[YuGiOh] 成功獲取 {len(results)} 張卡牌")
+        return {
+            'cards': results,
+            'total': total,
+            'pages': pages,
+            'current_page': page
+        }
+    
+    except Exception as e:
+        logger.error(f"[YuGiOh] 查詢失敗: {e}")
+        return {'cards': [], 'total': 0, 'pages': 0}
+
+
+# ============================================================================
+# MTG API (scryfall.com) - 升級版本
+# ============================================================================
+
+def get_magic_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
+    """
+    從 Scryfall API 獲取 MTG 卡牌
+    API: https://api.scryfall.com/cards/search
+    
+    Args:
+        keyword: 搜尋關鍵字
+        limit: 每頁結果數 (最多 175)
+        page: 頁碼 (1-based)
+    
+    Returns:
+        {'cards': [...], 'total': int, 'pages': int}
+    """
+    try:
+        logger.info(f"[MTG - Scryfall] 搜尋: {keyword}, 頁碼: {page}")
+        
+        # 計算分頁
+        offset = (page - 1) * limit
+        
+        # 搜尋翻譯: name: "keyword"（不用模糊搜尋符號）
+        url = 'https://api.scryfall.com/cards/search'
+        params = {
+            'q': f'"{keyword}"',  # 簡單搜索
+            'unique': 'prints',  # 去除重複列印版本
+            'order': 'released',
+            'dir': 'desc',
+        }
+        
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+        
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        if resp.status_code != 200:
+            logger.warning(f"[MTG] API 返回 {resp.status_code}")
+            return {'cards': [], 'total': 0, 'pages': 0}
+        
+        data = resp.json()
+        all_cards = data.get('data', [])
+        
+        # 手動分頁
+        paginated_cards = all_cards[offset:offset + limit]
+        total = len(all_cards)
+        pages = (total + limit - 1) // limit
+        
+        results = []
+        for card in paginated_cards:
+            try:
+                # 取得價格
+                prices = card.get('prices', {})
+                price_usd = prices.get('usd', None)
+                if price_usd:
+                    try:
+                        price_usd = float(price_usd)
+                    except:
+                        price_usd = 0.0
+                else:
+                    price_usd = 0.0
+                
+                # 取得圖片
+                img_url = card.get('image_uris', {}).get('normal', '')
+                img_large = card.get('image_uris', {}).get('large', '') or img_url
+                
+                # 構建卡牌數據
+                card_data = {
+                    'id': card.get('id', ''),
+                    'title': card.get('name', 'Unknown'),
+                    'source': 'mtg',
+                    'img_url': img_url,
+                    'img_large': img_large,
+                    'price': price_usd,
+                    'stats': {
                         'type': card.get('type_line', 'Unknown'),
                         'mana_cost': card.get('mana_cost', ''),
                         'power': card.get('power', ''),
                         'toughness': card.get('toughness', ''),
-                        'text': card.get('oracle_text', '')[:200],
-                        'img_url': img_url,
-                        'source': 'mtg'
-                    }
+                        'rarity': card.get('rarity', 'Unknown'),
+                        'set': card.get('set_name', 'Unknown'),
+                    },
+                    'series': [{
+                        'name': card.get('set_name', 'Unknown'),
+                        'set_id': card.get('set', ''),
+                        'release_date': card.get('released_at', ''),
+                        'price': price_usd
+                    }],
+                    'description': card.get('oracle_text', '')[:300],
+                }
+                
+                if card_data['img_url']:
                     results.append(card_data)
             except Exception as e:
-                logger.debug(f"[Scryfall] 卡牌解析失敗: {e}")
+                logger.debug(f"[MTG] 卡牌解析失敗: {e}")
                 continue
         
-        logger.info(f"[Scryfall] 成功獲取 {len(results)} 張卡牌")
-        return results
+        logger.info(f"[MTG] 成功獲取 {len(results)} 張卡牌 (共 {total} 筆)")
+        return {
+            'cards': results,
+            'total': total,
+            'pages': pages,
+            'current_page': page
+        }
     
     except Exception as e:
-        logger.error(f"[Scryfall] API 呼叫失敗: {e}")
-        return []
+        logger.error(f"[MTG] 查詢失敗: {e}")
+        return {'cards': [], 'total': 0, 'pages': 0}
 
+
+# ============================================================================
+# 統一搜尋介面（保持向後兼容邊）
+# ============================================================================
 
 def get_all_card_sources(keyword: str) -> Dict[str, List[Dict]]:
     """
-    統一搜索所有卡牌來源
+    舊版本：統一搜索所有卡牌來源（無分頁）
     返回: {
         'yugioh': [...],
         'pokemon': [...],
@@ -353,21 +361,54 @@ def get_all_card_sources(keyword: str) -> Dict[str, List[Dict]]:
     """
     logger.info(f"搜索所有卡牌來源: {keyword}")
     
-    results = {
-        'yugioh': get_yugioh_cards(keyword),
-        'pokemon': get_pokemon_cards(keyword),
-        'mtg': get_magic_cards(keyword)
-    }
+    yugioh_result = get_yugioh_cards(keyword, limit=5, page=1)
+    pokemon_result = get_pokemon_tcg_cards(keyword, limit=5, page=1)
+    mtg_result = get_magic_cards(keyword, limit=5, page=1)
     
-    return results
+    return {
+        'yugioh': yugioh_result.get('cards', []),
+        'pokemon': pokemon_result.get('cards', []),
+        'mtg': mtg_result.get('cards', [])
+    }
+
+
+def search_all_cards_paginated(keyword: str, limit: int = 20, page: int = 1) -> Dict[str, Dict]:
+    """
+    新版本：同時搜尋所有平台（支援分頁）
+    
+    Returns:
+        {
+            'pokemon': {'cards': [...], 'total': int, 'pages': int},
+            'yugioh': {'cards': [...], 'total': int, 'pages': int},
+            'mtg': {'cards': [...], 'total': int, 'pages': int}
+        }
+    """
+    return {
+        'pokemon': get_pokemon_tcg_cards(keyword, limit, page),
+        'yugioh': get_yugioh_cards(keyword, limit, page),
+        'mtg': get_magic_cards(keyword, limit, page)
+    }
 
 
 if __name__ == '__main__':
-    # 測試卡牌 API
-    print("\n=== 測試 YGOProDeck ===")
-    yugioh = get_yugioh_cards('青眼白龍')
-    for card in yugioh[:2]:
-        print(f"遊戲王: {card['title']} - {card['img_url'][:50]}")
+    # 測試
+    print("\n=== 測試寶可夢 TCG ===")
+    pokemon = get_pokemon_tcg_cards('Pikachu', limit=3)
+    print(f"找到 {pokemon['total']} 筆結果，顯示 {len(pokemon['cards'])} 張卡牌")
+    if pokemon['cards']:
+        print(f"First card: {pokemon['cards'][0]['title']}")
+    
+    print("\n=== 測試遊戲王 ===")
+    yugioh = get_yugioh_cards('Blue Eyes', limit=3)
+    print(f"找到 {len(yugioh['cards'])} 張卡牌")
+    if yugioh['cards']:
+        print(f"First card: {yugioh['cards'][0]['title']}")
+    
+    print("\n=== 測試 MTG ===")
+    mtg = get_magic_cards('Black Lotus', limit=3)
+    print(f"找到 {mtg['total']} 筆結果，顯示 {len(mtg['cards'])} 張卡牌")
+    if mtg['cards']:
+        print(f"First card: {mtg['cards'][0]['title']}")
     
     print("\n=== 測試 PokeAPI ===")
     pokemon = get_pokemon_cards('皮卡丘')
