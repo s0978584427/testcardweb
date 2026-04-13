@@ -450,7 +450,7 @@
             let html = '';
             const cardConfig = {
                 'yugioh': { name: '🎴 遊戲王', color: '#FFD700' },
-                'pokemon': { name: '⚡ 寶可夢', color: '#FF6B6B' },
+                'pokemon': { name: '⚡ 寶可夢卡牌', color: '#FF6B6B' },
                 'mtg': { name: '🪄 魔法風雲會', color: '#9932CC' }
             };
 
@@ -462,26 +462,85 @@
                     <div class="platform-results">
                         <div class="platform-header" style="border-bottom-color: ${cfg.color};">
                             <h2>${cfg.name}</h2>
-                            <span class="result-count">${cards.length} 張</span>
+                            <span class="result-count">${cards.length}</span>
                         </div>
                         <div class="product-grid">
-                            ${cards.map(card => `
-                                <div class="product-card">
-                                    <div class="product-image">
-                                        <img src="${card.img_url || ''}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'">
-                                    </div>
-                                    <div class="product-info">
-                                        <div class="product-name">${card.title || ''}</div>
-                                        <div class="product-shop">${source.toUpperCase()}</div>
-                                    </div>
-                                </div>
-                            `).join('')}
+                            ${cards.map(card => createCardDetail(card, source)).join('')}
                         </div>
                     </div>
                 `;
             }
 
             container.innerHTML = html || '<div class="no-results"><i class="fas fa-search"></i><h3>未找到內容</h3></div>';
+        }
+
+        /** 創建卡牌詳細信息卡片 */
+        function createCardDetail(card, source) {
+            if (source === 'pokemon') {
+                // 寶可夢卡牌 - 顯示屬性、能力等信息
+                const types = card.types || [];
+                const abilities = card.abilities || [];
+                const stats = card.stats || {};
+                
+                return `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="${card.img_url || ''}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">${card.title || ''}</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                                <strong>ID:</strong> #${card.id || 'N/A'}
+                            </div>
+                            
+                            <!-- 屬性 -->
+                            <div style="font-size: 0.75rem; margin-bottom: 0.5rem;">
+                                <strong>屬性:</strong> ${types.map(t => `<span style="display: inline-block; background-color: rgba(255,107,107,0.3); padding: 0.2rem 0.4rem; border-radius: 3px; margin-right: 0.3rem;">${t}</span>`).join('') || 'N/A'}
+                            </div>
+                            
+                            <!-- 身高體重 -->
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                                <strong>身高:</strong> ${card.height || 'N/A'} | <strong>體重:</strong> ${card.weight || 'N/A'}
+                            </div>
+                            
+                            <!-- 能力 -->
+                            ${abilities.length > 0 ? `
+                                <div style="font-size: 0.75rem; margin-bottom: 0.5rem;">
+                                    <strong>能力:</strong> ${abilities.map(a => a.name + (a.is_hidden ? ' ⭐' : '')).join(', ')}
+                                </div>
+                            ` : ''}
+                            
+                            <!-- 基礎能力統計 -->
+                            ${Object.keys(stats).length > 0 ? `
+                                <div style="font-size: 0.7rem; margin-bottom: 0.5rem;">
+                                    <strong>能力值:</strong><br/>
+                                    ${Object.entries(stats).map(([key, val]) => `${key}: ${val}`).join(' | ')}
+                                </div>
+                            ` : ''}
+                            
+                            <!-- 進化 -->
+                            ${card.evolution_line && card.evolution_line !== 'N/A' ? `
+                                <div style="font-size: 0.75rem; color: var(--primary-color); margin-top: 0.5rem;"><strong>進化:</strong> ${card.evolution_line}</div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            } else {
+                // 其他卡牌 (遊戲王、MTG) - 簡化顯示
+                return `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="${card.img_url || ''}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">${card.title || ''}</div>
+                            <div class="product-shop" style="font-size: 0.8rem; margin-bottom: 0.5rem;"><strong>類型:</strong> ${card.type || source.toUpperCase()}</div>
+                            ${card.mana_cost ? `<div style="font-size: 0.8rem; margin-bottom: 0.3rem;"><strong>法力費:</strong> ${card.mana_cost}</div>` : ''}
+                            ${card.text ? `<div style="font-size: 0.75rem; color: var(--text-secondary);">${card.text}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }
         }
 
         /** 顯示組合結果 */

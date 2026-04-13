@@ -61,8 +61,9 @@ def get_yugioh_cards(name: str, limit: int = 5) -> List[Dict]:
 
 def get_pokemon_cards(name: str, limit: int = 5) -> List[Dict]:
     """
-    從 PokeAPI 獲取寶可夢信息
+    從 PokeAPI 獲取寶可夢信息和卡牌數據
     API: https://pokeapi.co/api/v2/pokemon
+    返回: 寶可夢的屬性、能力、進化等卡牌相關信息
     """
     try:
         logger.info(f"[PokeAPI] 搜尋: {name}")
@@ -70,6 +71,92 @@ def get_pokemon_cards(name: str, limit: int = 5) -> List[Dict]:
         # 寶可夢 API 不支援直接搜尋，需轉換為英文對應名
         # 檢查是否是通用詞搜尋
         is_generic = any(word in name.lower() for word in ['pokemon', '寶可夢', 'pocket monster'])
+        
+        def build_pokemon_card(pokemon_data: dict, pokemon_name: str = '') -> dict:
+            """構建寶可夢卡牌數據"""
+            img_url = pokemon_data.get('sprites', {}).get('front_default', '')
+            if not img_url:
+                img_url = pokemon_data.get('sprites', {}).get('other', {}).get('official-artwork', {}).get('front_default', '')
+            
+            # 提取屬性 (types)
+            types = []
+            for type_info in pokemon_data.get('types', []):
+                type_name = type_info.get('type', {}).get('name', '')
+                if type_name:
+                    types.append(type_name.capitalize())
+            
+            # 提取能力 (abilities)
+            abilities = []
+            for ability_info in pokemon_data.get('abilities', []):
+                ability_name = ability_info.get('ability', {}).get('name', '')
+                is_hidden = ability_info.get('is_hidden', False)
+                if ability_name:
+                    abilities.append({
+                        'name': ability_name.replace('-', ' ').title(),
+                        'is_hidden': is_hidden
+                    })
+            
+            # 提取基礎數據 (stats)
+            stats = {}
+            for stat_info in pokemon_data.get('stats', []):
+                stat_name = stat_info.get('stat', {}).get('name', '').upper()
+                stat_value = stat_info.get('base_stat', 0)
+                if stat_name:
+                    stats[stat_name] = stat_value
+            
+            # 獲取物種信息（進化、特性等）
+            species_info = {}
+            try:
+                species_url = pokemon_data.get('species', {}).get('url', '')
+                if species_url:
+                    species_resp = requests.get(species_url, timeout=5)
+                    if species_resp.status_code == 200:
+                        species_data = species_resp.json()
+                        # 進化鏈
+                        evolution_chain_url = species_data.get('evolution_chain', {}).get('url', '')
+                        if evolution_chain_url:
+                            species_info['generation'] = species_data.get('generation', {}).get('name', '')
+                            species_info['habitat'] = species_data.get('habitat', {}).get('name', '')
+                            
+                            # 簡略的進化信息
+                            try:
+                                evo_resp = requests.get(evolution_chain_url, timeout=5)
+                                if evo_resp.status_code == 200:
+                                    evo_data = evo_resp.json()
+                                    evo_chain = evo_data.get('chain', {})
+                                    evolutions = []
+                                    
+                                    # 遞歸提取進化鏈
+                                    def extract_evolution(chain):
+                                        if chain.get('species'):
+                                            evolutions.append(chain['species'].get('name', '').title())
+                                        for evo in chain.get('evolves_to', []):
+                                            extract_evolution(evo)
+                                    
+                                    extract_evolution(evo_chain)
+                                    if evolutions:
+                                        species_info['evolution_line'] = ' → '.join(evolutions)
+                            except:
+                                pass
+            except:
+                pass
+            
+            card_data = {
+                'title': pokemon_data.get('name', pokemon_name).capitalize(),
+                'id': pokemon_data.get('id', 0),
+                'type': 'Pokémon Card',
+                'types': types if types else ['Normal'],
+                'height': f"{pokemon_data.get('height', 0) / 10:.1f}m",  # 公尺
+                'weight': f"{pokemon_data.get('weight', 0) / 10:.1f}kg",  # 公斤
+                'abilities': abilities[:3],  # 最多 3 個能力
+                'stats': stats,  # HP, ATK, DEF, SP.ATK, SP.DEF, SPEED
+                'generation': species_info.get('generation', 'Unknown'),
+                'habitat': species_info.get('habitat', 'Unknown'),
+                'evolution_line': species_info.get('evolution_line', 'N/A'),
+                'img_url': img_url,
+                'source': 'pokemon'
+            }
+            return card_data
         
         if is_generic or not name or len(name.strip()) < 2:
             # 通用搜尋或空搜尋 - 返回熱門寶可夢
@@ -85,21 +172,15 @@ def get_pokemon_cards(name: str, limit: int = 5) -> List[Dict]:
                         if not img_url:
                             img_url = pokemon_data.get('sprites', {}).get('other', {}).get('official-artwork', {}).get('front_default', '')
                         if img_url:
-                            results.append({
-                                'title': pokemon_data.get('name', poke_name).capitalize(),
-                                'type': 'Pokémon',
-                                'id': pokemon_data.get('id', 0),
-                                'desc': 'Popular Pokémon',
-                                'img_url': img_url,
-                                'source': 'pokemon'
-                            })
+                            card = build_pokemon_card(pokemon_data, poke_name)
+                            results.append(card)
                         if len(results) >= limit:
                             break
                 except:
                     continue
             
             if results:
-                logger.info(f"[PokeAPI] 返回 {len(results)} 隻熱門寶可夢")
+                logger.info(f"[PokeAPI] 返回 {len(results)} 隻熱門寶可夢卡牌")
                 return results
             return []
         
@@ -150,24 +231,9 @@ def get_pokemon_cards(name: str, limit: int = 5) -> List[Dict]:
             logger.warning(f"[PokeAPI] {name_en} 沒有圖片")
             return []
         
-        # 安全獲取 flavor_text_entries
-        flavor_text = ''
-        flavor_entries = pokemon_data.get('flavor_text_entries', [])
-        if flavor_entries and isinstance(flavor_entries, list):
-            flavor_text = flavor_entries[0].get('flavor_text', '')
+        result = [build_pokemon_card(pokemon_data, name_en)]
         
-        result = [{
-            'title': pokemon_data.get('name', name_en).capitalize(),
-            'type': 'Pokémon',
-            'id': pokemon_data.get('id', 0),
-            'height': pokemon_data.get('height', 0) / 10,  # 轉換為公尺
-            'weight': pokemon_data.get('weight', 0) / 10,  # 轉換為公斤
-            'desc': flavor_text[:200] if flavor_text else 'A Pokémon',
-            'img_url': img_url,
-            'source': 'pokemon'
-        }]
-        
-        logger.info(f"[PokeAPI] 成功獲取: {pokemon_data.get('name', name_en)}")
+        logger.info(f"[PokeAPI] 成功獲取: {pokemon_data.get('name', name_en)} 卡牌信息")
         return result
     
     except Exception as e:
