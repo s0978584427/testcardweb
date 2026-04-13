@@ -68,10 +68,11 @@ def get_pokemon_cards(name: str, limit: int = 5) -> List[Dict]:
         logger.info(f"[PokeAPI] 搜尋: {name}")
         
         # 寶可夢 API 不支援直接搜尋，需轉換為英文對應名
-        name_en = name.lower().replace('寶可夢', '').replace('pokemon', '').strip()
+        # 檢查是否是通用詞搜尋
+        is_generic = any(word in name.lower() for word in ['pokemon', '寶可夢', 'pocket monster'])
         
-        # 通用搜尋 - 如果搜尋詞為空或是通用詞，返回熱門寶可夢
-        if not name_en or name_en == '':
+        if is_generic or not name or len(name.strip()) < 2:
+            # 通用搜尋或空搜尋 - 返回熱門寶可夢
             popular_pokemon = ['pikachu', 'charizard', 'dragonite', 'alakazam', 'blastoise']
             results = []
             for poke_name in popular_pokemon:
@@ -102,7 +103,15 @@ def get_pokemon_cards(name: str, limit: int = 5) -> List[Dict]:
                 return results
             return []
         
-        # 具體搜尋
+        # 具體搜尋 - 移除多餘詞彙
+        name_en = name.lower()
+        for word in ['寶可夢', 'pokemon']:
+            name_en = name_en.replace(word, '').strip()
+        
+        if not name_en or len(name_en) < 2:
+            # 如果移除後沒有內容，返回熱門寶可夢
+            return get_pokemon_cards('pokemon', limit)
+        
         url = f"https://pokeapi.co/api/v2/pokemon/{name_en}"
         resp = requests.get(url, timeout=10)
         
@@ -146,19 +155,6 @@ def get_pokemon_cards(name: str, limit: int = 5) -> List[Dict]:
         flavor_entries = pokemon_data.get('flavor_text_entries', [])
         if flavor_entries and isinstance(flavor_entries, list):
             flavor_text = flavor_entries[0].get('flavor_text', '')
-        
-        # 如果來自 pokemon-species，獲取更好的描述
-        species_data_check = None
-        species_url = pokemon_data.get('species', {}).get('url', '')
-        if species_url:
-            try:
-                species_resp = requests.get(species_url, timeout=5)
-                if species_resp.status_code == 200:
-                    species_data_check = species_resp.json()
-                    if not flavor_text and species_data_check.get('flavor_text_entries'):
-                        flavor_text = species_data_check['flavor_text_entries'][0].get('flavor_text', '')
-            except:
-                pass
         
         result = [{
             'title': pokemon_data.get('name', name_en).capitalize(),
