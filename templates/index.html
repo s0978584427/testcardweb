@@ -312,8 +312,6 @@
                 return;
             }
 
-            showLoading(true);
-            
             try {
                 let url;
                 if (searchMode === 'international') {
@@ -344,8 +342,6 @@
             } catch (error) {
                 console.error('搜尋錯誤:', error);
                 alert('搜尋失敗: ' + error.message);
-            } finally {
-                showLoading(false);
             }
         }
 
@@ -493,10 +489,6 @@
         }
 
         /** 輔助函數 */
-        function showLoading(show) {
-            // 簡化載入狀態
-        }
-
         function handleKeyboardSearch(event) {
             if (event.key === 'Enter') performSearch();
         }
@@ -504,7 +496,7 @@
         /** 頁面載入時自動搜尋 */
         document.addEventListener('DOMContentLoaded', function() {
             console.log('頁面已載入');
-            document.getElementById('searchKeyword').value = '卡牌';
+            document.getElementById('searchKeyword').value = '遊戲王';
             performSearch();
         });
     </script>
