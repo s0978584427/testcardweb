@@ -149,42 +149,43 @@ def get_stats():
 def get_recommended_cards():
     """
     API 端點 - 取得推薦卡牌 (首頁展示)
-    優先使用真實 PChome 數據，混合示例卡牌
+    從所有平台獲取真實數據
     """
     try:
-        from scraper import search_pchome, get_sample_search_results
+        from scraper import search_pchome, search_shopee, search_ruten, search_yahoo, get_sample_search_results
         
-        # 嘗試從 PChome 獲取真實數據
-        logger.info("從 PChome 獲取真實卡牌數據...")
+        # 試圖從所有四個平台獲取真實數據
+        logger.info("從多個平台獲取卡牌數據...")
         
-        # 搜索多個關鍵詞組合，取得最多 40 個商品
-        pchome_results = []
-        search_keywords = ['遊戲卡牌', '卡牌', 'TCG']
+        # PChome - 真實 API
+        pchome_results = search_pchome('卡牌', pages=1)
         
-        for keyword in search_keywords:
-            try:
-                results = search_pchome(keyword, pages=1)
-                pchome_results.extend(results[:10])  # 每個關鍵詞取 10 個
-                if len(pchome_results) >= 40:
-                    break
-            except Exception as e:
-                logger.debug(f"搜索 {keyword} 失敗: {e}")
-                continue
+        # Shopee - API
+        shopee_results = search_shopee('卡牌', pages=1)
         
-        logger.info(f"從 PChome 獲取到 {len(pchome_results)} 個真實商品")
+        # Ruten - HTML 爬蟲
+        ruten_results = search_ruten('卡牌', pages=1)
         
-        # 構建推薦卡牌 (優先 PChome 真實數據，然後是示例數據)
+        # Yahoo - HTML 爬蟲
+        yahoo_results = search_yahoo('卡牌', pages=1)
+        
+        logger.info(f"PChome: {len(pchome_results)} 個商品, Shopee: {len(shopee_results)} 個商品, Ruten: {len(ruten_results)} 個商品, Yahoo: {len(yahoo_results)} 個商品")
+        
+        # 構建推薦卡牌 (用真實數據或備用示例)
         recommended = {
             'pchome': pchome_results[:5] if pchome_results else get_sample_search_results('pchome')[:5],
-            'shopee': get_sample_search_results('shopee')[:5],
-            'ruten': get_sample_search_results('ruten')[:5],
-            'yahoo': get_sample_search_results('yahoo')[:5],
+            'shopee': shopee_results[:5] if shopee_results else get_sample_search_results('shopee')[:5],
+            'ruten': ruten_results[:5] if ruten_results else get_sample_search_results('ruten')[:5],
+            'yahoo': yahoo_results[:5] if yahoo_results else get_sample_search_results('yahoo')[:5],
         }
+        
+        # 判斷是否有真實數據
+        has_real = len(pchome_results) > 0 or len(shopee_results) > 0 or len(ruten_results) > 0 or len(yahoo_results) > 0
         
         return jsonify({
             'recommended': recommended,
             'total_featured': sum(len(items) for items in recommended.values()),
-            'has_real_data': len(pchome_results) > 0
+            'has_real_data': has_real
         })
     
     except Exception as e:
