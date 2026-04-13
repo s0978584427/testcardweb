@@ -143,9 +143,11 @@ def get_yugioh_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
     從 ygoprodeck.com 獲取遊戲王卡牌
     API: https://db.ygoprodeck.com/api/v7/cardinfo.php
     
-    支持兩種搜尋模式：
+    智能搜尋策略：
     1. 精確搜尋 (name 參數) - 用於完整的卡牌名稱
-    2. 模糊搜尋 (fname 參數) - 用於部分名稱搜尋
+    2. 格式轉換 - 自動添加連字號（e.g., "Blue Eyes" → "Blue-Eyes"）
+    3. 模糊搜尋 (fname 參數) - 用於部分名稱搜尋
+    4. 單詞搜尋 - 如果多詞搜尋失敗，嘗試第一個單詞
     
     Args:
         keyword: 搜尋關鍵字
@@ -163,25 +165,48 @@ def get_yugioh_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         }
         
-        # 首先嘗試精確搜尋 (name 參數)
-        logger.debug(f"[YuGiOh] 嘗試精確搜尋: {keyword}")
-        params = {'name': keyword}
-        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        # 搜尋策略清單
+        search_strategies = []
         
-        if resp.status_code != 200:
-            logger.warning(f"[YuGiOh] 精確搜尋失敗: {resp.status_code}, 改用模糊搜尋")
-            # 如果精確搜尋失敗，改用模糊搜尋
-            params = {
-                'fname': keyword,  # 模糊搜尋卡牌名稱
-            }
+        # 策略 1: 自動添加連字號（英文單詞用連字號連接）
+        # 例如: "Blue Eyes White Dragon" → "Blue-Eyes White Dragon"
+        if ' ' in keyword and '-' not in keyword:
+            words = keyword.split()
+            if len(words) >= 2:
+                # 優先嘗試在前兩個單詞之間添加連字號
+                hyphenated = '-'.join(words[:2]) + (' ' + ' '.join(words[2:]) if len(words) > 2 else '')
+                search_strategies.append(('name', hyphenated, f'連字號格式: {hyphenated}'))
+        
+        # 策略 2: 原始關鍵字精確搜尋
+        search_strategies.append(('name', keyword, f'精確搜尋: {keyword}'))
+        
+        # 策略 3: 原始關鍵字模糊搜尋
+        search_strategies.append(('fname', keyword, f'模糊搜尋: {keyword}'))
+        
+        # 策略 4: 只用第一個單詞搜尋（如果有多個單詞）
+        if ' ' in keyword:
+            first_word = keyword.split()[0]
+            search_strategies.append(('fname', first_word, f'第一個單詞: {first_word}'))
+        
+        # 執行搜尋策略
+        cards = []
+        for param_name, search_keyword, description in search_strategies:
+            logger.debug(f"[YuGiOh] {description}")
+            
+            params = {param_name: search_keyword}
             resp = requests.get(url, params=params, headers=headers, timeout=10)
+            
+            if resp.status_code == 200:
+                data = resp.json()
+                cards = data.get('data', []) if isinstance(data, dict) else data if isinstance(data, list) else []
+                
+                if cards:
+                    logger.info(f"[YuGiOh] 找到結果: {description} 返回 {len(cards)} 張卡牌")
+                    break
         
-        if resp.status_code != 200:
-            logger.warning(f"[YuGiOh] API 返回 {resp.status_code}")
-            return {'cards': [], 'total': 0, 'pages': 0}
-        
-        data = resp.json()
-        cards = data.get('data', []) if isinstance(data, dict) else data if isinstance(data, list) else []
+        # 如果還是沒找到，記錄警告
+        if not cards:
+            logger.warning(f"[YuGiOh] 未找到卡牌: {keyword}")
         
         # 計算分頁
         offset = (page - 1) * limit
