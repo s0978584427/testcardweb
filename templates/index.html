@@ -525,8 +525,14 @@
                         </div>
                     </div>
                 `;
-            } else {
-                // 其他卡牌 (遊戲王、MTG) - 簡化顯示
+            } else if (source === 'yugioh') {
+                // 遊戲王卡牌 - 顯示屬性、等級、ATK/DEF
+                const attribute = card.attribute || '';
+                const level = card.level || '';
+                const atk = card.atk || 0;
+                const def = card.def || 0;
+                const desc = card.desc || '';
+                
                 return `
                     <div class="product-card">
                         <div class="product-image">
@@ -534,8 +540,86 @@
                         </div>
                         <div class="product-info">
                             <div class="product-name">${card.title || ''}</div>
-                            <div class="product-shop" style="font-size: 0.8rem; margin-bottom: 0.5rem;"><strong>類型:</strong> ${card.type || source.toUpperCase()}</div>
-                            ${card.mana_cost ? `<div style="font-size: 0.8rem; margin-bottom: 0.3rem;"><strong>法力費:</strong> ${card.mana_cost}</div>` : ''}
+                            
+                            <!-- 類型 -->
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.3rem;">
+                                <strong>類型:</strong> ${card.type || '未知'}
+                            </div>
+                            
+                            <!-- 屬性 & 等級 -->
+                            ${attribute || level ? `
+                                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.3rem;">
+                                    ${attribute ? `<strong>屬性:</strong> ${attribute}` : ''} ${level ? `| <strong>等級:</strong> ${level}` : ''}
+                                </div>
+                            ` : ''}
+                            
+                            <!-- ATK / DEF -->
+                            <div style="font-size: 0.75rem; font-weight: bold; margin-bottom: 0.3rem;">
+                                攻: <span style="color: #FF6B6B;">${atk}</span> / 防: <span style="color: #4ECDC4;">${def}</span>
+                            </div>
+                            
+                            <!-- 效果描述 -->
+                            ${desc ? `
+                                <div style="font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4; max-height: 3em; overflow: hidden;">
+                                    ${desc.substring(0, 150)}${desc.length > 150 ? '...' : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            } else if (source === 'mtg') {
+                // MTG 卡牌 - 顯示法力費、類型、能力值、效果
+                const mana_cost = card.mana_cost || '';
+                const power = card.power || '';
+                const toughness = card.toughness || '';
+                const text = card.text || '';
+                
+                return `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="${card.img_url || ''}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">${card.title || ''}</div>
+                            
+                            <!-- 法力費 -->
+                            ${mana_cost ? `
+                                <div style="font-size: 0.8rem; margin-bottom: 0.3rem;">
+                                    <strong style="color: #9932CC;">法力費:</strong> <span style="font-family: monospace;">${mana_cost}</span>
+                                </div>
+                            ` : ''}
+                            
+                            <!-- 類型 -->
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.3rem;">
+                                <strong>類型:</strong> ${card.type || '未知'}
+                            </div>
+                            
+                            <!-- 能力值 (生物卡) -->
+                            ${power || toughness ? `
+                                <div style="font-size: 0.75rem; font-weight: bold; margin-bottom: 0.3rem;">
+                                    攻防: <span style="color: #FF6B6B;">${power}/${toughness}</span>
+                                </div>
+                            ` : ''}
+                            
+                            <!-- 效果 -->
+                            ${text ? `
+                                <div style="font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4; max-height: 3em; overflow: hidden;">
+                                    ${text.substring(0, 150)}${text.length > 150 ? '...' : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            } else {
+                // 未知類型 - 簡化顯示
+                return `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="${card.img_url || ''}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">${card.title || ''}</div>
+                            <div class="product-shop" style="font-size: 0.8rem; margin-bottom: 0.5rem;"><strong>類型:</strong> ${card.type || '未知'}</div>
                             ${card.text ? `<div style="font-size: 0.75rem; color: var(--text-secondary);">${card.text}</div>` : ''}
                         </div>
                     </div>
