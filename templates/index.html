@@ -245,6 +245,24 @@
             .search-input-group { flex-direction: column; }
             .product-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
         }
+
+        .quick-search-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            background-color: transparent;
+            color: var(--text-secondary);
+            border-radius: 1.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .quick-search-btn:hover {
+            border-color: var(--primary-color);
+            background-color: var(--primary-color);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -264,7 +282,7 @@
             <p>搜尋 PChome 台灣價格 + 國際卡牌參考資料</p>
             
             <div class="search-input-group">
-                <input type="text" id="searchKeyword" placeholder="輸入卡牌名稱..." onkeyup="handleKeyboardSearch(event)">
+                <input type="text" id="searchKeyword" placeholder="搜尋建議：遊戲王卡牌, 寶可夢卡牌..." onkeyup="handleKeyboardSearch(event)">
                 <button onclick="performSearch()"><i class="fas fa-search"></i> 搜尋</button>
             </div>
 
@@ -279,6 +297,19 @@
                 <button class="platform-btn" onclick="setSearchMode('combined')">
                     <i class="fas fa-plus"></i> 組合搜尋
                 </button>
+            </div>
+
+            <!-- 提示信息 -->
+            <div id="searchHint" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; border-radius: 0.5rem; color: #cbd5e1; font-size: 0.95rem;">
+                <i class="fas fa-lightbulb"></i> <strong id="hintTitle">台灣 PChome</strong>：搜尋 <span id="hintExamples">遊戲王卡牌、寶可夢卡牌、集換式卡牌</span>
+            </div>
+
+            <!-- 快速搜尋建議 -->
+            <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
+                <button class="quick-search-btn" onclick="quickSearch('遊戲王卡牌')">遊戲王卡牌</button>
+                <button class="quick-search-btn" onclick="quickSearch('寶可夢')">寶可夢</button>
+                <button class="quick-search-btn" onclick="quickSearch('pikachu')">Pikachu</button>
+                <button class="quick-search-btn" onclick="quickSearch('black lotus')">Black Lotus</button>
             </div>
         </div>
 
@@ -302,6 +333,36 @@
                 const modes = ['ecommerce', 'international', 'combined'];
                 btn.classList.toggle('active', modes[i] === mode);
             });
+
+            // 更新提示信息
+            const hints = {
+                'ecommerce': {
+                    title: '台灣 PChome',
+                    examples: '遊戲王卡牌、寶可夢卡牌、集換式卡牌、補充包',
+                    placeholder: '搜尋建議：遊戲王卡牌, 寶可夢卡牌...'
+                },
+                'international': {
+                    title: '國際卡牌 API',
+                    examples: '英文卡牌名稱：pikachu、blue eyes、black lotus',
+                    placeholder: '搜尋建議：pikachu, blue eyes, black lotus...'
+                },
+                'combined': {
+                    title: '組合搜尋',
+                    examples: '同時搜尋台灣價格與國際卡牌資料庫',
+                    placeholder: '搜尋建議：任何卡牌名稱都可以...'
+                }
+            };
+
+            const hint = hints[mode];
+            document.getElementById('hintTitle').textContent = hint.title;
+            document.getElementById('hintExamples').textContent = hint.examples;
+            document.getElementById('searchKeyword').placeholder = hint.placeholder;
+        }
+
+        /** 快速搜尋按鈕 */
+        function quickSearch(keyword) {
+            document.getElementById('searchKeyword').value = keyword;
+            performSearch();
         }
 
         /** 執行搜尋 */
