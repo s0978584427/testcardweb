@@ -68,42 +68,111 @@ def get_pokemon_cards(name: str, limit: int = 5) -> List[Dict]:
         logger.info(f"[PokeAPI] 搜尋: {name}")
         
         # 寶可夢 API 不支援直接搜尋，需轉換為英文對應名
-        name_en = name.lower().replace('寶可夢', '').replace('pokemon', '')
+        name_en = name.lower().replace('寶可夢', '').replace('pokemon', '').strip()
         
+        # 通用搜尋 - 如果搜尋詞為空或是通用詞，返回熱門寶可夢
+        if not name_en or name_en == '':
+            popular_pokemon = ['pikachu', 'charizard', 'dragonite', 'alakazam', 'blastoise']
+            results = []
+            for poke_name in popular_pokemon:
+                try:
+                    url = f"https://pokeapi.co/api/v2/pokemon/{poke_name}"
+                    resp = requests.get(url, timeout=10)
+                    if resp.status_code == 200:
+                        pokemon_data = resp.json()
+                        img_url = pokemon_data.get('sprites', {}).get('front_default', '')
+                        if not img_url:
+                            img_url = pokemon_data.get('sprites', {}).get('other', {}).get('official-artwork', {}).get('front_default', '')
+                        if img_url:
+                            results.append({
+                                'title': pokemon_data.get('name', poke_name).capitalize(),
+                                'type': 'Pokémon',
+                                'id': pokemon_data.get('id', 0),
+                                'desc': 'Popular Pokémon',
+                                'img_url': img_url,
+                                'source': 'pokemon'
+                            })
+                        if len(results) >= limit:
+                            break
+                except:
+                    continue
+            
+            if results:
+                logger.info(f"[PokeAPI] 返回 {len(results)} 隻熱門寶可夢")
+                return results
+            return []
+        
+        # 具體搜尋
         url = f"https://pokeapi.co/api/v2/pokemon/{name_en}"
         resp = requests.get(url, timeout=10)
         
-        if resp.status_code != 200:
-            # 嘗試用簡化名稱
-            logger.debug(f"[PokeAPI] 精確匹配失敗")
+        pokemon_data = None
+        if resp.status_code == 200:
+            pokemon_data = resp.json()
+        else:
+            # 嘗試用物種搜尋，然後找到對應的 pokemon
+            logger.debug(f"[PokeAPI] 直接搜尋失敗，嘗試物種...")
             url = f"https://pokeapi.co/api/v2/pokemon-species/{name_en}"
             resp = requests.get(url, timeout=10)
+            
+            if resp.status_code == 200:
+                species_data = resp.json()
+                # 從物種找到對應的 pokemon
+                varieties = species_data.get('varieties', [])
+                if varieties:
+                    pokemon_url = varieties[0].get('pokemon', {}).get('url', '')
+                    if pokemon_url:
+                        pokemon_resp = requests.get(pokemon_url, timeout=10)
+                        if pokemon_resp.status_code == 200:
+                            pokemon_data = pokemon_resp.json()
         
-        if resp.status_code != 200:
+        if not pokemon_data:
             logger.warning(f"[PokeAPI] 找不到寶可夢: {name}")
             return []
         
-        data = resp.json()
-        
         # 獲取圖片 URL
-        pokemon_url = f"https://pokeapi.co/api/v2/pokemon/{data.get('id', '')}"
-        pokemon_resp = requests.get(pokemon_url, timeout=10)
-        pokemon_data = pokemon_resp.json() if pokemon_resp.status_code == 200 else {}
-        
         img_url = pokemon_data.get('sprites', {}).get('front_default', '')
         
+        if not img_url:
+            # 嘗試使用官方圖集
+            img_url = pokemon_data.get('sprites', {}).get('other', {}).get('official-artwork', {}).get('front_default', '')
+        
+        if not img_url:
+            logger.warning(f"[PokeAPI] {name_en} 沒有圖片")
+            return []
+        
+        # 安全獲取 flavor_text_entries
+        flavor_text = ''
+        flavor_entries = pokemon_data.get('flavor_text_entries', [])
+        if flavor_entries and isinstance(flavor_entries, list):
+            flavor_text = flavor_entries[0].get('flavor_text', '')
+        
+        # 如果來自 pokemon-species，獲取更好的描述
+        species_data_check = None
+        species_url = pokemon_data.get('species', {}).get('url', '')
+        if species_url:
+            try:
+                species_resp = requests.get(species_url, timeout=5)
+                if species_resp.status_code == 200:
+                    species_data_check = species_resp.json()
+                    if not flavor_text and species_data_check.get('flavor_text_entries'):
+                        flavor_text = species_data_check['flavor_text_entries'][0].get('flavor_text', '')
+            except:
+                pass
+        
         result = [{
-            'title': data.get('name', 'Unknown').capitalize(),
+            'title': pokemon_data.get('name', name_en).capitalize(),
             'type': 'Pokémon',
-            'habitat': data.get('habitat', {}).get('name', 'Unknown'),
-            'color': data.get('color', {}).get('name', 'Unknown'),
-            'desc': data.get('flavor_text_entries', [{}])[0].get('flavor_text', '')[:200],
+            'id': pokemon_data.get('id', 0),
+            'height': pokemon_data.get('height', 0) / 10,  # 轉換為公尺
+            'weight': pokemon_data.get('weight', 0) / 10,  # 轉換為公斤
+            'desc': flavor_text[:200] if flavor_text else 'A Pokémon',
             'img_url': img_url,
             'source': 'pokemon'
         }]
         
-        logger.info(f"[PokeAPI] 成功獲取 1 隻寶可夢")
-        return result if img_url else []
+        logger.info(f"[PokeAPI] 成功獲取: {pokemon_data.get('name', name_en)}")
+        return result
     
     except Exception as e:
         logger.error(f"[PokeAPI] API 呼叫失敗: {e}")
@@ -118,6 +187,44 @@ def get_magic_cards(name: str, limit: int = 5) -> List[Dict]:
     try:
         logger.info(f"[Scryfall] 搜尋: {name}")
         
+        if not name or len(name.strip()) < 2:
+            # 通用搜尋 - 返回熱門 MTG 卡牌
+            popular_cards = ['black lotus', 'blue eyes white dragon', 'forest', 'mountain']
+            results = []
+            for card_name in popular_cards:
+                try:
+                    url = "https://api.scryfall.com/cards/search"
+                    params = {
+                        'q': f'name:"{card_name}"',
+                        'order': 'released',
+                        'dir': 'desc',
+                        'unique': 'prints'
+                    }
+                    resp = requests.get(url, params=params, timeout=10)
+                    if resp.status_code == 200:
+                        data = resp.json()
+                        cards = data.get('data', [])
+                        if cards:
+                            card = cards[0]
+                            results.append({
+                                'title': card.get('name', card_name),
+                                'type': card.get('type_line', 'Card'),
+                                'mana_cost': card.get('mana_cost', ''),
+                                'text': card.get('oracle_text', '')[:200],
+                                'img_url': card.get('image_uris', {}).get('normal', ''),
+                                'source': 'mtg'
+                            })
+                        if len(results) >= limit:
+                            break
+                except:
+                    continue
+            
+            if results:
+                logger.info(f"[Scryfall] 返回 {len(results)} 張熱門卡牌")
+                return results
+            return []
+        
+        # 具體搜尋
         url = "https://api.scryfall.com/cards/search"
         params = {
             'q': f'name:{name}',
@@ -129,6 +236,12 @@ def get_magic_cards(name: str, limit: int = 5) -> List[Dict]:
         resp = requests.get(url, params=params, timeout=10)
         
         if resp.status_code != 200:
+            # 嘗試模糊搜尋
+            logger.debug(f"[Scryfall] 精確搜尋失敗，嘗試模糊搜尋...")
+            params['q'] = name
+            resp = requests.get(url, params=params, timeout=10)
+        
+        if resp.status_code != 200:
             logger.warning(f"[Scryfall] API 返回狀態碼: {resp.status_code}")
             return []
         
@@ -138,17 +251,22 @@ def get_magic_cards(name: str, limit: int = 5) -> List[Dict]:
         results = []
         for card in cards[:limit]:
             try:
-                card_data = {
-                    'title': card.get('name', 'Unknown'),
-                    'type': card.get('type_line', 'Unknown'),
-                    'mana_cost': card.get('mana_cost', ''),
-                    'power': card.get('power', ''),
-                    'toughness': card.get('toughness', ''),
-                    'text': card.get('oracle_text', '')[:200],
-                    'img_url': card.get('image_uris', {}).get('normal', ''),
-                    'source': 'mtg'
-                }
-                if card_data['img_url']:
+                img_url = card.get('image_uris', {}).get('normal', '')
+                if not img_url and 'card_faces' in card:
+                    # 雙面卡
+                    img_url = card['card_faces'][0].get('image_uris', {}).get('normal', '')
+                
+                if img_url:
+                    card_data = {
+                        'title': card.get('name', 'Unknown'),
+                        'type': card.get('type_line', 'Unknown'),
+                        'mana_cost': card.get('mana_cost', ''),
+                        'power': card.get('power', ''),
+                        'toughness': card.get('toughness', ''),
+                        'text': card.get('oracle_text', '')[:200],
+                        'img_url': img_url,
+                        'source': 'mtg'
+                    }
                     results.append(card_data)
             except Exception as e:
                 logger.debug(f"[Scryfall] 卡牌解析失敗: {e}")
