@@ -257,6 +257,91 @@ def get_product_stats():
         return jsonify({'error': '取得統計失敗'}), 500
 
 
+@app.route('/api/card-references', methods=['GET'])
+def get_card_references():
+    """
+    API 端點 - 取得卡牌參考資料
+    整合 YGOProDeck, PokeAPI, Scryfall
+    參數: keyword (搜索關鍵字)
+    """
+    try:
+        from card_apis import get_all_card_sources
+        
+        keyword = request.args.get('keyword', '').strip()
+        
+        if not keyword or len(keyword) < 2:
+            return jsonify({'error': '搜索關鍵字至少 2 個字符'}), 400
+        
+        logger.info(f"搜索卡牌參考資料: {keyword}")
+        
+        # 從所有卡牌 API 獲取數據
+        card_data = get_all_card_sources(keyword)
+        
+        return jsonify({
+            'keyword': keyword,
+            'references': {
+                'yugioh': card_data.get('yugioh', []),
+                'pokemon': card_data.get('pokemon', []),
+                'mtg': card_data.get('mtg', [])
+            },
+            'total_references': sum(len(cards) for cards in card_data.values()),
+            'sources': {
+                'yugioh': 'YGOProDeck API',
+                'pokemon': 'PokeAPI',
+                'mtg': 'Scryfall API'
+            }
+        })
+    
+    except Exception as e:
+        logger.error(f"取得卡牌參考資料失敗: {str(e)}")
+        return jsonify({'error': '取得卡牌參考資料失敗'}), 500
+
+
+@app.route('/api/combined-search', methods=['GET'])
+def combined_search():
+    """
+    API 端點 - 組合搜索
+    同時搜索台灣平台價格 + 國際卡牌資料庫
+    參數: keyword (搜索關鍵字)
+    """
+    try:
+        from card_apis import get_all_card_sources
+        
+        keyword = request.args.get('keyword', '').strip()
+        
+        if not keyword or len(keyword) < 2:
+            return jsonify({'error': '搜索關鍵字至少 2 個字符'}), 400
+        
+        logger.info(f"組合搜索: {keyword}")
+        
+        # 1. 台灣平台商品 (PChome)
+        pchome_results = search_pchome(keyword, pages=1)
+        
+        # 2. 國際卡牌資料庫
+        card_references = get_all_card_sources(keyword)
+        
+        return jsonify({
+            'keyword': keyword,
+            'taipei_prices': {
+                'pchome': pchome_results[:5] if pchome_results else get_sample_search_results('pchome')[:3],
+            },
+            'international_references': {
+                'yugioh': card_references.get('yugioh', []),
+                'pokemon': card_references.get('pokemon', []),
+                'mtg': card_references.get('mtg', [])
+            },
+            'summary': {
+                'pchome_count': len(pchome_results),
+                'reference_count': sum(len(cards) for cards in card_references.values()),
+                'total': len(pchome_results) + sum(len(cards) for cards in card_references.values())
+            }
+        })
+    
+    except Exception as e:
+        logger.error(f"組合搜索失敗: {str(e)}")
+        return jsonify({'error': '組合搜索失敗'}), 500
+
+
 @app.errorhandler(404)
 def not_found(error):
     """404 錯誤處理"""
