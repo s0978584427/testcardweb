@@ -1,9 +1,8 @@
 """
-卡牌價格監控系統 - 網頁爬蟲模組（改進版）
-支持多平台即時搜索和多頁爬取
+卡牌價格監控系統 - 爬蟲模組（精准版）
+使用 PChome 官方 API 和真實電商平台數據
 """
 import requests
-from bs4 import BeautifulSoup
 import logging
 from typing import List, Dict, Optional
 import time
@@ -18,250 +17,182 @@ DEFAULT_HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
     'Accept-Language': 'zh-TW,zh;q=0.9',
     'Accept-Encoding': 'gzip, deflate, br',
-    'Referer': 'https://www.google.com/'
 }
 
-class CardScraper:
-    """卡牌爬蟲類"""
+# ============================================================================
+# PChome 真實 API 爬蟲 (官方搜尋 API - JSON 格式)
+# ============================================================================
+
+def search_pchome_api(keyword: str, page: int = 1) -> List[Dict]:
+    """
+    使用 PChome 官方搜尋 API 獲取準確的商品數據
     
-    def __init__(self, base_url: str = "https://www.catfootprint.com/"):
-        self.base_url = base_url
-        self.session = requests.Session()
-        self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        })
-    
-    def fetch_cards(self) -> List[Dict[str, Optional[str]]]:
-        """爬取卡牌資訊"""
-        try:
-            cards = self._scrape_from_website()
-            if not cards:
-                logger.info("無法從網站取得卡牌, 使用示例數據")
-                cards = self._get_sample_cards()
-            return cards
-        except Exception as e:
-            logger.error(f"爬蟲錯誤: {str(e)}")
-            return self._get_sample_cards()
-    
-    def _scrape_from_website(self) -> List[Dict[str, Optional[str]]]:
-        """從網站爬取真實數據"""
-        try:
-            response = self.session.get(self.base_url, timeout=10)
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.content, 'html.parser')
-            cards = []
-            
-            card_containers = soup.find_all('div', class_=['card', 'product', 'item'])
-            
-            if card_containers:
-                for container in card_containers:
-                    card_data = self._extract_card_info(container)
-                    if card_data and card_data.get('name'):
-                        cards.append(card_data)
-            
-            time.sleep(1)
-            return cards
+    API 文檔: https://ecshweb.pchome.com.tw/search/v3.3/all/results?q={keyword}
+    返回 JSON 格式的商品列表
+    """
+    try:
+        session = requests.Session()
+        session.headers.update(DEFAULT_HEADERS)
         
-        except requests.RequestException as e:
-            logger.error(f"網路請求錯誤: {str(e)}")
+        # PChome 官方搜尋 API
+        offset = (page - 1) * 20
+        url = f"https://ecshweb.pchome.com.tw/search/v3.3/all/results?q={quote(keyword)}&offset={offset}&limit=20"
+        
+        logger.info(f"查詢 PChome API: {keyword} (頁 {page})")
+        response = session.get(url, timeout=15)
+        
+        if response.status_code != 200:
+            logger.warning(f"PChome API 返回狀態碼: {response.status_code}")
             return []
-    
-    def _extract_card_info(self, container) -> Optional[Dict[str, Optional[str]]]:
-        """從容器元素中提取卡牌信息"""
-        try:
-            card_data = {}
-            
-            name_elem = container.find('h3', class_='card-name') or \
-                       container.find('h4') or \
-                       container.find('a', class_='product-name')
-            card_data['name'] = name_elem.get_text(strip=True) if name_elem else None
-            
-            price_elem = container.find('span', class_=['price', 'product-price']) or \
-                        container.find('div', class_='price')
-            price_text = price_elem.get_text(strip=True) if price_elem else None
-            card_data['price'] = self._parse_price(price_text) if price_text else 0
-            
-            img_elem = container.find('img', class_=['card-image', 'product-image'])
-            if img_elem:
-                img_url = img_elem.get('src') or img_elem.get('data-src')
-                if img_url:
-                    card_data['image_url'] = self._resolve_url(img_url)
-            
-            desc_elem = container.find('p', class_=['description', 'card-description'])
-            card_data['description'] = desc_elem.get_text(strip=True) if desc_elem else ""
-            
-            return card_data if card_data.get('name') else None
         
+        data = response.json()
+        products = []
+        
+        # 提取商品數組 (prods 是官方返回的字段名)
+        prods = data.get('prods', [])
+        
+        if not prods:
+            logger.info(f"PChome 第 {page} 頁: 無商品")
+            return []
+        
+        for prod in prods:
+            try:
+                # 提取必要字段 (注意: API 使用大寫 Id)
+                product_id = prod.get('Id', '')
+                name = prod.get('name', '')
+                price = prod.get('price', 0)
+                pic_s = prod.get('picS', '')  # 圖片後綴
+                
+                # 驗證必要字段
+                if not name or not product_id:
+                    logger.debug(f"跳過: 缺少基本信息")
+                    continue
+                
+                # 拼接完整圖片 URL
+                image_url = ''
+                if pic_s:
+                    image_url = f'https://cs-a.ecimg.tw{pic_s}'
+                
+                # 確保 price 是整數
+                try:
+                    price = int(price) if price else 0
+                except (ValueError, TypeError):
+                    price = 0
+                
+                product = {
+                    'product_id': f'pchome_{product_id}',
+                    'platform': 'pchome',
+                    'name': name,
+                    'price': price,  # 整數價格
+                    'image': image_url,  # 完整圖片 URL
+                    'shop': '24h PChome',
+                    'rating': 4.5,  # API 沒有評分字段
+                    'url': f'https://24h.pchome.com.tw/prod/{product_id}',
+                    'description': name
+                }
+                
+                products.append(product)
+                logger.debug(f"✓ 商品: {name[:40]} | 價格: {price}元 | 圖片: {image_url[:60]}...")
+                
+            except Exception as e:
+                logger.debug(f"解析商品失敗: {e}")
+                continue
+        
+        logger.info(f"PChome 第 {page} 頁: 成功獲取 {len(products)} 個商品")
+        return products
+    
+    except requests.RequestException as e:
+        logger.error(f"PChome API 請求失敗: {e}")
+        return []
+    except json.JSONDecodeError as e:
+        logger.error(f"PChome API JSON 解析失敗: {e}")
+        return []
+    except Exception as e:
+        logger.error(f"PChome 搜索錯誤: {e}")
+        return []
+
+
+def test_pchome_api():
+    """
+    測試函數：列印前三筆真實數據到終端機
+    用來驗證數據是否準確
+    """
+    logger.info("=" * 70)
+    logger.info("PChome API 數據測試")
+    logger.info("=" * 70)
+    
+    test_keywords = ['遊戲卡', '寶可夢卡', '青眼白龍']
+    
+    for keyword in test_keywords:
+        logger.info(f"\n搜尋: {keyword}")
+        logger.info("-" * 70)
+        
+        products = search_pchome_api(keyword, page=1)
+        
+        if not products:
+            logger.warning(f"未獲取到 {keyword} 的商品")
+            continue
+        
+        # 列印前三筆
+        for i, prod in enumerate(products[:3], 1):
+            logger.info(f"\n【第 {i} 筆】")
+            logger.info(f"  商品名稱: {prod['name']}")
+            logger.info(f"  價格: {prod['price']} 元")
+            logger.info(f"  圖片 URL: {prod['image']}")
+            logger.info(f"  商品 ID: {prod['product_id']}")
+            logger.info(f"  商品連結: {prod['url']}")
+        
+        time.sleep(0.5)  # 避免過度請求
+    
+    logger.info("\n" + "=" * 70)
+    logger.info("測試完成")
+    logger.info("=" * 70)
+
+
+# ============================================================================
+# 搜索函數 (多平台支持)
+# ============================================================================
+
+def search_pchome(keyword: str, pages: int = 3) -> List[Dict]:
+    """
+    搜索 PChome 商品 - 使用官方 API
+    """
+    results = []
+    
+    for page_num in range(1, pages + 1):
+        try:
+            page_results = search_pchome_api(keyword, page=page_num)
+            if page_results:
+                results.extend(page_results)
+            else:
+                # 無商品表示已到盡頭
+                break
+            
+            time.sleep(0.3)  # 避免過度請求
         except Exception as e:
-            logger.warning(f"提取卡牌信息時出錯: {str(e)}")
-            return None
+            logger.warning(f"第 {page_num} 頁失敗: {e}")
+            break
     
-    def _parse_price(self, price_text: str) -> float:
-        """解析價格字符串為浮點數"""
-        try:
-            price_text = price_text.replace('NT$', '').replace('$', '').replace(',', '').strip()
-            return float(price_text)
-        except ValueError:
-            logger.warning(f"無法解析價格: {price_text}")
-            return 0.0
-    
-    def _resolve_url(self, url: str) -> str:
-        """解析相對 URL 為絕對 URL"""
-        if url.startswith(('http://', 'https://')):
-            return url
-        elif url.startswith('/'):
-            return self.base_url.rstrip('/') + url
-        else:
-            return self.base_url.rstrip('/') + '/' + url
-    
-    def _get_sample_cards(self) -> List[Dict[str, Optional[str]]]:
-        """返回示例卡牌數據"""
-        return [
-            {
-                'name': '青眼白龍 (Blue-Eyes White Dragon)',
-                'price': 1500,
-                'image_url': 'https://via.placeholder.com/200x280?text=Blue-Eyes+White+Dragon',
-                'description': '傳說中的強力卡牌，具有高度攻擊力'
-            },
-            {
-                'name': '黑魔法師 (Dark Magician)',
-                'price': 1200,
-                'image_url': 'https://via.placeholder.com/200x280?text=Dark+Magician',
-                'description': '經典法術師卡牌，能使用強力魔法'
-            },
-            {
-                'name': '青眼亞白龍 (Blue-Eyes Alternative White Dragon)',
-                'price': 800,
-                'image_url': 'https://via.placeholder.com/200x280?text=Blue-Eyes+Alternative',
-                'description': '青眼白龍的姐妹卡，具有不同的效果'
-            },
-            {
-                'name': '混沌儀式 (Chaos Ritual)',
-                'price': 600,
-                'image_url': 'https://via.placeholder.com/200x280?text=Chaos+Ritual',
-                'description': '強力的儀式卡，能召喚高級怪獸'
-            },
-            {
-                'name': '無限深淵 (Bottomless Abyss)',
-                'price': 500,
-                'image_url': 'https://via.placeholder.com/200x280?text=Bottomless+Abyss',
-                'description': '陷阱卡牌，能夠攔截敵方怪獸'
-            }
-        ]
-    
-    def close(self):
-        """關閉爬蟲會話"""
-        self.session.close()
+    logger.info(f"PChome 共取得 {len(results)} 個商品")
+    return results
 
 
-def scrape_cards_shopee() -> List[Dict[str, Optional[str]]]:
-    """爬取蝦皮卡牌數據"""
-    scraper = CardScraper()
-    try:
-        # 蝦皮遊戲卡商品頁
-        response = scraper.session.get(
-            'https://shopee.tw/search?keyword=遊戲卡',
-            timeout=10
-        )
-        
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.content, 'html.parser')
-            cards = []
-            
-            # 蝦皮產品容器
-            products = soup.find_all('div', class_=['shopee-search-item-result__item'])
-            
-            for product in products[:5]:  # 最多取 5 個
-                try:
-                    name_elem = product.find('span', class_='line-clamp-2')
-                    price_elem = product.find('span', class_='shopee-search-item-result__price')
-                    img_elem = product.find('img')
-                    
-                    if name_elem and price_elem:
-                        cards.append({
-                            'name': f"[蝦皮] {name_elem.get_text(strip=True)}",
-                            'price': int(price_elem.get_text(strip=True).replace(',', '').split('~')[0]) or 0,
-                            'image_url': img_elem.get('src') if img_elem else None,
-                            'description': '來自蝦皮商城'
-                        })
-                except:
-                    continue
-            
-            return cards[:5]
-        return []
-    except Exception as e:
-        logger.warning(f"蝦皮爬蟲錯誤: {str(e)}")
-        return []
-    finally:
-        scraper.close()
+def search_shopee(keyword: str, pages: int = 1) -> List[Dict]:
+    """蝦皮搜索 (暫時返回空列表 - 等待實現)"""
+    logger.info(f"蝦皮搜索: {keyword} (待實現)")
+    return []
 
 
-def scrape_cards_ruten() -> List[Dict[str, Optional[str]]]:
-    """爬取露天卡牌數據"""
-    scraper = CardScraper()
-    try:
-        # 露天拍賣遊戲卡頁
-        response = scraper.session.get(
-            'https://www.ruten.com.tw/find/?q=遊戲卡',
-            timeout=10
-        )
-        
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.content, 'html.parser')
-            cards = []
-            
-            # 露天商品容器
-            products = soup.find_all('li', class_=['item-flex'])
-            
-            for product in products[:5]:  # 最多取 5 個
-                try:
-                    name_elem = product.find('h3', class_='item-title')
-                    price_elem = product.find('span', class_='price')
-                    img_elem = product.find('img')
-                    
-                    if name_elem and price_elem:
-                        price_text = price_elem.get_text(strip=True).replace(',', '').replace('元', '')
-                        cards.append({
-                            'name': f"[露天] {name_elem.get_text(strip=True)}",
-                            'price': int(price_text) if price_text.isdigit() else 0,
-                            'image_url': img_elem.get('src') if img_elem else None,
-                            'description': '來自露天拍賣'
-                        })
-                except:
-                    continue
-            
-            return cards[:5]
-        return []
-    except Exception as e:
-        logger.warning(f"露天爬蟲錯誤: {str(e)}")
-        return []
-    finally:
-        scraper.close()
+def search_ruten(keyword: str, pages: int = 1) -> List[Dict]:
+    """露天搜索 (暫時返回空列表 - 等待實現)"""
+    logger.info(f"露天搜索: {keyword} (待實現)")
+    return []
 
 
-def scrape_cards() -> List[Dict[str, Optional[str]]]:
-    """爬取卡牌數據 (組合多個來源)"""
-    scraper = CardScraper()
-    try:
-        cards = scraper.fetch_cards()
-        
-        # 嘗試加入蝦皮和露天的數據
-        try:
-            shopee_cards = scrape_cards_shopee()
-            cards.extend(shopee_cards)
-        except:
-            pass
-        
-        try:
-            ruten_cards = scrape_cards_ruten()
-            cards.extend(ruten_cards)
-        except:
-            pass
-        
-        return cards if cards else scraper._get_sample_cards()
-    finally:
-        scraper.close()
+def search_yahoo(keyword: str, pages: int = 1) -> List[Dict]:
+    """Yahoo搜索 (暫時返回空列表 - 等待實現)"""
+    logger.info(f"Yahoo搜索: {keyword} (待實現)")
+    return []
 
 
 def search_cards_multi_platform(keyword: str) -> Dict[str, List[Dict]]:
@@ -273,553 +204,415 @@ def search_cards_multi_platform(keyword: str) -> Dict[str, List[Dict]]:
         'shopee': [],
         'ruten': [],
         'yahoo': [],
-        'pchome': []
+        'pchome': search_pchome(keyword, pages=2)  # 獲取前 40 個商品
     }
-    
-    try:
-        results['shopee'] = search_shopee(keyword)
-    except Exception as e:
-        logger.warning(f"蝦皮搜索失敗: {str(e)}")
-    
-    try:
-        results['ruten'] = search_ruten(keyword)
-    except Exception as e:
-        logger.warning(f"露天搜索失敗: {str(e)}")
-    
-    try:
-        results['yahoo'] = search_yahoo(keyword)
-    except Exception as e:
-        logger.warning(f"Yahoo搜索失敗: {str(e)}")
-    
-    try:
-        results['pchome'] = search_pchome(keyword)
-    except Exception as e:
-        logger.warning(f"PChome搜索失敗: {str(e)}")
     
     return results
 
 
-def search_shopee(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索蝦皮卡牌 - 支持多頁爬取 (最多爬取50個) 含真實圖片"""
-    try:
-        session = requests.Session()
-        session.headers.update(DEFAULT_HEADERS)
-        session.headers.update({
-            'Accept': 'application/json, text/plain, */*',
-        })
-        
-        results = []
-        
-        # 爬取多頁
-        for page in range(pages):
-            try:
-                offset = page * 10
-                url = f"https://shopee.tw/api/v2/search_items/?by=relevancy&keyword={quote(keyword)}&limit=10&offset={offset}&order=desc&page_type=search"
-                
-                response = session.get(url, timeout=15)
-                if response.status_code != 200:
-                    logger.info(f"蝦皮頁 {page} 返回狀態碼: {response.status_code}")
-                    break
-                
-                data = response.json()
-                items = data.get('items', [])
-                
-                if not items:
-                    logger.info(f"蝦皮第 {page} 頁無商品")
-                    break
-                
-                for item in items:
-                    try:
-                        # 提取圖片 URL (蝦皮使用 image 欄位存儲圖片 hash)
-                        image_url = ''
-                        if 'image' in item:
-                            image_hash = item.get('image', '')
-                            if image_hash:
-                                # 蝦皮圖片完整 URL 格式
-                                image_url = f'https://cf.shopee.tw/file/{image_hash}'
-                        
-                        # 備用: 使用 images 欄位
-                        if not image_url and 'images' in item and item.get('images'):
-                            images = item.get('images', [])
-                            if images:
-                                image_url = f'https://cf.shopee.tw/file/{images[0]}'
-                        
-                        # 確保有有效的圖片 URL
-                        if not image_url:
-                            logger.debug(f"蝦皮商品 {item.get('name', '')}: 無法提取圖片 URL")
-                            continue
-                        
-                        product = {
-                            'product_id': f"shopee_{item.get('itemid', '')}",
-                            'platform': 'shopee',
-                            'name': item.get('name', ''),
-                            'price': float(item.get('price', 0)) / 100000.0,
-                            'image': image_url,  # 真實商品圖片
-                            'shop': item.get('shop_name', 'Shopee賣家'),
-                            'rating': float(item.get('item_rating', {}).get('rating_star', 4.5)),
-                            'url': f"https://shopee.tw/product/{item.get('shopid', '')}/{item.get('itemid', '')}",
-                            'description': item.get('name', '')
-                        }
-                        results.append(product)
-                        
-                        logger.debug(f"蝦皮商品: {product['name']} - 圖片: {image_url[:50]}...")
-                    except Exception as e:
-                        logger.debug(f"蝦皮商品解析失敗: {e}")
-                        continue
-                
-                time.sleep(0.5)  # 避免被限制
-            
-            except Exception as e:
-                logger.warning(f"蝦皮爬蟲 (頁 {page}) 錯誤: {e}")
-                continue
-        
-        logger.info(f"蝦皮爬取成功: {len(results)} 個商品 (包含真實圖片)")
-        return results
-    
-    except Exception as e:
-        logger.error(f"蝦皮搜索錯誤: {str(e)}")
-        return []
-
-
-def search_ruten(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索露天卡牌 - 支持多頁爬取 (最多爬取50個) 含真實圖片"""
-    try:
-        session = requests.Session()
-        session.headers.update(DEFAULT_HEADERS)
-        
-        results = []
-        
-        # 爬取多頁
-        for page in range(1, pages + 1):
-            try:
-                url = f"https://www.ruten.com.tw/find/?q={quote(keyword)}&page={page}"
-                response = session.get(url, timeout=15)
-                
-                if response.status_code != 200:
-                    logger.info(f"露天頁 {page} 返回狀態碼: {response.status_code}")
-                    break
-                
-                soup = BeautifulSoup(response.content, 'html.parser')
-                items = soup.find_all('div', class_='item')
-                
-                if not items:
-                    logger.info(f"露天第 {page} 頁無商品")
-                    break
-                
-                for item in items:
-                    try:
-                        name_elem = item.find('h3', class_='title')
-                        price_elem = item.find('span', class_='price')
-                        url_elem = item.find('a', class_='link')
-                        img_elem = item.find('img')
-                        
-                        # 提取圖片 URL (露天真實商品圖片)
-                        image_url = ''
-                        if img_elem:
-                            image_url = img_elem.get('src', '') or img_elem.get('data-src', '')
-                            # 補全相對 URL
-                            if image_url and not image_url.startswith('http'):
-                                image_url = f'https://www.ruten.com.tw{image_url}'
-                        
-                        # 確保有有效的圖片 URL
-                        if not image_url:
-                            logger.debug(f"露天商品 {name_elem.get_text(strip=True) if name_elem else ''}: 無法提取圖片 URL")
-                            continue
-                        
-                        # 提取評級
-                        rating_elem = item.find('span', class_='grade')
-                        rating = 4.5
-                        if rating_elem:
-                            try:
-                                rating_text = rating_elem.get_text(strip=True)
-                                rating = float(rating_text.split()[0]) if rating_text else 4.5
-                            except:
-                                rating = 4.5
-                        
-                        if name_elem and price_elem:
-                            price_text = price_elem.get_text(strip=True).replace('NT$', '').replace(',', '').strip()
-                            product = {
-                                'product_id': f"ruten_{url_elem.get('href', '').split('/')[-1] if url_elem else page}_{len(results)}",
-                                'platform': 'ruten',
-                                'name': name_elem.get_text(strip=True),
-                                'price': float(price_text) if price_text.replace('.', '').isdigit() else 0,
-                                'image': image_url,  # 真實商品圖片
-                                'shop': f"露天店家_{page}_{len(results)+1}",
-                                'rating': min(5.0, rating),
-                                'url': url_elem.get('href', '') if url_elem else '',
-                                'description': name_elem.get_text(strip=True)
-                            }
-                            results.append(product)
-                            logger.debug(f"露天商品: {product['name']} - 圖片: {image_url[:50]}...")
-                    except Exception as e:
-                        logger.debug(f"露天商品解析失敗: {e}")
-                        continue
-                
-                time.sleep(1)  # 避免被限制
-            
-            except Exception as e:
-                logger.warning(f"露天爬蟲 (頁 {page}) 錯誤: {e}")
-                continue
-        
-        logger.info(f"露天爬取成功: {len(results)} 個商品 (包含真實圖片)")
-        return results
-    
-    except Exception as e:
-        logger.error(f"露天搜索錯誤: {str(e)}")
-        return []
-
-
-def search_yahoo(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索Yahoo奇摩卡牌 - 支持多頁爬取 含真實圖片"""
-    try:
-        session = requests.Session()
-        session.headers.update(DEFAULT_HEADERS)
-        session.headers.update({
-            'Referer': 'https://tw.bid.yahoo.com/'
-        })
-        
-        results = []
-        
-        # 爬取多頁
-        for page in range(1, pages + 1):
-            try:
-                url = f"https://tw.bid.yahoo.com/search/auction/product?p={quote(keyword)}&page={page}"
-                response = session.get(url, timeout=15)
-                
-                if response.status_code != 200:
-                    logger.info(f"Yahoo頁 {page} 返回狀態碼: {response.status_code}")
-                    break
-                
-                soup = BeautifulSoup(response.content, 'html.parser')
-                items = soup.find_all('li', class_=['Product', 'ProductItem'])
-                
-                if not items:
-                    logger.info(f"Yahoo第 {page} 頁無商品")
-                    break
-                
-                for item in items:
-                    try:
-                        name_elem = item.find('h3') or item.find('a', class_='product-title')
-                        price_elem = item.find('span', class_=['Price', 'price'])
-                        img_elem = item.find('img')
-                        
-                        # 提取圖片 URL (Yahoo真實商品圖片)
-                        image_url = ''
-                        if img_elem:
-                            image_url = img_elem.get('src', '') or img_elem.get('data-src', '')
-                        
-                        # 確保有有效的圖片 URL
-                        if not image_url:
-                            logger.debug(f"Yahoo商品 {name_elem.get_text(strip=True) if name_elem else ''}: 無法提取圖片 URL")
-                            continue
-                        
-                        if name_elem:
-                            price_text = price_elem.get_text(strip=True) if price_elem else '0'
-                            price_text = price_text.replace('NT$', '').replace(',', '').strip()
-                            
-                            product = {
-                                'product_id': f"yahoo_{page}_{len(results)}",
-                                'platform': 'yahoo',
-                                'name': name_elem.get_text(strip=True),
-                                'price': float(price_text) if price_text.replace('.', '').isdigit() else 0,
-                                'image': image_url,  # 真實商品圖片
-                                'shop': f"Yahoo賣家_{page}_{len(results)+1}",
-                                'rating': 4.6 + (len(results) % 5) * 0.08,
-                                'url': f"https://tw.bid.yahoo.com/search/auction/product?p={quote(keyword)}&page={page}",
-                                'description': name_elem.get_text(strip=True)
-                            }
-                            results.append(product)
-                            logger.debug(f"Yahoo商品: {product['name']} - 圖片: {image_url[:50]}...")
-                    except Exception as e:
-                        logger.debug(f"Yahoo商品解析失敗: {e}")
-                        continue
-                
-                time.sleep(1)  # 避免被限制
-            
-            except Exception as e:
-                logger.warning(f"Yahoo爬蟲 (頁 {page}) 錯誤: {e}")
-                continue
-        
-        logger.info(f"Yahoo爬取成功: {len(results)} 個商品 (包含真實圖片)")
-        return results
-    
-    except Exception as e:
-        logger.error(f"Yahoo搜索錯誤: {str(e)}")
-        return []
-
-
-def search_pchome(keyword: str, pages: int = 5) -> List[Dict]:
-    """搜索PChome卡牌 - 支持多頁爬取 (最多爬取50個) 含真實圖片"""
-    try:
-        session = requests.Session()
-        session.headers.update(DEFAULT_HEADERS)
-        session.headers.update({
-            'Referer': 'https://24h.pchome.com.tw/'
-        })
-        
-        results = []
-        
-        # 爬取多頁
-        for page in range(pages):
-            try:
-                # PChome API 查詢 (支持分頁)
-                offset = page * 20
-                url = f"https://24h.pchome.com.tw/search/v3.3/?q={quote(keyword)}&limit=20&offset={offset}"
-                response = session.get(url, timeout=15)
-                
-                if response.status_code != 200:
-                    logger.info(f"PChome頁 {page} 返回狀態碼: {response.status_code}")
-                    break
-                
-                try:
-                    data = response.json()
-                    items = data.get('prods', [])
-                    
-                    if not items:
-                        logger.info(f"PChome第 {page} 頁無商品")
-                        break
-                    
-                    for item in items:
-                        try:
-                            # 提取圖片 URL (PChome真實商品圖片)
-                            image_url = item.get('image', '')
-                            if not image_url and 'pic' in item:
-                                image_url = item.get('pic', '')
-                            
-                            # 確保有有效的圖片 URL
-                            if not image_url:
-                                logger.debug(f"PChome商品 {item.get('name', '')}: 無法提取圖片 URL")
-                                continue
-                            
-                            product = {
-                                'product_id': f"pchome_{item.get('id', '')}",
-                                'platform': 'pchome',
-                                'name': item.get('name', ''),
-                                'price': float(item.get('price', 0)),
-                                'image': image_url,  # 真實商品圖片
-                                'shop': item.get('seller', f"PChome商家_{page}_{len(results)+1}"),
-                                'rating': 4.4 + (len(results) % 5) * 0.11,
-                                'url': f"https://24h.pchome.com.tw{item.get('url', '')}",
-                                'description': item.get('name', '')
-                            }
-                            results.append(product)
-                            logger.debug(f"PChome商品: {product['name']} - 圖片: {image_url[:50]}...")
-                        except Exception as e:
-                            logger.debug(f"PChome商品解析失敗: {e}")
-                            continue
-                    
-                    time.sleep(0.5)  # 減少延遲
-                
-                except Exception as e:
-                    logger.warning(f"PChome JSON解析失敗: {e}")
-                    break
-            
-            except Exception as e:
-                logger.warning(f"PChome爬蟲 (頁 {page}) 錯誤: {e}")
-                continue
-        
-        logger.info(f"PChome爬取成功: {len(results)} 個商品 (包含真實圖片)")
-        return results
-    
-    except Exception as e:
-        logger.error(f"PChome搜索錯誤: {str(e)}")
-        return []
-
-
-def scrape_real_products_for_recommendations() -> Dict[str, List[Dict]]:
-    """
-    爬取推薦卡牌的真實商品數據 (包含嘗試爬取各平台的實際商品圖片)
-    返回格式: {'shopee': [...], 'ruten': [...], 'yahoo': [...], 'pchome': [...]}
-    
-    策略: 
-    1. 優先嘗試爬取真實商品
-    2. 如果爬取失敗，使用搜索函數找商品
-    3. 如果都失敗，回退到示例數據
-    """
-    logger.info("開始爬取推薦卡牌真實數據...")
-    
-    # 熱門卡牌關鍵詞 (用於爬蟲搜索)
-    popular_keywords = ['青眼白龍', '黑魔法師', '皮卡丘']
-    
-    real_products = {
-        'shopee': [],
-        'ruten': [],
-        'yahoo': [],
-        'pchome': []
-    }
-    
-    # 嘗試爬取各平台的真實商品數據
-    try:
-        for keyword in popular_keywords[:1]:  # 只使用第一個關鍵詞以加快速度
-            logger.info(f"搜索絕版卡牌: {keyword}")
-            
-            # 蝦皮 - 使用搜索函數
-            try:
-                shopee_results = search_shopee(keyword, pages=1)
-                if shopee_results and len(shopee_results) > 0:
-                    # 檢查是否有真實圖片
-                    valid_results = [p for p in shopee_results if p.get('image') and p['image'].startswith('https://')]
-                    if valid_results:
-                        real_products['shopee'].extend(valid_results[:3])
-                        logger.info(f"蝦皮: 找到 {len(valid_results)} 個有真實圖片的商品")
-            except Exception as e:
-                logger.debug(f"蝦皮爬取失敗: {e}")
-            
-            # 露天
-            try:
-                ruten_results = search_ruten(keyword, pages=1)
-                if ruten_results and len(ruten_results) > 0:
-                    valid_results = [p for p in ruten_results if p.get('image') and p['image'].startswith('https://')]
-                    if valid_results:
-                        real_products['ruten'].extend(valid_results[:3])
-                        logger.info(f"露天: 找到 {len(valid_results)} 個有真實圖片的商品")
-            except Exception as e:
-                logger.debug(f"露天爬取失敗: {e}")
-            
-            # Yahoo
-            try:
-                yahoo_results = search_yahoo(keyword, pages=1)
-                if yahoo_results and len(yahoo_results) > 0:
-                    valid_results = [p for p in yahoo_results if p.get('image') and p['image'].startswith('https://')]
-                    if valid_results:
-                        real_products['yahoo'].extend(valid_results[:3])
-                        logger.info(f"Yahoo: 找到 {len(valid_results)} 個有真實圖片的商品")
-            except Exception as e:
-                logger.debug(f"Yahoo爬取失敗: {e}")
-            
-            # PChome
-            try:
-                pchome_results = search_pchome(keyword, pages=1)
-                if pchome_results and len(pchome_results) > 0:
-                    valid_results = [p for p in pchome_results if p.get('image') and p['image'].startswith('https://')]
-                    if valid_results:
-                        real_products['pchome'].extend(valid_results[:3])
-                        logger.info(f"PChome: 找到 {len(valid_results)} 個有真實圖片的商品")
-            except Exception as e:
-                logger.debug(f"PChome爬取失敗: {e}")
-            
-            time.sleep(0.3)
-    except Exception as e:
-        logger.warning(f"爬取推薦卡牌真實數據時出錯: {e}")
-    
-    logger.info(f"爬取完成 - 蝦皮: {len(real_products['shopee'])}, 露天: {len(real_products['ruten'])}, Yahoo: {len(real_products['yahoo'])}, PChome: {len(real_products['pchome'])}")
-    return real_products
-
+# ============================================================================
+# 示例卡牌列表 (備用)
+# ============================================================================
 
 def get_sample_search_results(platform: str) -> List[Dict]:
-    """返回大量示例搜索結果 (包含遊戲王&寶可夢TCG 真實圖片)"""
-    
-    # 遊戲王卡牌及圖片 (使用 YGOProDeck - 官方資源)
+    """
+    獲取示例卡牌列表 (備用)
+    包含遊戲王和寶可夢卡牌的官方圖片
+    """
+    # 遊戲王卡牌
     yugioh_cards = [
         ('青眼白龍', 'https://images.ygoprodeck.com/images/cards/89631139.jpg'),
         ('黑魔法師', 'https://images.ygoprodeck.com/images/cards/16732705.jpg'),
-        ('青眼亞白龍', 'https://images.ygoprodeck.com/images/cards/70095154.jpg'),
+        ('藍眼白龍', 'https://images.ygoprodeck.com/images/cards/70095154.jpg'),
         ('青眼白龍 終極龍', 'https://images.ygoprodeck.com/images/cards/70630755.jpg'),
-        ('黑魔法公開書', 'https://images.ygoprodeck.com/images/cards/16829259.jpg'),
-        ('新歐貝利斯克之巨神兵', 'https://images.ygoprodeck.com/images/cards/30683548.jpg'),
-        ('漂亮女孩 貝亞', 'https://images.ygoprodeck.com/images/cards/1045806.jpg'),
-        ('森林狼人', 'https://images.ygoprodeck.com/images/cards/49152361.jpg'),
-        ('次元監獄', 'https://images.ygoprodeck.com/images/cards/9744376.jpg'),
-        ('效果燒', 'https://images.ygoprodeck.com/images/cards/99590639.jpg'),
-        ('雷鳥特克', 'https://images.ygoprodeck.com/images/cards/69595770.jpg'),
-        ('龍樹森林', 'https://images.ygoprodeck.com/images/cards/82300136.jpg'),
-        ('炎族火焰棍', 'https://images.ygoprodeck.com/images/cards/92731455.jpg'),
-        ('冰迴廊', 'https://images.ygoprodeck.com/images/cards/37695079.jpg'),
-        ('亞美托克斯之龍', 'https://images.ygoprodeck.com/images/cards/98645731.jpg'),
     ]
     
-    # 寶可梦TCG卡牌 (使用官方 PokeAPI 圖片 - 編號和名稱正確對應)
+    # 寶可夢卡牌
     pokemon_cards = [
-        # 第一代傳奇
-        ('皮卡丘', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'),  # 025
-        ('妙蛙種子', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'),   # 001
-        ('小火龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png'),    # 004
-        ('傑尼龜', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png'),    # 007
-        ('超夢', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png'),   # 150
-        ('洛奇亞', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/249.png'),  # 249
-        ('鳳王', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/250.png'),   # 250
-        
-        # 進化型
-        ('妙蛙花', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png'),    # 003
-        ('火焰龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png'),    # 006
-        ('水箭龜', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png'),    # 009
-        ('雷丘', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png'),    # 026
-        ('迷你龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/147.png'),  # 147
-        ('哈克龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/148.png'),  # 148
-        ('快龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png'),   # 149
-        ('夢幻', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png'),   # 151
-        
-        # 傳說的宝可梦
-        ('急凍鳥', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/144.png'),  # 144
-        ('閃電鳥', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png'),  # 145
-        ('火焰鳥', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/146.png'),  # 146
-        
-        # 第三代傳說
-        ('蓋歐卡', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/383.png'),  # 383
-        ('固拉多', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png'),  # 384
-        ('帝牙盧奇亞', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/483.png'), # 483
-        ('帕路奇亞', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/484.png'),  # 484
-        ('騎拉帝納', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/487.png'),  # 487
-        ('阿爾宙斯', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/493.png'),  # 493
+        ('皮卡丘', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'),
+        ('妙蛙種子', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'),
+        ('小火龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png'),
+        ('傑尼龜', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png'),
     ]
     
-    # 合併卡牌列表 (遊戲王 + 寶可梦)
     base_cards = yugioh_cards + pokemon_cards
     
-    # 平台特定的商品數據
     platform_data = {
         'shopee': [
             {
-                'product_id': f'shopee_{i}',
-                'name': f'{card[0]} - {"初版" if i % 3 == 0 else "重版" if i % 3 == 1 else "特別版"}',
+                'product_id': f'sample_shopee_{i}',
+                'name': f'{card[0]} - 示例',
                 'price': 500 + (i * 50),
                 'platform': 'shopee',
                 'url': f'https://shopee.tw/search?keyword={quote(card[0])}',
-                'image': card[1],  # 使用真實圖片
-                'shop': f'遊戲卡專賣店 {i % 10}',
-                'rating': 4.5 + (i % 5) * 0.1
+                'image': card[1],
+                'shop': f'示例商店 {i}',
+                'rating': 4.5
             }
             for i, card in enumerate(base_cards)
         ],
         'ruten': [
             {
-                'product_id': f'ruten_{i}',
-                'name': f'{card[0]} - {"原廠" if i % 2 == 0 else "中古"}',
+                'product_id': f'sample_ruten_{i}',
+                'name': f'{card[0]} - 示例',
                 'price': 450 + (i * 45),
                 'platform': 'ruten',
                 'url': f'https://www.ruten.com.tw/find/?q={quote(card[0])}',
-                'image': card[1],  # 使用真實圖片
-                'shop': f'露天商家 {i % 8}',
-                'rating': 4.3 + (i % 5) * 0.12
+                'image': card[1],
+                'shop': f'示例商店 {i}',
+                'rating': 4.3
             }
             for i, card in enumerate(base_cards)
         ],
         'yahoo': [
             {
-                'product_id': f'yahoo_{i}',
-                'name': f'{card[0]} - {"PSA評級" if i % 2 == 0 else "未評級"}',
+                'product_id': f'sample_yahoo_{i}',
+                'name': f'{card[0]} - 示例',
                 'price': 600 + (i * 55),
                 'platform': 'yahoo',
-                'url': f'https://tw.bid.yahoo.com/search/auction/product?p={quote(card[0])}',
-                'image': card[1],  # 使用真實圖片
-                'shop': f'Yahoo賣家 {i % 7}',
-                'rating': 4.6 + (i % 5) * 0.08
+                'url': f'https://tw.bid.yahoo.com/search?p={quote(card[0])}',
+                'image': card[1],
+                'shop': f'示例商店 {i}',
+                'rating': 4.6
             }
             for i, card in enumerate(base_cards)
         ],
         'pchome': [
             {
-                'product_id': f'pchome_{i}',
-                'name': f'{card[0]} - {"預購" if i % 4 == 0 else "現貨" if i % 4 == 1 else "限定" if i % 4 == 2 else "進口"}',
+                'product_id': f'sample_pchome_{i}',
+                'name': f'{card[0]} - 示例',
                 'price': 550 + (i * 52),
                 'platform': 'pchome',
-                'url': f'https://24h.pchome.com.tw/search/q/{quote(card[0])}',
-                'image': card[1],  # 使用真實圖片
-                'shop': f'PChome商家 {i % 9}',
-                'rating': 4.4 + (i % 5) * 0.11
+                'url': f'https://24h.pchome.com.tw/search?q={quote(card[0])}',
+                'image': card[1],
+                'shop': f'示例商店 {i}',
+                'rating': 4.4
             }
             for i, card in enumerate(base_cards)
         ]
     }
     
     return platform_data.get(platform, [])
+
+
+# ============================================================================
+# 主要爬蟲函數 (相容舊版 API)
+# ============================================================================
+
+def scrape_cards() -> List[Dict]:
+    """爬取卡牌數據"""
+    return search_pchome('遊戲卡 寶可夢卡', pages=2)
+
+
+if __name__ == '__main__':
+    # 運行測試
+    test_pchome_api()
+"""
+卡牌價格監控系統 - 爬蟲模組（精准版）
+使用 PChome 官方 API 和真實電商平台數據
+"""
+import requests
+import logging
+from typing import List, Dict, Optional
+import time
+from urllib.parse import quote
+import json
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# 全局會話設置
+DEFAULT_HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Accept-Language': 'zh-TW,zh;q=0.9',
+    'Accept-Encoding': 'gzip, deflate, br',
+}
+
+# ============================================================================
+# PChome 真實 API 爬蟲 (官方搜尋 API - JSON 格式)
+# ============================================================================
+
+def search_pchome_api(keyword: str, page: int = 1) -> List[Dict]:
+    """
+    使用 PChome 官方搜尋 API 獲取準確的商品數據
+    
+    API 文檔: https://ecshweb.pchome.com.tw/search/v3.3/all/results?q={keyword}
+    返回 JSON 格式的商品列表
+    """
+    try:
+        session = requests.Session()
+        session.headers.update(DEFAULT_HEADERS)
+        
+        # PChome 官方搜尋 API
+        offset = (page - 1) * 20
+        url = f"https://ecshweb.pchome.com.tw/search/v3.3/all/results?q={quote(keyword)}&offset={offset}&limit=20"
+        
+        logger.info(f"查詢 PChome API: {keyword} (頁 {page})")
+        response = session.get(url, timeout=15)
+        
+        if response.status_code != 200:
+            logger.warning(f"PChome API 返回狀態碼: {response.status_code}")
+            return []
+        
+        data = response.json()
+        products = []
+        
+        # 提取商品數組 (prods 是官方返回的字段名)
+        prods = data.get('prods', [])
+        
+        if not prods:
+            logger.info(f"PChome 第 {page} 頁: 無商品")
+            return []
+        
+        for prod in prods:
+            try:
+                # 提取必要字段 (注意: API 使用大寫 Id)
+                product_id = prod.get('Id', '')
+                name = prod.get('name', '')
+                price = prod.get('price', 0)
+                pic_s = prod.get('picS', '')  # 圖片後綴
+                
+                # 驗證必要字段
+                if not name or not product_id:
+                    logger.debug(f"跳過: 缺少基本信息")
+                    continue
+                
+                # 拼接完整圖片 URL
+                image_url = ''
+                if pic_s:
+                    image_url = f'https://cs-a.ecimg.tw{pic_s}'
+                
+                # 確保 price 是整數
+                try:
+                    price = int(price) if price else 0
+                except (ValueError, TypeError):
+                    price = 0
+                
+                product = {
+                    'product_id': f'pchome_{product_id}',
+                    'platform': 'pchome',
+                    'name': name,
+                    'price': price,  # 整數價格
+                    'image': image_url,  # 完整圖片 URL
+                    'shop': '24h PChome',
+                    'rating': 4.5,  # API 沒有評分字段
+                    'url': f'https://24h.pchome.com.tw/prod/{product_id}',
+                    'description': name
+                }
+                
+                products.append(product)
+                logger.debug(f"✓ 商品: {name[:40]} | 價格: {price}元 | 圖片: {image_url[:60]}...")
+                
+            except Exception as e:
+                logger.debug(f"解析商品失敗: {e}")
+                continue
+        
+        logger.info(f"PChome 第 {page} 頁: 成功獲取 {len(products)} 個商品")
+        return products
+    
+    except requests.RequestException as e:
+        logger.error(f"PChome API 請求失敗: {e}")
+        return []
+    except json.JSONDecodeError as e:
+        logger.error(f"PChome API JSON 解析失敗: {e}")
+        return []
+    except Exception as e:
+        logger.error(f"PChome 搜索錯誤: {e}")
+        return []
+
+
+def test_pchome_api():
+    """
+    測試函數：列印前三筆真實數據到終端機
+    用來驗證數據是否準確
+    """
+    logger.info("=" * 70)
+    logger.info("PChome API 數據測試")
+    logger.info("=" * 70)
+    
+    test_keywords = ['遊戲卡', '寶可夢卡', '青眼白龍']
+    
+    for keyword in test_keywords:
+        logger.info(f"\n搜尋: {keyword}")
+        logger.info("-" * 70)
+        
+        products = search_pchome_api(keyword, page=1)
+        
+        if not products:
+            logger.warning(f"未獲取到 {keyword} 的商品")
+            continue
+        
+        # 列印前三筆
+        for i, prod in enumerate(products[:3], 1):
+            logger.info(f"\n【第 {i} 筆】")
+            logger.info(f"  商品名稱: {prod['name']}")
+            logger.info(f"  價格: {prod['price']} 元")
+            logger.info(f"  圖片 URL: {prod['image']}")
+            logger.info(f"  商品 ID: {prod['product_id']}")
+            logger.info(f"  商品連結: {prod['url']}")
+        
+        time.sleep(0.5)  # 避免過度請求
+    
+    logger.info("\n" + "=" * 70)
+    logger.info("測試完成")
+    logger.info("=" * 70)
+
+
+# ============================================================================
+# 搜索函數 (多平台支持)
+# ============================================================================
+
+def search_pchome(keyword: str, pages: int = 3) -> List[Dict]:
+    """
+    搜索 PChome 商品 - 使用官方 API
+    """
+    results = []
+    
+    for page_num in range(1, pages + 1):
+        try:
+            page_results = search_pchome_api(keyword, page=page_num)
+            if page_results:
+                results.extend(page_results)
+            else:
+                # 無商品表示已到盡頭
+                break
+            
+            time.sleep(0.3)  # 避免過度請求
+        except Exception as e:
+            logger.warning(f"第 {page_num} 頁失敗: {e}")
+            break
+    
+    logger.info(f"PChome 共取得 {len(results)} 個商品")
+    return results
+
+
+def search_shopee(keyword: str, pages: int = 1) -> List[Dict]:
+    """蝦皮搜索 (暫時返回空列表 - 等待實現)"""
+    logger.info(f"蝦皮搜索: {keyword} (待實現)")
+    return []
+
+
+def search_ruten(keyword: str, pages: int = 1) -> List[Dict]:
+    """露天搜索 (暫時返回空列表 - 等待實現)"""
+    logger.info(f"露天搜索: {keyword} (待實現)")
+    return []
+
+
+def search_yahoo(keyword: str, pages: int = 1) -> List[Dict]:
+    """Yahoo搜索 (暫時返回空列表 - 等待實現)"""
+    logger.info(f"Yahoo搜索: {keyword} (待實現)")
+    return []
+
+
+def search_cards_multi_platform(keyword: str) -> Dict[str, List[Dict]]:
+    """
+    在多個平台搜索卡牌
+    返回格式: {'shopee': [...], 'ruten': [...], 'yahoo': [...], 'pchome': [...]}
+    """
+    results = {
+        'shopee': [],
+        'ruten': [],
+        'yahoo': [],
+        'pchome': search_pchome(keyword, pages=2)  # 獲取前 40 個商品
+    }
+    
+    return results
+
+
+# ============================================================================
+# 示例卡牌列表 (備用)
+# ============================================================================
+
+def get_sample_search_results(platform: str) -> List[Dict]:
+    """
+    獲取示例卡牌列表 (備用)
+    包含遊戲王和寶可夢卡牌的官方圖片
+    """
+    # 遊戲王卡牌
+    yugioh_cards = [
+        ('青眼白龍', 'https://images.ygoprodeck.com/images/cards/89631139.jpg'),
+        ('黑魔法師', 'https://images.ygoprodeck.com/images/cards/16732705.jpg'),
+        ('藍眼白龍', 'https://images.ygoprodeck.com/images/cards/70095154.jpg'),
+        ('青眼白龍 終極龍', 'https://images.ygoprodeck.com/images/cards/70630755.jpg'),
+    ]
+    
+    # 寶可夢卡牌
+    pokemon_cards = [
+        ('皮卡丘', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'),
+        ('妙蛙種子', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'),
+        ('小火龍', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png'),
+        ('傑尼龜', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png'),
+    ]
+    
+    base_cards = yugioh_cards + pokemon_cards
+    
+    platform_data = {
+        'shopee': [
+            {
+                'product_id': f'sample_shopee_{i}',
+                'name': f'{card[0]} - 示例',
+                'price': 500 + (i * 50),
+                'platform': 'shopee',
+                'url': f'https://shopee.tw/search?keyword={quote(card[0])}',
+                'image': card[1],
+                'shop': f'示例商店 {i}',
+                'rating': 4.5
+            }
+            for i, card in enumerate(base_cards)
+        ],
+        'ruten': [
+            {
+                'product_id': f'sample_ruten_{i}',
+                'name': f'{card[0]} - 示例',
+                'price': 450 + (i * 45),
+                'platform': 'ruten',
+                'url': f'https://www.ruten.com.tw/find/?q={quote(card[0])}',
+                'image': card[1],
+                'shop': f'示例商店 {i}',
+                'rating': 4.3
+            }
+            for i, card in enumerate(base_cards)
+        ],
+        'yahoo': [
+            {
+                'product_id': f'sample_yahoo_{i}',
+                'name': f'{card[0]} - 示例',
+                'price': 600 + (i * 55),
+                'platform': 'yahoo',
+                'url': f'https://tw.bid.yahoo.com/search?p={quote(card[0])}',
+                'image': card[1],
+                'shop': f'示例商店 {i}',
+                'rating': 4.6
+            }
+            for i, card in enumerate(base_cards)
+        ],
+        'pchome': [
+            {
+                'product_id': f'sample_pchome_{i}',
+                'name': f'{card[0]} - 示例',
+                'price': 550 + (i * 52),
+                'platform': 'pchome',
+                'url': f'https://24h.pchome.com.tw/search?q={quote(card[0])}',
+                'image': card[1],
+                'shop': f'示例商店 {i}',
+                'rating': 4.4
+            }
+            for i, card in enumerate(base_cards)
+        ]
+    }
+    
+    return platform_data.get(platform, [])
+
+
+# ============================================================================
+# 主要爬蟲函數 (相容舊版 API)
+# ============================================================================
+
+def scrape_cards() -> List[Dict]:
+    """爬取卡牌數據"""
+    return search_pchome('遊戲卡 寶可夢卡', pages=2)
+
+
+if __name__ == '__main__':
+    # 運行測試
+    test_pchome_api()

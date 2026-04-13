@@ -149,61 +149,42 @@ def get_stats():
 def get_recommended_cards():
     """
     API 端點 - 取得推薦卡牌 (首頁展示)
-    優先使用真實爬取的商品數據，包含實際商品圖片
+    優先使用真實 PChome 數據，混合示例卡牌
     """
     try:
-        from scraper import scrape_real_products_for_recommendations, get_sample_search_results
+        from scraper import search_pchome, get_sample_search_results
         
-        # 嘗試爬取真實商品數據
-        real_products = scrape_real_products_for_recommendations()
+        # 嘗試從 PChome 獲取真實數據
+        logger.info("從 PChome 獲取真實卡牌數據...")
         
-        # 檢查是否成功獲取真實數據
-        has_real_data = any(len(real_products[p]) > 0 for p in real_products if real_products[p])
+        # 搜索多個關鍵詞組合，取得最多 40 個商品
+        pchome_results = []
+        search_keywords = ['遊戲卡牌', '卡牌', 'TCG']
         
-        if has_real_data:
-            # 使用真實爬取的商品數據 (包含實際商品圖片)
-            recommended = {}
-            for platform, products in real_products.items():
-                if products and len(products) > 0:
-                    # 確保所有商品都有有效的圖片
-                    valid_products = [p for p in products if p.get('image') and p['image'].startswith('https://')]
-                    recommended[platform] = valid_products[:5] if valid_products else products[:5]
-                else:
-                    # 如果該平台沒有爬取到數據，使用示例數據
-                    sample = get_sample_search_results(platform)
-                    recommended[platform] = sample[:5]
-            logger.info(f"使用真實爬蟲數據: {has_real_data}")
-        else:
-            # 如果無法爬取任何真實數據，回退到示例數據 (混合遊戲王和寶可夢)
-            logger.info("無法爬取真實數據，使用示例數據")
-            
-            def get_mixed_recommended(platform, count=5):
-                """取得混合的推薦卡牌 (交替顯示遊戲王 & 寶可夢)"""
-                all_cards = get_sample_search_results(platform)
-                # 分離遊戲王和寶可夢卡牌
-                yugioh = [c for c in all_cards if c.get('image', '').startswith('https://images.ygoprodeck.com')]
-                pokemon = [c for c in all_cards if c.get('image', '').startswith('https://raw.githubusercontent.com/PokeAPI')]
-                
-                # 交替混合 (1個遊戲王 + 1個寶可夢)
-                mixed = []
-                for i in range(count):
-                    if i % 2 == 0 and i // 2 < len(yugioh):
-                        mixed.append(yugioh[i // 2])
-                    elif i % 2 == 1 and i // 2 < len(pokemon):
-                        mixed.append(pokemon[i // 2])
-                return mixed[:count]
-            
-            recommended = {
-                'shopee': get_mixed_recommended('shopee', 5),
-                'ruten': get_mixed_recommended('ruten', 5),
-                'yahoo': get_mixed_recommended('yahoo', 5),
-                'pchome': get_mixed_recommended('pchome', 5),
-            }
+        for keyword in search_keywords:
+            try:
+                results = search_pchome(keyword, pages=1)
+                pchome_results.extend(results[:10])  # 每個關鍵詞取 10 個
+                if len(pchome_results) >= 40:
+                    break
+            except Exception as e:
+                logger.debug(f"搜索 {keyword} 失敗: {e}")
+                continue
+        
+        logger.info(f"從 PChome 獲取到 {len(pchome_results)} 個真實商品")
+        
+        # 構建推薦卡牌 (優先 PChome 真實數據，然後是示例數據)
+        recommended = {
+            'pchome': pchome_results[:5] if pchome_results else get_sample_search_results('pchome')[:5],
+            'shopee': get_sample_search_results('shopee')[:5],
+            'ruten': get_sample_search_results('ruten')[:5],
+            'yahoo': get_sample_search_results('yahoo')[:5],
+        }
         
         return jsonify({
             'recommended': recommended,
             'total_featured': sum(len(items) for items in recommended.values()),
-            'has_real_data': has_real_data
+            'has_real_data': len(pchome_results) > 0
         })
     
     except Exception as e:
