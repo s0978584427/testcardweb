@@ -34,7 +34,7 @@ def search_cards():
             return jsonify({'error': '搜索關鍵字至少 2 個字符'}), 400
         
         logger.info(f"PChome 搜尋: {keyword}")
-        pchome_results = search_pchome(keyword, pages=1)
+        pchome_results = search_pchome(keyword, pages=20)
         
         return jsonify({
             'keyword': keyword,
@@ -110,7 +110,7 @@ def combined_search():
         logger.info(f"組合搜尋: {keyword}")
         
         # 台灣商品
-        pchome_results = search_pchome(keyword, pages=1)
+        pchome_results = search_pchome(keyword, pages=20)
         
         # 國際卡牌資料
         card_refs = get_all_card_sources(keyword)
