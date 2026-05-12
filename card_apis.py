@@ -33,6 +33,56 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# ===== 統一 User-Agent - 模擬現代瀏覽器 =====
+BROWSER_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+
+# ===== 安全的 API 請求包裝 =====
+def safe_request(url: str, method: str = 'GET', timeout: int = 10, **kwargs) -> Optional[requests.Response]:
+    """
+    安全的 HTTP 請求包裝 - 包含日誌和錯誤處理
+    
+    Args:
+        url: 請求 URL（強制 HTTPS）
+        method: HTTP 方法 (GET, POST 等)
+        timeout: 超時秒數
+        **kwargs: 其他 requests 參數
+    
+    Returns:
+        Response 對象或 None (如果失敗)
+    """
+    # 確保使用 HTTPS
+    if url.startswith('http://'):
+        url = url.replace('http://', 'https://', 1)
+        logger.info(f"🔒 自動轉換為 HTTPS: {url}")
+    
+    # 添加默認 User-Agent
+    if 'headers' not in kwargs:
+        kwargs['headers'] = {}
+    if 'User-Agent' not in kwargs['headers']:
+        kwargs['headers']['User-Agent'] = BROWSER_USER_AGENT
+    
+    try:
+        logger.debug(f"📡 API 請求: {method} {url}")
+        resp = requests.request(method, url, timeout=timeout, **kwargs)
+        
+        if resp.status_code == 200:
+            logger.debug(f"✅ 請求成功: {url}")
+        else:
+            logger.warning(f"⚠️ API 返回 {resp.status_code}: {url}")
+            logger.debug(f"響應內容: {resp.text[:200]}")  # 前 200 字元
+        
+        return resp
+    
+    except requests.exceptions.Timeout:
+        logger.error(f"❌ 超時 (>= {timeout}s): {url}")
+        return None
+    except requests.exceptions.ConnectionError as e:
+        logger.error(f"❌ 連線失敗: {url} - {str(e)}")
+        return None
+    except Exception as e:
+        logger.error(f"❌ 未知錯誤 [{type(e).__name__}]: {url} - {str(e)}")
+        return None
+
 
 
 
@@ -54,7 +104,7 @@ def get_pokemon_tcg_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
         {'cards': [...], 'total': int, 'pages': int}
     """
     try:
-        logger.info(f"[Pokémon TCG] 搜尋: {keyword}, 頁碼: {page}")
+        logger.info(f"🔍 [Pokémon TCG] 搜尋: '{keyword}', 頁碼: {page}")
         
         # 查詢參數：搜尋卡牌名稱
         query = f'q=name:"{keyword}"'
@@ -64,13 +114,9 @@ def get_pokemon_tcg_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
         
         url = f'https://api.pokemontcg.io/v2/cards?{query}&pageSize={limit}&pageOffset={offset}'
         
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
-        
-        resp = requests.get(url, headers=headers, timeout=10)
-        if resp.status_code != 200:
-            logger.warning(f"[Pokémon TCG] API 返回 {resp.status_code}")
+        resp = safe_request(url)
+        if not resp or resp.status_code != 200:
+            logger.error(f"❌ [Pokémon TCG] 搜尋失敗: {resp.status_code if resp else '無回應'}")
             return {'cards': [], 'total': 0, 'pages': 0}
         
         data = resp.json()
@@ -158,12 +204,9 @@ def get_yugioh_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
         {'cards': [...], 'total': int, 'pages': int}
     """
     try:
-        logger.info(f"[YuGiOh] 搜尋: {keyword}, 頁碼: {page}")
+        logger.info(f"🔍 [YuGiOh] 搜尋: '{keyword}', 頁碼: {page}")
         
         url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
         
         # 搜尋策略清單
         search_strategies = []
@@ -194,19 +237,23 @@ def get_yugioh_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
             logger.debug(f"[YuGiOh] {description}")
             
             params = {param_name: search_keyword}
-            resp = requests.get(url, params=params, headers=headers, timeout=10)
+            resp = safe_request(url, params=params)
             
-            if resp.status_code == 200:
-                data = resp.json()
-                cards = data.get('data', []) if isinstance(data, dict) else data if isinstance(data, list) else []
-                
-                if cards:
-                    logger.info(f"[YuGiOh] 找到結果: {description} 返回 {len(cards)} 張卡牌")
-                    break
+            if resp and resp.status_code == 200:
+                try:
+                    data = resp.json()
+                    cards = data.get('data', []) if isinstance(data, dict) else data if isinstance(data, list) else []
+                    
+                    if cards:
+                        logger.info(f"✅ [YuGiOh] 找到結果: {description} 返回 {len(cards)} 張卡牌")
+                        break
+                except Exception as e:
+                    logger.debug(f"⚠️ [YuGiOh] JSON 解析失敗: {e}")
+                    continue
         
         # 如果還是沒找到，記錄警告
         if not cards:
-            logger.warning(f"[YuGiOh] 未找到卡牌: {keyword}")
+            logger.warning(f"❌ [YuGiOh] 未找到卡牌: {keyword}")
         
         # 計算分頁
         offset = (page - 1) * limit
@@ -300,7 +347,7 @@ def get_magic_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
         {'cards': [...], 'total': int, 'pages': int}
     """
     try:
-        logger.info(f"[MTG - Scryfall] 搜尋: {keyword}, 頁碼: {page}")
+        logger.info(f"🔍 [MTG - Scryfall] 搜尋: '{keyword}', 頁碼: {page}")
         
         # 計算分頁
         offset = (page - 1) * limit
@@ -314,13 +361,9 @@ def get_magic_cards(keyword: str, limit: int = 20, page: int = 1) -> Dict:
             'dir': 'desc',
         }
         
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
-        
-        resp = requests.get(url, params=params, headers=headers, timeout=10)
-        if resp.status_code != 200:
-            logger.warning(f"[MTG] API 返回 {resp.status_code}")
+        resp = safe_request(url, params=params)
+        if not resp or resp.status_code != 200:
+            logger.error(f"❌ [MTG] 搜尋失敗: {resp.status_code if resp else '無回應'}")
             return {'cards': [], 'total': 0, 'pages': 0}
         
         data = resp.json()

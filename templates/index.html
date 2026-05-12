@@ -263,6 +263,89 @@
             background-color: var(--primary-color);
             color: white;
         }
+
+        /* ===== 卡牌詳情 Modal 樣式 ===== */
+        .modal-content {
+            background-color: rgba(20, 20, 30, 0.95);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+        }
+
+        .modal-title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #FFFFFF !important;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;
+        }
+
+        .btn-close {
+            filter: brightness(1.2);
+        }
+
+        #cardModal .modal-body {
+            padding: 2rem;
+            min-height: 450px;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        /* Modal 內所有文字強制白化 */
+        #cardModal h2,
+        #cardModal h5,
+        #cardModal h6,
+        #cardModal p,
+        #cardModal span,
+        #cardModal div,
+        #cardModal label,
+        #cardModal td,
+        #cardModal th {
+            color: #FFFFFF !important;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;
+        }
+
+        /* 發行版本清單區塊 */
+        #cardModalSeries {
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.5) !important;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            margin-top: 1.5rem;
+        }
+
+        /* 表格樣式 */
+        .modal-body .table {
+            color: #FFFFFF !important;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-body .table thead th {
+            color: #FFFFFF !important;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
+            font-weight: 700 !important;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;
+        }
+
+        .modal-body .table tbody td {
+            vertical-align: middle;
+            padding: 0.8rem 0.5rem;
+            color: #FFFFFF !important;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;
+        }
+
+        .modal-body .table tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .modal-body .table tbody tr:hover {
+            background-color: rgba(99, 102, 241, 0.2) !important;
+        }
     </style>
 </head>
 <body>
@@ -285,19 +368,16 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <img id="cardModalImage" src="" alt="卡牌" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <img id="cardModalImage" src="" alt="卡牌" style="width: 100%; border-radius: 12px;">
                         </div>
                         <div class="col-md-7">
-                            <div id="cardModalDetails" style="max-height: 500px; overflow-y: auto;"></div>
+                            <div id="cardModalDetails" style="max-height: 500px; overflow-y: auto; padding-right: 0.5rem;"></div>
                         </div>
                     </div>
                     
                     <!-- 發行版本清單 -->
-                    <div style="margin-top: 2rem; border-top: 1px solid #ddd; padding-top: 1rem;">
-                        <h6>發行版本清單</h6>
-                        <div id="cardModalSeries" style="max-height: 300px; overflow-y: auto;">
-                            <p class="text-muted">無版本信息</p>
-                        </div>
+                    <div id="cardModalSeries" style="max-height: 300px; overflow-y: auto; margin-top: 1.5rem;">
+                        <p class="text-muted" style="color: #A0A0A0;">無版本信息</p>
                     </div>
                 </div>
             </div>
@@ -363,53 +443,164 @@
             results: null
         };
 
+        /** 根據卡牌屬性獲取動態漸層背景 */
+        function getTypeGradient(card) {
+            const stats = card.stats || {};
+            let type = '';
+            
+            if (card.source === 'pokemon' && stats.types && stats.types.length > 0) {
+                type = stats.types[0].toLowerCase();
+            } else if (card.source === 'yugioh' && stats.attribute) {
+                type = stats.attribute.toLowerCase();
+            } else if (card.source === 'mtg' && stats.type) {
+                type = stats.type.toLowerCase();
+            }
+            
+            const gradients = {
+                'fire': 'linear-gradient(145deg, #a80000, #000000)',
+                'water': 'linear-gradient(145deg, #003366, #000000)',
+                'grass': 'linear-gradient(145deg, #1b4d3e, #000000)',
+                'leaf': 'linear-gradient(145deg, #1b4d3e, #000000)',
+                'electric': 'linear-gradient(145deg, #b8860b, #1a1a1a)',
+                'psychic': 'linear-gradient(145deg, #4b0082, #000000)',
+                'dark': 'linear-gradient(145deg, #4b0082, #000000)',
+                'default': 'linear-gradient(145deg, #2c3e50, #000000)'
+            };
+            
+            return gradients[type] || gradients['default'];
+        }
+
         /** 打開卡牌詳情模態框 */
         function showCardDetail(card) {
             const modal = new bootstrap.Modal(document.getElementById('cardModal'));
+            const modalBody = document.querySelector('#cardModal .modal-body');
+            
+            // 動態設定背景到 modal-body
+            const gradient = getTypeGradient(card);
+            modalBody.style.background = gradient;
+            modalBody.style.backgroundAttachment = 'fixed';
+            
             document.getElementById('cardModalTitle').textContent = card.title;
             document.getElementById('cardModalImage').src = card.img_large || card.img_url || '';
             
-            // 構建詳細信息
-            let detailsHTML = `<h6>${card.title}</h6>`;
-            detailsHTML += `<p style="color: #888; margin: 0.5rem 0;"><strong>來源:</strong> ${getSourceName(card.source)}</p>`;
-            detailsHTML += `<p style="margin: 0.5rem 0;"><strong>價格:</strong> $${card.price || 'N/A'}</p>`;
+            // 圖片樣式：加入發光效果
+            const imgElement = document.getElementById('cardModalImage');
+            imgElement.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3)';
+            imgElement.style.borderRadius = '12px';
+            
+            // 定義文本樣式常數 - 使用更重的陰影和純白色
+            const textShadow = 'text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;';
+            const labelStyle = `color: #CCCCCC !important; ${textShadow} font-weight: 500 !important;`;
+            const valueStyle = `color: #FFFFFF !important; ${textShadow} font-weight: 700 !important;`;
+            const titleStyle = `color: #FFFFFF !important; ${textShadow} font-size: 1.3rem; margin-bottom: 1.5rem; font-weight: 700 !important;`;
+            const descriptionStyle = `color: #FFFFFF !important; ${textShadow} font-size: 0.95rem; line-height: 1.7; margin-top: 1rem;`;
+            
+            // 構建詳細信息 - 使用 Flex 佈局
+            let detailsHTML = `<h5 style="${titleStyle}">${card.title}</h5>`;
+            
+            // 使用 Flex 佈局讓標籤和值左右對齐
+            detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                <span style="${labelStyle}">來源:</span>
+                <span style="${valueStyle}">${getSourceName(card.source)}</span>
+            </div>`;
+            
+            detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                <span style="${labelStyle}">價格:</span>
+                <span style="${valueStyle}">$${card.price || 'N/A'}</span>
+            </div>`;
             
             // 根據卡牌類型顯示不同的屬性
             const stats = card.stats || {};
             
             if (card.source === 'pokemon') {
-                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>HP:</strong> ${stats.hp || 'N/A'}</p>`;
-                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>屬性:</strong> ${stats.types ? stats.types.join(', ') : 'N/A'}</p>`;
-                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>系列:</strong> ${stats.set || 'N/A'}</p>`;
-                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>稀有度:</strong> ${stats.rarity || 'N/A'}</p>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">HP:</span>
+                    <span style="${valueStyle}">${stats.hp || 'N/A'}</span>
+                </div>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">屬性:</span>
+                    <span style="${valueStyle}">${stats.types ? stats.types.join(', ') : 'N/A'}</span>
+                </div>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">系列:</span>
+                    <span style="${valueStyle}">${stats.set || 'N/A'}</span>
+                </div>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">稀有度:</span>
+                    <span style="${valueStyle}">${stats.rarity || 'N/A'}</span>
+                </div>`;
             } else if (card.source === 'yugioh') {
-                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>類型:</strong> ${stats.type || 'N/A'}</p>`;
-                if (stats.level) detailsHTML += `<p style="margin: 0.5rem 0;"><strong>等級:</strong> ${stats.level}</p>`;
-                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>屬性:</strong> ${stats.attribute || 'N/A'}</p>`;
-                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>攻防:</strong> ${stats.atk} / ${stats.def}</p>`;
-                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>種族:</strong> ${stats.race || 'N/A'}</p>`;
-            } else if (card.source === 'mtg') {
-                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>法力費:</strong> ${stats.mana_cost || 'N/A'}</p>`;
-                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>類型:</strong> ${stats.type || 'N/A'}</p>`;
-                if (stats.power || stats.toughness) {
-                    detailsHTML += `<p style="margin: 0.5rem 0;"><strong>攻防:</strong> ${stats.power} / ${stats.toughness}</p>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">類型:</span>
+                    <span style="${valueStyle}">${stats.type || 'N/A'}</span>
+                </div>`;
+                if (stats.level) {
+                    detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                        <span style="${labelStyle}">等級:</span>
+                        <span style="${valueStyle}">${stats.level}</span>
+                    </div>`;
                 }
-                detailsHTML += `<p style="margin: 0.5rem 0;"><strong>稀有度:</strong> ${stats.rarity || 'N/A'}</p>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">屬性:</span>
+                    <span style="${valueStyle}">${stats.attribute || 'N/A'}</span>
+                </div>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">攻防:</span>
+                    <span style="${valueStyle}">${stats.atk} / ${stats.def}</span>
+                </div>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">種族:</span>
+                    <span style="${valueStyle}">${stats.race || 'N/A'}</span>
+                </div>`;
+            } else if (card.source === 'mtg') {
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">法力費:</span>
+                    <span style="${valueStyle}">${stats.mana_cost || 'N/A'}</span>
+                </div>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">類型:</span>
+                    <span style="${valueStyle}">${stats.type || 'N/A'}</span>
+                </div>`;
+                if (stats.power || stats.toughness) {
+                    detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                        <span style="${labelStyle}">攻防:</span>
+                        <span style="${valueStyle}">${stats.power} / ${stats.toughness}</span>
+                    </div>`;
+                }
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">稀有度:</span>
+                    <span style="${valueStyle}">${stats.rarity || 'N/A'}</span>
+                </div>`;
             }
             
-            detailsHTML += `<hr>`;
-            detailsHTML += `<p style="font-size: 0.9rem; color: #666;">${card.description || '無描述'}</p>`;
+            detailsHTML += `<p style="${descriptionStyle}">${card.description || '無描述'}</p>`;
             
             document.getElementById('cardModalDetails').innerHTML = detailsHTML;
             
-            // 顯示發行版本清單
+            // 顯示發行版本清單 - 完整改進樣式
             if (card.series && card.series.length > 0) {
-                let seriesHTML = '<table class="table table-sm" style="font-size: 0.9rem;"><thead><tr><th>版本</th><th>日期</th><th>價格</th></tr></thead><tbody>';
+                let seriesHTML = `<div style="background: rgba(0, 0, 0, 0.5) !important; padding: 15px !important; border-radius: 8px !important; margin-top: 1.5rem !important; border: 1px solid rgba(255, 255, 255, 0.15) !important;">
+                    <h6 style="color: #FFFFFF !important; ${textShadow} margin-bottom: 1rem !important; padding-bottom: 0.8rem !important; border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important; font-size: 1.1rem !important;">發行版本清單</h6>
+                    <table class="table table-sm" style="margin-bottom: 0 !important; color: #FFFFFF !important;">
+                        <thead style="border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;">
+                            <tr>
+                                <th style="color: #FFFFFF !important; ${textShadow}">版本</th>
+                                <th style="color: #FFFFFF !important; ${textShadow}">日期</th>
+                                <th style="color: #FFFFFF !important; ${textShadow}">價格</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
                 card.series.forEach(s => {
-                    seriesHTML += `<tr><td>${s.name}</td><td>${s.release_date || 'N/A'}</td><td>$${s.price || 'N/A'}</td></tr>`;
+                    seriesHTML += `<tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                        <td style="color: #FFFFFF !important; ${textShadow}">${s.name}</td>
+                        <td style="color: #FFFFFF !important; ${textShadow}">${s.release_date || 'N/A'}</td>
+                        <td style="color: #FFD700 !important; ${textShadow} font-weight: 700 !important;">$${s.price || 'N/A'}</td>
+                    </tr>`;
                 });
-                seriesHTML += '</tbody></table>';
+                seriesHTML += `</tbody></table></div>`;
                 document.getElementById('cardModalSeries').innerHTML = seriesHTML;
+            } else {
+                document.getElementById('cardModalSeries').innerHTML = `<div style="background: rgba(0, 0, 0, 0.5) !important; padding: 15px !important; border-radius: 8px !important; text-align: center !important; color: #CCCCCC !important; ${textShadow}">無版本信息</div>`;
             }
             
             modal.show();
@@ -476,7 +667,7 @@
             // 如果是國際卡牌搜尋，使用新的分頁 API
             if (searchMode === 'international') {
                 currentCardSearch.keyword = keyword;
-                currentCardSearch.page = 1;  // 重置を第 1 頁
+                currentCardSearch.page = 1;  // 重置到第 1 頁
                 await performCardSearch();
                 return;
             }
@@ -489,14 +680,36 @@
                     url = `/api/search?keyword=${encodeURIComponent(keyword)}`;
                 }
                 
-                console.log('API 請求:', url);
-                const response = await fetch(url);
+                console.log('📡 [API 請求]', searchMode === 'combined' ? '組合搜尋' : 'PChome 搜尋', url);
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    credentials: 'include'
+                });
+                
+                console.log(`📊 [API 回應] 狀態碼: ${response.status}`);
+                
                 const data = await response.json();
 
                 if (!response.ok) {
-                    alert(data.error || '搜尋失敗');
+                    const errorMsg = data.error || `HTTP ${response.status}`;
+                    console.error('❌ [API 錯誤]', {
+                        status: response.status,
+                        searchMode: searchMode,
+                        error: errorMsg,
+                        details: data
+                    });
+                    alert('搜尋失敗: ' + errorMsg);
                     return;
                 }
+
+                console.log('✅ [API 成功]', searchMode === 'combined' ? '組合搜尋' : 'PChome 搜尋', {
+                    resultCount: Object.keys(data.results || {}).length
+                });
 
                 if (searchMode === 'combined') {
                     displayCombinedResults(data);
@@ -505,8 +718,13 @@
                     displayResults(currentSearchResults);
                 }
             } catch (error) {
-                console.error('搜尋錯誤:', error);
-                alert('搜尋失敗: ' + error.message);
+                console.error('❌ [網路錯誤]', {
+                    name: error.name,
+                    message: error.message,
+                    searchMode: searchMode,
+                    stack: error.stack
+                });
+                alert('搜尋失敗: ' + error.message + '\n\n請檢查網路連接或查看瀏覽器控制台了解詳情');
             }
         }
         
@@ -516,21 +734,94 @@
             
             try {
                 const url = `/api/cards/search?keyword=${encodeURIComponent(keyword)}&source=${source}&page=${page}&limit=${limit}`;
-                console.log('卡牌搜尋:', url);
+                console.log('📡 [API 請求] 卡牌搜尋:', url);
                 
-                const response = await fetch(url);
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    credentials: 'include'
+                });
+                
+                console.log(`📊 [API 回應] 狀態碼: ${response.status}`);
+                
                 const data = await response.json();
                 
                 if (!response.ok) {
-                    alert(data.error || '搜尋失敗');
+                    const errorMsg = data.error || `HTTP ${response.status}: ${response.statusText}`;
+                    
+                    // 🔴 詳細錯誤日誌 - 包含所有可能的診斷信息
+                    console.error('❌ [API 返回錯誤]', {
+                        status: response.status,
+                        statusText: response.statusText,
+                        error: errorMsg,
+                        responseType: response.headers.get('content-type'),
+                        fullResponse: data,  // 完整的服務器响应
+                        timestamp: new Date().toISOString()
+                    });
+                    
+                    // 按錯誤類型提供詳細診斷
+                    if (response.status === 404) {
+                        console.error('❌ 404 錯誤: API 端點不存在或資源未找到');
+                        console.error('請求 URL:', url);
+                    } else if (response.status === 500) {
+                        console.error('❌ 500 錯誤: 服務器內部錯誤');
+                        console.error('服務器錯誤詳情:', data.details || data.error);
+                    } else if (response.status === 503) {
+                        console.error('❌ 503 錯誤: 服務暫時不可用（可能是 API 超時或過載）');
+                    }
+                    
+                    alert('搜尋失敗: ' + errorMsg);
                     return;
                 }
+                
+                console.log('✅ [API 成功] 卡牌搜尋結果:', {
+                    source: data.source,
+                    cardCount: data.cards ? data.cards.length : (data.results ? Object.keys(data.results).length : 0),
+                    total: data.total || 0,
+                    pages: data.pages || 0
+                });
                 
                 currentCardSearch.results = data;
                 displayCardSearchResults(data);
             } catch (error) {
-                console.error('搜尋錯誤:', error);
-                alert('搜尋失敗: ' + error.message);
+                // 🔴 詳細的網路錯誤日誌
+                console.error('❌ [網路/FETCH 錯誤] 卡牌搜尋失敗', {
+                    name: error.name,
+                    message: error.message,
+                    stack: error.stack,
+                    errorType: error.constructor.name,
+                    timestamp: new Date().toISOString(),
+                    searchParams: {
+                        keyword: keyword,
+                        source: source,
+                        page: page,
+                        limit: limit
+                    }
+                });
+                
+                // 診斷錯誤類型
+                if (error.name === 'TypeError') {
+                    console.error('💡 可能原因: 網路連接問題、CORS 錯誤或伺服器無響應');
+                    console.error('請檢查: 1) 網路連接, 2) 瀏覽器網路標籤, 3) CORS Headers');
+                } else if (error.message.includes('Failed to fetch')) {
+                    console.error('💡 可能原因: CORS 被阻擋或跨域請求失敗');
+                    console.error('請檢查服務器的 CORS 設置');
+                }
+                
+                // 詳細診斷信息
+                const errorDetails = {
+                    '時間': new Date().toISOString(),
+                    '關鍵字': keyword,
+                    '源': source,
+                    '錯誤類型': error.name,
+                    '錯誤信息': error.message
+                };
+                
+                console.error('📋 [完整診斷信息]', errorDetails);
+                alert('搜尋失敗: ' + error.message + '\n\n請檢查網路連接或查看瀏覽器控制台了解詳情');
             }
         }
         
