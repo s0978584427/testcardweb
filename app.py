@@ -165,7 +165,7 @@ def get_cards_proxy():
     改由後端 Python 使用 requests 獲取，規避 CORS 和 IP 封鎖
     
     查詢參數:
-        source: 卡牌來源 ('pokemon' | 'yugioh' | 'mtg')
+        source: 卡牌來源 ('pokemon' | 'yugioh' | 'mtg' | 'tw-pokemon')
         keyword: 搜尋關鍵字
         limit: 結果數 (預設 20)
     """
@@ -184,7 +184,7 @@ def get_cards_proxy():
             }), 400
         
         # 驗證 source 參數
-        valid_sources = ['pokemon', 'yugioh', 'mtg']
+        valid_sources = ['pokemon', 'yugioh', 'mtg', 'tw-pokemon']
         if source not in valid_sources:
             return jsonify({
                 'error': f'無效的來源: {source}',
@@ -379,6 +379,82 @@ def get_cards_proxy():
                     'details': str(e)
                 }), 500
         
+        # =============== 台灣官方寶可夢 TCG (原生繁體中文) ===============
+        elif source == 'tw-pokemon':
+            try:
+                from scraper import CardScraper
+                
+                logger.info(f"🌐 [後端 Proxy] 請求台灣官方寶可夢: {keyword}")
+                
+                scraper = CardScraper()
+                cards = scraper.scrape_taiwan_pokemon(keyword, limit=limit)
+                
+                # 轉換格式以符合前端 Modal 要求
+                for card in cards:
+                    try:
+                        # 根據 pokemon_type 設定顏色漸層
+                        pokemon_type = card.get('stats', {}).get('pokemon_type', '').lower()
+                        
+                        # 屬性色彩映射 (RGB 漸層)
+                        type_colors = {
+                            '火': {'primary': '#f08030', 'secondary': '#a81828'},
+                            '水': {'primary': '#6890f0', 'secondary': '#38609c'},
+                            '草': {'primary': '#78c850', 'secondary': '#486838'},
+                            '雷': {'primary': '#f8d030', 'secondary': '#a8a820'},
+                            '冰': {'primary': '#98d8d8', 'secondary': '#686860'},
+                            '格鬥': {'primary': '#c03028', 'secondary': '#90210e'},
+                            '毒': {'primary': '#a040a0', 'secondary': '#782a58'},
+                            '地面': {'primary': '#e0c068', 'secondary': '#804020'},
+                            '飛行': {'primary': '#a890f0', 'secondary': '#6858a8'},
+                            '超': {'primary': '#f85888', 'secondary': '#a82860'},
+                            '蟲': {'primary': '#a8b820', 'secondary': '#6d7815'},
+                            '岩': {'primary': '#b8a038', 'secondary': '#786824'},
+                            '幽靈': {'primary': '#705898', 'secondary': '#493963'},
+                            '龍': {'primary': '#7038f8', 'secondary': '#4924a8'},
+                            '惡': {'primary': '#705848', 'secondary': '#49392f'},
+                            '鋼': {'primary': '#b8b8d0', 'secondary': '#78787c'},
+                            '妖精': {'primary': '#ee99ac', 'secondary': '#c23e5b'},
+                        }
+                        
+                        # 預設色彩（如果未找到類型）
+                        type_color = type_colors.get(pokemon_type, {
+                            'primary': '#a8a878',
+                            'secondary': '#6d6d4f'
+                        })
+                        
+                        result = {
+                            'id': f"{card.get('series', {}).get('collection_number', 'unknown')}",
+                            'title': card.get('title'),
+                            'source': 'tw-pokemon',
+                            'img_url': card.get('img_url'),
+                            'price': card.get('price'),
+                            'stats': card.get('stats', {}),
+                            'series': card.get('series', {}),
+                            'rarity': card.get('rarity'),
+                            'type_color': type_color,  # 前端用於 Modal 背景漸層
+                            'text_style': {
+                                'color': 'white',
+                                'text_shadow': '1px 1px 2px rgba(0, 0, 0, 0.8)'  # 黑影效果
+                            }
+                        }
+                        
+                        results.append(result)
+                    except Exception as e:
+                        logger.debug(f"❌ [後端 Proxy] 台灣寶可夢卡牌解析失敗: {e}")
+                        continue
+                
+                logger.info(f"✅ [後端 Proxy] 台灣官方寶可夢 獲取 {len(results)} 張卡牌")
+                
+            except Exception as e:
+                error_msg = f"台灣官方寶可夢搜尋失敗: {str(e)}"
+                logger.error(f"❌ [後端 Proxy] {error_msg}")
+                return jsonify({
+                    'error': error_msg,
+                    'status': 'api_error',
+                    'source': source,
+                    'details': str(e)
+                }), 500
+        
         # ✅ 成功返回結果
         return jsonify({
             'source': source,
@@ -431,7 +507,7 @@ def search_cards_paginated():
             page = 1
         
         # 驗證 source 參數
-        valid_sources = ['pokemon', 'yugioh', 'mtg', 'all']
+        valid_sources = ['pokemon', 'yugioh', 'mtg', 'tw-pokemon', 'all']
         if source not in valid_sources:
             logger.warning(f"⚠️ 無效的卡牌來源: {source}. 有效選項: {valid_sources}")
             return jsonify({
@@ -448,6 +524,26 @@ def search_cards_paginated():
                 'keyword': keyword,
                 'source': 'pokemon',
                 **result
+            })
+        
+        elif source == 'tw-pokemon':
+            # 台灣官方寶可夢
+            from scraper import CardScraper
+            scraper = CardScraper()
+            cards = scraper.scrape_taiwan_pokemon(keyword, limit=limit)
+            
+            # 應用分頁
+            start_idx = (page - 1) * limit
+            end_idx = start_idx + limit
+            paginated_cards = cards[start_idx:end_idx]
+            
+            return jsonify({
+                'keyword': keyword,
+                'source': 'tw-pokemon',
+                'cards': paginated_cards,
+                'total': len(cards),
+                'current_page': page,
+                'pages': (len(cards) + limit - 1) // limit  # 向上取整
             })
         
         elif source == 'yugioh':

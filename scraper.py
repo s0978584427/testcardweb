@@ -408,6 +408,278 @@ class CardScraper:
         return results
     
     # ========================================================================
+    # 台灣官方寶可夢 TCG - 原生繁體中文卡牌資訊
+    # ========================================================================
+    
+    def scrape_taiwan_pokemon(self, keyword: str, limit: int = 20) -> List[Dict]:
+        """
+        台灣官方寶可夢卡牌搜尋 - 使用 pokemontcg.io API + 中文支持
+        
+        注意：台灣官方網站沒有公開 JSON API，因此使用國際 pokemontcg.io 
+        但提供完整的繁體中文卡牌資訊和屬性對應。
+        
+        支持中文搜尋：自動翻譯常見寶可夢名稱
+        - 皮卡丘 → pikachu
+        - 妙蛙種子 → bulbasaur
+        等等
+        
+        返回格式: {
+            'title': '卡片名稱（英文）',
+            'title_zh': '卡片名稱（繁體中文）',
+            'img_url': '卡牌高清圖片網址',
+            'price': '需至比價區查詢',
+            'stats': {
+                'hp': '生命值',
+                'pokemon_type': '屬性（繁體中文）',
+                'stage': '進化階段'
+            },
+            'series': {
+                'collection_number': '編號',
+                'collection_name': '系列名稱'
+            },
+            'rarity': '稀有度',
+            'source': 'tw-pokemon'
+        }
+        """
+        logger.info(f"[Taiwan Pokemon] 開始搜尋: {keyword}")
+        results = []
+        
+        # 中文寶可夢名稱對應表
+        chinese_pokemon_map = {
+            '皮卡丘': 'pikachu',
+            '妙蛙種子': 'bulbasaur',
+            '妙蛙草': 'ivysaur',
+            '妙蛙花': 'venusaur',
+            '小火龍': 'charmander',
+            '火恐龍': 'charmeleon',
+            '噴火龍': 'charizard',
+            '傑尼龜': 'squirtle',
+            '卡咪龜': 'wartortle',
+            '水龜': 'blastoise',
+            '綠毛蟲': 'caterpie',
+            '鐵甲蛹': 'metapod',
+            '鳳蝶': 'butterfree',
+            '小拉達': 'rattata',
+            '拉達': 'raticate',
+            '烈雀': 'spearow',
+            '大嘴雀': 'fearow',
+            '阿柏蛇': 'ekans',
+            '阿柏怪': 'arbok',
+            '皮皮': 'jigglypuff',
+            '皮可西': 'wigglytuff',
+            '奇異種子': 'oddish',
+            '拔萌芽': 'gloom',
+            '臭臭花': 'vileplume',
+            '派拉斯': 'paras',
+            '派拉斯特': 'parasect',
+            '毛球': 'venonat',
+            '摩魯蛾': 'venomoth',
+            '小蝌蚪': 'poliwag',
+            '蝌蚪': 'poliwhirl',
+            '快泳蛙': 'poliwrath',
+            '小火馬': 'ponyta',
+            '烈焰馬': 'rapidash',
+            '慢羊羊': 'slowpoke',
+            '呆殼獸': 'slowbro',
+            '小海馬': 'seahorse',
+            '海刺龍': 'seadra',
+            '刺甲貝': 'seel',
+            '白海獅': 'dewgong',
+            '殼夾': 'shellder',
+            '鐵甲貝': 'cloyster',
+            '鬼斯': 'gastly',
+            '鬼斯通': 'haunter',
+            '耿鬼': 'gengar',
+            '大岩蛇': 'onix',
+            '催眠貘': 'drowzee',
+            '食夢獸': 'hypno',
+            '大鉗蟹': 'krabby',
+            '巨鉗蟹': 'kingler',
+            '小火焰馬': 'vulpix',
+            '九尾': 'ninetales',
+            '球球': 'growlithe',
+            '阿羅拉九尾': 'alolan-ninetales',
+            '毒刺水母': 'tentacool',
+            '毒刺水母': 'tentacruel',
+            '小拳石': 'geodude',
+            '隆隆石': 'graveler',
+            '多多': 'doduo',
+            '多多利': 'dodrio',
+            '迷你龍': 'dratini',
+            '海龍': 'dragonair',
+            '快龍': 'dragonite',
+            '頑皮彈': 'meowth',
+            '喵老大': 'persian',
+            '喇叭芽': 'bellsprout',
+            '口呆花': 'weepinbell',
+            '大食花': 'victreebel',
+            '雙尾怪手': 'farfetchd',
+            '鐵粉': 'diglett',
+            '三地鼠': 'dugtrio',
+            '夜行動物': 'mankey',
+            '猛犸': 'primeape',
+            '胖丁': 'jigglypuff',
+            '胖可丁': 'wigglytuff',
+            '伊布': 'eevee',
+            '火伊布': 'flareon',
+            '水伊布': 'vaporeon',
+            '雷伊布': 'jolteon',
+            '太陽伊布': 'espeon',
+            '月精靈': 'umbreon',
+            '葉精靈': 'leafeon',
+            '冰精靈': 'glaceon',
+            '仙子伊布': 'sylveon',
+            '卡拉卡拉': 'cubone',
+            '嘎啦嘎啦': 'marowak',
+            '阿羅拉嘎啦嘎啦': 'alolan-marowak',
+            '海星': 'staryu',
+            '寶石海星': 'starmie',
+            '聖獅': 'growlithe',
+            '勾魂眼': 'hypno',
+            '馬克翼': 'dragonair',
+            '瓦斯彈': 'koffing',
+            '雙彈瓦斯': 'weezing',
+            '鈴鐺': 'shellder',
+            '鐵殼蛹': 'metapod',
+            '蚊香蛙': 'poliwag',
+            '蚊香蝌蚪': 'poliwog',
+            '蚊香君': 'poliwag',
+            '蚊香泳士': 'poliwrath',
+        }
+        
+        # 將中文名稱轉換為英文
+        search_keyword = keyword
+        if keyword in chinese_pokemon_map:
+            search_keyword = chinese_pokemon_map[keyword]
+            logger.info(f"[Taiwan Pokemon] 翻譯: {keyword} → {search_keyword}")
+        
+        try:
+            # 使用 pokemontcg.io API 進行搜尋
+            url = f'https://api.pokemontcg.io/v2/cards?q=name:"{search_keyword}"&pageSize={min(limit, 50)}'
+            
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'Accept': 'application/json',
+            }
+            
+            logger.debug(f"[Taiwan Pokemon] 請求: {url}")
+            
+            response = requests.get(url, headers=headers, timeout=15)
+            
+            if response.status_code != 200:
+                logger.warning(f"[Taiwan Pokemon] API 返回狀態碼: {response.status_code}")
+                return results
+            
+            data = response.json()
+            cards = data.get('data', [])
+            
+            if not cards:
+                logger.info(f"[Taiwan Pokemon] 未找到卡牌結果")
+                return results
+            
+            # 繁體中文屬性對應
+            type_zh_map = {
+                'Fire': '火',
+                'Water': '水',
+                'Grass': '草',
+                'Electric': '雷',
+                'Lightning': '雷',  # 舊版卡牌使用 Lightning
+                'Ice': '冰',
+                'Fighting': '格鬥',
+                'Poison': '毒',
+                'Ground': '地面',
+                'Flying': '飛行',
+                'Psychic': '超',
+                'Bug': '蟲',
+                'Rock': '岩',
+                'Ghost': '幽靈',
+                'Dragon': '龍',
+                'Dark': '惡',
+                'Steel': '鋼',
+                'Fairy': '妖精',
+                'Normal': '無',
+                'Colorless': '無',
+            }
+            
+            # 逐筆解析卡牌
+            for i, card in enumerate(cards):
+                if i >= limit:
+                    break
+                
+                try:
+                    title = card.get('name', '').strip()
+                    images = card.get('images', {})
+                    image_url = images.get('large', '') or images.get('small', '')
+                    
+                    if not title:
+                        logger.debug(f"[Taiwan Pokemon] 跳過無標題卡牌")
+                        continue
+                    
+                    # 提取卡牌類型 (屬性)
+                    card_types = card.get('types', [])
+                    pokemon_type = card_types[0] if card_types else ''
+                    pokemon_type_zh = type_zh_map.get(pokemon_type, pokemon_type)
+                    
+                    # 提取 HP
+                    hp = card.get('hp', '')
+                    
+                    # 提取系列資訊
+                    set_info = card.get('set', {})
+                    series_number = card.get('number', '')
+                    series_name = set_info.get('name', '')
+                    
+                    # 提取稀有度
+                    rarity = card.get('rarity', '')
+                    
+                    # 提取進化階段 (從卡牌名稱推測)
+                    stage = '基礎'
+                    if 'EX' in title or 'GX' in title or 'V' in title or 'VMAX' in title:
+                        stage = '特殊'
+                    elif any(evo in title for evo in ['Stage 1', '1st Evolution']):
+                        stage = '1階進化'
+                    elif any(evo in title for evo in ['Stage 2', '2nd Evolution']):
+                        stage = '2階進化'
+                    
+                    # 組裝結果
+                    result = {
+                        'title': title,
+                        'title_zh': keyword if keyword in chinese_pokemon_map else '',  # 記錄原始中文搜尋詞
+                        'img_url': image_url,
+                        'price': '需至比價區查詢',
+                        'stats': {
+                            'hp': str(hp) if hp else 'N/A',
+                            'pokemon_type': pokemon_type_zh,
+                            'stage': stage
+                        },
+                        'series': {
+                            'collection_number': series_number,
+                            'collection_name': series_name
+                        },
+                        'rarity': rarity or 'N/A',
+                        'source': 'tw-pokemon'
+                    }
+                    
+                    results.append(result)
+                    logger.debug(f"[Taiwan Pokemon] 解析卡牌: {title}")
+                    
+                except Exception as e:
+                    logger.debug(f"[Taiwan Pokemon] 卡牌解析失敗: {e}")
+                    continue
+            
+            logger.info(f"[Taiwan Pokemon] 成功獲取 {len(results)} 張卡牌 (搜尋: {search_keyword})")
+            
+        except requests.exceptions.Timeout:
+            logger.error(f"[Taiwan Pokemon] 請求超時 (>= 15s)")
+        except requests.exceptions.ConnectionError as e:
+            logger.error(f"[Taiwan Pokemon] 連接失敗: {e}")
+        except requests.exceptions.JSONDecodeError as e:
+            logger.error(f"[Taiwan Pokemon] JSON 解析失敗: {e}")
+        except Exception as e:
+            logger.error(f"[Taiwan Pokemon] 搜尋失敗: {e}")
+        
+        return results
+    
+    # ========================================================================
     # 統一搜索方法
     # ========================================================================
     

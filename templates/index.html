@@ -414,6 +414,18 @@
                 <i class="fas fa-lightbulb"></i> <strong id="hintTitle">台灣 PChome</strong>：搜尋 <span id="hintExamples">遊戲王卡牌、寶可夢卡牌、集換式卡牌</span>
             </div>
 
+            <!-- 國際卡牌來源選擇器 (只在國際模式顯示) -->
+            <div id="cardSourceSelector" style="display: none; margin-top: 1.5rem; padding: 1rem; background-color: rgba(139, 92, 246, 0.1); border-left: 4px solid #8b5cf6; border-radius: 0.5rem;">
+                <label for="cardSource" style="color: #cbd5e1; font-weight: 600; margin-right: 1rem;">選擇卡牌來源：</label>
+                <select id="cardSource" onchange="changeCardSource(this.value)" style="padding: 0.5rem 1rem; background-color: var(--card-bg); color: var(--text-primary); border: 2px solid var(--border-color); border-radius: 0.5rem; cursor: pointer; font-size: 0.95rem;">
+                    <option value="pokemon">寶可夢 TCG (國際英文)</option>
+                    <option value="tw-pokemon">🇹🇼 寶可夢 TCG (台灣繁中官方)</option>
+                    <option value="yugioh">遊戲王</option>
+                    <option value="mtg">Magic 風雲會</option>
+                    <option value="all">全部來源</option>
+                </select>
+            </div>
+
             <!-- 快速搜尋建議 -->
             <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
                 <button class="quick-search-btn" onclick="quickSearch('遊戲王卡牌')">遊戲王卡牌</button>
@@ -450,12 +462,40 @@
             
             if (card.source === 'pokemon' && stats.types && stats.types.length > 0) {
                 type = stats.types[0].toLowerCase();
+            } else if (card.source === 'tw-pokemon') {
+                // 台灣寶可夢使用 type_color 和 pokemon_type 欄位
+                if (card.type_color) {
+                    return `linear-gradient(145deg, ${card.type_color.primary || '#a8a878'}, ${card.type_color.secondary || '#6d6d4f'})`;
+                }
+                type = stats.pokemon_type ? stats.pokemon_type.toLowerCase() : '';
             } else if (card.source === 'yugioh' && stats.attribute) {
                 type = stats.attribute.toLowerCase();
             } else if (card.source === 'mtg' && stats.type) {
                 type = stats.type.toLowerCase();
             }
             
+            // 台灣寶可夢屬性對應 (繁體中文)
+            const twPokemonGradients = {
+                '火': 'linear-gradient(145deg, #f08030, #a81828)',
+                '水': 'linear-gradient(145deg, #6890f0, #38609c)',
+                '草': 'linear-gradient(145deg, #78c850, #486838)',
+                '雷': 'linear-gradient(145deg, #f8d030, #a8a820)',
+                '冰': 'linear-gradient(145deg, #98d8d8, #686860)',
+                '格鬥': 'linear-gradient(145deg, #c03028, #90210e)',
+                '毒': 'linear-gradient(145deg, #a040a0, #782a58)',
+                '地面': 'linear-gradient(145deg, #e0c068, #804020)',
+                '飛行': 'linear-gradient(145deg, #a890f0, #6858a8)',
+                '超': 'linear-gradient(145deg, #f85888, #a82860)',
+                '蟲': 'linear-gradient(145deg, #a8b820, #6d7815)',
+                '岩': 'linear-gradient(145deg, #b8a038, #786824)',
+                '幽靈': 'linear-gradient(145deg, #705898, #493963)',
+                '龍': 'linear-gradient(145deg, #7038f8, #4924a8)',
+                '惡': 'linear-gradient(145deg, #705848, #49392f)',
+                '鋼': 'linear-gradient(145deg, #b8b8d0, #78787c)',
+                '妖精': 'linear-gradient(145deg, #ee99ac, #c23e5b)',
+            };
+            
+            // 英文屬性對應
             const gradients = {
                 'fire': 'linear-gradient(145deg, #a80000, #000000)',
                 'water': 'linear-gradient(145deg, #003366, #000000)',
@@ -466,6 +506,11 @@
                 'dark': 'linear-gradient(145deg, #4b0082, #000000)',
                 'default': 'linear-gradient(145deg, #2c3e50, #000000)'
             };
+            
+            // 優先使用台灣寶可夢的繁中屬性
+            if (card.source === 'tw-pokemon' && type in twPokemonGradients) {
+                return twPokemonGradients[type];
+            }
             
             return gradients[type] || gradients['default'];
         }
@@ -571,6 +616,42 @@
                     <span style="${labelStyle}">稀有度:</span>
                     <span style="${valueStyle}">${stats.rarity || 'N/A'}</span>
                 </div>`;
+            } else if (card.source === 'tw-pokemon') {
+                // 台灣官方寶可夢卡牌
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">HP (生命值):</span>
+                    <span style="${valueStyle}">${stats.hp || 'N/A'}</span>
+                </div>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">屬性 (繁體):</span>
+                    <span style="${valueStyle}">${stats.pokemon_type || 'N/A'}</span>
+                </div>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">進化階段:</span>
+                    <span style="${valueStyle}">${stats.stage || 'N/A'}</span>
+                </div>`;
+                
+                // 顯示系列信息
+                if (card.series) {
+                    detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                        <span style="${labelStyle}">系列:</span>
+                        <span style="${valueStyle}">${card.series.collection_name || 'N/A'}</span>
+                    </div>`;
+                    detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                        <span style="${labelStyle}">編號:</span>
+                        <span style="${valueStyle}">${card.series.collection_number || 'N/A'}</span>
+                    </div>`;
+                }
+                
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">稀有度:</span>
+                    <span style="${valueStyle}">${card.rarity || 'N/A'}</span>
+                </div>`;
+                
+                detailsHTML += `<div style="background: rgba(255, 215, 0, 0.1) !important; padding: 0.8rem !important; border-radius: 6px !important; margin-top: 1rem !important; border-left: 3px solid #FFD700 !important;">
+                    <span style="color: #FFD700 !important; font-weight: 600 !important; ${textShadow}">🇹🇼 官方繁體中文卡牌</span><br>
+                    <span style="color: #CCCCCC !important; font-size: 0.85rem !important; ${textShadow}">直接來自台灣官方 API，提供完整的繁體中文資訊。</span>
+                </div>`;
             }
             
             detailsHTML += `<p style="${descriptionStyle}">${card.description || '無描述'}</p>`;
@@ -608,9 +689,10 @@
         
         function getSourceName(source) {
             const names = {
-                'pokemon': '寶可夢 TCG',
+                'pokemon': '寶可夢 TCG (國際)',
                 'yugioh': '遊戲王',
-                'mtg': 'Magic 風雲會'
+                'mtg': 'Magic 風雲會',
+                'tw-pokemon': '🇹🇼 寶可夢 TCG (台灣繁中)'
             };
             return names[source] || source;
         }
@@ -625,6 +707,14 @@
                 btn.classList.toggle('active', modes[i] === mode);
             });
 
+            // 顯示/隱藏卡牌來源選擇器
+            const sourceSelector = document.getElementById('cardSourceSelector');
+            if (mode === 'international') {
+                sourceSelector.style.display = 'block';
+            } else {
+                sourceSelector.style.display = 'none';
+            }
+
             // 更新提示信息
             const hints = {
                 'ecommerce': {
@@ -634,7 +724,7 @@
                 },
                 'international': {
                     title: '國際卡牌 API',
-                    examples: '英文卡牌名稱：pikachu、blue eyes、black lotus',
+                    examples: '英文卡牌名稱：pikachu、blue eyes、black lotus | 繁體中文：寶可夢卡牌',
                     placeholder: '搜尋建議：pikachu, blue eyes, black lotus...'
                 },
                 'combined': {
@@ -648,6 +738,13 @@
             document.getElementById('hintTitle').textContent = hint.title;
             document.getElementById('hintExamples').textContent = hint.examples;
             document.getElementById('searchKeyword').placeholder = hint.placeholder;
+        }
+
+        /** 改變卡牌來源 */
+        function changeCardSource(source) {
+            console.log('改變卡牌來源:', source);
+            currentCardSearch.source = source;
+            currentCardSearch.page = 1;  // 重置到第 1 頁
         }
 
         /** 快速搜尋按鈕 */
@@ -865,15 +962,23 @@
             const currentPage = data.current_page || 1;
             
             const sourceNames = {
-                'pokemon': '⚡ 寶可夢 TCG',
+                'pokemon': '⚡ 寶可夢 TCG (國際)',
                 'yugioh': '🎴 遊戲王',
-                'mtg': '🪄 魔法風雲會'
+                'mtg': '🪄 魔法風雲會',
+                'tw-pokemon': '🇹🇼 寶可夢 TCG (台灣繁中)'
+            };
+            
+            const sourceColors = {
+                'pokemon': '#FF6B6B',
+                'yugioh': '#FFD700',
+                'mtg': '#9932CC',
+                'tw-pokemon': '#FF6347'  // 台灣寶可夢使用稍深的紅色
             };
             
             let html = `
                 <div class="platform-results">
-                    <div class="platform-header" style="border-bottom-color: ${source === 'pokemon' ? '#FF6B6B' : source === 'yugioh' ? '#FFD700' : '#9932CC'};">
-                        <h2>${sourceNames[source]}</h2>
+                    <div class="platform-header" style="border-bottom-color: ${sourceColors[source] || '#999999'};">
+                        <h2>${sourceNames[source] || source}</h2>
                         <span class="result-count">${cards.length} / ${total}</span>
                     </div>
                     <div class="product-grid">
