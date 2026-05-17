@@ -525,8 +525,13 @@
             modalBody.style.background = gradient;
             modalBody.style.backgroundAttachment = 'fixed';
             
-            document.getElementById('cardModalTitle').textContent = card.title;
-            document.getElementById('cardModalImage').src = card.img_large || card.img_url || '';
+            // 支持新舊欄位名稱
+            const displayName = card.name || card.title || '';
+            const imageUrl = card.image_url || card.img_url || '';
+            const imageLarge = card.image_url || card.img_large || card.img_url || '';
+            
+            document.getElementById('cardModalTitle').textContent = displayName;
+            document.getElementById('cardModalImage').src = imageLarge;
             
             // 圖片樣式：加入發光效果
             const imgElement = document.getElementById('cardModalImage');
@@ -541,7 +546,7 @@
             const descriptionStyle = `color: #FFFFFF !important; ${textShadow} font-size: 0.95rem; line-height: 1.7; margin-top: 1rem;`;
             
             // 構建詳細信息 - 使用 Flex 佈局
-            let detailsHTML = `<h5 style="${titleStyle}">${card.title}</h5>`;
+            let detailsHTML = `<h5 style="${titleStyle}">${displayName}</h5>`;
             
             // 使用 Flex 佈局讓標籤和值左右對齐
             detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
@@ -551,7 +556,7 @@
             
             detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
                 <span style="${labelStyle}">價格:</span>
-                <span style="${valueStyle}">$${card.price || 'N/A'}</span>
+                <span style="${valueStyle}">${card.price || 'N/A'}</span>
             </div>`;
             
             // 根據卡牌類型顯示不同的屬性
@@ -574,6 +579,42 @@
                     <span style="${labelStyle}">稀有度:</span>
                     <span style="${valueStyle}">${stats.rarity || 'N/A'}</span>
                 </div>`;
+            } else if (card.source === 'pokemon-en') {
+                // 新的國際英文寶可夢卡牌格式
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">HP:</span>
+                    <span style="${valueStyle}">${card.hp || 'N/A'}</span>
+                </div>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">Type:</span>
+                    <span style="${valueStyle}">${card.type || 'N/A'}</span>
+                </div>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">Series:</span>
+                    <span style="${valueStyle}">${card.series || 'N/A'}</span>
+                </div>`;
+                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
+                    <span style="${labelStyle}">Rarity:</span>
+                    <span style="${valueStyle}">${card.rarity || 'N/A'}</span>
+                </div>`;
+                
+                // 顯示英文技能
+                if (card.skills && card.skills.length > 0) {
+                    detailsHTML += `<div style="background: rgba(100, 149, 237, 0.1) !important; padding: 0.8rem !important; border-radius: 6px !important; margin-top: 1rem !important; border-left: 3px solid #6495ED !important;">
+                        <h6 style="color: #6495ED !important; font-weight: 600 !important; ${textShadow}; margin-bottom: 0.8rem !important;">⚡ Attacks & Abilities</h6>`;
+                        
+                        card.skills.forEach((skill, index) => {
+                            detailsHTML += `<div style="background: rgba(0, 0, 0, 0.3) !important; padding: 0.6rem !important; border-radius: 4px !important; margin-bottom: 0.6rem !important;">
+                                <div style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
+                                    <span style="color: #FFFFFF !important; font-weight: 600 !important; ${textShadow}">${skill.name}</span>
+                                    ${skill.damage ? `<span style="color: #FF6347 !important; font-weight: 700 !important; ${textShadow}; font-size: 0.9rem !important;">DMG: ${skill.damage}</span>` : ''}
+                                </div>
+                                ${skill.effect ? `<div style="color: #CCCCCC !important; font-size: 0.85rem !important; ${textShadow}; margin-top: 0.4rem !important; line-height: 1.5 !important;">${skill.effect}</div>` : ''}
+                            </div>`;
+                        });
+                        
+                        detailsHTML += `</div>`;
+                    }
             } else if (card.source === 'yugioh') {
                 detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
                     <span style="${labelStyle}">類型:</span>
@@ -652,6 +693,24 @@
                     <span style="color: #FFD700 !important; font-weight: 600 !important; ${textShadow}">🇹🇼 官方繁體中文卡牌</span><br>
                     <span style="color: #CCCCCC !important; font-size: 0.85rem !important; ${textShadow}">直接來自台灣官方 API，提供完整的繁體中文資訊。</span>
                 </div>`;
+                
+                // 顯示技能 (Skills/Attacks)
+                if (card.skills && card.skills.length > 0) {
+                    detailsHTML += `<div style="background: rgba(100, 149, 237, 0.1) !important; padding: 0.8rem !important; border-radius: 6px !important; margin-top: 1rem !important; border-left: 3px solid #6495ED !important;">
+                        <h6 style="color: #6495ED !important; font-weight: 600 !important; ${textShadow}; margin-bottom: 0.8rem !important;">⚡ 技能與招式</h6>`;
+                    
+                    card.skills.forEach((skill, index) => {
+                        detailsHTML += `<div style="background: rgba(0, 0, 0, 0.3) !important; padding: 0.6rem !important; border-radius: 4px !important; margin-bottom: 0.6rem !important;">
+                            <div style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
+                                <span style="color: #FFFFFF !important; font-weight: 600 !important; ${textShadow}">${skill.name}</span>
+                                ${skill.damage ? `<span style="color: #FF6347 !important; font-weight: 700 !important; ${textShadow}; font-size: 0.9rem !important;">傷害: ${skill.damage}</span>` : ''}
+                            </div>
+                            ${skill.effect ? `<div style="color: #CCCCCC !important; font-size: 0.85rem !important; ${textShadow}; margin-top: 0.4rem !important; line-height: 1.5 !important;">${skill.effect}</div>` : ''}
+                        </div>`;
+                    });
+                    
+                    detailsHTML += `</div>`;
+                }
             }
             
             detailsHTML += `<p style="${descriptionStyle}">${card.description || '無描述'}</p>`;
@@ -995,19 +1054,24 @@
         
         /** 創建卡牌元素 */
         function createCardElement(card, source) {
+            // 支持兩種格式：新格式 (image_url) 和舊格式 (img_url)
+            const imageUrl = card.image_url || card.img_url || '';
+            const displayName = card.name || card.title || '';
+            
             return `
                 <div class="product-card" style="cursor: pointer;" onclick="showCardDetail(${JSON.stringify(card).replace(/"/g, '&quot;')})">
                     <div class="product-image">
-                        <img src="${card.img_url || ''}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'" style="cursor: pointer;">
+                        <img src="${imageUrl}" alt="${displayName}" onerror="this.src='https://picsum.photos/280/220?random=${Math.random()}'" style="cursor: pointer;">
                     </div>
                     <div class="product-info">
-                        <div class="product-name">${card.title}</div>
+                        <div class="product-name">${displayName}</div>
                         <div style="font-size: 0.8rem; color: #888; margin: 0.3rem 0;">
-                            $${card.price || 'N/A'}
+                            ${card.price ? '$' + card.price : 'N/A'}
                         </div>
                         <div style="font-size: 0.75rem; color: #aaa;">
-                            ${card.stats?.set || card.stats?.type || ''}
+                            ${card.series || card.stats?.set || card.stats?.type || ''}
                         </div>
+                        ${card.skills && card.skills.length > 0 ? `<div style="font-size: 0.7rem; color: #6495ED; margin-top: 0.3rem;">⚡ ${card.skills.length} 個技能</div>` : ''}
                     </div>
                 </div>
             `;

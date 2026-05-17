@@ -408,40 +408,234 @@ class CardScraper:
         return results
     
     # ========================================================================
+    # 寶可夢 TCG 通用數據清洗函數 - 支持多語系
+    # ========================================================================
+    
+    def _build_pokemon_skills_dict(self):
+        """建立常見寶可夢技能的繁中翻譯字典"""
+        return {
+            # 攻擊技能
+            'Thunderbolt': {'name': '十萬伏特', 'type': '雷'},
+            'Thundershock': {'name': '電擊', 'type': '雷'},
+            'Thunder': {'name': '雷鳴', 'type': '雷'},
+            'Bolt Strike': {'name': '電擊', 'type': '雷'},
+            'Hydro Pump': {'name': '水砲', 'type': '水'},
+            'Surf': {'name': '衝浪', 'type': '水'},
+            'Aqua Jet': {'name': '水流噴射', 'type': '水'},
+            'Flamethrower': {'name': '火焰放射', 'type': '火'},
+            'Fire Spin': {'name': '火旋風', 'type': '火'},
+            'Flame Burst': {'name': '火焰爆裂', 'type': '火'},
+            'Solar Beam': {'name': '日光束', 'type': '草'},
+            'Leaf Blade': {'name': '葉刃', 'type': '草'},
+            'Vine Whip': {'name': '藤鞭', 'type': '草'},
+            'Stone Edge': {'name': '岩石利刃', 'type': '岩'},
+            'Rock Slide': {'name': '岩石滑落', 'type': '岩'},
+            'Dragon Claw': {'name': '龍爪', 'type': '龍'},
+            'Dragon Pulse': {'name': '龍波', 'type': '龍'},
+            'Psychic': {'name': '精神強念', 'type': '超'},
+            'Confusion': {'name': '迷惑', 'type': '超'},
+            'Shadow Ball': {'name': '暗影球', 'type': '幽靈'},
+            'Dark Pulse': {'name': '黑暗脈衝', 'type': '惡'},
+            'Iron Head': {'name': '鐵頭', 'type': '鋼'},
+            'Metal Burst': {'name': '鐵壁重擊', 'type': '鋼'},
+            'Close Combat': {'name': '近身戰', 'type': '格鬥'},
+            'Superpower': {'name': '超級力量', 'type': '格鬥'},
+            'Earthquake': {'name': '地震', 'type': '地面'},
+            'Magnitude': {'name': '地力', 'type': '地面'},
+            'Aerial Ace': {'name': '燕返', 'type': '飛行'},
+            'Air Slash': {'name': '空氣斬', 'type': '飛行'},
+            'Poison Powder': {'name': '毒粉', 'type': '毒'},
+            'Toxic Spikes': {'name': '毒菱', 'type': '毒'},
+            'Ice Beam': {'name': '冰射線', 'type': '冰'},
+            'Blizzard': {'name': '暴雪', 'type': '冰'},
+            'Moonblast': {'name': '月亮之力', 'type': '妖精'},
+            'Play Rough': {'name': '嬉鬧', 'type': '妖精'},
+            'X-Scissor': {'name': '蟲咬', 'type': '蟲'},
+            'Signal Beam': {'name': '信號光束', 'type': '蟲'},
+            'Bug Bite': {'name': '蟲咬', 'type': '蟲'},
+            
+            # 非攻擊技能 (能力/狀態)
+            'Growl': {'name': '鳴叫', 'type': '一般'},
+            'Protect': {'name': '守住', 'type': '一般'},
+            'Agility': {'name': '高速移動', 'type': '超'},
+            'Double Team': {'name': '分身', 'type': '一般'},
+            'Rest': {'name': '睡眠', 'type': '超'},
+            'Recover': {'name': '自我再生', 'type': '一般'},
+            'Synthesis': {'name': '光合作用', 'type': '草'},
+            'Amnesia': {'name': '遺忘', 'type': '超'},
+        }
+    
+    def _normalize_pokemon_card(self, card: Dict, language: str = 'en', chinese_translation: Dict = None) -> Dict:
+        """
+        統一規範化寶可夢卡牌數據
+        
+        Args:
+            card: pokemontcg.io API 返回的卡牌數據
+            language: 語言 ('en' 或 'zh')
+            chinese_translation: 中文翻譯字典 (如果 language='zh')
+        
+        Returns:
+            統一格式的卡牌字典
+        """
+        try:
+            card_id = card.get('id', '')
+            name = card.get('name', '')
+            
+            # 中文翻譯（如果需要）
+            if language == 'zh' and chinese_translation and name in chinese_translation:
+                display_name = chinese_translation[name]
+            else:
+                display_name = name
+            
+            # 圖片 URL
+            images = card.get('images', {})
+            image_url = images.get('large', '') or images.get('small', '')
+            
+            # 類型（屬性）
+            card_types = card.get('types', [])
+            card_type = card_types[0] if card_types else 'Colorless'
+            
+            # 中文屬性對應
+            type_zh_map = {
+                'Fire': '火',
+                'Water': '水',
+                'Grass': '草',
+                'Electric': '雷',
+                'Lightning': '雷',
+                'Ice': '冰',
+                'Fighting': '格鬥',
+                'Poison': '毒',
+                'Ground': '地面',
+                'Flying': '飛行',
+                'Psychic': '超',
+                'Bug': '蟲',
+                'Rock': '岩',
+                'Ghost': '幽靈',
+                'Dragon': '龍',
+                'Dark': '惡',
+                'Steel': '鋼',
+                'Fairy': '妖精',
+                'Normal': '無',
+                'Colorless': '無',
+            }
+            
+            # HP
+            hp = card.get('hp', '')
+            
+            # 系列
+            set_info = card.get('set', {})
+            series_name = set_info.get('name', '')
+            if language == 'zh':
+                # 簡單中文化系列名稱
+                series_name_display = series_name
+                if 'Base Set' in series_name:
+                    series_name_display = '基礎'
+                elif 'Jungle' in series_name:
+                    series_name_display = '叢林'
+                elif 'Fossil' in series_name:
+                    series_name_display = '化石'
+            else:
+                series_name_display = series_name
+            
+            # 系列編號
+            collection_number = card.get('number', '')
+            
+            # 稀有度
+            rarity = card.get('rarity', '')
+            
+            # 技能/攻擊提取
+            skills = []
+            attacks = card.get('attacks', [])
+            skills_dict = self._build_pokemon_skills_dict()
+            
+            for attack in attacks:
+                attack_name = attack.get('name', '')
+                attack_damage = attack.get('damage', '')
+                attack_text = attack.get('text', '')
+                
+                # 如果是繁中版本，嘗試翻譯
+                if language == 'zh' and attack_name in skills_dict:
+                    attack_name_display = skills_dict[attack_name]['name']
+                    # 簡單翻譯效果文本（應用投幣等常見詞匯）
+                    attack_text_display = attack_text
+                    if 'Flip a coin' in attack_text:
+                        attack_text_display = attack_text_display.replace('Flip a coin', '拋擲硬幣')
+                    if 'heads' in attack_text:
+                        attack_text_display = attack_text_display.replace('heads', '正面')
+                    if 'tails' in attack_text:
+                        attack_text_display = attack_text_display.replace('tails', '反面')
+                    if 'Paralyzed' in attack_text:
+                        attack_text_display = attack_text_display.replace('Paralyzed', '陷入麻痺狀態')
+                    if 'Confused' in attack_text:
+                        attack_text_display = attack_text_display.replace('Confused', '陷入混亂狀態')
+                    if 'damage to' in attack_text:
+                        attack_text_display = attack_text_display.replace('damage to', '傷害給')
+                    if 'Defending Pokémon' in attack_text:
+                        attack_text_display = attack_text_display.replace('Defending Pokémon', '受攻擊的寶可夢')
+                    if 'Benching' in attack_text:
+                        attack_text_display = attack_text_display.replace('Benching', '替換')
+                else:
+                    attack_name_display = attack_name
+                    attack_text_display = attack_text
+                
+                skill_obj = {
+                    'name': attack_name_display,
+                    'damage': str(attack_damage) if attack_damage else '',
+                    'effect': attack_text_display
+                }
+                
+                skills.append(skill_obj)
+            
+            # 組裝最終結果
+            result = {
+                'id': card_id,
+                'name': display_name,
+                'image_url': image_url,
+                'type': card_type if language == 'en' else type_zh_map.get(card_type, card_type),
+                'hp': str(hp) if hp else '',
+                'series': series_name_display,
+                'number': collection_number,
+                'rarity': rarity,
+                'skills': skills,
+                'price': '需至比價區查詢' if language == 'zh' else 'N/A',
+                'source': 'tw-pokemon' if language == 'zh' else 'pokemon-en'
+            }
+            
+            return result
+            
+        except Exception as e:
+            logger.error(f"[Pokemon] 卡牌規範化失敗: {e}")
+            return {}
+    
+    # ========================================================================
     # 台灣官方寶可夢 TCG - 原生繁體中文卡牌資訊
     # ========================================================================
     
     def scrape_taiwan_pokemon(self, keyword: str, limit: int = 20) -> List[Dict]:
         """
-        台灣官方寶可夢卡牌搜尋 - 使用 pokemontcg.io API + 中文支持
+        台灣官方寶可夢卡牌搜尋 - 繁體中文版本
         
-        注意：台灣官方網站沒有公開 JSON API，因此使用國際 pokemontcg.io 
-        但提供完整的繁體中文卡牌資訊和屬性對應。
+        使用 pokemontcg.io API + 中文翻譯層
+        - 自動翻譯中文搜尋詞 (皮卡丘 → pikachu)
+        - 卡牌名稱顯示英文（pokemontcg.io 標準）
+        - 技能名稱和效果提供繁中翻譯
+        - 屬性顯示繁中 (Fire → 火)
         
-        支持中文搜尋：自動翻譯常見寶可夢名稱
-        - 皮卡丘 → pikachu
-        - 妙蛙種子 → bulbasaur
-        等等
-        
-        返回格式: {
-            'title': '卡片名稱（英文）',
-            'title_zh': '卡片名稱（繁體中文）',
-            'img_url': '卡牌高清圖片網址',
-            'price': '需至比價區查詢',
-            'stats': {
-                'hp': '生命值',
-                'pokemon_type': '屬性（繁體中文）',
-                'stage': '進化階段'
-            },
-            'series': {
-                'collection_number': '編號',
-                'collection_name': '系列名稱'
-            },
+        返回統一格式: {
+            'id': '卡片唯一識別碼',
+            'name': '英文卡牌名稱',
+            'image_url': '卡牌高清圖片',
+            'type': '繁中屬性 (火/水/草等)',
+            'hp': '生命值',
+            'series': '系列名稱',
+            'number': '系列編號',
             'rarity': '稀有度',
+            'skills': [{'name': '繁中招式名', 'damage': '傷害數值', 'effect': '繁中效果'}],
+            'price': '需至比價區查詢',
             'source': 'tw-pokemon'
         }
         """
-        logger.info(f"[Taiwan Pokemon] 開始搜尋: {keyword}")
+        logger.info(f"[Taiwan Pokemon TW] 開始搜尋: {keyword}")
         results = []
         
         # 中文寶可夢名稱對應表
@@ -500,7 +694,6 @@ class CardScraper:
             '球球': 'growlithe',
             '阿羅拉九尾': 'alolan-ninetales',
             '毒刺水母': 'tentacool',
-            '毒刺水母': 'tentacruel',
             '小拳石': 'geodude',
             '隆隆石': 'graveler',
             '多多': 'doduo',
@@ -513,13 +706,6 @@ class CardScraper:
             '喇叭芽': 'bellsprout',
             '口呆花': 'weepinbell',
             '大食花': 'victreebel',
-            '雙尾怪手': 'farfetchd',
-            '鐵粉': 'diglett',
-            '三地鼠': 'dugtrio',
-            '夜行動物': 'mankey',
-            '猛犸': 'primeape',
-            '胖丁': 'jigglypuff',
-            '胖可丁': 'wigglytuff',
             '伊布': 'eevee',
             '火伊布': 'flareon',
             '水伊布': 'vaporeon',
@@ -531,27 +717,17 @@ class CardScraper:
             '仙子伊布': 'sylveon',
             '卡拉卡拉': 'cubone',
             '嘎啦嘎啦': 'marowak',
-            '阿羅拉嘎啦嘎啦': 'alolan-marowak',
             '海星': 'staryu',
             '寶石海星': 'starmie',
-            '聖獅': 'growlithe',
-            '勾魂眼': 'hypno',
-            '馬克翼': 'dragonair',
             '瓦斯彈': 'koffing',
             '雙彈瓦斯': 'weezing',
-            '鈴鐺': 'shellder',
-            '鐵殼蛹': 'metapod',
-            '蚊香蛙': 'poliwag',
-            '蚊香蝌蚪': 'poliwog',
-            '蚊香君': 'poliwag',
-            '蚊香泳士': 'poliwrath',
         }
         
         # 將中文名稱轉換為英文
         search_keyword = keyword
         if keyword in chinese_pokemon_map:
             search_keyword = chinese_pokemon_map[keyword]
-            logger.info(f"[Taiwan Pokemon] 翻譯: {keyword} → {search_keyword}")
+            logger.info(f"[Taiwan Pokemon TW] 翻譯: {keyword} → {search_keyword}")
         
         try:
             # 使用 pokemontcg.io API 進行搜尋
@@ -562,120 +738,129 @@ class CardScraper:
                 'Accept': 'application/json',
             }
             
-            logger.debug(f"[Taiwan Pokemon] 請求: {url}")
+            logger.debug(f"[Taiwan Pokemon TW] 請求: {url}")
             
             response = requests.get(url, headers=headers, timeout=15)
             
             if response.status_code != 200:
-                logger.warning(f"[Taiwan Pokemon] API 返回狀態碼: {response.status_code}")
+                logger.warning(f"[Taiwan Pokemon TW] API 返回狀態碼: {response.status_code}")
                 return results
             
             data = response.json()
             cards = data.get('data', [])
             
             if not cards:
-                logger.info(f"[Taiwan Pokemon] 未找到卡牌結果")
+                logger.info(f"[Taiwan Pokemon TW] 未找到卡牌結果")
                 return results
             
-            # 繁體中文屬性對應
-            type_zh_map = {
-                'Fire': '火',
-                'Water': '水',
-                'Grass': '草',
-                'Electric': '雷',
-                'Lightning': '雷',  # 舊版卡牌使用 Lightning
-                'Ice': '冰',
-                'Fighting': '格鬥',
-                'Poison': '毒',
-                'Ground': '地面',
-                'Flying': '飛行',
-                'Psychic': '超',
-                'Bug': '蟲',
-                'Rock': '岩',
-                'Ghost': '幽靈',
-                'Dragon': '龍',
-                'Dark': '惡',
-                'Steel': '鋼',
-                'Fairy': '妖精',
-                'Normal': '無',
-                'Colorless': '無',
-            }
-            
-            # 逐筆解析卡牌
+            # 逐筆解析卡牌並使用統一規範化函數
             for i, card in enumerate(cards):
                 if i >= limit:
                     break
                 
                 try:
-                    title = card.get('name', '').strip()
-                    images = card.get('images', {})
-                    image_url = images.get('large', '') or images.get('small', '')
-                    
-                    if not title:
-                        logger.debug(f"[Taiwan Pokemon] 跳過無標題卡牌")
-                        continue
-                    
-                    # 提取卡牌類型 (屬性)
-                    card_types = card.get('types', [])
-                    pokemon_type = card_types[0] if card_types else ''
-                    pokemon_type_zh = type_zh_map.get(pokemon_type, pokemon_type)
-                    
-                    # 提取 HP
-                    hp = card.get('hp', '')
-                    
-                    # 提取系列資訊
-                    set_info = card.get('set', {})
-                    series_number = card.get('number', '')
-                    series_name = set_info.get('name', '')
-                    
-                    # 提取稀有度
-                    rarity = card.get('rarity', '')
-                    
-                    # 提取進化階段 (從卡牌名稱推測)
-                    stage = '基礎'
-                    if 'EX' in title or 'GX' in title or 'V' in title or 'VMAX' in title:
-                        stage = '特殊'
-                    elif any(evo in title for evo in ['Stage 1', '1st Evolution']):
-                        stage = '1階進化'
-                    elif any(evo in title for evo in ['Stage 2', '2nd Evolution']):
-                        stage = '2階進化'
-                    
-                    # 組裝結果
-                    result = {
-                        'title': title,
-                        'title_zh': keyword if keyword in chinese_pokemon_map else '',  # 記錄原始中文搜尋詞
-                        'img_url': image_url,
-                        'price': '需至比價區查詢',
-                        'stats': {
-                            'hp': str(hp) if hp else 'N/A',
-                            'pokemon_type': pokemon_type_zh,
-                            'stage': stage
-                        },
-                        'series': {
-                            'collection_number': series_number,
-                            'collection_name': series_name
-                        },
-                        'rarity': rarity or 'N/A',
-                        'source': 'tw-pokemon'
-                    }
-                    
-                    results.append(result)
-                    logger.debug(f"[Taiwan Pokemon] 解析卡牌: {title}")
+                    # 使用統一規範化函數，language='zh' 以獲得繁中翻譯
+                    normalized = self._normalize_pokemon_card(card, language='zh', chinese_translation=None)
+                    if normalized:
+                        results.append(normalized)
+                        logger.debug(f"[Taiwan Pokemon TW] 解析卡牌: {normalized.get('name')}")
                     
                 except Exception as e:
-                    logger.debug(f"[Taiwan Pokemon] 卡牌解析失敗: {e}")
+                    logger.debug(f"[Taiwan Pokemon TW] 卡牌解析失敗: {e}")
                     continue
             
-            logger.info(f"[Taiwan Pokemon] 成功獲取 {len(results)} 張卡牌 (搜尋: {search_keyword})")
+            logger.info(f"[Taiwan Pokemon TW] 成功獲取 {len(results)} 張卡牌 (搜尋: {search_keyword})")
             
         except requests.exceptions.Timeout:
-            logger.error(f"[Taiwan Pokemon] 請求超時 (>= 15s)")
+            logger.error(f"[Taiwan Pokemon TW] 請求超時 (>= 15s)")
         except requests.exceptions.ConnectionError as e:
-            logger.error(f"[Taiwan Pokemon] 連接失敗: {e}")
+            logger.error(f"[Taiwan Pokemon TW] 連接失敗: {e}")
         except requests.exceptions.JSONDecodeError as e:
-            logger.error(f"[Taiwan Pokemon] JSON 解析失敗: {e}")
+            logger.error(f"[Taiwan Pokemon TW] JSON 解析失敗: {e}")
         except Exception as e:
-            logger.error(f"[Taiwan Pokemon] 搜尋失敗: {e}")
+            logger.error(f"[Taiwan Pokemon TW] 搜尋失敗: {e}")
+        
+        return results
+    
+    # ========================================================================
+    # 國際英文寶可夢 TCG - 英文版本
+    # ========================================================================
+    
+    def scrape_pokemon_en(self, keyword: str, limit: int = 20) -> List[Dict]:
+        """
+        國際英文寶可夢卡牌搜尋 - 英文版本
+        
+        使用 pokemontcg.io API 的英文數據
+        - 卡牌名稱、技能名稱、效果全部保留英文原文
+        - 無翻譯，直接返回
+        
+        返回統一格式: {
+            'id': '卡片唯一識別碼',
+            'name': '英文卡牌名稱',
+            'image_url': '卡牌高清圖片',
+            'type': '英文屬性 (Fire/Water/Lightning等)',
+            'hp': '生命值',
+            'series': '系列名稱',
+            'number': '系列編號',
+            'rarity': '稀有度',
+            'skills': [{'name': '英文招式名', 'damage': '傷害數值', 'effect': '英文效果'}],
+            'price': 'N/A',
+            'source': 'pokemon-en'
+        }
+        """
+        logger.info(f"[Pokemon EN] 開始搜尋: {keyword}")
+        results = []
+        
+        try:
+            # 使用 pokemontcg.io API 進行搜尋
+            url = f'https://api.pokemontcg.io/v2/cards?q=name:"{keyword}"&pageSize={min(limit, 50)}'
+            
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'Accept': 'application/json',
+            }
+            
+            logger.debug(f"[Pokemon EN] 請求: {url}")
+            
+            response = requests.get(url, headers=headers, timeout=15)
+            
+            if response.status_code != 200:
+                logger.warning(f"[Pokemon EN] API 返回狀態碼: {response.status_code}")
+                return results
+            
+            data = response.json()
+            cards = data.get('data', [])
+            
+            if not cards:
+                logger.info(f"[Pokemon EN] 未找到卡牌結果")
+                return results
+            
+            # 逐筆解析卡牌並使用統一規範化函數
+            for i, card in enumerate(cards):
+                if i >= limit:
+                    break
+                
+                try:
+                    # 使用統一規範化函數，language='en' 以保持英文
+                    normalized = self._normalize_pokemon_card(card, language='en', chinese_translation=None)
+                    if normalized:
+                        results.append(normalized)
+                        logger.debug(f"[Pokemon EN] 解析卡牌: {normalized.get('name')}")
+                    
+                except Exception as e:
+                    logger.debug(f"[Pokemon EN] 卡牌解析失敗: {e}")
+                    continue
+            
+            logger.info(f"[Pokemon EN] 成功獲取 {len(results)} 張卡牌 (搜尋: {keyword})")
+            
+        except requests.exceptions.Timeout:
+            logger.error(f"[Pokemon EN] 請求超時 (>= 15s)")
+        except requests.exceptions.ConnectionError as e:
+            logger.error(f"[Pokemon EN] 連接失敗: {e}")
+        except requests.exceptions.JSONDecodeError as e:
+            logger.error(f"[Pokemon EN] JSON 解析失敗: {e}")
+        except Exception as e:
+            logger.error(f"[Pokemon EN] 搜尋失敗: {e}")
         
         return results
     

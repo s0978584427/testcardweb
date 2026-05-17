@@ -184,7 +184,7 @@ def get_cards_proxy():
             }), 400
         
         # 驗證 source 參數
-        valid_sources = ['pokemon', 'yugioh', 'mtg', 'tw-pokemon']
+        valid_sources = ['pokemon', 'pokemon-en', 'yugioh', 'mtg', 'tw-pokemon']
         if source not in valid_sources:
             return jsonify({
                 'error': f'無效的來源: {source}',
@@ -255,6 +255,50 @@ def get_cards_proxy():
                 }), 503
             except Exception as e:
                 error_msg = f"Pokemon TCG API 請求失敗: {str(e)}"
+                logger.error(f"❌ [後端 Proxy] {error_msg}")
+                return jsonify({
+                    'error': error_msg,
+                    'status': 'api_error',
+                    'source': source,
+                    'details': str(e)
+                }), 500
+        
+        # =============== 國際英文寶可夢 TCG (新多語系格式) ===============
+        elif source == 'pokemon-en':
+            try:
+                from scraper import CardScraper
+                
+                logger.info(f"🌐 [後端 Proxy] 請求國際英文寶可夢: {keyword}")
+                
+                scraper = CardScraper()
+                cards = scraper.scrape_pokemon_en(keyword, limit=limit)
+                
+                # 使用統一的新格式
+                for card in cards:
+                    try:
+                        result = {
+                            'id': card.get('id'),
+                            'name': card.get('name'),
+                            'source': 'pokemon-en',
+                            'image_url': card.get('image_url'),
+                            'type': card.get('type'),
+                            'hp': card.get('hp'),
+                            'series': card.get('series'),
+                            'number': card.get('number'),
+                            'rarity': card.get('rarity'),
+                            'skills': card.get('skills', []),
+                            'price': card.get('price'),
+                        }
+                        
+                        results.append(result)
+                    except Exception as e:
+                        logger.debug(f"❌ [後端 Proxy] 英文寶可夢卡牌解析失敗: {e}")
+                        continue
+                
+                logger.info(f"✅ [後端 Proxy] 國際英文寶可夢 獲取 {len(results)} 張卡牌")
+                
+            except Exception as e:
+                error_msg = f"國際英文寶可夢搜尋失敗: {str(e)}"
                 logger.error(f"❌ [後端 Proxy] {error_msg}")
                 return jsonify({
                     'error': error_msg,
@@ -389,11 +433,11 @@ def get_cards_proxy():
                 scraper = CardScraper()
                 cards = scraper.scrape_taiwan_pokemon(keyword, limit=limit)
                 
-                # 轉換格式以符合前端 Modal 要求
+                # 使用統一的新格式
                 for card in cards:
                     try:
-                        # 根據 pokemon_type 設定顏色漸層
-                        pokemon_type = card.get('stats', {}).get('pokemon_type', '').lower()
+                        # 根據 type (繁中屬性) 設定顏色漸層
+                        pokemon_type = card.get('type', '').lower()
                         
                         # 屬性色彩映射 (RGB 漸層)
                         type_colors = {
@@ -423,14 +467,17 @@ def get_cards_proxy():
                         })
                         
                         result = {
-                            'id': f"{card.get('series', {}).get('collection_number', 'unknown')}",
-                            'title': card.get('title'),
+                            'id': card.get('id'),
+                            'name': card.get('name'),
                             'source': 'tw-pokemon',
-                            'img_url': card.get('img_url'),
-                            'price': card.get('price'),
-                            'stats': card.get('stats', {}),
-                            'series': card.get('series', {}),
+                            'image_url': card.get('image_url'),
+                            'type': card.get('type'),
+                            'hp': card.get('hp'),
+                            'series': card.get('series'),
+                            'number': card.get('number'),
                             'rarity': card.get('rarity'),
+                            'skills': card.get('skills', []),
+                            'price': card.get('price'),
                             'type_color': type_color,  # 前端用於 Modal 背景漸層
                             'text_style': {
                                 'color': 'white',
@@ -507,7 +554,7 @@ def search_cards_paginated():
             page = 1
         
         # 驗證 source 參數
-        valid_sources = ['pokemon', 'yugioh', 'mtg', 'tw-pokemon', 'all']
+        valid_sources = ['pokemon', 'pokemon-en', 'yugioh', 'mtg', 'tw-pokemon', 'all']
         if source not in valid_sources:
             logger.warning(f"⚠️ 無效的卡牌來源: {source}. 有效選項: {valid_sources}")
             return jsonify({
@@ -526,11 +573,31 @@ def search_cards_paginated():
                 **result
             })
         
+        elif source == 'pokemon-en':
+            # 國際英文寶可夢 - 新多語系格式
+            from scraper import CardScraper
+            scraper = CardScraper()
+            cards = scraper.scrape_pokemon_en(keyword, limit=limit*2)  # 額外獲取以備分頁
+            
+            # 應用分頁
+            start_idx = (page - 1) * limit
+            end_idx = start_idx + limit
+            paginated_cards = cards[start_idx:end_idx]
+            
+            return jsonify({
+                'keyword': keyword,
+                'source': 'pokemon-en',
+                'cards': paginated_cards,
+                'total': len(cards),
+                'current_page': page,
+                'pages': (len(cards) + limit - 1) // limit  # 向上取整
+            })
+        
         elif source == 'tw-pokemon':
             # 台灣官方寶可夢
             from scraper import CardScraper
             scraper = CardScraper()
-            cards = scraper.scrape_taiwan_pokemon(keyword, limit=limit)
+            cards = scraper.scrape_taiwan_pokemon(keyword, limit=limit*2)  # 額外獲取以備分頁
             
             # 應用分頁
             start_idx = (page - 1) * limit
