@@ -170,17 +170,35 @@
         .product-image {
             width: 100%;
             height: 220px;
-            background-color: rgba(99, 102, 241, 0.1);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(99, 102, 241, 0.1));
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            padding: 8px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border: 2px solid #FFD700;
+            border-radius: 6px;
+            box-shadow: 
+                inset 0 0 8px rgba(255, 255, 255, 0.3),
+                0 4px 12px rgba(0, 0, 0, 0.5),
+                0 0 10px rgba(255, 215, 0, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .product-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                inset 0 0 10px rgba(255, 255, 255, 0.4),
+                0 8px 16px rgba(0, 0, 0, 0.6),
+                0 0 15px rgba(255, 215, 0, 0.6);
         }
 
         .product-info {
@@ -517,6 +535,8 @@
 
         /** 打開卡牌詳情模態框 */
         function showCardDetail(card) {
+            console.log('Card data received:', { source: card.source, hasSkills: !!card.skills, skillsCount: card.skills?.length });
+            
             const modal = new bootstrap.Modal(document.getElementById('cardModal'));
             const modalBody = document.querySelector('#cardModal .modal-body');
             
@@ -533,10 +553,19 @@
             document.getElementById('cardModalTitle').textContent = displayName;
             document.getElementById('cardModalImage').src = imageLarge;
             
-            // 圖片樣式：加入發光效果
+            // 圖片樣式：官方風格邊框和陰影
             const imgElement = document.getElementById('cardModalImage');
-            imgElement.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3)';
-            imgElement.style.borderRadius = '12px';
+            // 黃色邊框 + 白色光暈 + 多層陰影（官方網站風格）
+            imgElement.style.border = '3px solid #FFD700';
+            imgElement.style.borderRadius = '8px';
+            imgElement.style.boxShadow = `
+                inset 0 0 10px rgba(255, 255, 255, 0.4),
+                0 0 15px rgba(255, 215, 0, 0.6),
+                0 8px 20px rgba(0, 0, 0, 0.8),
+                0 2px 4px rgba(255, 255, 255, 0.3)
+            `;
+            imgElement.style.maxWidth = '100%';
+            imgElement.style.height = 'auto';
             
             // 定義文本樣式常數 - 使用更重的陰影和純白色
             const textShadow = 'text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;';
@@ -673,14 +702,10 @@
                 </div>`;
                 
                 // 顯示系列信息
-                if (card.series) {
+                if (card.series && typeof card.series === 'string') {
                     detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
                         <span style="${labelStyle}">系列:</span>
-                        <span style="${valueStyle}">${card.series.collection_name || 'N/A'}</span>
-                    </div>`;
-                    detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                        <span style="${labelStyle}">編號:</span>
-                        <span style="${valueStyle}">${card.series.collection_number || 'N/A'}</span>
+                        <span style="${valueStyle}">${card.series}</span>
                     </div>`;
                 }
                 
@@ -717,30 +742,10 @@
             
             document.getElementById('cardModalDetails').innerHTML = detailsHTML;
             
-            // 顯示發行版本清單 - 完整改進樣式
-            if (card.series && card.series.length > 0) {
-                let seriesHTML = `<div style="background: rgba(0, 0, 0, 0.5) !important; padding: 15px !important; border-radius: 8px !important; margin-top: 1.5rem !important; border: 1px solid rgba(255, 255, 255, 0.15) !important;">
-                    <h6 style="color: #FFFFFF !important; ${textShadow} margin-bottom: 1rem !important; padding-bottom: 0.8rem !important; border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important; font-size: 1.1rem !important;">發行版本清單</h6>
-                    <table class="table table-sm" style="margin-bottom: 0 !important; color: #FFFFFF !important;">
-                        <thead style="border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;">
-                            <tr>
-                                <th style="color: #FFFFFF !important; ${textShadow}">版本</th>
-                                <th style="color: #FFFFFF !important; ${textShadow}">日期</th>
-                                <th style="color: #FFFFFF !important; ${textShadow}">價格</th>
-                            </tr>
-                        </thead>
-                        <tbody>`;
-                card.series.forEach(s => {
-                    seriesHTML += `<tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                        <td style="color: #FFFFFF !important; ${textShadow}">${s.name}</td>
-                        <td style="color: #FFFFFF !important; ${textShadow}">${s.release_date || 'N/A'}</td>
-                        <td style="color: #FFD700 !important; ${textShadow} font-weight: 700 !important;">$${s.price || 'N/A'}</td>
-                    </tr>`;
-                });
-                seriesHTML += `</tbody></table></div>`;
-                document.getElementById('cardModalSeries').innerHTML = seriesHTML;
-            } else {
-                document.getElementById('cardModalSeries').innerHTML = `<div style="background: rgba(0, 0, 0, 0.5) !important; padding: 15px !important; border-radius: 8px !important; text-align: center !important; color: #CCCCCC !important; ${textShadow}">無版本信息</div>`;
+            // 隱藏 cardModalSeries（因為 series 數據結構不同）
+            const seriesEl = document.getElementById('cardModalSeries');
+            if (seriesEl) {
+                seriesEl.style.display = 'none';
             }
             
             modal.show();
@@ -749,6 +754,7 @@
         function getSourceName(source) {
             const names = {
                 'pokemon': '寶可夢 TCG (國際)',
+                'pokemon-en': '寶可夢 TCG (國際英文)',
                 'yugioh': '遊戲王',
                 'mtg': 'Magic 風雲會',
                 'tw-pokemon': '🇹🇼 寶可夢 TCG (台灣繁中)'
