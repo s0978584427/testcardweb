@@ -402,6 +402,24 @@
         </div>
     </div>
 
+    <!-- 相機掃描 Modal (深色毛玻璃) -->
+    <div class="modal fade" id="scannerModal" tabindex="-1" aria-labelledby="scannerModalLabel" aria-hidden="true" style="backdrop-filter: blur(8px);">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background: rgba(30, 30, 30, 0.85); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <div class="modal-header" style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                    <h5 class="modal-title" id="scannerModalLabel" style="color: white;">📷 掃描卡牌</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onclick="stopScanner()"></button>
+                </div>
+                <div class="modal-body text-center" style="position: relative; min-height: 300px;">
+                    <div id="reader" style="width: 100%; border-radius: 8px; overflow: hidden;"></div>
+                    <!-- 250x250 焦點框 -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 250px; height: 250px; border: 2px dashed #8b5cf6; border-radius: 12px; pointer-events: none; box-shadow: 0 0 0 4000px rgba(0,0,0,0.4);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- 主容器 -->
     <div class="container-main">
         <!-- 搜索區域 -->
@@ -412,6 +430,12 @@
             <div class="search-input-group">
                 <input type="text" id="searchKeyword" placeholder="搜尋建議：遊戲王卡牌, 寶可夢卡牌..." onkeyup="handleKeyboardSearch(event)">
                 <button onclick="performSearch()"><i class="fas fa-search"></i> 搜尋</button>
+            </div>
+            
+            <div style="margin-top: 1rem; text-align: center;">
+                <button onclick="openScanner()" style="background-color: var(--primary-color); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; border: none; cursor: pointer; font-weight: 600;">
+                    <i class="fas fa-camera"></i> 📷 開啟相機掃描卡牌
+                </button>
             </div>
 
             <!-- 搜尋模式選擇 -->
@@ -460,6 +484,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- npm install html5-qrcode -->
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>
         let currentSearchResults = {};
         let searchMode = 'ecommerce';
@@ -690,15 +716,15 @@
                 // 台灣官方寶可夢卡牌
                 detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
                     <span style="${labelStyle}">HP (生命值):</span>
-                    <span style="${valueStyle}">${stats.hp || 'N/A'}</span>
+                    <span style="${valueStyle}">${card.hp || 'N/A'}</span>
                 </div>`;
                 detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
                     <span style="${labelStyle}">屬性 (繁體):</span>
-                    <span style="${valueStyle}">${stats.pokemon_type || 'N/A'}</span>
+                    <span style="${valueStyle}">${card.type || 'N/A'}</span>
                 </div>`;
                 detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">進化階段:</span>
-                    <span style="${valueStyle}">${stats.stage || 'N/A'}</span>
+                    <span style="${labelStyle}">系列編號:</span>
+                    <span style="${valueStyle}">${card.number || 'N/A'}</span>
                 </div>`;
                 
                 // 顯示系列信息
@@ -1408,6 +1434,85 @@
             document.getElementById('searchKeyword').value = '遊戲王';
             performSearch();
         });
+
+        // ---------- 掃描器邏輯 ----------
+        let html5QrCode;
+
+        function openScanner() {
+            const scannerModal = new bootstrap.Modal(document.getElementById('scannerModal'));
+            scannerModal.show();
+            
+            // 確保每次打開都是重新實例化
+            html5QrCode = new Html5Qrcode("reader");
+            
+            const config = { 
+                fps: 10, 
+                qrbox: { width: 250, height: 250 },
+                aspectRatio: 1.0 
+            };
+            
+            html5QrCode.start(
+                { facingMode: "environment" },
+                config,
+                onScanSuccess,
+                onScanFailure
+            ).catch(err => {
+                console.error("相機權限遭拒或發生錯誤:", err);
+                alert("無法啟動相機，請確保已授予攝影機權限並使用 HTTPS 連線。");
+                stopScanner();
+            });
+            
+            // 監聽 Modal 關閉事件
+            document.getElementById('scannerModal').addEventListener('hidden.bs.modal', function () {
+                stopScanner();
+            }, { once: true });
+        }
+
+        function stopScanner() {
+            if (html5QrCode && html5QrCode.isScanning) {
+                html5QrCode.stop().then(() => {
+                    console.log("相機已停止");
+                    html5QrCode.clear();
+                }).catch(err => {
+                    console.error("停止相機時發生錯誤", err);
+                });
+            }
+        }
+
+        function onScanSuccess(decodedText, decodedResult) {
+            console.log(`掃描成功: ${decodedText}`);
+            
+            // 手機短震動提示
+            if (navigator.vibrate) {
+                navigator.vibrate(100);
+            }
+            
+            // 關閉相機和 Modal
+            stopScanner();
+            const modalEl = document.getElementById('scannerModal');
+            const modalInst = bootstrap.Modal.getInstance(modalEl);
+            if (modalInst) modalInst.hide();
+            
+            // 將解碼文字寫入搜尋框
+            document.getElementById('searchKeyword').value = decodedText;
+            
+            // 觸發台灣寶可夢官方搜尋
+            setSearchMode('international');
+            
+            // 如果存在國際源選擇器，設定為 tw-pokemon
+            const sourceSelector = document.getElementById('cardSource');
+            if (sourceSelector) {
+                sourceSelector.value = 'tw-pokemon';
+                changeCardSource('tw-pokemon');
+            }
+            
+            // 立即執行搜尋
+            performSearch();
+        }
+
+        function onScanFailure(error) {
+            // 忽略掃描過程中的警告
+        }
     </script>
 </body>
 </html>
