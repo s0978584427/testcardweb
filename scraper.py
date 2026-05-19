@@ -615,170 +615,81 @@ class CardScraper:
         """
         台灣官方寶可夢卡牌搜尋 - 繁體中文版本
         
-        使用 pokemontcg.io API + 中文翻譯層
-        - 自動翻譯中文搜尋詞 (皮卡丘 → pikachu)
-        - 卡牌名稱顯示英文（pokemontcg.io 標準）
-        - 技能名稱和效果提供繁中翻譯
-        - 屬性顯示繁中 (Fire → 火)
-        
-        返回統一格式: {
-            'id': '卡片唯一識別碼',
-            'name': '英文卡牌名稱',
-            'image_url': '卡牌高清圖片',
-            'type': '繁中屬性 (火/水/草等)',
-            'hp': '生命值',
-            'series': '系列名稱',
-            'number': '系列編號',
-            'rarity': '稀有度',
-            'skills': [{'name': '繁中招式名', 'damage': '傷害數值', 'effect': '繁中效果'}],
-            'price': '需至比價區查詢',
-            'source': 'tw-pokemon'
-        }
+        直接請求 asia.pokemon-card.com，取得最精準的繁體中文結果。
+        - 支援卡號 (例如: sv4a-127) 或中文 (例如: 皮卡丘)
+        - 不經過任何翻譯，直接搜尋
         """
-        logger.info(f"[Taiwan Pokemon TW] 開始搜尋: {keyword}")
+        logger.info(f"[Taiwan Pokemon TW] 開始使用官方來源搜尋: {keyword}")
         results = []
         
-        # 中文寶可夢名稱對應表
-        chinese_pokemon_map = {
-            '皮卡丘': 'pikachu',
-            '妙蛙種子': 'bulbasaur',
-            '妙蛙草': 'ivysaur',
-            '妙蛙花': 'venusaur',
-            '小火龍': 'charmander',
-            '火恐龍': 'charmeleon',
-            '噴火龍': 'charizard',
-            '傑尼龜': 'squirtle',
-            '卡咪龜': 'wartortle',
-            '水龜': 'blastoise',
-            '綠毛蟲': 'caterpie',
-            '鐵甲蛹': 'metapod',
-            '鳳蝶': 'butterfree',
-            '小拉達': 'rattata',
-            '拉達': 'raticate',
-            '烈雀': 'spearow',
-            '大嘴雀': 'fearow',
-            '阿柏蛇': 'ekans',
-            '阿柏怪': 'arbok',
-            '皮皮': 'jigglypuff',
-            '皮可西': 'wigglytuff',
-            '奇異種子': 'oddish',
-            '拔萌芽': 'gloom',
-            '臭臭花': 'vileplume',
-            '派拉斯': 'paras',
-            '派拉斯特': 'parasect',
-            '毛球': 'venonat',
-            '摩魯蛾': 'venomoth',
-            '小蝌蚪': 'poliwag',
-            '蝌蚪': 'poliwhirl',
-            '快泳蛙': 'poliwrath',
-            '小火馬': 'ponyta',
-            '烈焰馬': 'rapidash',
-            '慢羊羊': 'slowpoke',
-            '呆殼獸': 'slowbro',
-            '小海馬': 'seahorse',
-            '海刺龍': 'seadra',
-            '刺甲貝': 'seel',
-            '白海獅': 'dewgong',
-            '殼夾': 'shellder',
-            '鐵甲貝': 'cloyster',
-            '鬼斯': 'gastly',
-            '鬼斯通': 'haunter',
-            '耿鬼': 'gengar',
-            '大岩蛇': 'onix',
-            '催眠貘': 'drowzee',
-            '食夢獸': 'hypno',
-            '大鉗蟹': 'krabby',
-            '巨鉗蟹': 'kingler',
-            '小火焰馬': 'vulpix',
-            '九尾': 'ninetales',
-            '球球': 'growlithe',
-            '阿羅拉九尾': 'alolan-ninetales',
-            '毒刺水母': 'tentacool',
-            '小拳石': 'geodude',
-            '隆隆石': 'graveler',
-            '多多': 'doduo',
-            '多多利': 'dodrio',
-            '迷你龍': 'dratini',
-            '海龍': 'dragonair',
-            '快龍': 'dragonite',
-            '頑皮彈': 'meowth',
-            '喵老大': 'persian',
-            '喇叭芽': 'bellsprout',
-            '口呆花': 'weepinbell',
-            '大食花': 'victreebel',
-            '伊布': 'eevee',
-            '火伊布': 'flareon',
-            '水伊布': 'vaporeon',
-            '雷伊布': 'jolteon',
-            '太陽伊布': 'espeon',
-            '月精靈': 'umbreon',
-            '葉精靈': 'leafeon',
-            '冰精靈': 'glaceon',
-            '仙子伊布': 'sylveon',
-            '卡拉卡拉': 'cubone',
-            '嘎啦嘎啦': 'marowak',
-            '海星': 'staryu',
-            '寶石海星': 'starmie',
-            '瓦斯彈': 'koffing',
-            '雙彈瓦斯': 'weezing',
-        }
-        
-        # 將中文名稱轉換為英文
-        search_keyword = keyword
-        if keyword in chinese_pokemon_map:
-            search_keyword = chinese_pokemon_map[keyword]
-            logger.info(f"[Taiwan Pokemon TW] 翻譯: {keyword} → {search_keyword}")
-        
         try:
-            # 使用 pokemontcg.io API 進行搜尋
-            url = f'https://api.pokemontcg.io/v2/cards?q=name:"{search_keyword}"&pageSize={min(limit, 50)}'
-            
-            headers = {
+            # 建立 Session，假裝是真人
+            session = requests.Session()
+            session.headers.update({
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                'Accept': 'application/json',
-            }
-            
-            logger.debug(f"[Taiwan Pokemon TW] 請求: {url}")
-            
-            response = requests.get(url, headers=headers, timeout=15)
-            
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+                'Accept-Language': 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+            })
+
+            # URL Encode
+            search_url = f"https://asia.pokemon-card.com/tw/card-search/list/?keyword={quote(keyword)}"
+            logger.debug(f"[Taiwan Pokemon TW] 爬取官方網址: {search_url}")
+
+            response = session.get(search_url, timeout=15)
+
             if response.status_code != 200:
-                logger.warning(f"[Taiwan Pokemon TW] API 返回狀態碼: {response.status_code}")
+                logger.warning(f"[Taiwan Pokemon TW] 官方網站返回狀態碼: {response.status_code}")
                 return results
-            
-            data = response.json()
-            cards = data.get('data', [])
-            
-            if not cards:
-                logger.info(f"[Taiwan Pokemon TW] 未找到卡牌結果")
+
+            soup = BeautifulSoup(response.text, 'html.parser')
+            card_items = soup.find_all('li', class_='card')
+
+            if not card_items:
+                logger.info(f"[Taiwan Pokemon TW] 未找到卡牌結果，或官方結構變更")
                 return results
-            
-            # 逐筆解析卡牌並使用統一規範化函數
-            for i, card in enumerate(cards):
+
+            for i, el in enumerate(card_items):
                 if i >= limit:
                     break
                 
                 try:
-                    # 使用統一規範化函數，language='zh' 以獲得繁中翻譯
-                    normalized = self._normalize_pokemon_card(card, language='zh', chinese_translation=None)
-                    if normalized:
-                        results.append(normalized)
-                        logger.debug(f"[Taiwan Pokemon TW] 解析卡牌: {normalized.get('name')}")
+                    a_tag = el.find('a')
+                    img_tag = el.find('img')
                     
+                    if not a_tag or not img_tag:
+                        continue
+                        
+                    detail_url = a_tag.get('href', '')
+                    card_id = detail_url.split('/')[-2] if 'detail' in detail_url else f"tw-{i}"
+                    
+                    # 取 data-original (lazy load image) 或是 src
+                    img_url = img_tag.get('data-original') or img_tag.get('src')
+                    if img_url and not img_url.startswith('http'):
+                        img_url = 'https://asia.pokemon-card.com' + img_url
+
+                    result = {
+                        'id': f"tw-{card_id}",
+                        'name': f"台灣官方搜尋: {keyword}",  # 列表頁無標題，使用搜尋字眼充當顯示
+                        'image_url': img_url,
+                        'type': 'N/A',
+                        'hp': 'N/A',
+                        'series': '台灣官方版',
+                        'number': card_id,
+                        'rarity': 'N/A',
+                        'skills': [],
+                        'price': 0,
+                        'source': 'tw-pokemon'
+                    }
+                    results.append(result)
+
                 except Exception as e:
-                    logger.debug(f"[Taiwan Pokemon TW] 卡牌解析失敗: {e}")
+                    logger.debug(f"[Taiwan Pokemon TW] 解析卡牌資料失敗: {e}")
                     continue
-            
-            logger.info(f"[Taiwan Pokemon TW] 成功獲取 {len(results)} 張卡牌 (搜尋: {search_keyword})")
-            
-        except requests.exceptions.Timeout:
-            logger.error(f"[Taiwan Pokemon TW] 請求超時 (>= 15s)")
-        except requests.exceptions.ConnectionError as e:
-            logger.error(f"[Taiwan Pokemon TW] 連接失敗: {e}")
-        except requests.exceptions.JSONDecodeError as e:
-            logger.error(f"[Taiwan Pokemon TW] JSON 解析失敗: {e}")
+
+            logger.info(f"[Taiwan Pokemon TW] 成功獲取 {len(results)} 張官方卡牌")
+
         except Exception as e:
-            logger.error(f"[Taiwan Pokemon TW] 搜尋失敗: {e}")
+            logger.error(f"[Taiwan Pokemon TW] 官方搜尋失敗: {e}")
         
         return results
     

@@ -836,6 +836,18 @@
             console.log('改變卡牌來源:', source);
             currentCardSearch.source = source;
             currentCardSearch.page = 1;  // 重置到第 1 頁
+            
+            // 動態更新 Placeholder
+            const searchInput = document.getElementById('searchKeyword');
+            if (source === 'tw-pokemon') {
+                searchInput.placeholder = "請輸入中文名稱或卡號（如：皮卡丘 或 sv4a-127）";
+            } else if (source === 'pokemon') {
+                searchInput.placeholder = "Please enter English name (e.g., Pikachu 或 id:sv4a-127)";
+            } else if (source === 'yugioh') {
+                searchInput.placeholder = "搜尋遊戲王卡牌 (如: 黑魔導)";
+            } else if (source === 'mtg') {
+                searchInput.placeholder = "搜尋魔法風雲會卡牌";
+            }
         }
 
         /** 快速搜尋按鈕 */

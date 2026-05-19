@@ -208,7 +208,22 @@ def get_cards_proxy():
         # =============== 寶可夢 TCG (pokemontcg.io) ===============
         if source == 'pokemon':
             try:
-                url = f'https://api.pokemontcg.io/v2/cards?q=name:"{keyword}"&pageSize={limit}'
+                import re
+                # 檢查是否有中文 (簡單範圍即可: \u4e00-\u9fa5)
+                if re.search(r'[\u4e00-\u9fa5]', keyword):
+                    return jsonify({
+                        'error': '國際 API 僅支援英文關鍵字搜尋，請輸入英文名稱（例如：Pikachu）',
+                        'status': 'error',
+                        'source': source
+                    }), 400
+                
+                # 若包含 id:xxx 或 number:xxx，改用精準搜尋
+                query_str = f'name:"{keyword}"'
+                # 國際 API 路線優化：如果在國際 API 輸入 id:sv4a-127 或 number:127
+                if re.match(r'^(id|number):', keyword.strip(), re.IGNORECASE):
+                    query_str = keyword.strip()
+                
+                url = f'https://api.pokemontcg.io/v2/cards?q={query_str}&pageSize={limit}'
                 logger.debug(f"🌐 [後端 Proxy] 請求 Pokemon TCG: {url}")
                 
                 resp = requests.get(url, headers=headers, timeout=10)
