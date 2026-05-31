@@ -97,31 +97,25 @@ def image_match():
         img_bytes = base64.b64decode(image_data)
         
         # 進行 OpenCV 辨識
-        matched_name, confidence = match_card_image(img_bytes)
+        matched_detail, confidence = match_card_image(img_bytes)
         
-        if matched_name and confidence >= 70.0:
-            logger.info(f"📸 影像辨識成功: {matched_name} (置信度: {confidence:.2f}%)，轉交給爬蟲")
-            
-            # 呼叫已經寫好的台灣官方爬蟲
-            from scraper import CardScraper
-            scraper = CardScraper()
-            
-            # 因為我們已經重構過了，可以直接丟中文名稱給官網
-            cards = scraper.scrape_taiwan_pokemon(matched_name, limit=1)
+        if matched_detail and confidence >= 70.0:
+            logger.info(f"📸 影像辨識成功: {matched_detail.get('name')} (置信度: {confidence:.2f}%)，直接回傳記憶體快取詳情")
             
             return jsonify({
                 'status': 'success',
-                'match': matched_name,
+                'match': matched_detail.get('name'),
                 'confidence': round(confidence, 2),
-                'cards': cards
+                'cards': [matched_detail]
             })
         else:
-            logger.debug(f"📸 影像辨識置信度不足或找不到 (最佳: {matched_name}, 置信度: {confidence:.2f}%)")
+            best_name = matched_detail.get('name') if matched_detail else "None"
+            logger.debug(f"📸 影像辨識置信度不足或找不到 (最佳: {best_name}, 置信度: {confidence:.2f}%)")
             return jsonify({
                 'status': 'fail',
                 'error': '找不到匹配的卡面或環境過暗',
                 'confidence': round(confidence, 2),
-                'match': matched_name
+                'match': best_name
             }), 404
             
     except Exception as e:
@@ -768,7 +762,14 @@ def internal_error(error):
     return jsonify({'error': '伺服器內部錯誤'}), 500
 
 
+
+# 在伺服器啟動時於背景載入特徵
+import threading
+from database import initialize_online_features
+threading.Thread(target=initialize_online_features, daemon=True).start()
+
 if __name__ == '__main__':
+
     # 開發環境配置
     app.run(
         debug=os.environ.get('FLASK_ENV') == 'development',
