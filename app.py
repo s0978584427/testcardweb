@@ -770,9 +770,10 @@ threading.Thread(target=initialize_online_features, daemon=True).start()
 
 if __name__ == '__main__':
 
-    # 開發環境配置
+    # 動態讀取環境變數 Port (相容 Render)
+    port = int(os.environ.get('PORT', 5000))
     app.run(
         debug=os.environ.get('FLASK_ENV') == 'development',
         host='0.0.0.0',
-        port=5000
+        port=port
     )

@@ -124,8 +124,8 @@ def match_card_image(client_image_bytes):
     top_match = scores[0]
     max_good_matches = top_match['score']
     
-    # 超過 15 個極端好的點就是認出了卡片
-    confidence = min(100.0, (max_good_matches / 15.0) * 100)
+    # 提高穩定度門檻分母：將特徵數量分母基數調高到 50
+    confidence = min(100.0, (max_good_matches / 50.0) * 100)
     
     if max_good_matches > 0:
         if len(scores) > 1:
@@ -138,5 +138,5 @@ def match_card_image(client_image_bytes):
     if confidence >= 70.0:
         return top_match['detail'], confidence
     else:
-        # 如果不到標準，還是可以回傳名稱用來 debug，可是不當作正式成功
-        return top_match['detail'], confidence
+        # 如果不到標準，詳細資料欄位必須回傳 None
+        return None, confidence
