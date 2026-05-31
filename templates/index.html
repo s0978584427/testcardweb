@@ -1553,7 +1553,7 @@
                             matchCounter = 0;
                         } else {
                             // 儀式感提示
-                            scanStatusEl.innerText = 穩定對焦中...發現《》 (/3);
+                            scanStatusEl.innerText = `穩定對焦中...發現《${data.match}》 (${matchCounter}/3)`;
                         }
                     } else {
                         currentMatchName = '';
