@@ -407,13 +407,21 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="background: rgba(30, 30, 30, 0.85); border: 1px solid rgba(255, 255, 255, 0.1);">
                 <div class="modal-header" style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                    <h5 class="modal-title" id="scannerModalLabel" style="color: white;">📷 掃描卡牌</h5>
+                    <h5 class="modal-title" id="scannerModalLabel" style="color: white;">📷 掃描實體卡牌正面</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onclick="stopScanner()"></button>
                 </div>
-                <div class="modal-body text-center" style="position: relative; min-height: 300px;">
-                    <div id="reader" style="width: 100%; border-radius: 8px; overflow: hidden;"></div>
-                    <!-- 250x250 焦點框 -->
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 250px; height: 250px; border: 2px dashed #8b5cf6; border-radius: 12px; pointer-events: none; box-shadow: 0 0 0 4000px rgba(0,0,0,0.4);">
+                <div class="modal-body text-center" style="position: relative; min-height: 300px; padding: 0;">
+                    <div id="video-container" style="width: 100%; border-radius: 0 0 8px 8px; overflow: hidden; position: relative;">
+                        <!-- 使用網頁原生 Video 標籤來串流相機 -->
+                        <video id="camera-video" autoplay playsinline style="width: 100%; height: auto; display: block; object-fit: cover;"></video>
+                        <!-- 用來截圖的隱藏 Canvas -->
+                        <canvas id="camera-canvas" style="display: none;"></canvas>
+                        <!-- 掃描焦點框 -->
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 250px; height: 350px; border: 3px dashed rgba(255, 215, 0, 0.8); border-radius: 12px; pointer-events: none; box-shadow: 0 0 0 4000px rgba(0,0,0,0.6);">
+                        </div>
+                    </div>
+                    <div id="scan-status" style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: white; background: rgba(0,0,0,0.5); padding: 5px 0;">
+                        將卡牌正面對準黃色虛線框內... 
                     </div>
                 </div>
             </div>
@@ -1447,32 +1455,38 @@
             performSearch();
         });
 
-        // ---------- 掃描器邏輯 ----------
-        let html5QrCode;
+        // ---------- 影像特徵辨識邏輯 ----------
+        let cameraStream = null;
+        let scanInterval = null;
+        const scanStatusEl = document.getElementById('scan-status');
 
-        function openScanner() {
+        async function openScanner() {
             const scannerModal = new bootstrap.Modal(document.getElementById('scannerModal'));
             scannerModal.show();
             
-            // 確保每次打開都是重新實例化
-            html5QrCode = new Html5Qrcode("reader");
+            const video = document.getElementById('camera-video');
+            scanStatusEl.innerText = "正在向系統請求相機權限...";
             
-            const config = { 
-                fps: 10, 
-                qrbox: { width: 250, height: 250 },
-                aspectRatio: 1.0 
-            };
-            
-            html5QrCode.start(
-                { facingMode: "environment" },
-                config,
-                onScanSuccess,
-                onScanFailure
-            ).catch(err => {
+            try {
+                // 原生 WebRTC 請求相機 (優先後鏡頭)
+                cameraStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: "environment", width: { ideal: 1280 }, height: { ideal: 720 } },
+                    audio: false
+                });
+                video.srcObject = cameraStream;
+                scanStatusEl.innerText = "將卡牌正面對準黃色虛線框內...";
+                
+                // 相機準備好後開始循環擷取畫面
+                video.onplay = () => {
+                    if (scanInterval) clearInterval(scanInterval);
+                    scanInterval = setInterval(captureAndMatch, 800); // 每 0.8 秒比對一次減少後端壓力
+                };
+
+            } catch (err) {
                 console.error("相機權限遭拒或發生錯誤:", err);
-                alert("無法啟動相機，請確保已授予攝影機權限並使用 HTTPS 連線。");
+                alert("無法啟動相機，請確認已授予攝影機權限並使用 HTTPS 連線。");
                 stopScanner();
-            });
+            }
             
             // 監聽 Modal 關閉事件
             document.getElementById('scannerModal').addEventListener('hidden.bs.modal', function () {
@@ -1481,49 +1495,84 @@
         }
 
         function stopScanner() {
-            if (html5QrCode && html5QrCode.isScanning) {
-                html5QrCode.stop().then(() => {
-                    console.log("相機已停止");
-                    html5QrCode.clear();
-                }).catch(err => {
-                    console.error("停止相機時發生錯誤", err);
+            if (scanInterval) {
+                clearInterval(scanInterval);
+                scanInterval = null;
+            }
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+                cameraStream = null;
+            }
+            scanStatusEl.innerText = "相機已關閉。";
+        }
+
+        async function captureAndMatch() {
+            const video = document.getElementById('camera-video');
+            const canvas = document.getElementById('camera-canvas');
+            if (!video.videoWidth) return;
+
+            // 繪製畫面到 canvas
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            // 轉為 Base64 JPG
+            const base64Image = canvas.toDataURL('image/jpeg', 0.8);
+            
+            fetchMatchApi(base64Image);
+        }
+
+        async function fetchMatchApi(base64Str) {
+            try {
+                const response = await fetch('/api/cards/image-match', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ image: base64Str })
                 });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.status === 'success' && data.confidence >= 70.0) {
+                        onScanMatched(data);
+                    }
+                }
+            } catch (err) {
+                console.error("影像比對請求失敗:", err);
             }
         }
 
-        function onScanSuccess(decodedText, decodedResult) {
-            console.log(`掃描成功: ${decodedText}`);
+        function onScanMatched(data) {
+            console.log(`影像辨識成功: ${data.match} (置信度: ${data.confidence}%)`);
             
-            // 手機短震動提示
-            if (navigator.vibrate) {
-                navigator.vibrate(100);
-            }
-            
-            // 關閉相機和 Modal
+            // 暫停相機
             stopScanner();
-            const modalEl = document.getElementById('scannerModal');
-            const modalInst = bootstrap.Modal.getInstance(modalEl);
-            if (modalInst) modalInst.hide();
             
-            // 將解碼文字寫入搜尋框
-            document.getElementById('searchKeyword').value = decodedText;
+            if (navigator.vibrate) navigator.vibrate(200);
+            scanStatusEl.innerText = `✅ 成功辨識：${data.match}！`;
             
-            // 觸發台灣寶可夢官方搜尋
-            setSearchMode('international');
-            
-            // 如果存在國際源選擇器，設定為 tw-pokemon
-            const sourceSelector = document.getElementById('cardSource');
-            if (sourceSelector) {
-                sourceSelector.value = 'tw-pokemon';
-                changeCardSource('tw-pokemon');
-            }
-            
-            // 立即執行搜尋
-            performSearch();
-        }
-
-        function onScanFailure(error) {
-            // 忽略掃描過程中的警告
+            setTimeout(() => {
+                const modalEl = document.getElementById('scannerModal');
+                const modalInst = bootstrap.Modal.getInstance(modalEl);
+                if (modalInst) modalInst.hide();
+                
+                // 若有爬蟲抓到的卡牌資料，直接打開卡牌詳情
+                if (data.cards && data.cards.length > 0) {
+                    const card = data.cards[0];
+                    if (card.source === 'tw-pokemon') {
+                        document.getElementById('cardSource').value = 'tw-pokemon';
+                        changeCardSource('tw-pokemon');
+                        document.getElementById('searchKeyword').value = data.match;
+                    }
+                    showCardDetail(card);
+                } else {
+                    document.getElementById('searchKeyword').value = data.match;
+                    setSearchMode('international');
+                    document.getElementById('cardSource').value = 'tw-pokemon';
+                    changeCardSource('tw-pokemon');
+                    performSearch();
+                }
+            }, 800);
         }
     </script>
 </body>

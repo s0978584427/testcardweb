@@ -76,6 +76,58 @@ def handle_exception(e):
     }), 500
 
 
+# ==================== OpenCV 影像辨識 API ====================
+@app.route('/api/cards/image-match', methods=['POST'])
+def image_match():
+    """接收前端傳來的 Base64 圖像，進行 OpenCV 特徵比對並自動查詢官方"""
+    try:
+        data = request.json
+        image_data = data.get('image')
+        
+        if not image_data:
+            return jsonify({'error': 'No image provided'}), 400
+            
+        # 處理前端傳來的 Base64 頭部 (如: "data:image/jpeg;base64,/9j/4...")
+        if ',' in image_data:
+            image_data = image_data.split(',')[1]
+            
+        import base64
+        from database import match_card_image
+        
+        img_bytes = base64.b64decode(image_data)
+        
+        # 進行 OpenCV 辨識
+        matched_name, confidence = match_card_image(img_bytes)
+        
+        if matched_name and confidence >= 70.0:
+            logger.info(f"📸 影像辨識成功: {matched_name} (置信度: {confidence:.2f}%)，轉交給爬蟲")
+            
+            # 呼叫已經寫好的台灣官方爬蟲
+            from scraper import CardScraper
+            scraper = CardScraper()
+            
+            # 因為我們已經重構過了，可以直接丟中文名稱給官網
+            cards = scraper.scrape_taiwan_pokemon(matched_name, limit=1)
+            
+            return jsonify({
+                'status': 'success',
+                'match': matched_name,
+                'confidence': round(confidence, 2),
+                'cards': cards
+            })
+        else:
+            logger.debug(f"📸 影像辨識置信度不足或找不到 (最佳: {matched_name}, 置信度: {confidence:.2f}%)")
+            return jsonify({
+                'status': 'fail',
+                'error': '找不到匹配的卡面或環境過暗',
+                'confidence': round(confidence, 2),
+                'match': matched_name
+            }), 404
+            
+    except Exception as e:
+        logger.error(f"📸 影像比對失敗: {str(e)}", exc_info=True)
+        return jsonify({'error': str(e)}), 500
+
 # ==================== 主頁 ====================
 @app.route('/')
 def index():
