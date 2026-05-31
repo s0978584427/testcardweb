@@ -495,6 +495,8 @@
     <!-- npm install html5-qrcode -->
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>
+        let currentMatchName = '';
+        let matchCounter = 0;
         let currentSearchResults = {};
         let searchMode = 'ecommerce';
         
@@ -1515,6 +1517,7 @@
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
             
             // 轉為 Base64 JPG
@@ -1531,11 +1534,36 @@
                     body: JSON.stringify({ image: base64Str })
                 });
 
+                const scanStatusEl = document.getElementById('scanner-status');
                 if (response.ok) {
                     const data = await response.json();
                     if (data.status === 'success' && data.confidence >= 70.0) {
-                        onScanMatched(data);
+                        if (data.match === currentMatchName) {
+                            matchCounter++;
+                        } else {
+                            currentMatchName = data.match;
+                            matchCounter = 1;
+                        }
+
+                        if (matchCounter >= 3) {
+                            // 達成連續 3 次穩定命中 (約延遲 2.4 秒)
+                            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+                            onScanMatched(data);
+                            currentMatchName = '';
+                            matchCounter = 0;
+                        } else {
+                            // 儀式感提示
+                            scanStatusEl.innerText = 穩定對焦中...發現《》 (/3);
+                        }
+                    } else {
+                        currentMatchName = '';
+                        matchCounter = 0;
+                        scanStatusEl.innerText = "將卡牌正面對準黃色虛線框內...";
                     }
+                } else {
+                    currentMatchName = '';
+                    matchCounter = 0;
+                    scanStatusEl.innerText = "將卡牌正面對準黃色虛線框內...";
                 }
             } catch (err) {
                 console.error("影像比對請求失敗:", err);

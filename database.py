@@ -96,9 +96,7 @@ def match_card_image(client_image_bytes):
     if des_client is None or len(des_client) == 0:
         return None, 0.0
 
-    best_match_detail = None
-    best_match_name = "None"
-    max_good_matches = 0
+    scores = []
     
     for card_id, db_data in ONLINE_CARD_FEATURES.items():
         des_db = db_data['descriptors']
@@ -111,15 +109,34 @@ def match_card_image(client_image_bytes):
         # distance 小於 45 表特徵極度雷同
         good_matches = [m for m in matches if m.distance < 45]
         
-        if len(good_matches) > max_good_matches:
-            max_good_matches = len(good_matches)
-            best_match_detail = db_data['detail']
-            best_match_name = db_data['name']
+        scores.append({
+            'detail': db_data['detail'],
+            'name': db_data['name'],
+            'score': len(good_matches)
+        })
 
+    # 對分數進行由大到小排序 (選美比賽機制)
+    scores = sorted(scores, key=lambda x: x['score'], reverse=True)
+    
+    if not scores:
+        return None, 0.0
+        
+    top_match = scores[0]
+    max_good_matches = top_match['score']
+    
     # 超過 15 個極端好的點就是認出了卡片
     confidence = min(100.0, (max_good_matches / 15.0) * 100)
     
-    if best_match_detail:
-        logger.debug(f"[CV Engine] 最高配對: {best_match_name}，吻合特徵數: {max_good_matches}，置信度 {confidence:.1f}%")
-        
-    return best_match_detail, confidence
+    if max_good_matches > 0:
+        if len(scores) > 1:
+            second_match = scores[1]
+            logger.info(f"[AI Debug] 最高命中: {top_match['name']} ({top_match['score']}點), 次高: {second_match['name']} ({second_match['score']}點)")
+        else:
+            logger.info(f"[AI Debug] 最高命中: {top_match['name']} ({top_match['score']}點)")
+
+    # 確保回傳的是真正的冠軍
+    if confidence >= 70.0:
+        return top_match['detail'], confidence
+    else:
+        # 如果不到標準，還是可以回傳名稱用來 debug，可是不當作正式成功
+        return top_match['detail'], confidence
