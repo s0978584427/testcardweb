@@ -1590,11 +1590,11 @@
                     if (card.source === 'tw-pokemon') {
                         document.getElementById('cardSource').value = 'tw-pokemon';
                         changeCardSource('tw-pokemon');
-                        document.getElementById('searchKeyword').value = data.match;
+                        document.getElementById('searchKeyword').value = data.match.name;
                     }
                     showCardDetail(card);
                 } else {
-                    document.getElementById('searchKeyword').value = data.match;
+                    document.getElementById('searchKeyword').value = data.match.name;
                     setSearchMode('international');
                     document.getElementById('cardSource').value = 'tw-pokemon';
                     changeCardSource('tw-pokemon');
