@@ -125,7 +125,7 @@ def match_card_image(client_image_bytes):
     max_good_matches = top_match['score']
     
     # 提高穩定度門檻分母：將特徵數量分母基數調高到 50
-    confidence = min(100.0, (max_good_matches / 50.0) * 100)
+    confidence = min(100.0, (max_good_matches / 30.0) * 100)
     
     if max_good_matches > 0:
         if len(scores) > 1:

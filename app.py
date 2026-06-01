@@ -105,19 +105,19 @@ def image_match():
             
             return jsonify({
                 'status': 'success',
-                'match': matched_detail.get('name'),
+                'match': matched_detail, # 將整個物件回傳，以匹配前端 data.match.name 的預期
                 'confidence': round(confidence, 2),
                 'cards': [matched_detail]
             })
         else:
             best_name = matched_detail.get('name') if matched_detail else "None"
-            logger.debug(f"📸 影像辨識置信度不足或找不到 (最佳: {best_name}, 置信度: {confidence:.2f}%)")
+            logger.info(f"📸 影像辨識置信度不足或找不到 (最佳: {best_name}, 置信度: {confidence:.2f}%)")
             return jsonify({
                 'status': 'fail',
                 'error': '找不到匹配的卡面或環境過暗',
                 'confidence': round(confidence, 2),
-                'match': best_name
-            }), 404
+                'match': matched_detail if matched_detail else best_name # 提供有拿到字串就回傳字串，否則如果有結構就盡量提供結構
+            }), 200 # 避免 404 造成前端報錯，不夠明確就拋出 200 跟 fail status 給前端繼續 scanning 就好
             
     except Exception as e:
         logger.error(f"📸 影像比對失敗: {str(e)}", exc_info=True)
