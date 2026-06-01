@@ -82,7 +82,8 @@ def image_match():
     """接收前端傳來的 Base64 圖像，進行 OpenCV 特徵比對並自動查詢官方"""
     try:
         data = request.json
-        image_data = data.get('image')
+        client_image = data.get('image')
+        image_data = client_image # 保留向下相容性或直接取代均可
         
         if not image_data:
             return jsonify({'error': 'No image provided'}), 400
