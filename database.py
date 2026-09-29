@@ -27,6 +27,8 @@ MIN_INLIER_RATIO = 0.40
 MIN_WINNER_MARGIN = 3
 MIN_WINNER_MARGIN_RATIO = 0.12
 FEATURE_CACHE_VERSION = 2
+CANDIDATE_LIMIT = 18
+CANDIDATE_MAX_DISTANCE = 70
 
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "data"
@@ -38,6 +40,8 @@ IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp", ".bmp"}
 orb = cv2.ORB_create(nfeatures=1200)
 matcher = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=False)
 ONLINE_CARD_FEATURES = {}
+FEATURE_INDEX = None
+FEATURE_INDEX_ORDER = []
 
 
 def _debug_print(message):
@@ -167,7 +171,7 @@ def _compute_descriptors(task):
 
 def initialize_online_features():
     """Load every cached TW/JP card and reuse persistent descriptors when valid."""
-    global ONLINE_CARD_FEATURES
+    global ONLINE_CARD_FEATURES, FEATURE_INDEX, FEATURE_INDEX_ORDER
     cards = _load_cards()
     image_index = _local_image_index()
     name_counts = Counter(_safe_stem(card.get("name")) for card in cards)
@@ -202,6 +206,24 @@ def initialize_online_features():
                     features[card_id] = feature
 
     ONLINE_CARD_FEATURES = features
+    FEATURE_INDEX_ORDER = list(features.values())
+    FEATURE_INDEX = None
+    if FEATURE_INDEX_ORDER:
+        try:
+            index = cv2.FlannBasedMatcher(
+                {
+                    "algorithm": 6,
+                    "table_number": 6,
+                    "key_size": 16,
+                    "multi_probe_level": 1,
+                },
+                {"checks": 32},
+            )
+            index.add([feature["descriptors"] for feature in FEATURE_INDEX_ORDER])
+            index.train()
+            FEATURE_INDEX = index
+        except cv2.error as exc:
+            logger.warning("Unable to build fast CV candidate index: %s", exc)
     try:
         _save_feature_cache(features)
     except OSError as exc:
@@ -213,21 +235,97 @@ def initialize_online_features():
     return len(features)
 
 
-def match_card_image(client_image_bytes):
-    """Return the best canonical card payload and confidence percentage."""
-    if not ONLINE_CARD_FEATURES:
-        _debug_print("[CV DEBUG] feature database is empty")
-        return None, 0.0
-    client = cv2.imdecode(np.frombuffer(client_image_bytes, np.uint8), cv2.IMREAD_GRAYSCALE)
-    if client is None:
-        _debug_print("[CV DEBUG] camera image decode failed")
-        return None, 0.0
+def _candidate_features(client_descriptors):
+    if FEATURE_INDEX is None or not FEATURE_INDEX_ORDER:
+        return list(ONLINE_CARD_FEATURES.values())
+    try:
+        approximate_matches = FEATURE_INDEX.knnMatch(client_descriptors, k=3)
+    except cv2.error as exc:
+        logger.warning("Fast candidate lookup failed; checking the full database: %s", exc)
+        return list(ONLINE_CARD_FEATURES.values())
+
+    votes = {}
+    for match_group in approximate_matches:
+        for match in match_group:
+            if match.distance <= CANDIDATE_MAX_DISTANCE:
+                votes[match.imgIdx] = votes.get(match.imgIdx, 0.0) + (
+                    CANDIDATE_MAX_DISTANCE + 1 - match.distance
+                )
+    ranked_indexes = sorted(votes, key=votes.get, reverse=True)[:CANDIDATE_LIMIT]
+    candidates = [FEATURE_INDEX_ORDER[index] for index in ranked_indexes]
+    _debug_print(
+        f"[CV DEBUG] fast_candidates={len(candidates)} database={len(FEATURE_INDEX_ORDER)}"
+    )
+    return candidates or list(ONLINE_CARD_FEATURES.values())
+
+
+def _order_card_corners(points):
+    points = np.asarray(points, dtype=np.float32).reshape(4, 2)
+    ordered = np.zeros((4, 2), dtype=np.float32)
+    coordinate_sums = points.sum(axis=1)
+    coordinate_differences = np.diff(points, axis=1).ravel()
+    ordered[0] = points[np.argmin(coordinate_sums)]
+    ordered[2] = points[np.argmax(coordinate_sums)]
+    ordered[1] = points[np.argmin(coordinate_differences)]
+    ordered[3] = points[np.argmax(coordinate_differences)]
+    return ordered
+
+
+def _rectify_card(image):
+    """Find a prominent card-shaped contour and normalize its perspective."""
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+    edges = cv2.Canny(blurred, 45, 135)
+    edges = cv2.morphologyEx(
+        edges, cv2.MORPH_CLOSE, np.ones((5, 5), dtype=np.uint8), iterations=2
+    )
+    contours, _ = cv2.findContours(edges, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    frame_area = image.shape[0] * image.shape[1]
+
+    for contour in sorted(contours, key=cv2.contourArea, reverse=True)[:12]:
+        area_ratio = cv2.contourArea(contour) / frame_area
+        if not 0.16 <= area_ratio <= 0.96:
+            continue
+        perimeter = cv2.arcLength(contour, True)
+        polygon = cv2.approxPolyDP(contour, 0.025 * perimeter, True)
+        if len(polygon) != 4 or not cv2.isContourConvex(polygon):
+            rotated_rectangle = cv2.minAreaRect(contour)
+            rectangle_width, rectangle_height = rotated_rectangle[1]
+            rectangle_area = rectangle_width * rectangle_height
+            fill_ratio = cv2.contourArea(contour) / max(rectangle_area, 1.0)
+            if fill_ratio < 0.48:
+                continue
+            polygon = cv2.boxPoints(rotated_rectangle).reshape(4, 1, 2)
+
+        corners = _order_card_corners(polygon)
+        top = np.linalg.norm(corners[1] - corners[0])
+        bottom = np.linalg.norm(corners[2] - corners[3])
+        left = np.linalg.norm(corners[3] - corners[0])
+        right = np.linalg.norm(corners[2] - corners[1])
+        short_side = max(top, bottom)
+        long_side = max(left, right)
+        if short_side > long_side:
+            short_side, long_side = long_side, short_side
+        aspect_ratio = short_side / max(long_side, 1.0)
+        if not 0.48 <= aspect_ratio <= 0.88:
+            continue
+
+        destination = np.float32([[0, 0], [629, 0], [629, 879], [0, 879]])
+        transform = cv2.getPerspectiveTransform(corners, destination)
+        rectified = cv2.warpPerspective(image, transform, (630, 880))
+        if rectified.shape[1] > rectified.shape[0]:
+            rectified = cv2.rotate(rectified, cv2.ROTATE_90_CLOCKWISE)
+        return cv2.cvtColor(rectified, cv2.COLOR_BGR2GRAY), area_ratio
+    return None, 0.0
+
+
+def _match_grayscale(client, frame_label):
     if max(client.shape) > 1000:
         scale = 1000 / max(client.shape)
         client = cv2.resize(client, None, fx=scale, fy=scale)
     client_keypoints, client_descriptors = orb.detectAndCompute(client, None)
     _debug_print(
-        f"[CV DEBUG] camera_keypoints={len(client_keypoints)} "
+        f"[CV DEBUG] frame={frame_label} camera_keypoints={len(client_keypoints)} "
         f"descriptors={0 if client_descriptors is None else len(client_descriptors)}"
     )
     if client_descriptors is None:
@@ -235,7 +333,7 @@ def match_card_image(client_image_bytes):
 
     client_points = np.float32([keypoint.pt for keypoint in client_keypoints])
     scores = []
-    for feature in ONLINE_CARD_FEATURES.values():
+    for feature in _candidate_features(client_descriptors):
         try:
             pairs = matcher.knnMatch(feature["descriptors"], client_descriptors, k=2)
         except cv2.error:
@@ -301,3 +399,30 @@ def match_card_image(client_image_bytes):
         logger.info("[CV] Match rejected due to weak geometry or ambiguous candidates")
         return None, min(confidence, MATCH_THRESHOLD - 0.01)
     return None, confidence
+
+
+def match_card_image(client_image_bytes):
+    """Return the best canonical card payload and confidence percentage."""
+    if not ONLINE_CARD_FEATURES:
+        _debug_print("[CV DEBUG] feature database is empty")
+        return None, 0.0
+    image = cv2.imdecode(np.frombuffer(client_image_bytes, np.uint8), cv2.IMREAD_COLOR)
+    if image is None:
+        _debug_print("[CV DEBUG] camera image decode failed")
+        return None, 0.0
+    if max(image.shape[:2]) > 1200:
+        scale = 1200 / max(image.shape[:2])
+        image = cv2.resize(image, None, fx=scale, fy=scale)
+
+    rectified, area_ratio = _rectify_card(image)
+    if rectified is not None:
+        _debug_print(f"[CV DEBUG] card_contour_detected area_ratio={area_ratio:.2f}")
+        matched, confidence = _match_grayscale(rectified, "rectified-card")
+        if matched:
+            return matched, confidence
+    else:
+        confidence = 0.0
+
+    frame = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    matched, frame_confidence = _match_grayscale(frame, "expanded-frame")
+    return matched, max(confidence, frame_confidence)

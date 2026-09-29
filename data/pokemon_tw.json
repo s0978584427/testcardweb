@@ -7324,5 +7324,2909 @@
       "rarity": "未標示",
       "set": "戰術牌組「超級噴火龍Xex"
     }
+  },
+  {
+    "id": "tw-12317",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "高級擴充包「太晶慶典ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00012317.png",
+    "number": "236/187",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "‌‌[特性]勤奮之心",
+        "damage": "",
+        "effect": "‌這隻寶可夢的HP是全滿的狀態下，這隻寶可夢受到招式的傷害而【昏厥】時，這隻寶可夢不會【昏厥】，而是以剩餘HP為「10」的狀態留在場上。"
+      },
+      {
+        "name": "黃玉伏特",
+        "damage": "300",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/12317/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00012317.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00012317.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「太晶慶典ex"
+    }
+  },
+  {
+    "id": "tw-12108",
+    "name": "皮卡丘ex",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "雙ex初階牌組 Generations",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00012108.png",
+    "number": "038/175",
+    "skills": [
+      {
+        "name": "擺尾拍擊",
+        "damage": "30",
+        "effect": ""
+      },
+      {
+        "name": "打雷",
+        "damage": "220",
+        "effect": "這隻寶可夢也受到30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/12108/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00012108.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00012108.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "雙ex初階牌組 Generations"
+    }
+  },
+  {
+    "id": "tw-11213",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "超電突圍",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011213.png",
+    "number": "033/106",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "‌‌[特性]勤奮之心",
+        "damage": "",
+        "effect": "‌這隻寶可夢的HP是全滿的狀態下，這隻寶可夢受到招式的傷害而【昏厥】時，這隻寶可夢不會【昏厥】，而是以剩餘HP為「10」的狀態留在場上。"
+      },
+      {
+        "name": "黃玉伏特",
+        "damage": "300",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11213/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011213.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011213.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "超電突圍"
+    }
+  },
+  {
+    "id": "tw-11475",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "超電突圍",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011475.png",
+    "number": "122/106",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "‌‌[特性]勤奮之心",
+        "damage": "",
+        "effect": "‌這隻寶可夢的HP是全滿的狀態下，這隻寶可夢受到招式的傷害而【昏厥】時，這隻寶可夢不會【昏厥】，而是以剩餘HP為「10」的狀態留在場上。"
+      },
+      {
+        "name": "黃玉伏特",
+        "damage": "300",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11475/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011475.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011475.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "超電突圍"
+    }
+  },
+  {
+    "id": "tw-11485",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "超電突圍",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011485.png",
+    "number": "132/106",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "‌‌[特性]勤奮之心",
+        "damage": "",
+        "effect": "‌這隻寶可夢的HP是全滿的狀態下，這隻寶可夢受到招式的傷害而【昏厥】時，這隻寶可夢不會【昏厥】，而是以剩餘HP為「10」的狀態留在場上。"
+      },
+      {
+        "name": "黃玉伏特",
+        "damage": "300",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11485/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011485.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011485.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "超電突圍"
+    }
+  },
+  {
+    "id": "tw-11489",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "超電突圍",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011489.png",
+    "number": "136/106",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "‌‌[特性]勤奮之心",
+        "damage": "",
+        "effect": "‌這隻寶可夢的HP是全滿的狀態下，這隻寶可夢受到招式的傷害而【昏厥】時，這隻寶可夢不會【昏厥】，而是以剩餘HP為「10」的狀態留在場上。"
+      },
+      {
+        "name": "黃玉伏特",
+        "damage": "300",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11489/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011489.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011489.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "超電突圍"
+    }
+  },
+  {
+    "id": "tw-11307",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "Trianers Camp",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011307.png",
+    "number": "018/066",
+    "skills": [
+      {
+        "name": "十萬伏特",
+        "damage": "120",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11307/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011307.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011307.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "Trianers Camp"
+    }
+  },
+  {
+    "id": "tw-10815",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "戰術牌組「密勒頓ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00010815.png",
+    "number": "001/021",
+    "skills": [
+      {
+        "name": "充電",
+        "damage": "",
+        "effect": "從自己的牌庫選擇1張「基本【雷】能量」卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "皮卡拳",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/10815/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00010815.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00010815.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "戰術牌組「密勒頓ex"
+    }
+  },
+  {
+    "id": "tw-9864",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "異度審判",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00009864.png",
+    "number": "023/071",
+    "skills": [
+      {
+        "name": "電磁電光",
+        "damage": "",
+        "effect": "對手的1隻寶可夢受到10點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/9864/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00009864.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00009864.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "異度審判"
+    }
+  },
+  {
+    "id": "tw-9083",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "高級擴充包「閃色寶藏ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00009083.png",
+    "number": "055/190",
+    "skills": [
+      {
+        "name": "叫聲",
+        "damage": "",
+        "effect": "在下個對手的回合，受到這個招式的寶可夢使用招式的傷害「-20」點。"
+      },
+      {
+        "name": "皮卡伏特",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/9083/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00009083.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00009083.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「閃色寶藏ex"
+    }
+  },
+  {
+    "id": "tw-9265",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "高級擴充包「閃色寶藏ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00009265.png",
+    "number": "236/190",
+    "skills": [
+      {
+        "name": "叫聲",
+        "damage": "",
+        "effect": "在下個對手的回合，受到這個招式的寶可夢使用招式的傷害「-20」點。"
+      },
+      {
+        "name": "皮卡伏特",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/9265/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00009265.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00009265.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「閃色寶藏ex"
+    }
+  },
+  {
+    "id": "tw-8367",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ex初階牌組",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008367.png",
+    "number": "034/139",
+    "skills": [
+      {
+        "name": "叫聲",
+        "damage": "",
+        "effect": "在下個對手的回合，受到這個招式的寶可夢使用招式的傷害「-20」點。"
+      },
+      {
+        "name": "皮卡伏特",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8367/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008367.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008367.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ex初階牌組"
+    }
+  },
+  {
+    "id": "tw-8148",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008148.png",
+    "number": "025/165",
+    "skills": [
+      {
+        "name": "充電",
+        "damage": "",
+        "effect": "從自己的牌庫選擇1張「基本【雷】能量」卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "皮卡拳",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8148/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008148.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008148.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-14874",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014874.png",
+    "number": "025/165",
+    "skills": [
+      {
+        "name": "充電",
+        "damage": "",
+        "effect": "從自己的牌庫選擇1張「基本【雷】能量」卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "皮卡拳",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14874/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014874.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014874.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-8296",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008296.png",
+    "number": "173/165",
+    "skills": [
+      {
+        "name": "充電",
+        "damage": "",
+        "effect": "從自己的牌庫選擇1張「基本【雷】能量」卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "皮卡拳",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8296/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008296.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008296.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-8028",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "碟旋暴擊",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008028.png",
+    "number": "017/071",
+    "skills": [
+      {
+        "name": "叫聲",
+        "damage": "",
+        "effect": "在下個對手的回合，受到這個招式的寶可夢使用招式的傷害「-20」點。"
+      },
+      {
+        "name": "皮卡伏特",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8028/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008028.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008028.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "碟旋暴擊"
+    }
+  },
+  {
+    "id": "tw-8090",
+    "name": "皮卡丘ex",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "起始組合ex 皮卡丘特別組合",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008090.png",
+    "number": "001/021",
+    "skills": [
+      {
+        "name": "皮卡拳",
+        "damage": "30",
+        "effect": ""
+      },
+      {
+        "name": "極限伏特",
+        "damage": "220",
+        "effect": "擲1次硬幣若為反面，則將這隻寶可夢身上附加的能量全部丟棄。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8090/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008090.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008090.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "起始組合ex 皮卡丘特別組合"
+    }
+  },
+  {
+    "id": "tw-7800",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007800.png",
+    "number": "001/SV-P",
+    "skills": [
+      {
+        "name": "一同冒險",
+        "damage": "30+",
+        "effect": "增加自己的備戰寶可夢的數量×10點傷害。"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7800/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007800.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007800.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-8737",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008737.png",
+    "number": "040/SV-P",
+    "skills": [
+      {
+        "name": "激戰電光",
+        "damage": "30+",
+        "effect": "擲硬幣直到出現反面，增加正面出現的次數×30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8737/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008737.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008737.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-8745",
+    "name": "名偵探皮卡丘",
+    "hp": 90,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008745.png",
+    "number": "050/SV-P",
+    "skills": [
+      {
+        "name": "徹底調查",
+        "damage": "",
+        "effect": "擲硬幣直到出現反面，從自己的牌庫抽出與正面出現的次數相同數量的卡。"
+      },
+      {
+        "name": "騎行衝刺",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8745/",
+    "source": "tw-pokemon",
+    "title": "名偵探皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008745.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008745.png",
+    "stats": {
+      "hp": 90,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-9219",
+    "name": "臺北的皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00009219.png",
+    "number": "057/SV-P",
+    "skills": [
+      {
+        "name": "新開幕",
+        "damage": "",
+        "effect": "雙方玩家各將自己的牌庫上方1張卡翻到正面，在給對手看過後加入手牌。"
+      },
+      {
+        "name": "樂享伏特",
+        "damage": "30×",
+        "effect": "擲3次硬幣，造成正面出現的次數×30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/9219/",
+    "source": "tw-pokemon",
+    "title": "臺北的皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00009219.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00009219.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-11127",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011127.png",
+    "number": "152/SV-P",
+    "skills": [
+      {
+        "name": "激戰電光",
+        "damage": "30+",
+        "effect": "擲硬幣直到出現反面，增加正面出現的次數×30點傷害。"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11127/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011127.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011127.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-11492",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011492.png",
+    "number": "153/SV-P",
+    "skills": [
+      {
+        "name": "電磁電光",
+        "damage": "",
+        "effect": "對手的1隻寶可夢受到10點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11492/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011492.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011492.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-11496",
+    "name": "皮卡丘&捷克羅姆GX",
+    "hp": 240,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011496.png",
+    "number": "157/SV-P",
+    "skills": [
+      {
+        "name": "滿溢驅動",
+        "damage": "150",
+        "effect": "從自己的牌庫抽出最多3張【雷】能量卡，附於自己的1隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "聯手伏特GX",
+        "damage": "200",
+        "effect": "若額外附有3個【雷】能量，則對手的1隻備戰寶可夢也受到170點傷害。[在備戰區不計算弱點・抵抗力。][對戰中，己方只可使用1次GX招式。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11496/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘&捷克羅姆GX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011496.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011496.png",
+    "stats": {
+      "hp": 240,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-11508",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011508.png",
+    "number": "169/SV-P",
+    "skills": [
+      {
+        "name": "電磁電光",
+        "damage": "",
+        "effect": "對手的1隻寶可夢受到10點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11508/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011508.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011508.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-12254",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00012254.png",
+    "number": "185/SV-P",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "‌‌[特性]勤奮之心",
+        "damage": "",
+        "effect": "‌這隻寶可夢的HP是全滿的狀態下，這隻寶可夢受到招式的傷害而【昏厥】時，這隻寶可夢不會【昏厥】，而是以剩餘HP為「10」的狀態留在場上。"
+      },
+      {
+        "name": "黃玉伏特",
+        "damage": "300",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/12254/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00012254.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00012254.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-12852",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00012852.png",
+    "number": "223/SV-P",
+    "skills": [
+      {
+        "name": "放鬆休息",
+        "damage": "",
+        "effect": "將這隻寶可夢恢復「20」HP。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/12852/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00012852.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00012852.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-12899",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00012899.png",
+    "number": "236/SV-P",
+    "skills": [
+      {
+        "name": "充電",
+        "damage": "",
+        "effect": "從自己的牌庫選擇1張「基本【雷】能量」卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "皮卡拳",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/12899/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00012899.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00012899.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-13116",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00013116.png",
+    "number": "243/SV-P",
+    "skills": [
+      {
+        "name": "電磁電光",
+        "damage": "",
+        "effect": "對手的1隻寶可夢受到10點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/13116/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00013116.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00013116.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-7525",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007525.png",
+    "number": "205/172",
+    "skills": [
+      {
+        "name": "[特性] 皮卡衝刺",
+        "damage": "",
+        "effect": "若這隻寶可夢身上附有能量，則這隻寶可夢【撤退】所需的能量全部消除。"
+      },
+      {
+        "name": "胡思亂撞",
+        "damage": "50",
+        "effect": "擲1次硬幣若為反面，則這個招式失敗。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7525/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007525.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007525.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-5555",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005555.png",
+    "number": "077/S-P",
+    "skills": [
+      {
+        "name": "電光一閃",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "電球",
+        "damage": "60",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5555/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005555.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005555.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5556",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005556.png",
+    "number": "078/S-P",
+    "skills": [
+      {
+        "name": "蹭蹭臉頰",
+        "damage": "",
+        "effect": "擲1次硬幣若為正面，則將對手的戰鬥寶可夢【麻痺】。"
+      },
+      {
+        "name": "伏特攻擊",
+        "damage": "70",
+        "effect": "這隻寶可夢也受到10點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5556/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005556.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005556.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5557",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005557.png",
+    "number": "079/S-P",
+    "skills": [
+      {
+        "name": "充電",
+        "damage": "",
+        "effect": "從自己的牌庫選擇1張【雷】能量卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "電球",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5557/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005557.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005557.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5558",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005558.png",
+    "number": "080/S-P",
+    "skills": [
+      {
+        "name": "搖尾巴",
+        "damage": "",
+        "effect": "擲1次硬幣若為正面，則在下個對手的回合，受到這個招式的寶可夢無法使用招式。"
+      },
+      {
+        "name": "皮卡伏特",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5558/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005558.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005558.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5559",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005559.png",
+    "number": "081/S-P",
+    "skills": [
+      {
+        "name": "電擊",
+        "damage": "30",
+        "effect": "擲1次硬幣若為正面，則將對手的戰鬥寶可夢【麻痺】。"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5559/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005559.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005559.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5560",
+    "name": "皮卡丘V",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005560.png",
+    "number": "082/S-P",
+    "skills": [
+      {
+        "name": "充電",
+        "damage": "",
+        "effect": "從自己的牌庫選擇最多2張【雷】能量卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "十萬伏特",
+        "damage": "200",
+        "effect": "將這隻寶可夢身上附加的能量全部丟棄。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5560/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005560.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005560.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5561",
+    "name": "皮卡丘&捷克羅姆GX",
+    "hp": 240,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005561.png",
+    "number": "083/S-P",
+    "skills": [
+      {
+        "name": "滿溢驅動",
+        "damage": "150",
+        "effect": "從自己的牌庫抽出最多3張【雷】能量卡，附於自己的1隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "聯手伏特GX",
+        "damage": "200",
+        "effect": "若額外附有3個【雷】能量，則對手的1隻備戰寶可夢也受到170點傷害。[在備戰區不計算弱點・抵抗力。][對戰中，己方只可使用1次GX招式。]"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5561/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘&捷克羅姆GX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005561.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005561.png",
+    "stats": {
+      "hp": 240,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5611",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005611.png",
+    "number": "138/S-P",
+    "skills": [
+      {
+        "name": "帶電",
+        "damage": "",
+        "effect": "從自己的棄牌區選擇1張【雷】能量卡，附於這隻寶可夢身上。"
+      },
+      {
+        "name": "電球",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5611/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005611.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005611.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-6614",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00006614.png",
+    "number": "175/S-P",
+    "skills": [
+      {
+        "name": "親送之禮",
+        "damage": "",
+        "effect": "擲1次硬幣若為正面，則從自己的牌庫選擇1張物品卡，在給對手看過後加入手牌。並且重洗牌庫。"
+      },
+      {
+        "name": "皮卡球",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/6614/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00006614.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00006614.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-7037",
+    "name": "皮卡丘VMAX",
+    "hp": 310,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007037.png",
+    "number": "202/S-P",
+    "skills": [
+      {
+        "name": "充電尾",
+        "damage": "30",
+        "effect": "從自己的棄牌區選擇最多3張【雷】能量卡，附於自己的1隻寶可夢身上。"
+      },
+      {
+        "name": "超極巨雷霆萬鈞",
+        "damage": "250",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7037/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘VMAX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007037.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007037.png",
+    "stats": {
+      "hp": 310,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-7483",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007483.png",
+    "number": "210/S-P",
+    "skills": [
+      {
+        "name": "瘋狂伏特",
+        "damage": "90",
+        "effect": "這隻寶可夢也受到30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7483/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007483.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007483.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-7061",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "思維激盪",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007061.png",
+    "number": "024/098",
+    "skills": [
+      {
+        "name": "皮卡強襲",
+        "damage": "20+",
+        "effect": "在上個自己的回合，若自己的「咚咚鼠」使出了「咚咚短路」，則增加180點傷害。"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7061/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007061.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007061.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "思維激盪"
+    }
+  },
+  {
+    "id": "tw-7164",
+    "name": "皮卡丘V",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "V初階牌組 「皮卡丘",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007164.png",
+    "number": "001/022",
+    "skills": [
+      {
+        "name": "雷電炸彈",
+        "damage": "100+",
+        "effect": "若希望，將這隻寶可夢身上附加的【雷】能量全部丟棄。這個情況下，增加120點傷害。"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7164/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007164.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007164.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "V初階牌組 「皮卡丘"
+    }
+  },
+  {
+    "id": "tw-7009",
+    "name": "皮卡丘V",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "初階牌組100 特別版",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007009.png",
+    "number": "001/024",
+    "skills": [
+      {
+        "name": "皮卡衝鋒",
+        "damage": "200",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用招式。"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7009/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007009.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007009.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組100 特別版"
+    }
+  },
+  {
+    "id": "tw-6560",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "Pokémon GO",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00006560.png",
+    "number": "027/071",
+    "skills": [
+      {
+        "name": "好友伏特",
+        "damage": "30+",
+        "effect": "在這個回合，若從手牌使出了支援者卡，則增加30點傷害。"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/6560/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00006560.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00006560.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "Pokémon GO"
+    }
+  },
+  {
+    "id": "tw-6561",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "Pokémon GO",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00006561.png",
+    "number": "028/071",
+    "skills": [
+      {
+        "name": "瘋狂伏特",
+        "damage": "90",
+        "effect": "這隻寶可夢也受到30點傷害。"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/6561/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00006561.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00006561.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "Pokémon GO"
+    }
+  },
+  {
+    "id": "tw-6380",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "黑暗亡靈",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00006380.png",
+    "number": "014/071",
+    "skills": [
+      {
+        "name": "[特性] 皮卡衝刺",
+        "damage": "",
+        "effect": "若這隻寶可夢身上附有能量，則這隻寶可夢【撤退】所需的能量全部消除。"
+      },
+      {
+        "name": "胡思亂撞",
+        "damage": "50",
+        "effect": "擲1次硬幣若為反面，則這個招式失敗。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/6380/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00006380.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00006380.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "黑暗亡靈"
+    }
+  },
+  {
+    "id": "tw-5756",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "初階牌組100",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005756.png",
+    "number": "127/414",
+    "skills": [
+      {
+        "name": "帶電",
+        "damage": "",
+        "effect": "從自己的棄牌區選擇1張【雷】能量卡，附於這隻寶可夢身上。"
+      },
+      {
+        "name": "電球",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5756/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005756.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005756.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組100"
+    }
+  },
+  {
+    "id": "tw-5758",
+    "name": "皮卡丘V",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "初階牌組100",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005758.png",
+    "number": "129/414",
+    "skills": [
+      {
+        "name": "雷電炸彈",
+        "damage": "100+",
+        "effect": "若希望，將這隻寶可夢身上附加的【雷】能量全部丟棄。這個情況下，增加120點傷害。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5758/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005758.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005758.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組100"
+    }
+  },
+  {
+    "id": "tw-5236",
+    "name": "皮卡丘V",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "高級擴充包「VMAX絕群壓軸",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005236.png",
+    "number": "045/184",
+    "skills": [
+      {
+        "name": "充電",
+        "damage": "",
+        "effect": "從自己的牌庫選擇最多2張【雷】能量卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "十萬伏特",
+        "damage": "200",
+        "effect": "將這隻寶可夢身上附加的能量全部丟棄。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5236/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005236.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005236.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「VMAX絕群壓軸"
+    }
+  },
+  {
+    "id": "tw-5237",
+    "name": "皮卡丘VMAX",
+    "hp": 310,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "高級擴充包「VMAX絕群壓軸",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005237.png",
+    "number": "046/184",
+    "skills": [
+      {
+        "name": "超極巨伏特攻擊",
+        "damage": "120+",
+        "effect": "若希望，將這隻寶可夢身上附加的能量全部丟棄。這個情況下，增加150點傷害。"
+      },
+      {
+        "name": "[VMAX規則]",
+        "damage": "",
+        "effect": "寶可夢【VMAX】【氣絕】時，對手獲得3張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5237/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘VMAX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005237.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005237.png",
+    "stats": {
+      "hp": 310,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「VMAX絕群壓軸"
+    }
+  },
+  {
+    "id": "tw-2071",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25週年收藏款",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002071.png",
+    "number": "001/028",
+    "skills": [
+      {
+        "name": "咬",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "電流攻擊",
+        "damage": "30",
+        "effect": "擲1次硬幣若為反面，則這隻寶可夢也受到10點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2071/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002071.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002071.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25週年收藏款"
+    }
+  },
+  {
+    "id": "tw-2090",
+    "name": "皮卡丘V",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25週年收藏款",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002090.png",
+    "number": "020/028",
+    "skills": [
+      {
+        "name": "伏特攻擊",
+        "damage": "210",
+        "effect": "這隻寶可夢也受到30點傷害。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2090/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002090.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002090.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25週年收藏款"
+    }
+  },
+  {
+    "id": "tw-2091",
+    "name": "衝浪皮卡丘V",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25週年收藏款",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002091.png",
+    "number": "021/028",
+    "skills": [
+      {
+        "name": "衝浪",
+        "damage": "150",
+        "effect": ""
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2091/",
+    "source": "tw-pokemon",
+    "title": "衝浪皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002091.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002091.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25週年收藏款"
+    }
+  },
+  {
+    "id": "tw-2092",
+    "name": "衝浪皮卡丘VMAX",
+    "hp": 310,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25週年收藏款",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002092.png",
+    "number": "022/028",
+    "skills": [
+      {
+        "name": "極巨衝浪",
+        "damage": "160",
+        "effect": "對手的所有備戰寶可夢也各受到30點傷害。[在備戰區不計算弱點・抵抗力。]"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【VMAX】【氣絕】時，對手獲得3張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2092/",
+    "source": "tw-pokemon",
+    "title": "衝浪皮卡丘VMAX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002092.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002092.png",
+    "stats": {
+      "hp": 310,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25週年收藏款"
+    }
+  },
+  {
+    "id": "tw-2093",
+    "name": "飛翔皮卡丘V",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25週年收藏款",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002093.png",
+    "number": "023/028",
+    "skills": [
+      {
+        "name": "電擊",
+        "damage": "20",
+        "effect": "擲1次硬幣若為正面，則將對手的戰鬥寶可夢【麻痺】。"
+      },
+      {
+        "name": "飛翔",
+        "damage": "120",
+        "effect": "擲1次硬幣若為反面，則這個招式失敗。若為正面，則在下個對手的回合，這隻寶可夢不會受到招式的傷害與效果的影響。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2093/",
+    "source": "tw-pokemon",
+    "title": "飛翔皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002093.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002093.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25週年收藏款"
+    }
+  },
+  {
+    "id": "tw-2094",
+    "name": "飛翔皮卡丘VMAX",
+    "hp": 310,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25週年收藏款",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002094.png",
+    "number": "024/028",
+    "skills": [
+      {
+        "name": "極巨氣球",
+        "damage": "160",
+        "effect": "在下個對手的回合，這隻寶可夢不會受到【基礎】寶可夢招式的傷害。"
+      },
+      {
+        "name": "[VMAX規則]",
+        "damage": "",
+        "effect": "寶可夢【VMAX】【氣絕】時，對手獲得3張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2094/",
+    "source": "tw-pokemon",
+    "title": "飛翔皮卡丘VMAX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002094.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002094.png",
+    "stats": {
+      "hp": 310,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25週年收藏款"
+    }
+  },
+  {
+    "id": "tw-2095",
+    "name": "皮卡丘V-UNION",
+    "hp": 300,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25週年收藏款",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002095.png",
+    "number": "025/028 026/028 027/028 028/028",
+    "skills": [
+      {
+        "name": "寶可夢V-UNION放置方法",
+        "damage": "",
+        "effect": "對戰中可放置1次，在自己的回合將自己的棄牌區中4種皮卡丘【V-UNION】加以組合，放置於備戰區。"
+      },
+      {
+        "name": "聯盟增輝",
+        "damage": "",
+        "effect": "從自己的棄牌區選擇最多2張【雷】能量卡，附於這隻寶可夢身上。"
+      },
+      {
+        "name": "麻麻擊",
+        "damage": "120",
+        "effect": "擲1次硬幣若為正面，則將對手的戰鬥寶可夢【麻痺】。"
+      },
+      {
+        "name": "電磁干擾",
+        "damage": "150",
+        "effect": "在下個對手的回合，對手無法從手牌使出物品卡。"
+      },
+      {
+        "name": "一同電球",
+        "damage": "250",
+        "effect": ""
+      },
+      {
+        "name": "V-UNION規則",
+        "damage": "",
+        "effect": "寶可夢【V-UNION】【氣絕】時，對手獲得3張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2095/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V-UNION",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002095.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002095.png",
+    "stats": {
+      "hp": 300,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25週年收藏款"
+    }
+  },
+  {
+    "id": "tw-2032",
+    "name": "皮卡丘V",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌家庭組合",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002032.png",
+    "number": "019/053",
+    "skills": [
+      {
+        "name": "擺尾拍擊",
+        "damage": "20",
+        "effect": ""
+      },
+      {
+        "name": "十萬伏特",
+        "damage": "100",
+        "effect": ""
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2032/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002032.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002032.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌家庭組合"
+    }
+  },
+  {
+    "id": "tw-627",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "伊布英雄",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00000627.png",
+    "number": "026/069",
+    "skills": [
+      {
+        "name": "帶電",
+        "damage": "",
+        "effect": "從自己的棄牌區選擇1張【雷】能量卡，附於這隻寶可夢身上。"
+      },
+      {
+        "name": "電球",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/627/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00000627.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00000627.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "伊布英雄"
+    }
+  },
+  {
+    "id": "tw-1735",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "V起始牌組 「進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00001735.png",
+    "number": "054/172",
+    "skills": [
+      {
+        "name": "帶電",
+        "damage": "",
+        "effect": "從自己的棄牌區選擇1張【雷】能量卡，附於這隻寶可夢身上。"
+      },
+      {
+        "name": "電球",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/1735/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00001735.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00001735.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "V起始牌組 「進化"
+    }
+  },
+  {
+    "id": "tw-1419",
+    "name": "皮卡丘V",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "V起始牌組 「搭檔",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00001419.png",
+    "number": "029/135",
+    "skills": [
+      {
+        "name": "充電",
+        "damage": "",
+        "effect": "從自己的牌庫選擇最多2張【雷】能量卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "十萬伏特",
+        "damage": "200",
+        "effect": "將這隻寶可夢身上附加的能量全部丟棄。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/1419/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00001419.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00001419.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "V起始牌組 「搭檔"
+    }
+  },
+  {
+    "id": "tw-321",
+    "name": "皮卡丘V",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "驚天伏特攻擊",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00000321.png",
+    "number": "030/100",
+    "skills": [
+      {
+        "name": "充電",
+        "damage": "",
+        "effect": "從自己的牌庫選擇最多2張【雷】能量卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "十萬伏特",
+        "damage": "200",
+        "effect": "將這隻寶可夢身上附加的能量全部丟棄。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/321/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00000321.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00000321.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "驚天伏特攻擊"
+    }
+  },
+  {
+    "id": "tw-322",
+    "name": "皮卡丘VMAX",
+    "hp": 310,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "驚天伏特攻擊",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00000322.png",
+    "number": "031/100",
+    "skills": [
+      {
+        "name": "超極巨伏特攻擊",
+        "damage": "120+",
+        "effect": "若希望，將這隻寶可夢身上附加的能量全部丟棄。這個情況下，增加150點傷害。"
+      },
+      {
+        "name": "[VMAX規則]",
+        "damage": "",
+        "effect": "寶可夢【VMAX】【氣絕】時，對手獲得3張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/322/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘VMAX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00000322.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00000322.png",
+    "stats": {
+      "hp": 310,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "驚天伏特攻擊"
+    }
+  },
+  {
+    "id": "tw-1114",
+    "name": "皮卡丘V",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "無極力量」SET B",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00001114.png",
+    "number": "025/144",
+    "skills": [
+      {
+        "name": "皮卡球",
+        "damage": "30",
+        "effect": ""
+      },
+      {
+        "name": "電氣陣",
+        "damage": "30×",
+        "effect": "造成自己的備戰寶可夢的數量×30點傷害。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/1114/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00001114.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00001114.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "無極力量」SET B"
+    }
+  },
+  {
+    "id": "tw-1273",
+    "name": "皮卡丘V",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "V起始牌組「無極力量",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00001273.png",
+    "number": "040/157",
+    "skills": [
+      {
+        "name": "皮卡球",
+        "damage": "30",
+        "effect": ""
+      },
+      {
+        "name": "電氣陣",
+        "damage": "30×",
+        "effect": "造成自己的備戰寶可夢的數量×30點傷害。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/1273/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00001273.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00001273.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "V起始牌組「無極力量"
+    }
+  },
+  {
+    "id": "tw-2623",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "V起始牌組「劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002623.png",
+    "number": "048/164",
+    "skills": [
+      {
+        "name": "充電",
+        "damage": "",
+        "effect": "從自己的牌庫選擇1張【雷】能量卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "電球",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2623/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002623.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002623.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "V起始牌組「劍&盾"
+    }
+  },
+  {
+    "id": "tw-3310",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "傳說交鋒」SET B",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00003310.png",
+    "number": "069/194",
+    "skills": [
+      {
+        "name": "蹭蹭臉頰",
+        "damage": "",
+        "effect": "擲1次硬幣若為正面，則將對手的戰鬥寶可夢【麻痺】。"
+      },
+      {
+        "name": "伏特攻擊",
+        "damage": "70",
+        "effect": "這隻寶可夢也受到10點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/3310/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00003310.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00003310.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "傳說交鋒」SET B"
+    }
+  },
+  {
+    "id": "tw-2805",
+    "name": "皮卡丘&捷克羅姆GX",
+    "hp": 240,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "雙倍爆擊」SET A",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002805.png",
+    "number": "066/184",
+    "skills": [
+      {
+        "name": "滿溢驅動",
+        "damage": "150",
+        "effect": "從自己的牌庫抽出最多3張【雷】能量卡，附於自己的1隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "聯手伏特GX",
+        "damage": "200",
+        "effect": "若額外附有3個【雷】能量，則對手的1隻備戰寶可夢也受到170點傷害。[在備戰區不計算弱點・抵抗力。][對戰中，己方只可使用1次GX招式。]"
+      },
+      {
+        "name": "TAG TEAM規則",
+        "damage": "",
+        "effect": "TAG TEAM【氣絕】時，對手獲得3張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2805/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘&捷克羅姆GX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002805.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002805.png",
+    "stats": {
+      "hp": 240,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "雙倍爆擊」SET A"
+    }
+  },
+  {
+    "id": "tw-2807",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "雙倍爆擊」SET A",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002807.png",
+    "number": "068/184",
+    "skills": [
+      {
+        "name": "皮卡球",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2807/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002807.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002807.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "雙倍爆擊」SET A"
+    }
+  },
+  {
+    "id": "tw-2808",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "雙倍爆擊」SET A",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002808.png",
+    "number": "069/184",
+    "skills": [
+      {
+        "name": "擺尾拍擊",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "雷電球",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2808/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002808.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002808.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "雙倍爆擊」SET A"
+    }
+  },
+  {
+    "id": "tw-3478",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "G超起始牌組「雙倍爆擊",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00003478.png",
+    "number": "043/169",
+    "skills": [
+      {
+        "name": "皮卡球",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/3478/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00003478.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00003478.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "G超起始牌組「雙倍爆擊"
+    }
+  },
+  {
+    "id": "tw-3479",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "G超起始牌組「雙倍爆擊",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00003479.png",
+    "number": "044/169",
+    "skills": [
+      {
+        "name": "擺尾拍擊",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "雷電球",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/3479/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00003479.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00003479.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "G超起始牌組「雙倍爆擊"
+    }
+  },
+  {
+    "id": "tw-4016",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "眾星雲集組合篇」SET A",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00004016.png",
+    "number": "048/158",
+    "skills": [
+      {
+        "name": "電磁波",
+        "damage": "",
+        "effect": "擲1次硬幣若為正面，則將對手的戰鬥寶可夢【麻痺】。"
+      },
+      {
+        "name": "電球",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/4016/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00004016.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00004016.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "眾星雲集組合篇」SET A"
+    }
+  },
+  {
+    "id": "tw-4330",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "G超起始牌組「眾星雲集組合篇",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00004330.png",
+    "number": "046/157",
+    "skills": [
+      {
+        "name": "鐡尾",
+        "damage": "20×",
+        "effect": "擲硬幣直到出現反面，造成正面出現的次數×20點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/4330/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00004330.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00004330.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "G超起始牌組「眾星雲集組合篇"
+    }
+  },
+  {
+    "id": "tw-4456",
+    "name": "森林蜥蜴",
+    "hp": 80,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "美夢成真組合篇」SET A",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00004456.png",
+    "number": "015/200",
+    "skills": [
+      {
+        "name": "[特性]太陽之恩",
+        "damage": "",
+        "effect": "在自己的回合時，可使用1次。從自己的牌庫抽出1張【草】寶可夢，在給對手看過後加入手牌。並且重洗牌庫。"
+      },
+      {
+        "name": "利刃切割",
+        "damage": "40",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/4456/",
+    "source": "tw-pokemon",
+    "title": "森林蜥蜴",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00004456.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00004456.png",
+    "stats": {
+      "hp": 80,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "美夢成真組合篇」SET A"
+    }
+  },
+  {
+    "id": "tw-5019",
+    "name": "森林蜥蜴",
+    "hp": 80,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "G超起始牌組「美夢成真組合篇",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005019.png",
+    "number": "004/176",
+    "skills": [
+      {
+        "name": "[特性]太陽之恩",
+        "damage": "",
+        "effect": "在自己的回合時，可使用1次。從自己的牌庫抽出1張【草】寶可夢，在給對手看過後加入手牌。並且重洗牌庫。"
+      },
+      {
+        "name": "利刃切割",
+        "damage": "40",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5019/",
+    "source": "tw-pokemon",
+    "title": "森林蜥蜴",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005019.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005019.png",
+    "stats": {
+      "hp": 80,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "G超起始牌組「美夢成真組合篇"
+    }
   }
 ]

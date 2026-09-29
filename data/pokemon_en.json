@@ -1,0 +1,3366 @@
+[
+  {
+    "id": "basep-1",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Wizards Black Star Promos",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/base/basep/1/high.webp",
+    "number": "1",
+    "description": "When several of these Pokémon gather, their electricity could build and cause lightning storms.",
+    "skills": [
+      {
+        "name": "Growl",
+        "damage": "",
+        "effect": "If the Defending Pokémon attacks Pikachu during your opponent's next turn, any damage done by the attack is reduced by 10 (after applying Weakness and Resistance). (Benching either Pokémon ends this effect.)"
+      },
+      {
+        "name": "Thundershock",
+        "damage": 20,
+        "effect": "Flip a coin. If heads, the Defending Pokémon is now Paralyzed."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/base/basep/1/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/base/basep/1/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Wizards Black Star Promos"
+    }
+  },
+  {
+    "id": "mcd19-6",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "未標示",
+    "series": "McDonald's Collection 2019",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/mcd19/6_hires.png",
+    "number": "6",
+    "description": "McDonald's Collection 2019",
+    "skills": [
+      {
+        "name": "Iron Tail",
+        "damage": "20",
+        "effect": "Flip a coin until you get tails. This attack does 20 damage for each heads."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/mcd19/6_hires.png",
+    "img_large": "https://images.pokemontcg.io/mcd19/6_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "未標示",
+      "set": "McDonald's Collection 2019"
+    }
+  },
+  {
+    "id": "basep-4",
+    "name": "Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Wizards Black Star Promos",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/base/basep/4/high.webp",
+    "number": "4",
+    "description": "When several of these Pokémon gather, they attract so much electricity that they can cause lightning to strike.",
+    "skills": [
+      {
+        "name": "Recharge",
+        "damage": "",
+        "effect": "Search your deck for a Energy card and attach it to Pikachu. Shuffle your deck afterward."
+      },
+      {
+        "name": "Thunderbolt",
+        "damage": 50,
+        "effect": "Discard all Energy cards attached to Pikachu in order to use this attack."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/base/basep/4/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/base/basep/4/high.webp",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Wizards Black Star Promos"
+    }
+  },
+  {
+    "id": "det1-10",
+    "name": "Detective Pikachu",
+    "hp": 90,
+    "type": "Lightning",
+    "rarity": "Rare",
+    "series": "Detective Pikachu",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/sm/det1/10/high.webp",
+    "number": "10",
+    "description": "He loves to show off his vast knowledge. This expressive Pikachu is like a middle-aged man.",
+    "skills": [
+      {
+        "name": "Scout",
+        "damage": "",
+        "effect": "Your opponent reveals their hand."
+      },
+      {
+        "name": "Surprise Attack",
+        "damage": 80,
+        "effect": "Flip a coin. If tails, this attack does nothing."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Detective Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/sm/det1/10/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/sm/det1/10/high.webp",
+    "stats": {
+      "hp": 90,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Rare",
+      "set": "Detective Pikachu"
+    }
+  },
+  {
+    "id": "ru1-7",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "未標示",
+    "series": "Pokémon Rumble",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/pl/ru1/7/high.webp",
+    "number": "7",
+    "description": "",
+    "skills": [
+      {
+        "name": "Volt Tackle",
+        "damage": 60,
+        "effect": "Pikachu does 10 damage to itself."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/pl/ru1/7/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/pl/ru1/7/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "未標示",
+      "set": "Pokémon Rumble"
+    }
+  },
+  {
+    "id": "basep-3",
+    "name": "Mewtwo",
+    "hp": 70,
+    "type": "Psychic",
+    "rarity": "Promo",
+    "series": "Wizards Black Star Promos",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/basep/3_hires.png",
+    "number": "3",
+    "description": "Wizards Black Star Promos - Promo",
+    "skills": [
+      {
+        "name": "Energy Absorption",
+        "damage": "",
+        "effect": "Choose up to 2 Energy cards from your discard pile and attach them to Mewtwo."
+      },
+      {
+        "name": "Psyburn",
+        "damage": "40",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Mewtwo",
+    "img_url": "https://images.pokemontcg.io/basep/3_hires.png",
+    "img_large": "https://images.pokemontcg.io/basep/3_hires.png",
+    "stats": {
+      "hp": 70,
+      "type": "Psychic",
+      "types": [
+        "Psychic"
+      ],
+      "rarity": "Promo",
+      "set": "Wizards Black Star Promos"
+    }
+  },
+  {
+    "id": "ru1-9",
+    "name": "Mewtwo",
+    "hp": 100,
+    "type": "Psychic",
+    "rarity": "未標示",
+    "series": "Pokémon Rumble",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/ru1/9_hires.png",
+    "number": "9",
+    "description": "Pokémon Rumble",
+    "skills": [
+      {
+        "name": "Super Psy Bolt",
+        "damage": "70",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Mewtwo",
+    "img_url": "https://images.pokemontcg.io/ru1/9_hires.png",
+    "img_large": "https://images.pokemontcg.io/ru1/9_hires.png",
+    "stats": {
+      "hp": 100,
+      "type": "Psychic",
+      "types": [
+        "Psychic"
+      ],
+      "rarity": "未標示",
+      "set": "Pokémon Rumble"
+    }
+  },
+  {
+    "id": "base4-10",
+    "name": "Mewtwo",
+    "hp": 60,
+    "type": "Psychic",
+    "rarity": "Rare Holo",
+    "series": "Base Set 2",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/base4/10_hires.png",
+    "number": "10",
+    "description": "Base Set 2 - Rare Holo",
+    "skills": [
+      {
+        "name": "Psychic",
+        "damage": "10+",
+        "effect": "Does 10 damage plus 10 more damage for each Energy card attached to the Defending Pokémon."
+      },
+      {
+        "name": "Barrier",
+        "damage": "",
+        "effect": "Discard 1 Psychic Energy card attached to Mewtwo in order to use this attack. During your opponent's next turn, prevent all effects of attacks, including damage, done to Mewtwo."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Mewtwo",
+    "img_url": "https://images.pokemontcg.io/base4/10_hires.png",
+    "img_large": "https://images.pokemontcg.io/base4/10_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Psychic",
+      "types": [
+        "Psychic"
+      ],
+      "rarity": "Rare Holo",
+      "set": "Base Set 2"
+    }
+  },
+  {
+    "id": "ex11-12",
+    "name": "Mewtwo δ",
+    "hp": 70,
+    "type": "Fire",
+    "rarity": "Rare Holo",
+    "series": "Delta Species",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/ex11/12_hires.png",
+    "number": "12",
+    "description": "Delta Species - Rare Holo",
+    "skills": [
+      {
+        "name": "Energy Burst",
+        "damage": "10×",
+        "effect": "Does 10 damage times the total amount of Energy attached to Mewtwo and the Defending Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Mewtwo δ",
+    "img_url": "https://images.pokemontcg.io/ex11/12_hires.png",
+    "img_large": "https://images.pokemontcg.io/ex11/12_hires.png",
+    "stats": {
+      "hp": 70,
+      "type": "Fire",
+      "types": [
+        "Fire"
+      ],
+      "rarity": "Rare Holo",
+      "set": "Delta Species"
+    }
+  },
+  {
+    "id": "det1-12",
+    "name": "Mewtwo",
+    "hp": 130,
+    "type": "Psychic",
+    "rarity": "Rare Ultra",
+    "series": "Detective Pikachu",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/det1/12_hires.png",
+    "number": "12",
+    "description": "Detective Pikachu - Rare Ultra",
+    "skills": [
+      {
+        "name": "Psyjack",
+        "damage": "30",
+        "effect": "Choose 1 of your opponent's Active Pokémon's attacks. That Pokémon can't use that attack during your opponent's next turn."
+      },
+      {
+        "name": "Break Burn",
+        "damage": "130",
+        "effect": "Discard 2 Psychic Energy from this Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Mewtwo",
+    "img_url": "https://images.pokemontcg.io/det1/12_hires.png",
+    "img_large": "https://images.pokemontcg.io/det1/12_hires.png",
+    "stats": {
+      "hp": 130,
+      "type": "Psychic",
+      "types": [
+        "Psychic"
+      ],
+      "rarity": "Rare Ultra",
+      "set": "Detective Pikachu"
+    }
+  },
+  {
+    "id": "pl1-2",
+    "name": "Blastoise",
+    "hp": 130,
+    "type": "Water",
+    "rarity": "Rare Holo",
+    "series": "Platinum",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/pl1/2_hires.png",
+    "number": "2",
+    "description": "Platinum - Rare Holo",
+    "skills": [
+      {
+        "name": "Aqua Press",
+        "damage": "20+",
+        "effect": "Does 20 damage plus 10 more damage for each Energy attached to all Pokémon (both yours and your opponent's)."
+      },
+      {
+        "name": "Double Launcher",
+        "damage": "",
+        "effect": "Discard 2 Energy attached to Blastoise. Choose 2 of your opponent's Benched Pokémon. This attack does 60 damage to each of them. (Don't apply Weakness and Resistance for Benched Pokémon.) Blastoise can't use Double Launcher during your next turn."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Blastoise",
+    "img_url": "https://images.pokemontcg.io/pl1/2_hires.png",
+    "img_large": "https://images.pokemontcg.io/pl1/2_hires.png",
+    "stats": {
+      "hp": 130,
+      "type": "Water",
+      "types": [
+        "Water"
+      ],
+      "rarity": "Rare Holo",
+      "set": "Platinum"
+    }
+  },
+  {
+    "id": "dp3-2",
+    "name": "Blastoise",
+    "hp": 120,
+    "type": "Water",
+    "rarity": "Rare Holo",
+    "series": "Secret Wonders",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/dp3/2_hires.png",
+    "number": "2",
+    "description": "Secret Wonders - Rare Holo",
+    "skills": [
+      {
+        "name": "Hydro Pump",
+        "damage": "50+",
+        "effect": "Does 50 damage plus 20 more damage for each Water Energy attached to Blastoise but not used to pay for this attack's Energy cost. You can't add more than 40 damage in this way."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Blastoise",
+    "img_url": "https://images.pokemontcg.io/dp3/2_hires.png",
+    "img_large": "https://images.pokemontcg.io/dp3/2_hires.png",
+    "stats": {
+      "hp": 120,
+      "type": "Water",
+      "types": [
+        "Water"
+      ],
+      "rarity": "Rare Holo",
+      "set": "Secret Wonders"
+    }
+  },
+  {
+    "id": "base4-2",
+    "name": "Blastoise",
+    "hp": 100,
+    "type": "Water",
+    "rarity": "Rare Holo",
+    "series": "Base Set 2",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/base4/2_hires.png",
+    "number": "2",
+    "description": "Base Set 2 - Rare Holo",
+    "skills": [
+      {
+        "name": "Hydro Pump",
+        "damage": "40+",
+        "effect": "Does 40 damage plus 10 more damage for each Water Energy attached to Blastoise but not used to pay for this attack's Energy cost. You can't add more than 20 damage in this way."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Blastoise",
+    "img_url": "https://images.pokemontcg.io/base4/2_hires.png",
+    "img_large": "https://images.pokemontcg.io/base4/2_hires.png",
+    "stats": {
+      "hp": 100,
+      "type": "Water",
+      "types": [
+        "Water"
+      ],
+      "rarity": "Rare Holo",
+      "set": "Base Set 2"
+    }
+  },
+  {
+    "id": "pop3-1",
+    "name": "Blastoise",
+    "hp": 120,
+    "type": "Water",
+    "rarity": "Rare",
+    "series": "POP Series 3",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/pop3/1_hires.png",
+    "number": "1",
+    "description": "POP Series 3 - Rare",
+    "skills": [
+      {
+        "name": "Smash Turn",
+        "damage": "30",
+        "effect": "After your attack, you may switch Blastoise with 1 of your Benched Pokémon."
+      },
+      {
+        "name": "Rocket Tackle",
+        "damage": "60",
+        "effect": "Blastoise does 10 damage to itself. Flip a coin. If heads, prevent all damage done to Blastoise by attacks during your opponent's next turn."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Blastoise",
+    "img_url": "https://images.pokemontcg.io/pop3/1_hires.png",
+    "img_large": "https://images.pokemontcg.io/pop3/1_hires.png",
+    "stats": {
+      "hp": 120,
+      "type": "Water",
+      "types": [
+        "Water"
+      ],
+      "rarity": "Rare",
+      "set": "POP Series 3"
+    }
+  },
+  {
+    "id": "base1-2",
+    "name": "Blastoise",
+    "hp": 100,
+    "type": "Water",
+    "rarity": "Rare Holo",
+    "series": "Base",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/base1/2_hires.png",
+    "number": "2",
+    "description": "Base - Rare Holo",
+    "skills": [
+      {
+        "name": "Hydro Pump",
+        "damage": "40+",
+        "effect": "Does 40 damage plus 10 more damage for each Water Energy attached to Blastoise but not used to pay for this attack's Energy cost. Extra Water Energy after the 2nd doesn't count."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Blastoise",
+    "img_url": "https://images.pokemontcg.io/base1/2_hires.png",
+    "img_large": "https://images.pokemontcg.io/base1/2_hires.png",
+    "stats": {
+      "hp": 100,
+      "type": "Water",
+      "types": [
+        "Water"
+      ],
+      "rarity": "Rare Holo",
+      "set": "Base"
+    }
+  },
+  {
+    "id": "2024sv-1",
+    "name": "Charizard",
+    "hp": 170,
+    "type": "Fire",
+    "rarity": "未標示",
+    "series": "McDonald's Collection 2024",
+    "price": "-",
+    "image_url": "",
+    "number": "1",
+    "description": "",
+    "skills": [
+      {
+        "name": "Royal Blaze",
+        "damage": "100+",
+        "effect": "This attack does 50 more damage for each Leon card in your discard pile."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Charizard",
+    "img_url": "",
+    "img_large": "",
+    "stats": {
+      "hp": 170,
+      "type": "Fire",
+      "types": [
+        "Fire"
+      ],
+      "rarity": "未標示",
+      "set": "McDonald's Collection 2024"
+    }
+  },
+  {
+    "id": "30th-c-001",
+    "name": "Charizard",
+    "hp": 120,
+    "type": "Fire",
+    "rarity": "未標示",
+    "series": "30th Classic Collection",
+    "price": "-",
+    "image_url": "",
+    "number": "001",
+    "description": "",
+    "skills": [
+      {
+        "name": "Fire Spin",
+        "damage": 100,
+        "effect": "Discard 2 Energy cards attached to Charizard in order to use this attack."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Charizard",
+    "img_url": "",
+    "img_large": "",
+    "stats": {
+      "hp": 120,
+      "type": "Fire",
+      "types": [
+        "Fire"
+      ],
+      "rarity": "未標示",
+      "set": "30th Classic Collection"
+    }
+  },
+  {
+    "id": "pl4-1",
+    "name": "Charizard",
+    "hp": 140,
+    "type": "Fire",
+    "rarity": "Holo Rare",
+    "series": "Arceus",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/pl/pl4/1/high.webp",
+    "number": "1",
+    "description": "",
+    "skills": [
+      {
+        "name": "Fire Wing",
+        "damage": 30,
+        "effect": ""
+      },
+      {
+        "name": "Burning Tail",
+        "damage": 80,
+        "effect": "Discard a Fire Energy attached to Charizard."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Charizard",
+    "img_url": "https://assets.tcgdex.net/en/pl/pl4/1/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/pl/pl4/1/high.webp",
+    "stats": {
+      "hp": 140,
+      "type": "Fire",
+      "types": [
+        "Fire"
+      ],
+      "rarity": "Holo Rare",
+      "set": "Arceus"
+    }
+  },
+  {
+    "id": "gym2-2",
+    "name": "Blaine's Charizard",
+    "hp": 100,
+    "type": "Fire",
+    "rarity": "Holo Rare",
+    "series": "Gym Challenge",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/gym/gym2/2/high.webp",
+    "number": "2",
+    "description": "",
+    "skills": [
+      {
+        "name": "Roaring Flames",
+        "damage": "20+",
+        "effect": "Discard all Fire Energy cards attached to Blaine's Charizard. If all Energy cards attached to Blaine's Charizard provide 2 Fire Energy, discard all of them. This attack does 20 damage plus 20 more damage for each Fire Energy discarded in this way."
+      },
+      {
+        "name": "Flame Jet",
+        "damage": "",
+        "effect": "Flip a coin. If heads, choose 1 of your opponent's Pokémon. This attack does 40 damage to that Pokémon. Don't apply Weakness and Resistance for this attack. (Any other effects that would happen after applying Weakness and Resistance still happen.)"
+      }
+    ],
+    "source": "pokemon",
+    "title": "Blaine's Charizard",
+    "img_url": "https://assets.tcgdex.net/en/gym/gym2/2/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/gym/gym2/2/high.webp",
+    "stats": {
+      "hp": 100,
+      "type": "Fire",
+      "types": [
+        "Fire"
+      ],
+      "rarity": "Holo Rare",
+      "set": "Gym Challenge"
+    }
+  },
+  {
+    "id": "sm7.5-3",
+    "name": "Charizard",
+    "hp": 160,
+    "type": "Fire",
+    "rarity": "Rare",
+    "series": "Dragon Majesty",
+    "price": "-",
+    "image_url": "",
+    "number": "3",
+    "description": "Its wings can carry this Pokémon close to an altitude of 4,600 feet. It blows out fire at very high temperatures.",
+    "skills": [
+      {
+        "name": "Fiery Blast",
+        "damage": 130,
+        "effect": "Discard an Energy from this Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Charizard",
+    "img_url": "",
+    "img_large": "",
+    "stats": {
+      "hp": 160,
+      "type": "Fire",
+      "types": [
+        "Fire"
+      ],
+      "rarity": "Rare",
+      "set": "Dragon Majesty"
+    }
+  },
+  {
+    "id": "dp5-9",
+    "name": "Mewtwo",
+    "hp": 90,
+    "type": "Psychic",
+    "rarity": "Rare Holo",
+    "series": "Majestic Dawn",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/dp/dp5/9/high.webp",
+    "number": "9",
+    "description": "A Pokémon created by recombining Mew's genes. It's said to have the most savage heart among Pokémon.",
+    "skills": [
+      {
+        "name": "Energy Absorption",
+        "damage": "",
+        "effect": "Search your discard pile for up to 2 Energy cards and attach them to Mewtwo."
+      },
+      {
+        "name": "Recover",
+        "damage": "",
+        "effect": "Discard a Psychic Energy attached to Mewtwo and remove 6 damage counters from Mewtwo."
+      },
+      {
+        "name": "Psyburn",
+        "damage": 60,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Mewtwo",
+    "img_url": "https://assets.tcgdex.net/en/dp/dp5/9/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/dp/dp5/9/high.webp",
+    "stats": {
+      "hp": 90,
+      "type": "Psychic",
+      "types": [
+        "Psychic"
+      ],
+      "rarity": "Rare Holo",
+      "set": "Majestic Dawn"
+    }
+  },
+  {
+    "id": "P-A-010",
+    "name": "Mewtwo",
+    "hp": 120,
+    "type": "Psychic",
+    "rarity": "未標示",
+    "series": "Promos-A",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/tcgp/P-A/010/high.webp",
+    "number": "010",
+    "description": "It was created by a scientist after years of horrific\ngene-splicing and DNA-engineering experiments.",
+    "skills": [
+      {
+        "name": "Power Blast",
+        "damage": 120,
+        "effect": "Discard 2 {P} Energy from this Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Mewtwo",
+    "img_url": "https://assets.tcgdex.net/en/tcgp/P-A/010/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/tcgp/P-A/010/high.webp",
+    "stats": {
+      "hp": 120,
+      "type": "Psychic",
+      "types": [
+        "Psychic"
+      ],
+      "rarity": "未標示",
+      "set": "Promos-A"
+    }
+  },
+  {
+    "id": "cel25-5",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Holo Rare",
+    "series": "Celebrations",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/swsh/cel25/5/high.webp",
+    "number": "5",
+    "description": "It has small electric sacs on both its cheeks. If threatened, it looses electric charges from the sacs.",
+    "skills": [
+      {
+        "name": "Gnaw",
+        "damage": 10,
+        "effect": ""
+      },
+      {
+        "name": "Thunder Jolt",
+        "damage": 30,
+        "effect": "Flip a coin. If tails, this Pokémon also does 10 damage to itself."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/swsh/cel25/5/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/swsh/cel25/5/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Holo Rare",
+      "set": "Celebrations"
+    }
+  },
+  {
+    "id": "cel25-6",
+    "name": "Flying Pikachu V",
+    "hp": 190,
+    "type": "Lightning",
+    "rarity": "Holo Rare V",
+    "series": "Celebrations",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/swsh/cel25/6/high.webp",
+    "number": "6",
+    "description": "",
+    "skills": [
+      {
+        "name": "Thunder Shock",
+        "damage": 20,
+        "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed."
+      },
+      {
+        "name": "Fly",
+        "damage": 120,
+        "effect": "Flip a coin. If tails, this attack does nothing. If heads, during your opponent's next turn, prevent all damage from and effects of attacks done to this Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Flying Pikachu V",
+    "img_url": "https://assets.tcgdex.net/en/swsh/cel25/6/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/swsh/cel25/6/high.webp",
+    "stats": {
+      "hp": 190,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Holo Rare V",
+      "set": "Celebrations"
+    }
+  },
+  {
+    "id": "lc-3",
+    "name": "Charizard",
+    "hp": 120,
+    "type": "Fire",
+    "rarity": "Holo Rare",
+    "series": "Legendary Collection",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/lc/lc/3/high.webp",
+    "number": "3",
+    "description": "Spits fire that is hot enough to melt boulders. Known to unintentionally cause forest fires.",
+    "skills": [
+      {
+        "name": "Fire Spin",
+        "damage": 100,
+        "effect": "Discard 2 Energy cards attached to Charizard or this attack does nothing."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Charizard",
+    "img_url": "https://assets.tcgdex.net/en/lc/lc/3/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/lc/lc/3/high.webp",
+    "stats": {
+      "hp": 120,
+      "type": "Fire",
+      "types": [
+        "Fire"
+      ],
+      "rarity": "Holo Rare",
+      "set": "Legendary Collection"
+    }
+  },
+  {
+    "id": "dp3-3",
+    "name": "Charizard",
+    "hp": 130,
+    "type": "Fire",
+    "rarity": "Rare Holo",
+    "series": "Secret Wonders",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/dp/dp3/3/high.webp",
+    "number": "3",
+    "description": "It is said that CHARIZARD's fire burns hotter if it has experienced harsh battles.",
+    "skills": [
+      {
+        "name": "Blast Burn",
+        "damage": 120,
+        "effect": "Flip a coin. If heads, discard 2 Energy cards attached to Charizard. If tails, discard 4 Energy cards attached to Charizard. (If you can't, this attack does nothing.)"
+      }
+    ],
+    "source": "pokemon",
+    "title": "Charizard",
+    "img_url": "https://assets.tcgdex.net/en/dp/dp3/3/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/dp/dp3/3/high.webp",
+    "stats": {
+      "hp": 130,
+      "type": "Fire",
+      "types": [
+        "Fire"
+      ],
+      "rarity": "Rare Holo",
+      "set": "Secret Wonders"
+    }
+  },
+  {
+    "id": "base4-4",
+    "name": "Charizard",
+    "hp": 120,
+    "type": "Fire",
+    "rarity": "Rare",
+    "series": "Base Set 2",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/base/base4/4/high.webp",
+    "number": "4",
+    "description": "Spits fire that is hot enough to melt boulders. Known to unintentionally cause forest fires.",
+    "skills": [
+      {
+        "name": "Fire Spin",
+        "damage": 100,
+        "effect": "Discard 2 Energy cards attached to Charizard in order to use this attack."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Charizard",
+    "img_url": "https://assets.tcgdex.net/en/base/base4/4/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/base/base4/4/high.webp",
+    "stats": {
+      "hp": 120,
+      "type": "Fire",
+      "types": [
+        "Fire"
+      ],
+      "rarity": "Rare",
+      "set": "Base Set 2"
+    }
+  },
+  {
+    "id": "pop6-9",
+    "name": "Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Uncommon",
+    "series": "POP Series 6",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/pop/pop6/9/high.webp",
+    "number": "9",
+    "description": "",
+    "skills": [
+      {
+        "name": "Spark",
+        "damage": 10,
+        "effect": "Does 10 damage to 2 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)"
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/pop/pop6/9/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/pop/pop6/9/high.webp",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Uncommon",
+      "set": "POP Series 6"
+    }
+  },
+  {
+    "id": "smp-SM04",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Promo",
+    "series": "SM Black Star Promos",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/smp/SM04_hires.png",
+    "number": "SM04",
+    "description": "SM Black Star Promos - Promo",
+    "skills": [
+      {
+        "name": "Thunder Wave",
+        "damage": "",
+        "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed."
+      },
+      {
+        "name": "Electro Ball",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/smp/SM04_hires.png",
+    "img_large": "https://images.pokemontcg.io/smp/SM04_hires.png",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Promo",
+      "set": "SM Black Star Promos"
+    }
+  },
+  {
+    "id": "hsp-HGSS03",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Promo",
+    "series": "HGSS Black Star Promos",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/hsp/HGSS03_hires.png",
+    "number": "HGSS03",
+    "description": "HGSS Black Star Promos - Promo",
+    "skills": [
+      {
+        "name": "Recharge",
+        "damage": "",
+        "effect": "Flip a coin. If heads, search your deck for a Lightning Energy card and attach it to Pikachu. Shuffle your deck afterward."
+      },
+      {
+        "name": "Thunderbolt",
+        "damage": "100",
+        "effect": "Discard all Energy attached to Pikachu."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/hsp/HGSS03_hires.png",
+    "img_large": "https://images.pokemontcg.io/hsp/HGSS03_hires.png",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Promo",
+      "set": "HGSS Black Star Promos"
+    }
+  },
+  {
+    "id": "pop4-13",
+    "name": "Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "POP Series 4",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/pop/pop4/13/high.webp",
+    "number": "13",
+    "description": "",
+    "skills": [
+      {
+        "name": "Spark",
+        "damage": 20,
+        "effect": "Does 10 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)"
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/pop/pop4/13/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/pop/pop4/13/high.webp",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "POP Series 4"
+    }
+  },
+  {
+    "id": "pop9-15",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "POP Series 9",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/pop/pop9/15/high.webp",
+    "number": "15",
+    "description": "If it looses crackling power from the electric pouches on its cheeks, it is being wary.",
+    "skills": [
+      {
+        "name": "Growl",
+        "damage": "",
+        "effect": "During your opponent's next turn, any damage done by attacks from the Defending Pokémon is reduced by 20 (before applying Weakness and Resistance)."
+      },
+      {
+        "name": "Numb",
+        "damage": 30,
+        "effect": "If Pikachu evolved from Pichu during this turn, the Defending Pokémon is now Paralyzed."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/pop/pop9/15/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/pop/pop9/15/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "POP Series 9"
+    }
+  },
+  {
+    "id": "mcd16-6",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "未標示",
+    "series": "McDonald's Collection 2016",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/mcd16/6_hires.png",
+    "number": "6",
+    "description": "McDonald's Collection 2016",
+    "skills": [
+      {
+        "name": "Tail Whip",
+        "damage": "",
+        "effect": "Flip a coin. If heads, the Defending Pokémon can't attack during your opponent's next turn."
+      },
+      {
+        "name": "Electro Ball",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/mcd16/6_hires.png",
+    "img_large": "https://images.pokemontcg.io/mcd16/6_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "未標示",
+      "set": "McDonald's Collection 2016"
+    }
+  },
+  {
+    "id": "dpp-DP16",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Promo",
+    "series": "DP Black Star Promos",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/dpp/DP16_hires.png",
+    "number": "DP16",
+    "description": "DP Black Star Promos - Promo",
+    "skills": [
+      {
+        "name": "BikaBika",
+        "damage": "20+",
+        "effect": "Flip a coin. If heads, this attack does 20 damage plus 10 more damage."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/dpp/DP16_hires.png",
+    "img_large": "https://images.pokemontcg.io/dpp/DP16_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Promo",
+      "set": "DP Black Star Promos"
+    }
+  },
+  {
+    "id": "pop5-12",
+    "name": "Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "POP Series 5",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/pop/pop5/12/high.webp",
+    "number": "12",
+    "description": "",
+    "skills": [
+      {
+        "name": "Lightning Ball",
+        "damage": 10,
+        "effect": ""
+      },
+      {
+        "name": "Thunderbolt",
+        "damage": 50,
+        "effect": "Discard all Energy cards attached to Pikachu."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/pop/pop5/12/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/pop/pop5/12/high.webp",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "POP Series 5"
+    }
+  },
+  {
+    "id": "pop5-13",
+    "name": "Pikachu δ",
+    "hp": 40,
+    "type": "Metal",
+    "rarity": "Common",
+    "series": "POP Series 5",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/pop/pop5/13/high.webp",
+    "number": "13",
+    "description": "",
+    "skills": [
+      {
+        "name": "Electric Punch",
+        "damage": 10,
+        "effect": ""
+      },
+      {
+        "name": "Heavy Metal",
+        "damage": "10+",
+        "effect": "Flip a coin for each Metal Energy attached to Pikachu. This attack does 10 damage plus 20 more damage for each heads."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu δ",
+    "img_url": "https://assets.tcgdex.net/en/pop/pop5/13/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/pop/pop5/13/high.webp",
+    "stats": {
+      "hp": 40,
+      "type": "Metal",
+      "types": [
+        "Metal"
+      ],
+      "rarity": "Common",
+      "set": "POP Series 5"
+    }
+  },
+  {
+    "id": "sm115-19",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Hidden Fates",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/sm/sm115/19/high.webp",
+    "number": "19",
+    "description": "Its nature is to store up electricity. Forests where nests of Pikachu live are dangerous, since the trees are so often struck by lightning.",
+    "skills": [
+      {
+        "name": "Quick Attack",
+        "damage": 10,
+        "effect": ""
+      },
+      {
+        "name": "Electro Ball",
+        "damage": 60,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/sm/sm115/19/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/sm/sm115/19/high.webp",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Hidden Fates"
+    }
+  },
+  {
+    "id": "np-12",
+    "name": "Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Nintendo Black Star Promos",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/pop/np/12/high.webp",
+    "number": "12",
+    "description": "",
+    "skills": [
+      {
+        "name": "Agility",
+        "damage": "",
+        "effect": "Flip a coin. If heads, prevent all effects of an attack, including damage, done to Pikachu during your opponent's next turn."
+      },
+      {
+        "name": "Thundershock",
+        "damage": 20,
+        "effect": "Flip a coin. If heads, the Defending Pokémon is now Paralyzed."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/pop/np/12/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/pop/np/12/high.webp",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Nintendo Black Star Promos"
+    }
+  },
+  {
+    "id": "xy6-20",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Roaring Skies",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/xy/xy6/20/high.webp",
+    "number": "20",
+    "description": "It raises its tail to check its surroundings. The tail is sometimes struck by lightning in this pose.",
+    "skills": [
+      {
+        "name": "Tail Whip",
+        "damage": "",
+        "effect": "Flip a coin. If heads, the Defending Pokémon can't attack during your opponent's next turn."
+      },
+      {
+        "name": "Electro Ball",
+        "damage": 30,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/xy/xy6/20/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/xy/xy6/20/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Roaring Skies"
+    }
+  },
+  {
+    "id": "pop2-16",
+    "name": "Pikachu",
+    "hp": 40,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "POP Series 2",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/pop/pop2/16/high.webp",
+    "number": "16",
+    "description": "",
+    "skills": [
+      {
+        "name": "Gnaw",
+        "damage": 10,
+        "effect": ""
+      },
+      {
+        "name": "Thunder Jolt",
+        "damage": 30,
+        "effect": "Flip a coin. If tails, Pikachu does 10 damage to itself."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/pop/pop2/16/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/pop/pop2/16/high.webp",
+    "stats": {
+      "hp": 40,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "POP Series 2"
+    }
+  },
+  {
+    "id": "basep-24",
+    "name": "___________'s Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Wizards Black Star Promos",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/base/basep/24/high.webp",
+    "number": "24",
+    "description": "Your Birthdate: ______________________________",
+    "skills": [
+      {
+        "name": "Birthday Surprise",
+        "damage": "30+",
+        "effect": "If it's not your birthday, this attack does 30 damage. If it is your birthday, flip a coin. If heads, this attack does 30 damage plus 50 more damage; if tails, this attack does 30 damage."
+      }
+    ],
+    "source": "pokemon",
+    "title": "___________'s Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/base/basep/24/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/base/basep/24/high.webp",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Wizards Black Star Promos"
+    }
+  },
+  {
+    "id": "basep-25",
+    "name": "Flying Pikachu",
+    "hp": 40,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Wizards Black Star Promos",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/base/basep/25/high.webp",
+    "number": "25",
+    "description": "By learning how to fly, Pikachu overcame its weakness to Fighting Pokémon.",
+    "skills": [
+      {
+        "name": "Thundershock",
+        "damage": 10,
+        "effect": "Flip a coin. If heads, the Defending Pokémon is now Paralyzed."
+      },
+      {
+        "name": "Fly",
+        "damage": 30,
+        "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all effects of attacks, including damage, done to Flying Pikachu; if tails, this attack does nothing (not even damage)."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Flying Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/base/basep/25/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/base/basep/25/high.webp",
+    "stats": {
+      "hp": 40,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Wizards Black Star Promos"
+    }
+  },
+  {
+    "id": "swshp-SWSH020",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Promo",
+    "series": "SWSH Black Star Promos",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/swshp/SWSH020_hires.png",
+    "number": "SWSH020",
+    "description": "SWSH Black Star Promos - Promo",
+    "skills": [
+      {
+        "name": "Iron Tail",
+        "damage": "30×",
+        "effect": "Flip a coin until you get tails. This attack does 30 damage for each heads."
+      },
+      {
+        "name": "Electro Ball",
+        "damage": "60",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/swshp/SWSH020_hires.png",
+    "img_large": "https://images.pokemontcg.io/swshp/SWSH020_hires.png",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Promo",
+      "set": "SWSH Black Star Promos"
+    }
+  },
+  {
+    "id": "basep-26",
+    "name": "Pikachu",
+    "hp": 40,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Wizards Black Star Promos",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/base/basep/26/high.webp",
+    "number": "26",
+    "description": "It uses its sensitive tail to sense its environment and has been known to react violently if its tail is grabbed.",
+    "skills": [
+      {
+        "name": "Scratch",
+        "damage": 10,
+        "effect": ""
+      },
+      {
+        "name": "Thunderbolt",
+        "damage": 40,
+        "effect": "Discard all Energy cards attached to Pikachu in order to use this attack."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/base/basep/26/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/base/basep/26/high.webp",
+    "stats": {
+      "hp": 40,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Wizards Black Star Promos"
+    }
+  },
+  {
+    "id": "basep-27",
+    "name": "Pikachu",
+    "hp": 30,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Wizards Black Star Promos",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/base/basep/27/high.webp",
+    "number": "27",
+    "description": "When several of these Pokémon gather, their electricity can cause lightning storms.",
+    "skills": [
+      {
+        "name": "Thundershock",
+        "damage": 10,
+        "effect": "Flip a coin. If heads, the Defending Pokémon is now Paralyzed."
+      },
+      {
+        "name": "Agility",
+        "damage": 20,
+        "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all effects of attacks, including damage, done to Pikachu."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/base/basep/27/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/base/basep/27/high.webp",
+    "stats": {
+      "hp": 30,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Wizards Black Star Promos"
+    }
+  },
+  {
+    "id": "sm9-33",
+    "name": "Pikachu & Zekrom GX",
+    "hp": 240,
+    "type": "Lightning",
+    "rarity": "Ultra Rare",
+    "series": "Team Up",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/sm/sm9/33/high.webp",
+    "number": "33",
+    "description": "",
+    "skills": [
+      {
+        "name": "Full Blitz",
+        "damage": 150,
+        "effect": "Search your deck for up to 3 Lightning Energy cards and attach them to 1 of your Pokémon. Then, shuffle your deck."
+      },
+      {
+        "name": "Tag Bolt GX",
+        "damage": 200,
+        "effect": "If this Pokémon has at least 3 extra Lightning Energy attached to it (in addition to this attack’s cost), this attack does 170 damage to 1 of your opponent’s Benched Pokémon. (Don’t apply Weakness and Resistance for Benched Pokémon.) (You can’t use more than 1 GX attack in a game.)"
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu & Zekrom GX",
+    "img_url": "https://assets.tcgdex.net/en/sm/sm9/33/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/sm/sm9/33/high.webp",
+    "stats": {
+      "hp": 240,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Ultra Rare",
+      "set": "Team Up"
+    }
+  },
+  {
+    "id": "basep-28",
+    "name": "Surfing Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Wizards Black Star Promos",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/base/basep/28/high.webp",
+    "number": "28",
+    "description": "One summer, a group of Pikachus was found riding the waves at the local beach.",
+    "skills": [
+      {
+        "name": "Surf",
+        "damage": 30,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Surfing Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/base/basep/28/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/base/basep/28/high.webp",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Wizards Black Star Promos"
+    }
+  },
+  {
+    "id": "bw4-39",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Next Destinies",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/bw4/39_hires.png",
+    "number": "39",
+    "description": "Next Destinies - Common",
+    "skills": [
+      {
+        "name": "Thundershock",
+        "damage": "10",
+        "effect": "Flip a coin. If heads, the Defending Pokémon is now Paralyzed."
+      },
+      {
+        "name": "Tail Whap",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/bw4/39_hires.png",
+    "img_large": "https://images.pokemontcg.io/bw4/39_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Next Destinies"
+    }
+  },
+  {
+    "id": "sm35-28",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Shining Legends",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/sm35/28_hires.png",
+    "number": "28",
+    "description": "Shining Legends - Common",
+    "skills": [
+      {
+        "name": "Iron Tail",
+        "damage": "20×",
+        "effect": "Flip a coin until you get tails. This attack does 20 damage for each heads."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/sm35/28_hires.png",
+    "img_large": "https://images.pokemontcg.io/sm35/28_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Shining Legends"
+    }
+  },
+  {
+    "id": "xy3-27",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Furious Fists",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/xy/xy3/27/high.webp",
+    "number": "27",
+    "description": "It raises its tail to check its surroundings. The tail is sometimes struck by lightning in this pose.",
+    "skills": [
+      {
+        "name": "Thunder Shock",
+        "damage": 20,
+        "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/xy/xy3/27/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/xy/xy3/27/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Furious Fists"
+    }
+  },
+  {
+    "id": "g1-26",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Generations",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/xy/g1/26/high.webp",
+    "number": "26",
+    "description": "It raises its tail to check its surroundings. The tail is sometimes struck by lightning in this pose.",
+    "skills": [
+      {
+        "name": "Nuzzle",
+        "damage": "",
+        "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed."
+      },
+      {
+        "name": "Quick Attack",
+        "damage": "20+",
+        "effect": "Flip a coin. If heads, this attack does 10 more damage."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/xy/g1/26/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/xy/g1/26/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Generations"
+    }
+  },
+  {
+    "id": "sm4-30",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Crimson Invasion",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/sm/sm4/30/high.webp",
+    "number": "30",
+    "description": "A plan was recently announced to gather many Pikachu and make an electric power plant.",
+    "skills": [
+      {
+        "name": "Pika Draw",
+        "damage": "",
+        "effect": "Draw a card."
+      },
+      {
+        "name": "Quick Attack",
+        "damage": "20+",
+        "effect": "Flip a coin. If heads, this attack does 20 more damage."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/sm/sm4/30/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/sm/sm4/30/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Crimson Invasion"
+    }
+  },
+  {
+    "id": "ex4-43",
+    "name": "Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Team Magma vs Team Aqua",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/ex4/43_hires.png",
+    "number": "43",
+    "description": "Team Magma vs Team Aqua - Common",
+    "skills": [
+      {
+        "name": "Agility",
+        "damage": "",
+        "effect": "Flip a coin. If heads, prevent all effects of an attack, including damage, done to Pikachu during your opponent's next turn."
+      },
+      {
+        "name": "Thundershock",
+        "damage": "20",
+        "effect": "Flip a coin. If heads, the Defending Pokémon is now Paralyzed."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/ex4/43_hires.png",
+    "img_large": "https://images.pokemontcg.io/ex4/43_hires.png",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Team Magma vs Team Aqua"
+    }
+  },
+  {
+    "id": "xy12-35",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Evolutions",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/xy12/35_hires.png",
+    "number": "35",
+    "description": "Evolutions - Common",
+    "skills": [
+      {
+        "name": "Gnaw",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "Thunder Jolt",
+        "damage": "30",
+        "effect": "Flip a coin. If tails, this Pokémon does 10 damage to itself."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/xy12/35_hires.png",
+    "img_large": "https://images.pokemontcg.io/xy12/35_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Evolutions"
+    }
+  },
+  {
+    "id": "xy1-42",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "XY",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/xy1/42_hires.png",
+    "number": "42",
+    "description": "XY - Common",
+    "skills": [
+      {
+        "name": "Nuzzle",
+        "damage": "",
+        "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed."
+      },
+      {
+        "name": "Quick Attack",
+        "damage": "20+",
+        "effect": "Flip a coin. If heads, this attack does 10 more damage."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/xy1/42_hires.png",
+    "img_large": "https://images.pokemontcg.io/xy1/42_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "XY"
+    }
+  },
+  {
+    "id": "np-35",
+    "name": "Pikachu δ",
+    "hp": 40,
+    "type": "Metal",
+    "rarity": "Promo",
+    "series": "Nintendo Black Star Promos",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/np/35_hires.png",
+    "number": "35",
+    "description": "Nintendo Black Star Promos - Promo",
+    "skills": [
+      {
+        "name": "Thunder Wave",
+        "damage": "",
+        "effect": "Flip a coin. If heads, the Defending Pokémon is now Paralyzed."
+      },
+      {
+        "name": "Iron Tail",
+        "damage": "20×",
+        "effect": "Flip a coin until you get tails. This attack does 20 damage times the number of heads."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu δ",
+    "img_url": "https://images.pokemontcg.io/np/35_hires.png",
+    "img_large": "https://images.pokemontcg.io/np/35_hires.png",
+    "stats": {
+      "hp": 40,
+      "type": "Metal",
+      "types": [
+        "Metal"
+      ],
+      "rarity": "Promo",
+      "set": "Nintendo Black Star Promos"
+    }
+  },
+  {
+    "id": "sm3-40",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Burning Shadows",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/sm3/40_hires.png",
+    "number": "40",
+    "description": "Burning Shadows - Common",
+    "skills": [
+      {
+        "name": "Tail Whap",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "Thunder Shock",
+        "damage": "20",
+        "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/sm3/40_hires.png",
+    "img_large": "https://images.pokemontcg.io/sm3/40_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Burning Shadows"
+    }
+  },
+  {
+    "id": "swsh4-43",
+    "name": "Pikachu V",
+    "hp": 190,
+    "type": "Lightning",
+    "rarity": "Rare Holo V",
+    "series": "Vivid Voltage",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/swsh4/43_hires.png",
+    "number": "43",
+    "description": "Vivid Voltage - Rare Holo V",
+    "skills": [
+      {
+        "name": "Charge",
+        "damage": "",
+        "effect": "Search your deck for up to 2 Lightning Energy cards and attach them to this Pokémon. Then, shuffle your deck."
+      },
+      {
+        "name": "Thunderbolt",
+        "damage": "200",
+        "effect": "Discard all Energy from this Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu V",
+    "img_url": "https://images.pokemontcg.io/swsh4/43_hires.png",
+    "img_large": "https://images.pokemontcg.io/swsh4/43_hires.png",
+    "stats": {
+      "hp": 190,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Rare Holo V",
+      "set": "Vivid Voltage"
+    }
+  },
+  {
+    "id": "swshp-SWSH039",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Promo",
+    "series": "SWSH Black Star Promos",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/swshp/SWSH039_hires.png",
+    "number": "SWSH039",
+    "description": "SWSH Black Star Promos - Promo",
+    "skills": [
+      {
+        "name": "Tail Whip",
+        "damage": "",
+        "effect": "Flip a coin. If heads, during your opponent's next turn, the Defending Pokémon can't attack."
+      },
+      {
+        "name": "Pika Bolt",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/swshp/SWSH039_hires.png",
+    "img_large": "https://images.pokemontcg.io/swshp/SWSH039_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Promo",
+      "set": "SWSH Black Star Promos"
+    }
+  },
+  {
+    "id": "bw7-50",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Boundaries Crossed",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/bw7/50_hires.png",
+    "number": "50",
+    "description": "Boundaries Crossed - Common",
+    "skills": [
+      {
+        "name": "Pika Punch",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "Double Voltage",
+        "damage": "40×",
+        "effect": "Flip 2 coins. This attack does 40 damage times the number of heads."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/bw7/50_hires.png",
+    "img_large": "https://images.pokemontcg.io/bw7/50_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Boundaries Crossed"
+    }
+  },
+  {
+    "id": "swsh4-44",
+    "name": "Pikachu VMAX",
+    "hp": 310,
+    "type": "Lightning",
+    "rarity": "Rare Holo VMAX",
+    "series": "Vivid Voltage",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/swsh4/44_hires.png",
+    "number": "44",
+    "description": "Vivid Voltage - Rare Holo VMAX",
+    "skills": [
+      {
+        "name": "G-Max Volt Tackle",
+        "damage": "120+",
+        "effect": "You may discard all Energy from this Pokémon. If you do, this attack does 150 more damage."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu VMAX",
+    "img_url": "https://images.pokemontcg.io/swsh4/44_hires.png",
+    "img_large": "https://images.pokemontcg.io/swsh4/44_hires.png",
+    "stats": {
+      "hp": 310,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Rare Holo VMAX",
+      "set": "Vivid Voltage"
+    }
+  },
+  {
+    "id": "xy8-48",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "BREAKthrough",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/xy8/48_hires.png",
+    "number": "48",
+    "description": "BREAKthrough - Common",
+    "skills": [
+      {
+        "name": "Gnaw",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "Agility",
+        "damage": "10",
+        "effect": "Flip a coin. If heads, prevent all effects of attacks, including damage, done to this Pokémon during your opponent's next turn."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/xy8/48_hires.png",
+    "img_large": "https://images.pokemontcg.io/xy8/48_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "BREAKthrough"
+    }
+  },
+  {
+    "id": "base1-58",
+    "name": "Pikachu",
+    "hp": 40,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Base",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/base1/58_hires.png",
+    "number": "58",
+    "description": "Base - Common",
+    "skills": [
+      {
+        "name": "Gnaw",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "Thunder Jolt",
+        "damage": "30",
+        "effect": "Flip a coin. If tails, Pikachu does 10 damage to itself."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/base1/58_hires.png",
+    "img_large": "https://images.pokemontcg.io/base1/58_hires.png",
+    "stats": {
+      "hp": 40,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Base"
+    }
+  },
+  {
+    "id": "sm11-55",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Unified Minds",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/sm11/55_hires.png",
+    "number": "55",
+    "description": "Unified Minds - Common",
+    "skills": [
+      {
+        "name": "Meal Time",
+        "damage": "",
+        "effect": "Flip a coin until you get tails. For each heads, draw a card."
+      },
+      {
+        "name": "Gnaw",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/sm11/55_hires.png",
+    "img_large": "https://images.pokemontcg.io/sm11/55_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Unified Minds"
+    }
+  },
+  {
+    "id": "ex9-60",
+    "name": "Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Emerald",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/ex9/60_hires.png",
+    "number": "60",
+    "description": "Emerald - Common",
+    "skills": [
+      {
+        "name": "Pika Ball",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "Thundershock",
+        "damage": "20",
+        "effect": "Flip a coin. If heads, the Defending Pokémon is now Paralyzed."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/ex9/60_hires.png",
+    "img_large": "https://images.pokemontcg.io/ex9/60_hires.png",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Emerald"
+    }
+  },
+  {
+    "id": "sm11-56",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Unified Minds",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/sm11/56_hires.png",
+    "number": "56",
+    "description": "Unified Minds - Common",
+    "skills": [
+      {
+        "name": "Tail Whap",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "Electric Ball",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/sm11/56_hires.png",
+    "img_large": "https://images.pokemontcg.io/sm11/56_hires.png",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Unified Minds"
+    }
+  },
+  {
+    "id": "hgss3-61",
+    "name": "Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "HS—Undaunted",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/hgss3/61_hires.png",
+    "number": "61",
+    "description": "HS—Undaunted - Common",
+    "skills": [
+      {
+        "name": "Slam",
+        "damage": "10×",
+        "effect": "Flip 2 coins. This attack does 10 damage times the number of heads."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/hgss3/61_hires.png",
+    "img_large": "https://images.pokemontcg.io/hgss3/61_hires.png",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "HS—Undaunted"
+    }
+  },
+  {
+    "id": "sm10-54",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Unbroken Bonds",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/sm10/54_hires.png",
+    "number": "54",
+    "description": "Unbroken Bonds - Common",
+    "skills": [
+      {
+        "name": "Pika Ball",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/sm10/54_hires.png",
+    "img_large": "https://images.pokemontcg.io/sm10/54_hires.png",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Unbroken Bonds"
+    }
+  },
+  {
+    "id": "sm12-66",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Cosmic Eclipse",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/sm12/66_hires.png",
+    "number": "66",
+    "description": "Cosmic Eclipse - Common",
+    "skills": [
+      {
+        "name": "Nuzzle",
+        "damage": "",
+        "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed."
+      },
+      {
+        "name": "Volt Tackle",
+        "damage": "70",
+        "effect": "This Pokémon does 10 damage to itself."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/sm12/66_hires.png",
+    "img_large": "https://images.pokemontcg.io/sm12/66_hires.png",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Cosmic Eclipse"
+    }
+  },
+  {
+    "id": "ex16-57",
+    "name": "Pikachu",
+    "hp": 40,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Power Keepers",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/ex16/57_hires.png",
+    "number": "57",
+    "description": "Power Keepers - Common",
+    "skills": [
+      {
+        "name": "Charge",
+        "damage": "",
+        "effect": "Search your discard pile for a Lightning Energy card and attach it to Pikachu."
+      },
+      {
+        "name": "Slam",
+        "damage": "20×",
+        "effect": "Flip 2 coins. This attack does 20 damage times the number of heads."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/ex16/57_hires.png",
+    "img_large": "https://images.pokemontcg.io/ex16/57_hires.png",
+    "stats": {
+      "hp": 40,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Power Keepers"
+    }
+  },
+  {
+    "id": "swsh1-65",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Sword & Shield",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/swsh1/65_hires.png",
+    "number": "65",
+    "description": "Sword & Shield - Common",
+    "skills": [
+      {
+        "name": "Charge",
+        "damage": "",
+        "effect": "Search your deck for a Lightning Energy card and attach it to this Pokémon. Then, shuffle your deck."
+      },
+      {
+        "name": "Electro Ball",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/swsh1/65_hires.png",
+    "img_large": "https://images.pokemontcg.io/swsh1/65_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Sword & Shield"
+    }
+  },
+  {
+    "id": "bwp-BW54",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Promo",
+    "series": "BW Black Star Promos",
+    "price": "-",
+    "image_url": "https://images.pokemontcg.io/bwp/BW54_hires.png",
+    "number": "BW54",
+    "description": "BW Black Star Promos - Promo",
+    "skills": [
+      {
+        "name": "Quick Attack",
+        "damage": "10+",
+        "effect": "Flip a coin. If heads, this attack does 10 more damage."
+      },
+      {
+        "name": "Electro Ball",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://images.pokemontcg.io/bwp/BW54_hires.png",
+    "img_large": "https://images.pokemontcg.io/bwp/BW54_hires.png",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Promo",
+      "set": "BW Black Star Promos"
+    }
+  },
+  {
+    "id": "cel25-7",
+    "name": "Flying Pikachu VMAX",
+    "hp": 310,
+    "type": "Lightning",
+    "rarity": "Holo Rare VMAX",
+    "series": "Celebrations",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/swsh/cel25/7/high.webp",
+    "number": "7",
+    "description": "",
+    "skills": [
+      {
+        "name": "Max Balloon",
+        "damage": 160,
+        "effect": "During your opponent's next turn, prevent all damage done to this Pokémon by attacks from Basic Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Flying Pikachu VMAX",
+    "img_url": "https://assets.tcgdex.net/en/swsh/cel25/7/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/swsh/cel25/7/high.webp",
+    "stats": {
+      "hp": 310,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Holo Rare VMAX",
+      "set": "Celebrations"
+    }
+  },
+  {
+    "id": "cel25-8",
+    "name": "Surfing Pikachu V",
+    "hp": 200,
+    "type": "Lightning",
+    "rarity": "Holo Rare V",
+    "series": "Celebrations",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/swsh/cel25/8/high.webp",
+    "number": "8",
+    "description": "",
+    "skills": [
+      {
+        "name": "Surf",
+        "damage": 150,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Surfing Pikachu V",
+    "img_url": "https://assets.tcgdex.net/en/swsh/cel25/8/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/swsh/cel25/8/high.webp",
+    "stats": {
+      "hp": 200,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Holo Rare V",
+      "set": "Celebrations"
+    }
+  },
+  {
+    "id": "P-A-009",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "未標示",
+    "series": "Promos-A",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/tcgp/P-A/009/high.webp",
+    "number": "009",
+    "description": "When it is angered, it immediately discharges the\nenergy stored in the pouches in its cheeks.",
+    "skills": [
+      {
+        "name": "Gnaw",
+        "damage": 20,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/tcgp/P-A/009/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/tcgp/P-A/009/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "未標示",
+      "set": "Promos-A"
+    }
+  },
+  {
+    "id": "cel25-9",
+    "name": "Surfing Pikachu VMAX",
+    "hp": 310,
+    "type": "Lightning",
+    "rarity": "Holo Rare VMAX",
+    "series": "Celebrations",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/swsh/cel25/9/high.webp",
+    "number": "9",
+    "description": "",
+    "skills": [
+      {
+        "name": "Max Surfer",
+        "damage": 160,
+        "effect": "This attack also does 30 damage to each of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)"
+      }
+    ],
+    "source": "pokemon",
+    "title": "Surfing Pikachu VMAX",
+    "img_url": "https://assets.tcgdex.net/en/swsh/cel25/9/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/swsh/cel25/9/high.webp",
+    "stats": {
+      "hp": 310,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Holo Rare VMAX",
+      "set": "Celebrations"
+    }
+  },
+  {
+    "id": "P-A-015",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "未標示",
+    "series": "Promos-A",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/tcgp/P-A/015/high.webp",
+    "number": "015",
+    "description": "When it is angered, it immediately discharges the\nenergy stored in the pouches in its cheeks.",
+    "skills": [
+      {
+        "name": "Gnaw",
+        "damage": 20,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/tcgp/P-A/015/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/tcgp/P-A/015/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "未標示",
+      "set": "Promos-A"
+    }
+  },
+  {
+    "id": "sv04.5-018",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Paldean Fates",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/sv/sv04.5/018/high.webp",
+    "number": "018",
+    "description": "When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.",
+    "skills": [
+      {
+        "name": "Growl",
+        "damage": "",
+        "effect": "During your opponent's next turn, the Defending Pokémon's attacks do 20 less damage (before applying Weakness and Resistance)."
+      },
+      {
+        "name": "Pika Bolt",
+        "damage": 30,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/sv/sv04.5/018/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/sv/sv04.5/018/high.webp",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Paldean Fates"
+    }
+  },
+  {
+    "id": "A2b-022",
+    "name": "Pikachu ex",
+    "hp": 120,
+    "type": "Lightning",
+    "rarity": "Four Diamond",
+    "series": "Shining Revelry",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/tcgp/A2b/022/high.webp",
+    "number": "022",
+    "description": "",
+    "skills": [
+      {
+        "name": "Thunderbolt",
+        "damage": 150,
+        "effect": "Discard all Energy from this Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu ex",
+    "img_url": "https://assets.tcgdex.net/en/tcgp/A2b/022/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/tcgp/A2b/022/high.webp",
+    "stats": {
+      "hp": 120,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Four Diamond",
+      "set": "Shining Revelry"
+    }
+  },
+  {
+    "id": "30th-023",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Pikachu Rare",
+    "series": "30th Celebration",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/me/30th/023/high.webp",
+    "number": "023",
+    "description": "",
+    "skills": [
+      {
+        "name": "Thunder Shock",
+        "damage": 20,
+        "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/me/30th/023/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/me/30th/023/high.webp",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Pikachu Rare",
+      "set": "30th Celebration"
+    }
+  },
+  {
+    "id": "30th-024",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Pikachu Rare",
+    "series": "30th Celebration",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/me/30th/024/high.webp",
+    "number": "024",
+    "description": "",
+    "skills": [
+      {
+        "name": "Volt Tackle",
+        "damage": 80,
+        "effect": "This Pokémon also does 30 damage to itself."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/me/30th/024/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/me/30th/024/high.webp",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Pikachu Rare",
+      "set": "30th Celebration"
+    }
+  },
+  {
+    "id": "A2a-025",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "One Diamond",
+    "series": "Triumphant Light",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/tcgp/A2a/025/high.webp",
+    "number": "025",
+    "description": "When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.",
+    "skills": [
+      {
+        "name": "Spark",
+        "damage": 10,
+        "effect": "This attack also does 10 damage to 1 of your opponent's Benched Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/tcgp/A2a/025/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/tcgp/A2a/025/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "One Diamond",
+      "set": "Triumphant Light"
+    }
+  },
+  {
+    "id": "30th-025",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Pikachu Rare",
+    "series": "30th Celebration",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/me/30th/025/high.webp",
+    "number": "025",
+    "description": "",
+    "skills": [
+      {
+        "name": "Spark",
+        "damage": 20,
+        "effect": "This attack also does 20 damage to 1 of your opponent's Benched Pokémon. <em>(Don't apply Weakness and Resistance for Benched Pokémon.)</em>"
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/me/30th/025/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/me/30th/025/high.webp",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Pikachu Rare",
+      "set": "30th Celebration"
+    }
+  },
+  {
+    "id": "A1a-025",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "One Diamond",
+    "series": "Mythical Island",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/tcgp/A1a/025/high.webp",
+    "number": "025",
+    "description": "When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.",
+    "skills": [
+      {
+        "name": "Circle Circuit",
+        "damage": "10×",
+        "effect": "This attack does 10 damage for each of your Benched {L} Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/tcgp/A1a/025/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/tcgp/A1a/025/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "One Diamond",
+      "set": "Mythical Island"
+    }
+  },
+  {
+    "id": "sv03.5-025",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "151",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/sv/sv03.5/025/high.webp",
+    "number": "025",
+    "description": "When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.",
+    "skills": [
+      {
+        "name": "Charge",
+        "damage": "",
+        "effect": "Search your deck for a Basic {L} Energy card and attach it to this Pokémon. Then, shuffle your deck."
+      },
+      {
+        "name": "Pika Punch",
+        "damage": 50,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/sv/sv03.5/025/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/sv/sv03.5/025/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "151"
+    }
+  },
+  {
+    "id": "P-A-026",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "未標示",
+    "series": "Promos-A",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/tcgp/P-A/026/high.webp",
+    "number": "026",
+    "description": "When it is angered, it immediately discharges the\nenergy stored in the pouches in its cheeks.",
+    "skills": [
+      {
+        "name": "Gnaw",
+        "damage": 20,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/tcgp/P-A/026/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/tcgp/P-A/026/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "未標示",
+      "set": "Promos-A"
+    }
+  },
+  {
+    "id": "30th-026",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Pikachu Rare",
+    "series": "30th Celebration",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/me/30th/026/high.webp",
+    "number": "026",
+    "description": "",
+    "skills": [
+      {
+        "name": "Peer At",
+        "damage": "",
+        "effect": "Your opponent reveals their hand."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/me/30th/026/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/me/30th/026/high.webp",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Pikachu Rare",
+      "set": "30th Celebration"
+    }
+  },
+  {
+    "id": "30th-027",
+    "name": "Pikachu",
+    "hp": 80,
+    "type": "Lightning",
+    "rarity": "Pikachu Rare",
+    "series": "30th Celebration",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/me/30th/027/high.webp",
+    "number": "027",
+    "description": "",
+    "skills": [
+      {
+        "name": "Nap",
+        "damage": "",
+        "effect": "Heal 30 damage from this Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/me/30th/027/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/me/30th/027/high.webp",
+    "stats": {
+      "hp": 80,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Pikachu Rare",
+      "set": "30th Celebration"
+    }
+  },
+  {
+    "id": "swsh10.5-027",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Common",
+    "series": "Pokémon GO",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/swsh/swsh10.5/027/high.webp",
+    "number": "027",
+    "description": "Pikachu that can generate powerful electricity have cheek sacs that are extra soft and super stretchy.",
+    "skills": [
+      {
+        "name": "Buddy Bolt",
+        "damage": "30+",
+        "effect": "If you played a Supporter card from your hand during this turn, this attack does 30 more damage."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/swsh/swsh10.5/027/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/swsh/swsh10.5/027/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Common",
+      "set": "Pokémon GO"
+    }
+  },
+  {
+    "id": "svp-027",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Promo",
+    "series": "SVP Black Star Promos",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/sv/svp/027/high.webp",
+    "number": "027",
+    "description": "Pikachu seems excited to be going on an adventure, and so do its new pals, from attention-seeking Sprigatito to laid-back Fuecoco and tidy Quaxly.",
+    "skills": [
+      {
+        "name": "Adventuring Together",
+        "damage": "30+",
+        "effect": "This attack does 10 more damage for each of your Benched Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/sv/svp/027/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/sv/svp/027/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Promo",
+      "set": "SVP Black Star Promos"
+    }
+  },
+  {
+    "id": "30th-028",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Pikachu Rare",
+    "series": "30th Celebration",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/me/30th/028/high.webp",
+    "number": "028",
+    "description": "",
+    "skills": [
+      {
+        "name": "Pika Ball",
+        "damage": 20,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/me/30th/028/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/me/30th/028/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Pikachu Rare",
+      "set": "30th Celebration"
+    }
+  },
+  {
+    "id": "swsh10.5-028",
+    "name": "Pikachu",
+    "hp": 70,
+    "type": "Lightning",
+    "rarity": "Holo Rare",
+    "series": "Pokémon GO",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/swsh/swsh10.5/028/high.webp",
+    "number": "028",
+    "description": "Pikachu that can generate powerful electricity have cheek sacs that are extra soft and super stretchy.",
+    "skills": [
+      {
+        "name": "Wild Charge",
+        "damage": 90,
+        "effect": "This Pokémon also does 30 damage to itself."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/swsh/swsh10.5/028/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/swsh/swsh10.5/028/high.webp",
+    "stats": {
+      "hp": 70,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Holo Rare",
+      "set": "Pokémon GO"
+    }
+  },
+  {
+    "id": "sv08.5-028",
+    "name": "Pikachu ex",
+    "hp": 190,
+    "type": "Lightning",
+    "rarity": "Double rare",
+    "series": "Prismatic Evolutions",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/sv/sv08.5/028/high.webp",
+    "number": "028",
+    "description": "",
+    "skills": [
+      {
+        "name": "Tail Whap",
+        "damage": 30,
+        "effect": ""
+      },
+      {
+        "name": "Thunder",
+        "damage": 220,
+        "effect": "This Pokémon also does 30 damage to itself."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu ex",
+    "img_url": "https://assets.tcgdex.net/en/sv/sv08.5/028/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/sv/sv08.5/028/high.webp",
+    "stats": {
+      "hp": 190,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Double rare",
+      "set": "Prismatic Evolutions"
+    }
+  },
+  {
+    "id": "30th-029",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Pikachu Rare",
+    "series": "30th Celebration",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/me/30th/029/high.webp",
+    "number": "029",
+    "description": "",
+    "skills": [
+      {
+        "name": "Find a Friend",
+        "damage": "",
+        "effect": "Search your deck for a Pokémon, reveal it, and put it into your hand. Then, shuffle your deck."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/me/30th/029/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/me/30th/029/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Pikachu Rare",
+      "set": "30th Celebration"
+    }
+  },
+  {
+    "id": "30th-030",
+    "name": "Pikachu",
+    "hp": 60,
+    "type": "Lightning",
+    "rarity": "Pikachu Rare",
+    "series": "30th Celebration",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/me/30th/030/high.webp",
+    "number": "030",
+    "description": "",
+    "skills": [
+      {
+        "name": "Mach Bolt",
+        "damage": 30,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/me/30th/030/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/me/30th/030/high.webp",
+    "stats": {
+      "hp": 60,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Pikachu Rare",
+      "set": "30th Celebration"
+    }
+  },
+  {
+    "id": "30th-031",
+    "name": "Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Pikachu Rare",
+    "series": "30th Celebration",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/me/30th/031/high.webp",
+    "number": "031",
+    "description": "",
+    "skills": [
+      {
+        "name": "Gnaw",
+        "damage": 10,
+        "effect": ""
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/me/30th/031/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/me/30th/031/high.webp",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Pikachu Rare",
+      "set": "30th Celebration"
+    }
+  },
+  {
+    "id": "30th-032",
+    "name": "Pikachu",
+    "hp": 50,
+    "type": "Lightning",
+    "rarity": "Pikachu Rare",
+    "series": "30th Celebration",
+    "price": "-",
+    "image_url": "https://assets.tcgdex.net/en/me/30th/032/high.webp",
+    "number": "032",
+    "description": "",
+    "skills": [
+      {
+        "name": "Scurry About",
+        "damage": "",
+        "effect": "Switch this Pokémon with 1 of your Benched Pokémon."
+      }
+    ],
+    "source": "pokemon",
+    "title": "Pikachu",
+    "img_url": "https://assets.tcgdex.net/en/me/30th/032/high.webp",
+    "img_large": "https://assets.tcgdex.net/en/me/30th/032/high.webp",
+    "stats": {
+      "hp": 50,
+      "type": "Lightning",
+      "types": [
+        "Lightning"
+      ],
+      "rarity": "Pikachu Rare",
+      "set": "30th Celebration"
+    }
+  }
+]

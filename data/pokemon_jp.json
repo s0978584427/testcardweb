@@ -4048,5 +4048,2530 @@
       "rarity": "C",
       "set": "Pokémon GO"
     }
+  },
+  {
+    "id": "jp-48685",
+    "name": "でんきだま",
+    "hp": 0,
+    "type": "未標示",
+    "rarity": "未標示",
+    "series": "ハイクラスパック 「MEGAドリームex",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/M2a/048685_T_DENKIDAMA.jpg",
+    "number": "163/193",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/48685/regu/all",
+    "source": "pokemon-jp",
+    "title": "でんきだま",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/M2a/048685_T_DENKIDAMA.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/M2a/048685_T_DENKIDAMA.jpg",
+    "stats": {
+      "hp": 0,
+      "type": "未標示",
+      "types": [
+        "未標示"
+      ],
+      "rarity": "未標示",
+      "set": "ハイクラスパック 「MEGAドリームex"
+    }
+  },
+  {
+    "id": "jp-45022",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ハイクラスパック「シャイニートレジャーex",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SV4a/045022_P_PIKACHIXYUU.jpg",
+    "number": "236/190",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/45022/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SV4a/045022_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SV4a/045022_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ハイクラスパック「シャイニートレジャーex"
+    }
+  },
+  {
+    "id": "jp-43993",
+    "name": "ピカチュウex",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンワールドチャンピオンシップス2023横浜 記念デッキ「ピカチュウ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/WCS23/043993_P_PIKACHIXYUUEX.jpg",
+    "number": "001/030",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/43993/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウex",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/WCS23/043993_P_PIKACHIXYUUEX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/WCS23/043993_P_PIKACHIXYUUEX.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンワールドチャンピオンシップス2023横浜 記念デッキ「ピカチュウ"
+    }
+  },
+  {
+    "id": "jp-43736",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "exスタートデッキ 雷 ミライドン",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SVD/043736_P_PIKACHIXYUU.jpg",
+    "number": "034/139",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/43736/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SVD/043736_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SVD/043736_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "exスタートデッキ 雷 ミライドン"
+    }
+  },
+  {
+    "id": "jp-43346",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "C",
+    "series": "ポケモンカード151（イチゴーイチ）",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SV2a/043346_P_PIKACHIXYUU.jpg",
+    "number": "025/165",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/43346/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SV2a/043346_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SV2a/043346_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "ポケモンカード151（イチゴーイチ）"
+    }
+  },
+  {
+    "id": "jp-43958",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "AR",
+    "series": "ポケモンカード151（イチゴーイチ）",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SV2a/043958_P_PIKACHIXYUU.jpg",
+    "number": "173/165",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/43958/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SV2a/043958_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SV2a/043958_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "AR",
+      "set": "ポケモンカード151（イチゴーイチ）"
+    }
+  },
+  {
+    "id": "jp-43153",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "C",
+    "series": "クレイバースト",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SV2D/043153_P_PIKACHIXYUU.jpg",
+    "number": "017/071",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/43153/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SV2D/043153_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SV2D/043153_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "クレイバースト"
+    }
+  },
+  {
+    "id": "jp-43093",
+    "name": "ピカチュウex",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ex ピカチュウex&パーモット",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SVC/043093_P_PIKACHIXYUUEX.jpg",
+    "number": "001/021",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/43093/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウex",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SVC/043093_P_PIKACHIXYUUEX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SVC/043093_P_PIKACHIXYUUEX.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ex ピカチュウex&パーモット"
+    }
+  },
+  {
+    "id": "jp-42855",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "AR",
+    "series": "ハイクラスパック 「VSTARユニバース",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S12a/042855_P_PIKACHIXYUU.jpg",
+    "number": "205/172",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/42855/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S12a/042855_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S12a/042855_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "AR",
+      "set": "ハイクラスパック 「VSTARユニバース"
+    }
+  },
+  {
+    "id": "jp-42116",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "C",
+    "series": "パラダイムトリガー",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S12/042116_P_PIKACHIXYUU.jpg",
+    "number": "024/098",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/42116/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S12/042116_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S12/042116_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "パラダイムトリガー"
+    }
+  },
+  {
+    "id": "jp-41708",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "C",
+    "series": "Pokémon GO",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S10b/041708_P_PIKACHIXYUU.jpg",
+    "number": "027/071",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41708/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S10b/041708_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S10b/041708_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "Pokémon GO"
+    }
+  },
+  {
+    "id": "jp-41709",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "R",
+    "series": "Pokémon GO",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S10b/041709_P_PIKACHIXYUU.jpg",
+    "number": "028/071",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41709/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S10b/041709_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S10b/041709_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "R",
+      "set": "Pokémon GO"
+    }
+  },
+  {
+    "id": "jp-41533",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "C",
+    "series": "ダークファンタズマ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S10a/041533_P_PIKACHIXYUU.jpg",
+    "number": "014/071",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41533/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S10a/041533_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S10a/041533_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "ダークファンタズマ"
+    }
+  },
+  {
+    "id": "jp-41601",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "C",
+    "series": "ダークファンタズマ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S10a/041601_P_PIKACHIXYUU.jpg",
+    "number": "014/071",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41601/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S10a/041601_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S10a/041601_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "ダークファンタズマ"
+    }
+  },
+  {
+    "id": "jp-41766",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "CHR",
+    "series": "ダークファンタズマ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S10a/041766_P_PIKACHIXYUU.jpg",
+    "number": "073/071",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41766/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S10a/041766_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S10a/041766_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "CHR",
+      "set": "ダークファンタズマ"
+    }
+  },
+  {
+    "id": "jp-41153",
+    "name": "ピカチュウV",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "スタートデッキ100 コロコロコミックver.",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SN/041153_P_PIKACHIXYUUBUI.jpg",
+    "number": "001/024",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41153/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SN/041153_P_PIKACHIXYUUBUI.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SN/041153_P_PIKACHIXYUUBUI.jpg",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "スタートデッキ100 コロコロコミックver."
+    }
+  },
+  {
+    "id": "jp-40375",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "スタートデッキ100",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040375_P_PIKACHIXYUU.jpg",
+    "number": "127/414",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40375/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040375_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040375_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "スタートデッキ100"
+    }
+  },
+  {
+    "id": "jp-40610",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "スタートデッキ100",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040610_P_PIKACHIXYUU.jpg",
+    "number": "127/414",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40610/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040610_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040610_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "スタートデッキ100"
+    }
+  },
+  {
+    "id": "jp-40377",
+    "name": "ピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "スタートデッキ100",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040377_P_PIKACHIXYUUV.jpg",
+    "number": "129/414",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40377/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040377_P_PIKACHIXYUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040377_P_PIKACHIXYUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "スタートデッキ100"
+    }
+  },
+  {
+    "id": "jp-40612",
+    "name": "ピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "スタートデッキ100",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040612_P_PIKACHIXYUUV.jpg",
+    "number": "129/414",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40612/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040612_P_PIKACHIXYUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SI/040612_P_PIKACHIXYUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "スタートデッキ100"
+    }
+  },
+  {
+    "id": "jp-41011",
+    "name": "ピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "スタートデッキ100",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SI/041011_P_PIKACHIXYUUV.jpg",
+    "number": "415/414",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41011/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SI/041011_P_PIKACHIXYUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SI/041011_P_PIKACHIXYUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "スタートデッキ100"
+    }
+  },
+  {
+    "id": "jp-40197",
+    "name": "ピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "RR",
+    "series": "ハイクラスパック「VMAXクライマックス",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/040197_P_PIKACHIXYUUV.jpg",
+    "number": "045/184",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40197/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/040197_P_PIKACHIXYUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/040197_P_PIKACHIXYUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RR",
+      "set": "ハイクラスパック「VMAXクライマックス"
+    }
+  },
+  {
+    "id": "jp-40198",
+    "name": "ピカチュウVMAX",
+    "hp": 310,
+    "type": "雷",
+    "rarity": "RRR",
+    "series": "ハイクラスパック「VMAXクライマックス",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/040198_P_PIKACHIXYUUVMAX.jpg",
+    "number": "046/184",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40198/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウVMAX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/040198_P_PIKACHIXYUUVMAX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/040198_P_PIKACHIXYUUVMAX.jpg",
+    "stats": {
+      "hp": 310,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RRR",
+      "set": "ハイクラスパック「VMAXクライマックス"
+    }
+  },
+  {
+    "id": "jp-41053",
+    "name": "ピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "CSR",
+    "series": "ハイクラスパック「VMAXクライマックス",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/041053_P_PIKACHIXYUUV.jpg",
+    "number": "222/184",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41053/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/041053_P_PIKACHIXYUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/041053_P_PIKACHIXYUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "CSR",
+      "set": "ハイクラスパック「VMAXクライマックス"
+    }
+  },
+  {
+    "id": "jp-41054",
+    "name": "ピカチュウVMAX",
+    "hp": 310,
+    "type": "雷",
+    "rarity": "CSR",
+    "series": "ハイクラスパック「VMAXクライマックス",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/041054_P_PIKACHIXYUUVMAX.jpg",
+    "number": "223/184",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41054/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウVMAX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/041054_P_PIKACHIXYUUVMAX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/041054_P_PIKACHIXYUUVMAX.jpg",
+    "stats": {
+      "hp": 310,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "CSR",
+      "set": "ハイクラスパック「VMAXクライマックス"
+    }
+  },
+  {
+    "id": "jp-40066",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25th ANNIVERSARY COLLECTION",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040066_P_PIKACHIXYUU.jpg",
+    "number": "001/028",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40066/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040066_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040066_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25th ANNIVERSARY COLLECTION"
+    }
+  },
+  {
+    "id": "jp-40085",
+    "name": "ピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "RR",
+    "series": "25th ANNIVERSARY COLLECTION",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040085_P_PIKACHIXYUUV.jpg",
+    "number": "020/028",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40085/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040085_P_PIKACHIXYUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040085_P_PIKACHIXYUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RR",
+      "set": "25th ANNIVERSARY COLLECTION"
+    }
+  },
+  {
+    "id": "jp-40086",
+    "name": "なみのりピカチュウV",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "RR",
+    "series": "25th ANNIVERSARY COLLECTION",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040086_P_NAMINORIPIKACHIXYUUV.jpg",
+    "number": "021/028",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40086/regu/all",
+    "source": "pokemon-jp",
+    "title": "なみのりピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040086_P_NAMINORIPIKACHIXYUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040086_P_NAMINORIPIKACHIXYUUV.jpg",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RR",
+      "set": "25th ANNIVERSARY COLLECTION"
+    }
+  },
+  {
+    "id": "jp-40087",
+    "name": "なみのりピカチュウVMAX",
+    "hp": 310,
+    "type": "雷",
+    "rarity": "RRR",
+    "series": "25th ANNIVERSARY COLLECTION",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040087_P_NAMINORIPIKACHIXYUUVMAX.jpg",
+    "number": "022/028",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40087/regu/all",
+    "source": "pokemon-jp",
+    "title": "なみのりピカチュウVMAX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040087_P_NAMINORIPIKACHIXYUUVMAX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040087_P_NAMINORIPIKACHIXYUUVMAX.jpg",
+    "stats": {
+      "hp": 310,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RRR",
+      "set": "25th ANNIVERSARY COLLECTION"
+    }
+  },
+  {
+    "id": "jp-40088",
+    "name": "そらをとぶピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "RR",
+    "series": "25th ANNIVERSARY COLLECTION",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040088_P_SORAWOTOBUPIKACHIXYUUV.jpg",
+    "number": "023/028",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40088/regu/all",
+    "source": "pokemon-jp",
+    "title": "そらをとぶピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040088_P_SORAWOTOBUPIKACHIXYUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040088_P_SORAWOTOBUPIKACHIXYUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RR",
+      "set": "25th ANNIVERSARY COLLECTION"
+    }
+  },
+  {
+    "id": "jp-40089",
+    "name": "そらをとぶピカチュウVMAX",
+    "hp": 310,
+    "type": "雷",
+    "rarity": "RRR",
+    "series": "25th ANNIVERSARY COLLECTION",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040089_P_SORAWOTOBUPIKACHIXYUUVMAX.jpg",
+    "number": "024/028",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40089/regu/all",
+    "source": "pokemon-jp",
+    "title": "そらをとぶピカチュウVMAX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040089_P_SORAWOTOBUPIKACHIXYUUVMAX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040089_P_SORAWOTOBUPIKACHIXYUUVMAX.jpg",
+    "stats": {
+      "hp": 310,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RRR",
+      "set": "25th ANNIVERSARY COLLECTION"
+    }
+  },
+  {
+    "id": "jp-40090",
+    "name": "ピカチュウV-UNION",
+    "hp": 300,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25th ANNIVERSARY COLLECTION",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040090_P_PIKACHIXYUUVUNION.jpg",
+    "number": "025/028",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/40090/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV-UNION",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040090_P_PIKACHIXYUUVUNION.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8a/040090_P_PIKACHIXYUUVUNION.jpg",
+    "stats": {
+      "hp": 300,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25th ANNIVERSARY COLLECTION"
+    }
+  },
+  {
+    "id": "jp-41664",
+    "name": "ピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25th ANNIVERSARY GOLDEN BOX",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041664_P_PIKACHIXYUUV.jpg",
+    "number": "001/015",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41664/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041664_P_PIKACHIXYUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041664_P_PIKACHIXYUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25th ANNIVERSARY GOLDEN BOX"
+    }
+  },
+  {
+    "id": "jp-41666",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25th ANNIVERSARY GOLDEN BOX",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041666_P_PIKACHIXYUU.jpg",
+    "number": "003/015",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41666/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041666_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041666_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25th ANNIVERSARY GOLDEN BOX"
+    }
+  },
+  {
+    "id": "jp-41668",
+    "name": "ピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25th ANNIVERSARY GOLDEN BOX",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041668_P_PIKACHIXYUUV.jpg",
+    "number": "005/015",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41668/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041668_P_PIKACHIXYUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041668_P_PIKACHIXYUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25th ANNIVERSARY GOLDEN BOX"
+    }
+  },
+  {
+    "id": "jp-41669",
+    "name": "ピカチュウVMAX",
+    "hp": 310,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "25th ANNIVERSARY GOLDEN BOX",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041669_P_PIKACHIXYUUVMAX.jpg",
+    "number": "006/015",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/41669/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウVMAX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041669_P_PIKACHIXYUUVMAX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S8a-G/041669_P_PIKACHIXYUUVMAX.jpg",
+    "stats": {
+      "hp": 310,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "25th ANNIVERSARY GOLDEN BOX"
+    }
+  },
+  {
+    "id": "jp-39836",
+    "name": "ピカチュウV",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ファミリーポケモンカードゲーム",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SH/039836_P_PIKACHUUV.jpg",
+    "number": "019/053",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/39836/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SH/039836_P_PIKACHUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SH/039836_P_PIKACHUUV.jpg",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ファミリーポケモンカードゲーム"
+    }
+  },
+  {
+    "id": "jp-39610",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "C",
+    "series": "イーブイヒーローズ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S6a/039610_P_PIKACHUU.jpg",
+    "number": "026/069",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/39610/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S6a/039610_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S6a/039610_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "イーブイヒーローズ"
+    }
+  },
+  {
+    "id": "jp-38528",
+    "name": "ピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "RR",
+    "series": "仰天のボルテッカー",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S4/038528_P_PIKACHUUV.jpg",
+    "number": "030/100",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/38528/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S4/038528_P_PIKACHUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S4/038528_P_PIKACHUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RR",
+      "set": "仰天のボルテッカー"
+    }
+  },
+  {
+    "id": "jp-38529",
+    "name": "ピカチュウVMAX",
+    "hp": 310,
+    "type": "雷",
+    "rarity": "RRR",
+    "series": "仰天のボルテッカー",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S4/038529_P_PIKACHUUVMAX.jpg",
+    "number": "031/100",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/38529/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウVMAX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S4/038529_P_PIKACHUUVMAX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S4/038529_P_PIKACHUUVMAX.jpg",
+    "stats": {
+      "hp": 310,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RRR",
+      "set": "仰天のボルテッカー"
+    }
+  },
+  {
+    "id": "jp-38915",
+    "name": "ピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "SR",
+    "series": "仰天のボルテッカー",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S4/038915_P_PIKACHUUV.jpg",
+    "number": "104/100",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/38915/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S4/038915_P_PIKACHUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S4/038915_P_PIKACHUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "SR",
+      "set": "仰天のボルテッカー"
+    }
+  },
+  {
+    "id": "jp-38300",
+    "name": "ピカチュウV",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "Vスタートデッキ雷　ピカチュウ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SD/038300_P_PIKACHUUV.jpg",
+    "number": "028/127",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/38300/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウV",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SD/038300_P_PIKACHUUV.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SD/038300_P_PIKACHUUV.jpg",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "Vスタートデッキ雷　ピカチュウ"
+    }
+  },
+  {
+    "id": "jp-37551",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "V　雷",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SA/037551_P_PIKACHUU.jpg",
+    "number": "001/024",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/37551/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SA/037551_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SA/037551_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "V　雷"
+    }
+  },
+  {
+    "id": "jp-37245",
+    "name": "ピカチュウ&ゼクロムGX",
+    "hp": 240,
+    "type": "雷",
+    "rarity": "RR",
+    "series": "ハイクラスパック「TAG TEAM GX タッグオールスターズ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM12a/037245_P_PIKACHUUZEKUROMUGX.jpg",
+    "number": "041/173",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/37245/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ&ゼクロムGX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM12a/037245_P_PIKACHUUZEKUROMUGX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM12a/037245_P_PIKACHUUZEKUROMUGX.jpg",
+    "stats": {
+      "hp": 240,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RR",
+      "set": "ハイクラスパック「TAG TEAM GX タッグオールスターズ"
+    }
+  },
+  {
+    "id": "jp-37013",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "C",
+    "series": "ドリームリーグ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM11b/037013_P_PIKACHUU.jpg",
+    "number": "016/049",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/37013/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM11b/037013_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM11b/037013_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "ドリームリーグ"
+    }
+  },
+  {
+    "id": "jp-37164",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "CHR",
+    "series": "ドリームリーグ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM11b/037164_P_PIKACHUU.jpg",
+    "number": "054/049",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/37164/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM11b/037164_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM11b/037164_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "CHR",
+      "set": "ドリームリーグ"
+    }
+  },
+  {
+    "id": "jp-36731",
+    "name": "名探偵ピカチュウ",
+    "hp": 90,
+    "type": "雷",
+    "rarity": "U/C",
+    "series": "ムービースペシャルパック「名探偵ピカチュウ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SMP2/036731_P_MEITANTEIPIKACHUU.jpg",
+    "number": "014/024",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/36731/regu/all",
+    "source": "pokemon-jp",
+    "title": "名探偵ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SMP2/036731_P_MEITANTEIPIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SMP2/036731_P_MEITANTEIPIKACHUU.jpg",
+    "stats": {
+      "hp": 90,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "U/C",
+      "set": "ムービースペシャルパック「名探偵ピカチュウ"
+    }
+  },
+  {
+    "id": "jp-36549",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "C",
+    "series": "ジージーエンド",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM10a/036549_P_PIKACHUU.jpg",
+    "number": "009/054",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/36549/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM10a/036549_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM10a/036549_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "ジージーエンド"
+    }
+  },
+  {
+    "id": "jp-36495",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ファミリーポケモンカードゲーム",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SML/036495_P_PIKACHUU.jpg",
+    "number": "018/051",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/36495/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SML/036495_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SML/036495_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ファミリーポケモンカードゲーム"
+    }
+  },
+  {
+    "id": "jp-36159",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "C",
+    "series": "ポケモンカードゲーム サン&ムーン 強化拡張パック「ナイトユニゾン",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM9a/036159_P_PIKACHUU.jpg",
+    "number": "014/055",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/36159/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM9a/036159_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM9a/036159_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "ポケモンカードゲーム サン&ムーン 強化拡張パック「ナイトユニゾン"
+    }
+  },
+  {
+    "id": "jp-35975",
+    "name": "ピカチュウ&ゼクロムGX",
+    "hp": 240,
+    "type": "雷",
+    "rarity": "RR",
+    "series": "タッグボルト",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM9/035975_P_PIKACHUUZEKUROMUGX.jpg",
+    "number": "031/095",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/35975/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ&ゼクロムGX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM9/035975_P_PIKACHUUZEKUROMUGX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM9/035975_P_PIKACHUUZEKUROMUGX.jpg",
+    "stats": {
+      "hp": 240,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RR",
+      "set": "タッグボルト"
+    }
+  },
+  {
+    "id": "jp-36205",
+    "name": "ピカチュウ&ゼクロムGX",
+    "hp": 240,
+    "type": "雷",
+    "rarity": "SR",
+    "series": "タッグボルト",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM9/036205_P_PIKACHUUZEKUROMUGX.jpg",
+    "number": "100/095",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/36205/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ&ゼクロムGX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM9/036205_P_PIKACHUUZEKUROMUGX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM9/036205_P_PIKACHUUZEKUROMUGX.jpg",
+    "stats": {
+      "hp": 240,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "SR",
+      "set": "タッグボルト"
+    }
+  },
+  {
+    "id": "jp-36206",
+    "name": "ピカチュウ&ゼクロムGX",
+    "hp": 240,
+    "type": "雷",
+    "rarity": "SR",
+    "series": "タッグボルト",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM9/036206_P_PIKACHUUZEKUROMUGX.jpg",
+    "number": "101/095",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/36206/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ&ゼクロムGX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM9/036206_P_PIKACHUUZEKUROMUGX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM9/036206_P_PIKACHUUZEKUROMUGX.jpg",
+    "stats": {
+      "hp": 240,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "SR",
+      "set": "タッグボルト"
+    }
+  },
+  {
+    "id": "jp-35061",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲーム サン&ムーン GXスタートデッキ「雷ライチュウ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SMH/035061_P_PIKACHUU.jpg",
+    "number": "032/131",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/35061/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SMH/035061_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SMH/035061_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲーム サン&ムーン GXスタートデッキ「雷ライチュウ"
+    }
+  },
+  {
+    "id": "jp-34256",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ハイクラスパック「GXバトルブースト",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM4p/034256_P_PIKACHUU.jpg",
+    "number": "028/114",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/34256/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM4p/034256_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM4p/034256_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ハイクラスパック「GXバトルブースト"
+    }
+  },
+  {
+    "id": "jp-34094",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "C",
+    "series": "超次元の暴獣",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM4A/034094_P_PIKACHUU.jpg",
+    "number": "015/050",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/34094/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM4A/034094_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM4A/034094_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "超次元の暴獣"
+    }
+  },
+  {
+    "id": "jp-34025",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "C",
+    "series": "ひかる伝説",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM3p/034025_P_PIKACHUU.jpg",
+    "number": "029/072",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/34025/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM3p/034025_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM3p/034025_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "ひかる伝説"
+    }
+  },
+  {
+    "id": "jp-33927",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "C",
+    "series": "光を喰らう闇",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM3N/033927_P_PIKACHUU.jpg",
+    "number": "013/051",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/33927/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM3N/033927_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM3N/033927_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "光を喰らう闇"
+    }
+  },
+  {
+    "id": "jp-33581",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ハイクラスパック「THE BEST OF XY",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/XY/033581_P_PIKACHUU.jpg",
+    "number": "029/171",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/33581/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/XY/033581_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/XY/033581_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ハイクラスパック「THE BEST OF XY"
+    }
+  },
+  {
+    "id": "jp-33743",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ハイクラスパック「THE BEST OF XY",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/XY/033743_P_PIKACHUU.jpg",
+    "number": "029/171",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/33743/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/XY/033743_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/XY/033743_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ハイクラスパック「THE BEST OF XY"
+    }
+  },
+  {
+    "id": "jp-33522",
+    "name": "サトシのピカチュウGX",
+    "hp": 170,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲーム サン＆ムーン 30枚デッキ対戦セット「サトシVSロケット団",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SMD/033522_P_SATOSHINOPIKACHUUGX.jpg",
+    "number": "005/026",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/33522/regu/all",
+    "source": "pokemon-jp",
+    "title": "サトシのピカチュウGX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SMD/033522_P_SATOSHINOPIKACHUUGX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SMD/033522_P_SATOSHINOPIKACHUUGX.jpg",
+    "stats": {
+      "hp": 170,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲーム サン＆ムーン 30枚デッキ対戦セット「サトシVSロケット団"
+    }
+  },
+  {
+    "id": "jp-33534",
+    "name": "サトシのゆうじょう",
+    "hp": 0,
+    "type": "未標示",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲーム サン＆ムーン 30枚デッキ対戦セット「サトシVSロケット団",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SMD/033534_T_SATOSHINOYUUJOU.jpg",
+    "number": "025/026",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/33534/regu/all",
+    "source": "pokemon-jp",
+    "title": "サトシのゆうじょう",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SMD/033534_T_SATOSHINOYUUJOU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SMD/033534_T_SATOSHINOYUUJOU.jpg",
+    "stats": {
+      "hp": 0,
+      "type": "未標示",
+      "types": [
+        "未標示"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲーム サン＆ムーン 30枚デッキ対戦セット「サトシVSロケット団"
+    }
+  },
+  {
+    "id": "jp-33004",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲーム サン&ムーン　ピカチュウと新しい仲間たち",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM0/033004_P_PIKACHUU.jpg",
+    "number": "004/004",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/33004/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SM0/033004_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SM0/033004_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲーム サン&ムーン　ピカチュウと新しい仲間たち"
+    }
+  },
+  {
+    "id": "jp-32239",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "C",
+    "series": "ポケモンカードゲームXY BREAK コンセプトパック「ポケットモンスターカードゲーム 拡張パック 20th Anniversary",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/CP6/032239_P_PIKACHUU.jpg",
+    "number": "033/087",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/32239/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/CP6/032239_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/CP6/032239_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "ポケモンカードゲームXY BREAK コンセプトパック「ポケットモンスターカードゲーム 拡張パック 20th Anniversary"
+    }
+  },
+  {
+    "id": "jp-35866",
+    "name": "ピカチュウEX",
+    "hp": 130,
+    "type": "雷",
+    "rarity": "SR",
+    "series": "ポケモンカードゲームXY BREAK コンセプトパック「ポケットモンスターカードゲーム 拡張パック 20th Anniversary",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/CP6/035866_P_PIKACHUUEX.jpg",
+    "number": "094/087",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/35866/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウEX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/CP6/035866_P_PIKACHUUEX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/CP6/035866_P_PIKACHUUEX.jpg",
+    "stats": {
+      "hp": 130,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "SR",
+      "set": "ポケモンカードゲームXY BREAK コンセプトパック「ポケットモンスターカードゲーム 拡張パック 20th Anniversary"
+    }
+  },
+  {
+    "id": "jp-31901",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲームXY BREAK プレミアムチャンピオンパック「EX×M×BREAK",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/CP4/031901_P_PIKACHUU.jpg",
+    "number": "036/131",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/31901/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/CP4/031901_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/CP4/031901_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲームXY BREAK プレミアムチャンピオンパック「EX×M×BREAK"
+    }
+  },
+  {
+    "id": "jp-31668",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲームXY BREAK 「ポケットモンスターカードゲーム スターターパック",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/20th/031668_P_PIKACHUU.jpg",
+    "number": "018/072",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/31668/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/20th/031668_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/20th/031668_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲームXY BREAK 「ポケットモンスターカードゲーム スターターパック"
+    }
+  },
+  {
+    "id": "jp-31610",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "RR",
+    "series": "ポケモンカードゲームXY BREAK コンセプトパック「ポケキュンコレクション",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/CP3/031610_P_PIKACHUU.jpg",
+    "number": "010/032",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/31610/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/CP3/031610_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/CP3/031610_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RR",
+      "set": "ポケモンカードゲームXY BREAK コンセプトパック「ポケキュンコレクション"
+    }
+  },
+  {
+    "id": "jp-31428",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲームXY BREAK 進化パック「ライチュウBREAK",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SNPr/031428_P_PIKACHUU.jpg",
+    "number": "001/010",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/31428/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SNPr/031428_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SNPr/031428_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲームXY BREAK 進化パック「ライチュウBREAK"
+    }
+  },
+  {
+    "id": "jp-31243",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲームXY 「メガマスターデッキビルドBOX スピードスタイル",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/MMB-S/031243_P_PIKACHUU.jpg",
+    "number": "011/049",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/31243/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/MMB-S/031243_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/MMB-S/031243_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲームXY 「メガマスターデッキビルドBOX スピードスタイル"
+    }
+  },
+  {
+    "id": "jp-31099",
+    "name": "ピカチュウEX",
+    "hp": 130,
+    "type": "雷",
+    "rarity": "RR",
+    "series": "ポケモンカードゲームXY コンセプトパック「伝説キラコレクション",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/CP2/031099_P_PIKACHUUEX.jpg",
+    "number": "008/027",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/31099/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウEX",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/CP2/031099_P_PIKACHUUEX.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/CP2/031099_P_PIKACHUUEX.jpg",
+    "stats": {
+      "hp": 130,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "RR",
+      "set": "ポケモンカードゲームXY コンセプトパック「伝説キラコレクション"
+    }
+  },
+  {
+    "id": "jp-30067",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "C",
+    "series": "ポケモンカードゲームXY 拡張パック「コレクションX",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/XY1-Bx/030067_P_PIKACHUU.jpg",
+    "number": "022/060",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/30067/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/XY1-Bx/030067_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/XY1-Bx/030067_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "C",
+      "set": "ポケモンカードゲームXY 拡張パック「コレクションX"
+    }
+  },
+  {
+    "id": "jp-27749",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "はじめてセットDX ピカチュウver.」封入カード",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/027749_P_PIKACHUU.jpg",
+    "number": "27749",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/27749/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/027749_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/027749_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "はじめてセットDX ピカチュウver.」封入カード"
+    }
+  },
+  {
+    "id": "jp-27835",
+    "name": "ピカチュウ",
+    "hp": 50,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンセンタートウホク オープン記念プレゼント",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/027835_P_PIKACHUU.jpg",
+    "number": "27835",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/27835/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/027835_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/027835_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 50,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンセンタートウホク オープン記念プレゼント"
+    }
+  },
+  {
+    "id": "jp-28078",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲーム教室 参加賞",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/028078_P_PIKACHUU.jpg",
+    "number": "28078",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/28078/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/028078_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/028078_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲーム教室 参加賞"
+    }
+  },
+  {
+    "id": "jp-28223",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲームBW ワークブック全国図鑑版",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/028223_P_PIKACHUU.jpg",
+    "number": "28223",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/28223/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/028223_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/028223_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲームBW ワークブック全国図鑑版"
+    }
+  },
+  {
+    "id": "jp-28906",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンセンター15周年 カードプレミアムセット プレミアムキラカード",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/028906_P_PIKACHUU.jpg",
+    "number": "28906",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/28906/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/028906_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/BWP/028906_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンセンター15周年 カードプレミアムセット プレミアムキラカード"
+    }
+  },
+  {
+    "id": "jp-25313",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "PCGアクションポイント ゴールドランクプレゼントカード",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/LP/025313_P_PIKACHUU.gif",
+    "number": "25313",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/25313/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/LP/025313_P_PIKACHUU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/LP/025313_P_PIKACHUU.gif",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "PCGアクションポイント ゴールドランクプレゼントカード"
+    }
+  },
+  {
+    "id": "jp-26212",
+    "name": "おかいものピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンセンターオリジナルカード　2010/8",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/LP/026212_P_OKAIMONOPIKACHUU.jpg",
+    "number": "26212",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/26212/regu/all",
+    "source": "pokemon-jp",
+    "title": "おかいものピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/LP/026212_P_OKAIMONOPIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/LP/026212_P_OKAIMONOPIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンセンターオリジナルカード　2010/8"
+    }
+  },
+  {
+    "id": "jp-23260",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "PCGアクションポイント ゴールドランクプレゼントカード",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPtP/023260_P_PIKACHUU.gif",
+    "number": "23260",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/23260/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPtP/023260_P_PIKACHUU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPtP/023260_P_PIKACHUU.gif",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "PCGアクションポイント ゴールドランクプレゼントカード"
+    }
+  },
+  {
+    "id": "jp-24264",
+    "name": "ピチュー",
+    "hp": 50,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "アルセウス光臨」発売記念大会　勝利賞",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPtP/024264_P_PICHU.gif",
+    "number": "24264",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/24264/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピチュー",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPtP/024264_P_PICHU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPtP/024264_P_PICHU.gif",
+    "stats": {
+      "hp": 50,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "アルセウス光臨」発売記念大会　勝利賞"
+    }
+  },
+  {
+    "id": "jp-24269",
+    "name": "ピカチュウM[ムービー]",
+    "hp": 90,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲーム　映画公開記念スペシャルパック2009」スペシャルキラカード",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPtP/024269_P_PIKACHUUMMUBI.gif",
+    "number": "24269",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/24269/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウM[ムービー]",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPtP/024269_P_PIKACHUUMMUBI.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPtP/024269_P_PIKACHUUMMUBI.gif",
+    "stats": {
+      "hp": 90,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲーム　映画公開記念スペシャルパック2009」スペシャルキラカード"
+    }
+  },
+  {
+    "id": "jp-19268",
+    "name": "ピカチュウ",
+    "hp": 50,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "映画公開記念　プレミアムシート2008",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/MPS08/019268_P_PIKACHUU.gif",
+    "number": "003/009",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/19268/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/MPS08/019268_P_PIKACHUU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/MPS08/019268_P_PIKACHUU.gif",
+    "stats": {
+      "hp": 50,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "映画公開記念　プレミアムシート2008"
+    }
+  },
+  {
+    "id": "jp-6024",
+    "name": "ピカチュウ",
+    "hp": 50,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "｢バトルロード スプリング★2007｣公式トーナメント予選参加賞",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/006024_P_PIKACHUU.jpg",
+    "number": "6024",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/6024/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/006024_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/006024_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 50,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "｢バトルロード スプリング★2007｣公式トーナメント予選参加賞"
+    }
+  },
+  {
+    "id": "jp-6047",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "とりかえっこDP引換カード2007年7月",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/006047_P_PIKACHUU.gif",
+    "number": "6047",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/6047/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/006047_P_PIKACHUU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/006047_P_PIKACHUU.gif",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "とりかえっこDP引換カード2007年7月"
+    }
+  },
+  {
+    "id": "jp-6056",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "｢バトルロード サマー★2007｣ワンデイバトル参加賞",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/006056_P_PIKACHUU.gif",
+    "number": "6056",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/6056/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/006056_P_PIKACHUU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/006056_P_PIKACHUU.gif",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "｢バトルロード サマー★2007｣ワンデイバトル参加賞"
+    }
+  },
+  {
+    "id": "jp-18502",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "｢バトルロード スプリング★2008｣公式サイトプレゼントカード",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/018502_P_PIKACHUU.gif",
+    "number": "18502",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/18502/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/018502_P_PIKACHUU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/018502_P_PIKACHUU.gif",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "｢バトルロード スプリング★2008｣公式サイトプレゼントカード"
+    }
+  },
+  {
+    "id": "jp-19501",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンセンター10周年記念オリジナルカード＜第1弾＞ポケモンセンタートウキョー",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019501_P_PIKACHUU.jpg",
+    "number": "19501",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/19501/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019501_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019501_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンセンター10周年記念オリジナルカード＜第1弾＞ポケモンセンタートウキョー"
+    }
+  },
+  {
+    "id": "jp-19503",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンセンター10周年記念オリジナルカード＜第1弾＞ポケモンセンターヨコハマ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019503_P_PIKACHUU.jpg",
+    "number": "19503",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/19503/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019503_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019503_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンセンター10周年記念オリジナルカード＜第1弾＞ポケモンセンターヨコハマ"
+    }
+  },
+  {
+    "id": "jp-19505",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンセンター10周年記念オリジナルカード＜第1弾＞ポケモンセンターオーサカ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019505_P_PIKACHUU.jpg",
+    "number": "19505",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/19505/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019505_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019505_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンセンター10周年記念オリジナルカード＜第1弾＞ポケモンセンターオーサカ"
+    }
+  },
+  {
+    "id": "jp-19507",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンセンター10周年記念オリジナルカード＜第1弾＞ポケモンセンターナゴヤ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019507_P_PIKACHUU.jpg",
+    "number": "19507",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/19507/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019507_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019507_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンセンター10周年記念オリジナルカード＜第1弾＞ポケモンセンターナゴヤ"
+    }
+  },
+  {
+    "id": "jp-19509",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンセンター10周年記念オリジナルカード＜第1弾＞ポケモンセンターフクオカ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019509_P_PIKACHUU.jpg",
+    "number": "19509",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/19509/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019509_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/019509_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンセンター10周年記念オリジナルカード＜第1弾＞ポケモンセンターフクオカ"
+    }
+  },
+  {
+    "id": "jp-20004",
+    "name": "ピチュー",
+    "hp": 40,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "コレクションチャレンジ」とりかえっこDP引換カード2008年7月",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/020004_P_PICHU.gif",
+    "number": "20004",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/20004/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピチュー",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/020004_P_PICHU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/020004_P_PICHU.gif",
+    "stats": {
+      "hp": 40,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "コレクションチャレンジ」とりかえっこDP引換カード2008年7月"
+    }
+  },
+  {
+    "id": "jp-20006",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "コレクションチャレンジ」『ポケットモンスター　プラチナ』クイズラリー参加賞",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/020006_P_PIKACHUU.gif",
+    "number": "20006",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/20006/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/020006_P_PIKACHUU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/020006_P_PIKACHUU.gif",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "コレクションチャレンジ」『ポケットモンスター　プラチナ』クイズラリー参加賞"
+    }
+  },
+  {
+    "id": "jp-20008",
+    "name": "ライチュウ",
+    "hp": 90,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "コレクションチャレンジ」ポケモンゲームソフト購入キャンペーン",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/020008_P_RAICHUU.gif",
+    "number": "20008",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/20008/regu/all",
+    "source": "pokemon-jp",
+    "title": "ライチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/020008_P_RAICHUU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DPP/020008_P_RAICHUU.gif",
+    "stats": {
+      "hp": 90,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "コレクションチャレンジ」ポケモンゲームソフト購入キャンペーン"
+    }
+  },
+  {
+    "id": "jp-15032",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲームDP エントリーパック’08 DX",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/DP/015032_P_PIKACHUU.jpg",
+    "number": "15032",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/15032/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/DP/015032_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/DP/015032_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲームDP エントリーパック’08 DX"
+    }
+  },
+  {
+    "id": "jp-26189",
+    "name": "ピカチュウ",
+    "hp": 50,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲーム ピカチュウ ワールド",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/PW/026189_P_PIKACHUU.gif",
+    "number": "26189",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/26189/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/PW/026189_P_PIKACHUU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/PW/026189_P_PIKACHUU.gif",
+    "stats": {
+      "hp": 50,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲーム ピカチュウ ワールド"
+    }
+  },
+  {
+    "id": "jp-26190",
+    "name": "ピカチュウ",
+    "hp": 50,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲーム ピカチュウ ワールド セブン-イレブン・ポケモンセンター オリジナルバージョン",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/PW/026190_P_PIKACHUU.gif",
+    "number": "26190",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/26190/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/PW/026190_P_PIKACHUU.gif",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/PW/026190_P_PIKACHUU.gif",
+    "stats": {
+      "hp": 50,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲーム ピカチュウ ワールド セブン-イレブン・ポケモンセンター オリジナルバージョン"
+    }
+  },
+  {
+    "id": "jp-25462",
+    "name": "ピカチュウ",
+    "hp": 50,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ポケモンカードゲーム バトルスタートデッキ ライチュウ",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/Br/025462_P_PIKACHUU.jpg",
+    "number": "001/011",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/25462/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/Br/025462_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/Br/025462_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 50,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ポケモンカードゲーム バトルスタートデッキ ライチュウ"
+    }
+  },
+  {
+    "id": "jp-37601",
+    "name": "ピカチュウ",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "セブンネットショッピング限定　Nintendo Switchソフト『ポケットモンスター ソード・シールド』 購入特典",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/S-P/037601_P_PIKACHUU.jpg",
+    "number": "37601",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/37601/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/S-P/037601_P_PIKACHUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/S-P/037601_P_PIKACHUU.jpg",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "セブンネットショッピング限定　Nintendo Switchソフト『ポケットモンスター ソード・シールド』 購入特典"
+    }
+  },
+  {
+    "id": "jp-42261",
+    "name": "ピカチュウ",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "パッケージ版『ポケットモンスター スカーレット』『ポケットモンスター バイオレット』の早期購入特典",
+    "price": "-",
+    "image_url": "https://www.pokemon-card.com/assets/images/card_images/large/SV-P/042261_P_PIKACHIXYUU.jpg",
+    "number": "42261",
+    "detail_url": "https://www.pokemon-card.com/card-search/details.php/card/42261/regu/all",
+    "source": "pokemon-jp",
+    "title": "ピカチュウ",
+    "img_url": "https://www.pokemon-card.com/assets/images/card_images/large/SV-P/042261_P_PIKACHIXYUU.jpg",
+    "img_large": "https://www.pokemon-card.com/assets/images/card_images/large/SV-P/042261_P_PIKACHIXYUU.jpg",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "パッケージ版『ポケットモンスター スカーレット』『ポケットモンスター バイオレット』の早期購入特典"
+    }
   }
 ]

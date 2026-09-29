@@ -978,7 +978,7 @@
                         </button>
                     </div>
                     <div class="scanner-reticle" aria-hidden="true"></div>
-                    <div id="scan-status">將卡牌完整放入藍色對焦框</div>
+                    <div id="scan-status">卡牌靠近藍框即可，不需要完全重合</div>
                 </div>
             </div>
         </div>
@@ -1635,7 +1635,7 @@
         async function startCamera() {
             if (cameraStream) cameraStream.getTracks().forEach(track => track.stop());
             const video = document.getElementById('camera-video');
-            setScannerState('scanning', '將卡牌完整放入藍色對焦框');
+            setScannerState('scanning', '卡牌靠近藍框即可，不需要完全重合');
             cameraStream = await navigator.mediaDevices.getUserMedia({
                 video: {
                     facingMode: { ideal: facingMode },
@@ -1702,10 +1702,15 @@
             const renderedHeight = video.videoHeight * coverScale;
             const hiddenX = (renderedWidth - videoRect.width) / 2;
             const hiddenY = (renderedHeight - videoRect.height) / 2;
-            const sourceX = Math.max(0, (reticleRect.left - videoRect.left + hiddenX) / coverScale);
-            const sourceY = Math.max(0, (reticleRect.top - videoRect.top + hiddenY) / coverScale);
-            const sourceWidth = Math.min(video.videoWidth - sourceX, reticleRect.width / coverScale);
-            const sourceHeight = Math.min(video.videoHeight - sourceY, reticleRect.height / coverScale);
+            const capturePadding = 0.24;
+            const paddedLeft = reticleRect.left - (reticleRect.width * capturePadding);
+            const paddedTop = reticleRect.top - (reticleRect.height * capturePadding);
+            const paddedWidth = reticleRect.width * (1 + capturePadding * 2);
+            const paddedHeight = reticleRect.height * (1 + capturePadding * 2);
+            const sourceX = Math.max(0, (paddedLeft - videoRect.left + hiddenX) / coverScale);
+            const sourceY = Math.max(0, (paddedTop - videoRect.top + hiddenY) / coverScale);
+            const sourceWidth = Math.min(video.videoWidth - sourceX, paddedWidth / coverScale);
+            const sourceHeight = Math.min(video.videoHeight - sourceY, paddedHeight / coverScale);
 
             canvas.width = 630;
             canvas.height = 880;
@@ -1731,7 +1736,7 @@
                 if (!response.ok || data.status !== 'success' || data.confidence < 47) {
                     currentMatchName = '';
                     matchCounter = 0;
-                    setScannerState('scanning', '將卡牌完整放入藍色對焦框');
+                    setScannerState('scanning', '卡牌靠近藍框即可，不需要完全重合');
                     return;
                 }
 
@@ -1743,14 +1748,14 @@
                     matchCounter = 1;
                 }
 
-                if (matchCounter >= 3) {
+                if (matchCounter >= 2) {
                     setScannerState('locked', `已鎖定 ${matchName} · ${Math.round(data.confidence)}%`);
                     if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
                     onScanMatched(data);
                     currentMatchName = '';
                     matchCounter = 0;
                 } else {
-                    setScannerState('target', `正在確認 ${matchName} · ${matchCounter}/3`);
+                    setScannerState('target', `正在確認 ${matchName} · ${matchCounter}/2`);
                 }
             } catch (error) {
                 console.error('影像比對請求失敗:', error);
