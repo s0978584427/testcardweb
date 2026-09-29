@@ -1748,14 +1748,15 @@
                     matchCounter = 1;
                 }
 
-                if (matchCounter >= 2) {
+                const requiredConfirmations = data.confidence >= 90 ? 1 : 2;
+                if (matchCounter >= requiredConfirmations) {
                     setScannerState('locked', `已鎖定 ${matchName} · ${Math.round(data.confidence)}%`);
                     if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
                     onScanMatched(data);
                     currentMatchName = '';
                     matchCounter = 0;
                 } else {
-                    setScannerState('target', `正在確認 ${matchName} · ${matchCounter}/2`);
+                    setScannerState('target', `正在確認 ${matchName} · ${matchCounter}/${requiredConfirmations}`);
                 }
             } catch (error) {
                 console.error('影像比對請求失敗:', error);
