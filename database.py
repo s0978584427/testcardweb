@@ -27,8 +27,9 @@ MIN_INLIER_RATIO = 0.40
 MIN_WINNER_MARGIN = 3
 MIN_WINNER_MARGIN_RATIO = 0.12
 FEATURE_CACHE_VERSION = 2
-CANDIDATE_LIMIT = 18
+CANDIDATE_LIMIT = 12
 CANDIDATE_MAX_DISTANCE = 70
+MAX_CANDIDATE_QUERY_DESCRIPTORS = 320
 
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "data"
@@ -238,8 +239,16 @@ def initialize_online_features():
 def _candidate_features(client_descriptors):
     if FEATURE_INDEX is None or not FEATURE_INDEX_ORDER:
         return list(ONLINE_CARD_FEATURES.values())
+    lookup_descriptors = client_descriptors
+    if len(client_descriptors) > MAX_CANDIDATE_QUERY_DESCRIPTORS:
+        sample_indexes = np.linspace(
+            0, len(client_descriptors) - 1,
+            MAX_CANDIDATE_QUERY_DESCRIPTORS,
+            dtype=np.int32,
+        )
+        lookup_descriptors = client_descriptors[sample_indexes]
     try:
-        approximate_matches = FEATURE_INDEX.knnMatch(client_descriptors, k=3)
+        approximate_matches = FEATURE_INDEX.knnMatch(lookup_descriptors, k=3)
     except cv2.error as exc:
         logger.warning("Fast candidate lookup failed; checking the full database: %s", exc)
         return list(ONLINE_CARD_FEATURES.values())
