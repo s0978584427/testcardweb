@@ -1,0 +1,7328 @@
+[
+  {
+    "id": "tw-19929",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019929.png",
+    "number": "017/103",
+    "skills": [
+      {
+        "name": "電擊",
+        "damage": "20",
+        "effect": "擲1次硬幣若為正面，則將對手的戰鬥寶可夢【麻痺】。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19929/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019929.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019929.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19930",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019930.png",
+    "number": "018/103",
+    "skills": [
+      {
+        "name": "伏特攻擊",
+        "damage": "80",
+        "effect": "這隻寶可夢也受到30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19930/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019930.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019930.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19931",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019931.png",
+    "number": "019/103",
+    "skills": [
+      {
+        "name": "電光",
+        "damage": "20",
+        "effect": "對手的1隻備戰寶可夢也受到20點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19931/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019931.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019931.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-20045",
+    "name": "噴火龍",
+    "hp": 120,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00020045.png",
+    "number": "137/103",
+    "skills": [
+      {
+        "name": "[特殊能力] 能量烈焰",
+        "damage": "",
+        "effect": "噴火龍可把「火」以外的自己的能量當作「火」能量。「混亂」狀態時無法使用。"
+      },
+      {
+        "name": "火焰旋渦",
+        "damage": "100",
+        "effect": "將2張自己的能量卡移除丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/20045/",
+    "source": "tw-pokemon",
+    "title": "噴火龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00020045.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00020045.png",
+    "stats": {
+      "hp": 120,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19286",
+    "name": "超級噴火龍Xex",
+    "hp": 360,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "戰術牌組「超級噴火龍Xex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019286.png",
+    "number": "003/023",
+    "skills": [
+      {
+        "name": "烈獄狂火X",
+        "damage": "90×",
+        "effect": "將自己的場上寶可夢身上附加的任意數量的【火】能量卡丟棄，造成其張數×90點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19286/",
+    "source": "tw-pokemon",
+    "title": "超級噴火龍Xex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019286.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019286.png",
+    "stats": {
+      "hp": 360,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "戰術牌組「超級噴火龍Xex"
+    }
+  },
+  {
+    "id": "tw-16556",
+    "name": "超級噴火龍Yex",
+    "hp": 360,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016556.png",
+    "number": "085/742",
+    "skills": [
+      {
+        "name": "炎獄狂爆Y",
+        "damage": "",
+        "effect": "將3個這隻寶可夢身上附加的能量丟棄，對手的1隻寶可夢受到280點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16556/",
+    "source": "tw-pokemon",
+    "title": "超級噴火龍Yex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016556.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016556.png",
+    "stats": {
+      "hp": 360,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-19970",
+    "name": "太陽伊布",
+    "hp": 110,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019970.png",
+    "number": "058/103",
+    "skills": [
+      {
+        "name": "奇跡璨耀",
+        "damage": "",
+        "effect": "從對手的所有進化的寶可夢身上，各移除1張「進化卡」使其退化。將移除的卡放回對手的手牌。"
+      },
+      {
+        "name": "超念力",
+        "damage": "90",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19970/",
+    "source": "tw-pokemon",
+    "title": "太陽伊布",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019970.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019970.png",
+    "stats": {
+      "hp": 110,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19971",
+    "name": "仙子伊布ex",
+    "hp": 270,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019971.png",
+    "number": "059/103",
+    "skills": [
+      {
+        "name": "鮮豔和聲",
+        "damage": "50×",
+        "effect": "造成自己的所有寶可夢身上附加的基本能量的屬性種類的數量×50點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19971/",
+    "source": "tw-pokemon",
+    "title": "仙子伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019971.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019971.png",
+    "stats": {
+      "hp": 270,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19989",
+    "name": "月亮伊布",
+    "hp": 110,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019989.png",
+    "number": "077/103",
+    "skills": [
+      {
+        "name": "報仇",
+        "damage": "30+",
+        "effect": "在上個對手的回合，若自己的寶可夢因招式的傷害而【昏厥】了，則增加100點傷害。"
+      },
+      {
+        "name": "暗之牙",
+        "damage": "100",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19989/",
+    "source": "tw-pokemon",
+    "title": "月亮伊布",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019989.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019989.png",
+    "stats": {
+      "hp": 110,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19966",
+    "name": "超夢",
+    "hp": 130,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019966.png",
+    "number": "054/103",
+    "skills": [
+      {
+        "name": "賦予力量",
+        "damage": "",
+        "effect": "從自己的棄牌區選擇最多2張基本能量卡，附於自己的1隻寶可夢身上。"
+      },
+      {
+        "name": "精神驅動",
+        "damage": "120",
+        "effect": "選擇1個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19966/",
+    "source": "tw-pokemon",
+    "title": "超夢",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019966.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019966.png",
+    "stats": {
+      "hp": 130,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19967",
+    "name": "超夢ex",
+    "hp": 230,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019967.png",
+    "number": "055/103",
+    "skills": [
+      {
+        "name": "光子彈",
+        "damage": "",
+        "effect": "對手的所有「寶可夢【ex】」各受到50點傷害。[在備戰區不計算弱點・抵抗力。]"
+      },
+      {
+        "name": "超能之力",
+        "damage": "230",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用招式。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19967/",
+    "source": "tw-pokemon",
+    "title": "超夢ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019967.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019967.png",
+    "stats": {
+      "hp": 230,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-20042",
+    "name": "超夢ex",
+    "hp": 230,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00020042.png",
+    "number": "134/103",
+    "skills": [
+      {
+        "name": "光子彈",
+        "damage": "",
+        "effect": "對手的所有「寶可夢【ex】」各受到50點傷害。[在備戰區不計算弱點・抵抗力。]"
+      },
+      {
+        "name": "超能之力",
+        "damage": "230",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用招式。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/20042/",
+    "source": "tw-pokemon",
+    "title": "超夢ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00020042.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00020042.png",
+    "stats": {
+      "hp": 230,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-14691",
+    "name": "蒼炎刃鬼ex",
+    "hp": 270,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "高級擴充包「超級進化夢想ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014691.png",
+    "number": "031/193",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "深淵熾火",
+        "damage": "30+",
+        "effect": "增加自己的棄牌區的能量卡的張數×20點傷害。"
+      },
+      {
+        "name": "紫水晶激怒",
+        "damage": "280",
+        "effect": "將這隻寶可夢身上附加的能量卡全部丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14691/",
+    "source": "tw-pokemon",
+    "title": "蒼炎刃鬼ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014691.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014691.png",
+    "stats": {
+      "hp": 270,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「超級進化夢想ex"
+    }
+  },
+  {
+    "id": "tw-14338",
+    "name": "蒼炎刃鬼",
+    "hp": 140,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "烈獄狂火X",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014338.png",
+    "number": "020/080",
+    "skills": [
+      {
+        "name": "煉獄斬",
+        "damage": "220",
+        "effect": "從自己的手牌選擇4張「基本【火】能量」卡，將其丟棄。若無法丟棄4張卡，則這個招式失敗。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14338/",
+    "source": "tw-pokemon",
+    "title": "蒼炎刃鬼",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014338.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014338.png",
+    "stats": {
+      "hp": 140,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "烈獄狂火X"
+    }
+  },
+  {
+    "id": "tw-14431",
+    "name": "蒼炎刃鬼",
+    "hp": 140,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014431.png",
+    "number": "035/M-P",
+    "skills": [
+      {
+        "name": "煉獄斬",
+        "damage": "220",
+        "effect": "從自己的手牌選擇4張「基本【火】能量」卡，將其丟棄。若無法丟棄4張卡，則這個招式失敗。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14431/",
+    "source": "tw-pokemon",
+    "title": "蒼炎刃鬼",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014431.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014431.png",
+    "stats": {
+      "hp": 140,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-19331",
+    "name": "奇魯莉安",
+    "hp": 100,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "戰術牌組「超級沙奈朵ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019331.png",
+    "number": "003/023",
+    "skills": [
+      {
+        "name": "呼喚信號",
+        "damage": "",
+        "effect": "從自己的牌庫選擇最多3張寶可夢卡，在給對手看過後加入手牌。並且重洗牌庫。"
+      },
+      {
+        "name": "精神射擊",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19331/",
+    "source": "tw-pokemon",
+    "title": "奇魯莉安",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019331.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019331.png",
+    "stats": {
+      "hp": 100,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "戰術牌組「超級沙奈朵ex"
+    }
+  },
+  {
+    "id": "tw-14730",
+    "name": "奇魯莉安",
+    "hp": 100,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「超級進化夢想ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014730.png",
+    "number": "070/193",
+    "skills": [
+      {
+        "name": "呼喚信號",
+        "damage": "",
+        "effect": "從自己的牌庫選擇最多3張寶可夢卡，在給對手看過後加入手牌。並且重洗牌庫。"
+      },
+      {
+        "name": "精神射擊",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14730/",
+    "source": "tw-pokemon",
+    "title": "奇魯莉安",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014730.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014730.png",
+    "stats": {
+      "hp": 100,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「超級進化夢想ex"
+    }
+  },
+  {
+    "id": "tw-16349",
+    "name": "奇魯莉安",
+    "hp": 100,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「超級進化夢想ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016349.png",
+    "number": "070/193",
+    "skills": [
+      {
+        "name": "呼喚信號",
+        "damage": "",
+        "effect": "從自己的牌庫選擇最多3張寶可夢卡，在給對手看過後加入手牌。並且重洗牌庫。"
+      },
+      {
+        "name": "精神射擊",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16349/",
+    "source": "tw-pokemon",
+    "title": "奇魯莉安",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016349.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016349.png",
+    "stats": {
+      "hp": 100,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「超級進化夢想ex"
+    }
+  },
+  {
+    "id": "tw-18221",
+    "name": "超級噴火龍Yex",
+    "hp": 360,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018221.png",
+    "number": "085/742",
+    "skills": [
+      {
+        "name": "炎獄狂爆Y",
+        "damage": "",
+        "effect": "將3個這隻寶可夢身上附加的能量丟棄，對手的1隻寶可夢受到280點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18221/",
+    "source": "tw-pokemon",
+    "title": "超級噴火龍Yex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018221.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018221.png",
+    "stats": {
+      "hp": 360,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-18357",
+    "name": "超級噴火龍Yex",
+    "hp": 360,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018357.png",
+    "number": "766/742",
+    "skills": [
+      {
+        "name": "炎獄狂爆Y",
+        "damage": "",
+        "effect": "將3個這隻寶可夢身上附加的能量丟棄，對手的1隻寶可夢受到280點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18357/",
+    "source": "tw-pokemon",
+    "title": "超級噴火龍Yex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018357.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018357.png",
+    "stats": {
+      "hp": 360,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-15971",
+    "name": "超級噴火龍Xex",
+    "hp": 360,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "高級擴充包「超級進化夢想ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00015971.png",
+    "number": "223/193",
+    "skills": [
+      {
+        "name": "烈獄狂火X",
+        "damage": "90×",
+        "effect": "將自己的場上寶可夢身上附加的任意數量的【火】能量卡丟棄，造成其張數×90點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/15971/",
+    "source": "tw-pokemon",
+    "title": "超級噴火龍Xex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00015971.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00015971.png",
+    "stats": {
+      "hp": 360,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「超級進化夢想ex"
+    }
+  },
+  {
+    "id": "tw-14331",
+    "name": "超級噴火龍Xex",
+    "hp": 360,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "烈獄狂火X",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014331.png",
+    "number": "013/080",
+    "skills": [
+      {
+        "name": "烈獄狂火X",
+        "damage": "90×",
+        "effect": "將自己的場上寶可夢身上附加的任意數量的【火】能量卡丟棄，造成其張數×90點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14331/",
+    "source": "tw-pokemon",
+    "title": "超級噴火龍Xex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014331.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014331.png",
+    "stats": {
+      "hp": 360,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "烈獄狂火X"
+    }
+  },
+  {
+    "id": "tw-18579",
+    "name": "超級噴火龍Xex",
+    "hp": 360,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "烈獄狂火X",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018579.png",
+    "number": "094/080",
+    "skills": [
+      {
+        "name": "烈獄狂火X",
+        "damage": "90×",
+        "effect": "將自己的場上寶可夢身上附加的任意數量的【火】能量卡丟棄，造成其張數×90點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18579/",
+    "source": "tw-pokemon",
+    "title": "超級噴火龍Xex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018579.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018579.png",
+    "stats": {
+      "hp": 360,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "烈獄狂火X"
+    }
+  },
+  {
+    "id": "tw-18595",
+    "name": "超級噴火龍Xex",
+    "hp": 360,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "烈獄狂火X",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018595.png",
+    "number": "110/080",
+    "skills": [
+      {
+        "name": "烈獄狂火X",
+        "damage": "90×",
+        "effect": "將自己的場上寶可夢身上附加的任意數量的【火】能量卡丟棄，造成其張數×90點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18595/",
+    "source": "tw-pokemon",
+    "title": "超級噴火龍Xex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018595.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018595.png",
+    "stats": {
+      "hp": 360,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "烈獄狂火X"
+    }
+  },
+  {
+    "id": "tw-18601",
+    "name": "超級噴火龍Xex",
+    "hp": 360,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "烈獄狂火X",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018601.png",
+    "number": "116/080",
+    "skills": [
+      {
+        "name": "烈獄狂火X",
+        "damage": "90×",
+        "effect": "將自己的場上寶可夢身上附加的任意數量的【火】能量卡丟棄，造成其張數×90點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18601/",
+    "source": "tw-pokemon",
+    "title": "超級噴火龍Xex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018601.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018601.png",
+    "stats": {
+      "hp": 360,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "烈獄狂火X"
+    }
+  },
+  {
+    "id": "tw-14425",
+    "name": "超級噴火龍Xex",
+    "hp": 360,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014425.png",
+    "number": "029/M-P",
+    "skills": [
+      {
+        "name": "烈獄狂火X",
+        "damage": "90×",
+        "effect": "將自己的場上寶可夢身上附加的任意數量的【火】能量卡丟棄，造成其張數×90點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14425/",
+    "source": "tw-pokemon",
+    "title": "超級噴火龍Xex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014425.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014425.png",
+    "stats": {
+      "hp": 360,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-18069",
+    "name": "超級噴火龍Yex",
+    "hp": 360,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018069.png",
+    "number": "073/M-P",
+    "skills": [
+      {
+        "name": "炎獄狂爆Y",
+        "damage": "",
+        "effect": "將3個這隻寶可夢身上附加的能量丟棄，對手的1隻寶可夢受到280點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18069/",
+    "source": "tw-pokemon",
+    "title": "超級噴火龍Yex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018069.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018069.png",
+    "stats": {
+      "hp": 360,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-13163",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "ex初階牌組 噴火龍",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00013163.png",
+    "number": "003/022",
+    "skills": [
+      {
+        "name": "無畏之翼",
+        "damage": "60+",
+        "effect": "若這隻寶可夢身上放置有傷害指示物，則增加100點傷害。"
+      },
+      {
+        "name": "爆焰旋渦",
+        "damage": "330",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/13163/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00013163.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00013163.png",
+    "stats": {
+      "hp": 330,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "ex初階牌組 噴火龍"
+    }
+  },
+  {
+    "id": "tw-10729",
+    "name": "光輝噴火龍",
+    "hp": 160,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "戰術牌組「太晶噴火龍ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00010729.png",
+    "number": "003/021",
+    "skills": [
+      {
+        "name": "[特性] 激動之心",
+        "damage": "",
+        "effect": "這隻寶可夢使用招式所需的【無】能量，減少對手已經獲得的獎賞卡的張數數量。"
+      },
+      {
+        "name": "烈焰爆",
+        "damage": "250",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用「烈焰爆」。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/10729/",
+    "source": "tw-pokemon",
+    "title": "光輝噴火龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00010729.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00010729.png",
+    "stats": {
+      "hp": 160,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "戰術牌組「太晶噴火龍ex"
+    }
+  },
+  {
+    "id": "tw-10732",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "戰術牌組「太晶噴火龍ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00010732.png",
+    "number": "006/021",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "[特性] 煉獄支配",
+        "damage": "",
+        "effect": "在自己的回合，從手牌使出這張卡並完成進化時，可使用1次。從自己的牌庫選擇最多3張「基本【火】能量」卡，以任意方式附於自己的寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "燃燒黑暗",
+        "damage": "180+",
+        "effect": "增加對手已經獲得的獎賞卡的張數×30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/10732/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00010732.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00010732.png",
+    "stats": {
+      "hp": 330,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "戰術牌組「太晶噴火龍ex"
+    }
+  },
+  {
+    "id": "tw-9143",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "高級擴充包「閃色寶藏ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00009143.png",
+    "number": "115/190",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "[特性]煉獄支配",
+        "damage": "",
+        "effect": "在自己的回合，從手牌使出這張卡並完成進化時，可使用1次。從自己的牌庫選擇最多3張「基本【火】能量」卡，以任意方式附於自己的寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "燃燒黑暗",
+        "damage": "180+",
+        "effect": "增加對手已經獲得的獎賞卡的張數×30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/9143/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00009143.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00009143.png",
+    "stats": {
+      "hp": 330,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「閃色寶藏ex"
+    }
+  },
+  {
+    "id": "tw-9360",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "高級擴充包「閃色寶藏ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00009360.png",
+    "number": "331/190",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "[特性]煉獄支配",
+        "damage": "",
+        "effect": "在自己的回合，從手牌使出這張卡並完成進化時，可使用1次。從自己的牌庫選擇最多3張「基本【火】能量」卡，以任意方式附於自己的寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "燃燒黑暗",
+        "damage": "180+",
+        "effect": "增加對手已經獲得的獎賞卡的張數×30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/9360/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00009360.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00009360.png",
+    "stats": {
+      "hp": 330,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「閃色寶藏ex"
+    }
+  },
+  {
+    "id": "tw-9378",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "高級擴充包「閃色寶藏ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00009378.png",
+    "number": "349/190",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "[特性]煉獄支配",
+        "damage": "",
+        "effect": "在自己的回合，從手牌使出這張卡並完成進化時，可使用1次。從自己的牌庫選擇最多3張「基本【火】能量」卡，以任意方式附於自己的寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "燃燒黑暗",
+        "damage": "180+",
+        "effect": "增加對手已經獲得的獎賞卡的張數×30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/9378/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00009378.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00009378.png",
+    "stats": {
+      "hp": 330,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「閃色寶藏ex"
+    }
+  },
+  {
+    "id": "tw-8549",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "黯焰支配者",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008549.png",
+    "number": "066/108",
+    "skills": [
+      {
+        "name": "[太晶]",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "[特性]煉獄支配",
+        "damage": "",
+        "effect": "在自己的回合，從手牌使出這張卡並完成進化時，可使用1次。從自己的牌庫選擇最多3張「基本【火】能量」卡，以任意方式附於自己的寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "燃燒黑暗",
+        "damage": "180+",
+        "effect": "增加對手已經獲得的獎賞卡的張數×30點傷害。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8549/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008549.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008549.png",
+    "stats": {
+      "hp": 330,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "黯焰支配者"
+    }
+  },
+  {
+    "id": "tw-15893",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "黯焰支配者",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00015893.png",
+    "number": "125/108",
+    "skills": [
+      {
+        "name": "[太晶]",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "[特性]煉獄支配",
+        "damage": "",
+        "effect": "在自己的回合，從手牌使出這張卡並完成進化時，可使用1次。從自己的牌庫選擇最多3張「基本【火】能量」卡，以任意方式附於自己的寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "燃燒黑暗",
+        "damage": "180+",
+        "effect": "增加對手已經獲得的獎賞卡的張數×30點傷害。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/15893/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00015893.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00015893.png",
+    "stats": {
+      "hp": 330,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "黯焰支配者"
+    }
+  },
+  {
+    "id": "tw-19722",
+    "name": "傑尼龜",
+    "hp": 80,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019722.png",
+    "number": "175/M-P",
+    "skills": [
+      {
+        "name": "泡沫",
+        "damage": "10",
+        "effect": "擲1次硬幣若為正面，則將對手的戰鬥寶可夢【麻痺】。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19722/",
+    "source": "tw-pokemon",
+    "title": "傑尼龜",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019722.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019722.png",
+    "stats": {
+      "hp": 80,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-8130",
+    "name": "傑尼龜",
+    "hp": 60,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008130.png",
+    "number": "007/165",
+    "skills": [
+      {
+        "name": "縮入殼中",
+        "damage": "",
+        "effect": "擲1次硬幣若為正面，則在下個對手的回合，這隻寶可夢不會受到招式的傷害。"
+      },
+      {
+        "name": "火箭頭錘",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8130/",
+    "source": "tw-pokemon",
+    "title": "傑尼龜",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008130.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008130.png",
+    "stats": {
+      "hp": 60,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-14858",
+    "name": "傑尼龜",
+    "hp": 60,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014858.png",
+    "number": "007/165",
+    "skills": [
+      {
+        "name": "縮入殼中",
+        "damage": "",
+        "effect": "擲1次硬幣若為正面，則在下個對手的回合，這隻寶可夢不會受到招式的傷害。"
+      },
+      {
+        "name": "火箭頭錘",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14858/",
+    "source": "tw-pokemon",
+    "title": "傑尼龜",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014858.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014858.png",
+    "stats": {
+      "hp": 60,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-8293",
+    "name": "傑尼龜",
+    "hp": 60,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008293.png",
+    "number": "170/165",
+    "skills": [
+      {
+        "name": "縮入殼中",
+        "damage": "",
+        "effect": "擲1次硬幣若為正面，則在下個對手的回合，這隻寶可夢不會受到招式的傷害。"
+      },
+      {
+        "name": "火箭頭錘",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8293/",
+    "source": "tw-pokemon",
+    "title": "傑尼龜",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008293.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008293.png",
+    "stats": {
+      "hp": 60,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-12896",
+    "name": "傑尼龜",
+    "hp": 60,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00012896.png",
+    "number": "233/SV-P",
+    "skills": [
+      {
+        "name": "縮入殼中",
+        "damage": "",
+        "effect": "擲1次硬幣若為正面，則在下個對手的回合，這隻寶可夢不會受到招式的傷害。"
+      },
+      {
+        "name": "火箭頭錘",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/12896/",
+    "source": "tw-pokemon",
+    "title": "傑尼龜",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00012896.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00012896.png",
+    "stats": {
+      "hp": 60,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-6619",
+    "name": "傑尼龜",
+    "hp": 70,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00006619.png",
+    "number": "184/S-P",
+    "skills": [
+      {
+        "name": "水槍",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/6619/",
+    "source": "tw-pokemon",
+    "title": "傑尼龜",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00006619.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00006619.png",
+    "stats": {
+      "hp": 70,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-6548",
+    "name": "傑尼龜",
+    "hp": 70,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "Pokémon GO",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00006548.png",
+    "number": "015/071",
+    "skills": [
+      {
+        "name": "水槍",
+        "damage": "20",
+        "effect": ""
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/6548/",
+    "source": "tw-pokemon",
+    "title": "傑尼龜",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00006548.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00006548.png",
+    "stats": {
+      "hp": 70,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "Pokémon GO"
+    }
+  },
+  {
+    "id": "tw-2770",
+    "name": "傑尼龜",
+    "hp": 50,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "雙倍爆擊」SET A",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002770.png",
+    "number": "031/184",
+    "skills": [
+      {
+        "name": "[特性]甲殼浮游",
+        "damage": "",
+        "effect": "若場上有自己的競技場卡，則將這隻寶可夢【撤退】所需的能量全部消除。"
+      },
+      {
+        "name": "水槍",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2770/",
+    "source": "tw-pokemon",
+    "title": "傑尼龜",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002770.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002770.png",
+    "stats": {
+      "hp": 50,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "雙倍爆擊」SET A"
+    }
+  },
+  {
+    "id": "tw-2771",
+    "name": "傑尼龜",
+    "hp": 60,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "雙倍爆擊」SET A",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00002771.png",
+    "number": "032/184",
+    "skills": [
+      {
+        "name": "泡沫",
+        "damage": "10",
+        "effect": "擲1次硬幣若為正面，則將對手的戰鬥寶可夢【麻痺】。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/2771/",
+    "source": "tw-pokemon",
+    "title": "傑尼龜",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00002771.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00002771.png",
+    "stats": {
+      "hp": 60,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "雙倍爆擊」SET A"
+    }
+  },
+  {
+    "id": "tw-3464",
+    "name": "傑尼龜",
+    "hp": 50,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "G超起始牌組「雙倍爆擊",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00003464.png",
+    "number": "029/169",
+    "skills": [
+      {
+        "name": "[特性]甲殼浮游",
+        "damage": "",
+        "effect": "若場上有自己的競技場卡，則將這隻寶可夢【撤退】所需的能量全部消除。"
+      },
+      {
+        "name": "水槍",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/3464/",
+    "source": "tw-pokemon",
+    "title": "傑尼龜",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00003464.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00003464.png",
+    "stats": {
+      "hp": 50,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "G超起始牌組「雙倍爆擊"
+    }
+  },
+  {
+    "id": "tw-19932",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019932.png",
+    "number": "020/103",
+    "skills": [
+      {
+        "name": "窺視",
+        "damage": "",
+        "effect": "查看對手的手牌。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19932/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019932.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019932.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19933",
+    "name": "皮卡丘",
+    "hp": 80,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019933.png",
+    "number": "021/103",
+    "skills": [
+      {
+        "name": "小憩",
+        "damage": "",
+        "effect": "將這隻寶可夢恢復「30」HP。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19933/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019933.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019933.png",
+    "stats": {
+      "hp": 80,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19934",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019934.png",
+    "number": "022/103",
+    "skills": [
+      {
+        "name": "[特性] 寂寞眼神",
+        "damage": "",
+        "effect": "只要這隻寶可夢在戰鬥場上，對手的戰鬥寶可夢使用的招式的傷害「-20」點。"
+      },
+      {
+        "name": "皮卡球",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19934/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019934.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019934.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19935",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019935.png",
+    "number": "023/103",
+    "skills": [
+      {
+        "name": "尋找朋友",
+        "damage": "",
+        "effect": "從自己的牌庫選擇1張寶可夢卡，在給對手看過後加入手牌。並且重洗牌庫。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19935/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019935.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019935.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19936",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019936.png",
+    "number": "024/103",
+    "skills": [
+      {
+        "name": "音速伏特",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19936/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019936.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019936.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19937",
+    "name": "皮卡丘",
+    "hp": 50,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019937.png",
+    "number": "025/103",
+    "skills": [
+      {
+        "name": "咬",
+        "damage": "10",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19937/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019937.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019937.png",
+    "stats": {
+      "hp": 50,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19938",
+    "name": "皮卡丘",
+    "hp": 50,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019938.png",
+    "number": "026/103",
+    "skills": [
+      {
+        "name": "逃來逃去",
+        "damage": "",
+        "effect": "將這隻寶可夢與備戰寶可夢互換。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19938/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019938.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019938.png",
+    "stats": {
+      "hp": 50,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19939",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019939.png",
+    "number": "027/103",
+    "skills": [
+      {
+        "name": "[特性] 躲起來",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到對手的寶可夢招式的傷害與效果的影響。"
+      },
+      {
+        "name": "小電氣",
+        "damage": "10",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19939/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019939.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019939.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19940",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019940.png",
+    "number": "028/103",
+    "skills": [
+      {
+        "name": "皮卡連鎖",
+        "damage": "40×",
+        "effect": "造成自己的場上的「皮卡丘（包含『寶可夢【ex】』）」的數量×40點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19940/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019940.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019940.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19941",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019941.png",
+    "number": "029/103",
+    "skills": [
+      {
+        "name": "滾動",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19941/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019941.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019941.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19942",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019942.png",
+    "number": "030/103",
+    "skills": [
+      {
+        "name": "撞一下",
+        "damage": "40",
+        "effect": "這隻寶可夢也受到10點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19942/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019942.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019942.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19943",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019943.png",
+    "number": "031/103",
+    "skills": [
+      {
+        "name": "能量尾",
+        "damage": "",
+        "effect": "從自己的牌庫選擇1張能量卡，在給對手看過後加入手牌。並且重洗牌庫。"
+      },
+      {
+        "name": "皮卡拳",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19943/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019943.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019943.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19944",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019944.png",
+    "number": "032/103",
+    "skills": [
+      {
+        "name": "瞄準電光",
+        "damage": "",
+        "effect": "對手的1隻寶可夢受到20點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19944/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019944.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019944.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19945",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019945.png",
+    "number": "033/103",
+    "skills": [
+      {
+        "name": "鐵尾",
+        "damage": "20×",
+        "effect": "擲硬幣直到出現反面，造成正面出現的次數×20點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19945/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019945.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019945.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19946",
+    "name": "皮卡丘",
+    "hp": 80,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019946.png",
+    "number": "034/103",
+    "skills": [
+      {
+        "name": "覆蓋伏特",
+        "damage": "10",
+        "effect": "在下個自己的回合結束前，受到這個招式的寶可夢弱點改為【雷】屬性。[弱點以「×2」計算傷害。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19946/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019946.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019946.png",
+    "stats": {
+      "hp": 80,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19947",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019947.png",
+    "number": "035/103",
+    "skills": [
+      {
+        "name": "垂吊",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "電氣踢",
+        "damage": "40",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19947/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019947.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019947.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19948",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019948.png",
+    "number": "036/103",
+    "skills": [
+      {
+        "name": "充電衝刺",
+        "damage": "",
+        "effect": "擲硬幣直到出現反面，從自己的牌庫選擇最多與正面出現的次數相同數量的「基本【雷】能量」卡，附於這隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "皮卡伏特",
+        "damage": "50",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19948/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019948.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019948.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19726",
+    "name": "木守宮",
+    "hp": 70,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019726.png",
+    "number": "179/M-P",
+    "skills": [
+      {
+        "name": "拍擊",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19726/",
+    "source": "tw-pokemon",
+    "title": "木守宮",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019726.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019726.png",
+    "stats": {
+      "hp": 70,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-4455",
+    "name": "木守宮",
+    "hp": 50,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "美夢成真組合篇」SET A",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00004455.png",
+    "number": "014/200",
+    "skills": [
+      {
+        "name": "睡意毒",
+        "damage": "",
+        "effect": "將對手的戰鬥寶可夢【中毒】與【睡眠】。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/4455/",
+    "source": "tw-pokemon",
+    "title": "木守宮",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00004455.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00004455.png",
+    "stats": {
+      "hp": 50,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "美夢成真組合篇」SET A"
+    }
+  },
+  {
+    "id": "tw-5018",
+    "name": "木守宮",
+    "hp": 60,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "G超起始牌組「美夢成真組合篇",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005018.png",
+    "number": "003/176",
+    "skills": [
+      {
+        "name": "尋找朋友",
+        "damage": "",
+        "effect": "從自己的牌庫抽出1張【草】寶可夢，在給對手看過後加入手牌。並且重洗牌庫。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5018/",
+    "source": "tw-pokemon",
+    "title": "木守宮",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005018.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005018.png",
+    "stats": {
+      "hp": 60,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "G超起始牌組「美夢成真組合篇"
+    }
+  },
+  {
+    "id": "tw-4457",
+    "name": "蜥蜴王",
+    "hp": 140,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "美夢成真組合篇」SET A",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00004457.png",
+    "number": "016/200",
+    "skills": [
+      {
+        "name": "[特性]自然力量",
+        "damage": "",
+        "effect": "只要這隻寶可夢在場上，自己的所有身上附有【草】能量的寶可夢，不會受到對手的「究極異獸」招式的傷害。"
+      },
+      {
+        "name": "強力風暴",
+        "damage": "20×",
+        "effect": "造成自己的場上寶可夢身上所附加的能量的數量×20點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/4457/",
+    "source": "tw-pokemon",
+    "title": "蜥蜴王",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00004457.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00004457.png",
+    "stats": {
+      "hp": 140,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "美夢成真組合篇」SET A"
+    }
+  },
+  {
+    "id": "tw-4458",
+    "name": "蜥蜴王GX",
+    "hp": 230,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "美夢成真組合篇」SET A",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00004458.png",
+    "number": "017/200",
+    "skills": [
+      {
+        "name": "音速斬",
+        "damage": "60",
+        "effect": "將對手的戰鬥寶可夢身上所附加的1個特殊能量丟到棄牌區。"
+      },
+      {
+        "name": "綠葉旋風",
+        "damage": "130",
+        "effect": "將這隻寶可夢身上所附加的1個【草】能量，改附於備戰寶可夢身上。"
+      },
+      {
+        "name": "叢林治癒GX",
+        "damage": "",
+        "effect": "將自己的所有身上附有【草】能量的寶可夢的HP全部恢復。［對戰中，己方只可使用1次GX招式。］"
+      },
+      {
+        "name": "[寶可夢GX規則]",
+        "damage": "",
+        "effect": "寶可夢GX【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/4458/",
+    "source": "tw-pokemon",
+    "title": "蜥蜴王GX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00004458.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00004458.png",
+    "stats": {
+      "hp": 230,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "美夢成真組合篇」SET A"
+    }
+  },
+  {
+    "id": "tw-5020",
+    "name": "蜥蜴王GX",
+    "hp": 230,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "G超起始牌組「美夢成真組合篇",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005020.png",
+    "number": "005/176",
+    "skills": [
+      {
+        "name": "音速斬",
+        "damage": "60",
+        "effect": "將對手的戰鬥寶可夢身上所附加的1個特殊能量丟到棄牌區。"
+      },
+      {
+        "name": "綠葉旋風",
+        "damage": "130",
+        "effect": "將這隻寶可夢身上所附加的1個【草】能量，改附於備戰寶可夢身上。"
+      },
+      {
+        "name": "叢林治癒GX",
+        "damage": "",
+        "effect": "將自己的所有身上附有【草】能量的寶可夢的HP全部恢復。［對戰中，己方只可使用1次GX招式。］"
+      },
+      {
+        "name": "[寶可夢GX規則]",
+        "damage": "",
+        "effect": "寶可夢GX【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5020/",
+    "source": "tw-pokemon",
+    "title": "蜥蜴王GX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005020.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005020.png",
+    "stats": {
+      "hp": 230,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "G超起始牌組「美夢成真組合篇"
+    }
+  },
+  {
+    "id": "tw-20003",
+    "name": "杖尾鱗甲龍",
+    "hp": 180,
+    "type": "龍",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00020003.png",
+    "number": "091/103",
+    "skills": [
+      {
+        "name": "熾熱上勾拳",
+        "damage": "250",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/20003/",
+    "source": "tw-pokemon",
+    "title": "杖尾鱗甲龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00020003.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00020003.png",
+    "stats": {
+      "hp": 180,
+      "type": "龍",
+      "types": [
+        "龍"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19602",
+    "name": "杖尾鱗甲龍",
+    "hp": 160,
+    "type": "龍",
+    "rarity": "未標示",
+    "series": "綠寶石風暴",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019602.png",
+    "number": "052/076",
+    "skills": [
+      {
+        "name": "[特性] 鱗片律動",
+        "damage": "",
+        "effect": "在自己的回合時可使用1次。查看自己的牌庫上方6張卡，從其中選擇任意數量的基本能量卡，以任意方式附於自己的【龍】寶可夢身上。將剩餘卡放回牌庫並重洗。"
+      },
+      {
+        "name": "頭突",
+        "damage": "170",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19602/",
+    "source": "tw-pokemon",
+    "title": "杖尾鱗甲龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019602.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019602.png",
+    "stats": {
+      "hp": 160,
+      "type": "龍",
+      "types": [
+        "龍"
+      ],
+      "rarity": "未標示",
+      "set": "綠寶石風暴"
+    }
+  },
+  {
+    "id": "tw-3384",
+    "name": "杖尾鱗甲龍",
+    "hp": 160,
+    "type": "龍",
+    "rarity": "未標示",
+    "series": "傳說交鋒」SET B",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00003384.png",
+    "number": "143/194",
+    "skills": [
+      {
+        "name": "力之吶喊",
+        "damage": "60",
+        "effect": "從自己的棄牌區抽出1張基本能量卡，附於備戰寶可夢身上。"
+      },
+      {
+        "name": "鱗片上鉤拳",
+        "damage": "90+",
+        "effect": "若希望，可將這隻寶可夢身上所附加的「寶可夢道具」丟到棄牌區。這個情況下，增加90點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/3384/",
+    "source": "tw-pokemon",
+    "title": "杖尾鱗甲龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00003384.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00003384.png",
+    "stats": {
+      "hp": 160,
+      "type": "龍",
+      "types": [
+        "龍"
+      ],
+      "rarity": "未標示",
+      "set": "傳說交鋒」SET B"
+    }
+  },
+  {
+    "id": "tw-4238",
+    "name": "杖尾鱗甲龍",
+    "hp": 160,
+    "type": "龍",
+    "rarity": "未標示",
+    "series": "眾星雲集組合篇」SET B",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00004238.png",
+    "number": "112/158",
+    "skills": [
+      {
+        "name": "戰鬥呐喊",
+        "damage": "30+",
+        "effect": "若自己的場上寶可夢的數量比對手的場上寶可夢的數量少，則增加90點傷害。"
+      },
+      {
+        "name": "鱗片噪音",
+        "damage": "130",
+        "effect": "在下個對手的回合，這隻寶可夢受到招式的傷害「+30」點。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/4238/",
+    "source": "tw-pokemon",
+    "title": "杖尾鱗甲龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00004238.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00004238.png",
+    "stats": {
+      "hp": 160,
+      "type": "龍",
+      "types": [
+        "龍"
+      ],
+      "rarity": "未標示",
+      "set": "眾星雲集組合篇」SET B"
+    }
+  },
+  {
+    "id": "tw-4239",
+    "name": "杖尾鱗甲龍GX",
+    "hp": 240,
+    "type": "龍",
+    "rarity": "未標示",
+    "series": "眾星雲集組合篇」SET B",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00004239.png",
+    "number": "113/158",
+    "skills": [
+      {
+        "name": "金剛壓制",
+        "damage": "30",
+        "effect": "在下個對手的回合，這隻寶可夢受到招式的傷害「-30」點。"
+      },
+      {
+        "name": "撕裂",
+        "damage": "130",
+        "effect": "這個招式的傷害不計算對手的戰鬥寶可夢身上的附加效果。"
+      },
+      {
+        "name": "究極上鉤拳GX",
+        "damage": "240",
+        "effect": "[對戰中，己方只可使用1次GX招式。]"
+      },
+      {
+        "name": "[寶可夢GX規則]",
+        "damage": "",
+        "effect": "寶可夢GX【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/4239/",
+    "source": "tw-pokemon",
+    "title": "杖尾鱗甲龍GX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00004239.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00004239.png",
+    "stats": {
+      "hp": 240,
+      "type": "龍",
+      "types": [
+        "龍"
+      ],
+      "rarity": "未標示",
+      "set": "眾星雲集組合篇」SET B"
+    }
+  },
+  {
+    "id": "tw-19949",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019949.png",
+    "number": "037/103",
+    "skills": [
+      {
+        "name": "南國氛圍",
+        "damage": "",
+        "effect": "將這隻寶可夢【睡眠】。從牌庫抽卡直到自己的手牌滿6張為止。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19949/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019949.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019949.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19950",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019950.png",
+    "number": "038/103",
+    "skills": [
+      {
+        "name": "高速移動",
+        "damage": "10",
+        "effect": "擲1次硬幣若為正面，則在下個對手的回合，這隻寶可夢不會受到招式的傷害與效果的影響。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19950/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019950.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019950.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19951",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019951.png",
+    "number": "039/103",
+    "skills": [
+      {
+        "name": "晚間散步",
+        "damage": "",
+        "effect": "從自己的牌庫抽出1張卡。"
+      },
+      {
+        "name": "劈哩啪啦",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19951/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019951.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019951.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19952",
+    "name": "皮卡丘",
+    "hp": 60,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019952.png",
+    "number": "040/103",
+    "skills": [
+      {
+        "name": "吹吹風",
+        "damage": "",
+        "effect": "將這隻寶可夢的特殊狀態全部恢復。"
+      },
+      {
+        "name": "踢飛",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19952/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019952.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019952.png",
+    "stats": {
+      "hp": 60,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19953",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019953.png",
+    "number": "041/103",
+    "skills": [
+      {
+        "name": "嬉鬧",
+        "damage": "10+",
+        "effect": "擲1次硬幣若為正面，則增加20點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19953/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019953.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019953.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19954",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019954.png",
+    "number": "042/103",
+    "skills": [
+      {
+        "name": "存起來",
+        "damage": "",
+        "effect": "從自己的棄牌區選擇最多2張基本能量卡，在給對手看過後加入手牌。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19954/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019954.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019954.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19955",
+    "name": "皮卡丘",
+    "hp": 80,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019955.png",
+    "number": "043/103",
+    "skills": [
+      {
+        "name": "鬥志雷霆",
+        "damage": "20+",
+        "effect": "若對手的戰鬥寶可夢為「寶可夢【ex】」，則增加80點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19955/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019955.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019955.png",
+    "stats": {
+      "hp": 80,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19956",
+    "name": "皮卡丘",
+    "hp": 80,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019956.png",
+    "number": "044/103",
+    "skills": [
+      {
+        "name": "滿足電光",
+        "damage": "100",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19956/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019956.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019956.png",
+    "stats": {
+      "hp": 80,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19957",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019957.png",
+    "number": "045/103",
+    "skills": [
+      {
+        "name": "雷電落",
+        "damage": "",
+        "effect": "將這隻寶可夢身上附加的【雷】能量卡全部丟棄，對手的1隻寶可夢受到90點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19957/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019957.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019957.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19958",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019958.png",
+    "number": "046/103",
+    "skills": [
+      {
+        "name": "氣沖沖伏特",
+        "damage": "10+",
+        "effect": "增加這隻寶可夢身上放置的傷害指示物的數量×10點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19958/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019958.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019958.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19959",
+    "name": "皮卡丘ex",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019959.png",
+    "number": "047/103",
+    "skills": [
+      {
+        "name": "皮卡皮卡大遊行",
+        "damage": "",
+        "effect": "從自己的牌庫選擇任意數量的【基礎】寶可夢卡，放置於備戰區。並且重洗牌庫。"
+      },
+      {
+        "name": "十萬伏特",
+        "damage": "200",
+        "effect": "將這隻寶可夢身上附加的能量卡全部丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19959/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019959.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019959.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19960",
+    "name": "皮卡丘ex",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019960.png",
+    "number": "048/103",
+    "skills": [
+      {
+        "name": "劈哩劈哩夜狂歡",
+        "damage": "",
+        "effect": "從自己的手牌選擇任意數量的基本能量卡，以任意方式附於自己的寶可夢身上。"
+      },
+      {
+        "name": "打雷",
+        "damage": "200",
+        "effect": "這隻寶可夢也受到30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19960/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019960.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019960.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-20037",
+    "name": "皮卡丘ex",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00020037.png",
+    "number": "126/103",
+    "skills": [
+      {
+        "name": "皮卡皮卡大遊行",
+        "damage": "",
+        "effect": "從自己的牌庫選擇任意數量的【基礎】寶可夢卡，放置於備戰區。並且重洗牌庫。"
+      },
+      {
+        "name": "十萬伏特",
+        "damage": "200",
+        "effect": "將這隻寶可夢身上附加的能量卡全部丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/20037/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00020037.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00020037.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-20038",
+    "name": "皮卡丘ex",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00020038.png",
+    "number": "127/103",
+    "skills": [
+      {
+        "name": "劈哩劈哩夜狂歡",
+        "damage": "",
+        "effect": "從自己的手牌選擇任意數量的基本能量卡，以任意方式附於自己的寶可夢身上。"
+      },
+      {
+        "name": "打雷",
+        "damage": "200",
+        "effect": "這隻寶可夢也受到30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/20038/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00020038.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00020038.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-20044",
+    "name": "皮卡丘",
+    "hp": 40,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00020044.png",
+    "number": "136/103",
+    "skills": [
+      {
+        "name": "咬",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "電流攻擊",
+        "damage": "30",
+        "effect": "擲硬幣若為「反面」，則自己也受到10點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/20044/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00020044.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00020044.png",
+    "stats": {
+      "hp": 40,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-20067",
+    "name": "皮卡丘&捷克羅姆GX",
+    "hp": 240,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00020067.png",
+    "number": "160/103",
+    "skills": [
+      {
+        "name": "滿溢驅動",
+        "damage": "150",
+        "effect": "從自己的牌庫抽出最多3張【雷】能量卡，附於自己的1隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "聯手伏特GX",
+        "damage": "200",
+        "effect": "若額外附有3個【雷】能量，則對手的1隻備戰寶可夢也受到170點傷害。[在備戰區不計算弱點・抵抗力。][對戰中，己方只可使用1次GX招式。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/20067/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘&捷克羅姆GX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00020067.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00020067.png",
+    "stats": {
+      "hp": 240,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-18367",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "New Trainer Journey",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018367.png",
+    "number": "008/022",
+    "skills": [
+      {
+        "name": "十萬伏特",
+        "damage": "120",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18367/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018367.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018367.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "New Trainer Journey"
+    }
+  },
+  {
+    "id": "tw-16696",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016696.png",
+    "number": "225/742",
+    "skills": [
+      {
+        "name": "尾擊",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "小伏特",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16696/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016696.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016696.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-18248",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018248.png",
+    "number": "225/742",
+    "skills": [
+      {
+        "name": "尾擊",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "小伏特",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18248/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018248.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018248.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-16698",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016698.png",
+    "number": "227/742",
+    "skills": [
+      {
+        "name": "十萬伏特",
+        "damage": "120",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16698/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016698.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016698.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-18250",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018250.png",
+    "number": "227/742",
+    "skills": [
+      {
+        "name": "十萬伏特",
+        "damage": "120",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18250/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018250.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018250.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-18355",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018355.png",
+    "number": "764/742",
+    "skills": [
+      {
+        "name": "十萬伏特",
+        "damage": "120",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18355/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018355.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018355.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-14704",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "高級擴充包「超級進化夢想ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014704.png",
+    "number": "044/193",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "‌‌[特性] 勤奮之心",
+        "damage": "",
+        "effect": "‌這隻寶可夢的HP是全滿的狀態下，這隻寶可夢受到招式的傷害而【昏厥】時，這隻寶可夢不會【昏厥】，而是以剩餘HP為「10」的狀態留在場上。"
+      },
+      {
+        "name": "黃玉伏特",
+        "damage": "300",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14704/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014704.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014704.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「超級進化夢想ex"
+    }
+  },
+  {
+    "id": "tw-15982",
+    "name": "皮卡丘ex",
+    "hp": 200,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "高級擴充包「超級進化夢想ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00015982.png",
+    "number": "234/193",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "‌‌[特性] 勤奮之心",
+        "damage": "",
+        "effect": "‌這隻寶可夢的HP是全滿的狀態下，這隻寶可夢受到招式的傷害而【昏厥】時，這隻寶可夢不會【昏厥】，而是以剩餘HP為「10」的狀態留在場上。"
+      },
+      {
+        "name": "黃玉伏特",
+        "damage": "300",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/15982/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00015982.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00015982.png",
+    "stats": {
+      "hp": 200,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「超級進化夢想ex"
+    }
+  },
+  {
+    "id": "tw-19246",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019246.png",
+    "number": "054/M-P",
+    "skills": [
+      {
+        "name": "電磁電光",
+        "damage": "",
+        "effect": "對手的1隻寶可夢受到10點傷害。[在備戰區不計算弱點・抵抗力。]"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19246/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019246.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019246.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-18067",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018067.png",
+    "number": "071/M-P",
+    "skills": [
+      {
+        "name": "尾擊",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "小伏特",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18067/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018067.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018067.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-19747",
+    "name": "皮卡丘ex",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019747.png",
+    "number": "200/M-P",
+    "skills": [
+      {
+        "name": "皮卡皮卡大遊行",
+        "damage": "",
+        "effect": "從自己的牌庫選擇任意數量的【基礎】寶可夢卡，放置於備戰區。並且重洗牌庫。"
+      },
+      {
+        "name": "十萬伏特",
+        "damage": "200",
+        "effect": "將這隻寶可夢身上附加的能量卡全部丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19747/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019747.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019747.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-19748",
+    "name": "皮卡丘ex",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019748.png",
+    "number": "201/M-P",
+    "skills": [
+      {
+        "name": "劈哩劈哩夜狂歡",
+        "damage": "",
+        "effect": "從自己的手牌選擇任意數量的基本能量卡，以任意方式附於自己的寶可夢身上。"
+      },
+      {
+        "name": "打雷",
+        "damage": "200",
+        "effect": "這隻寶可夢也受到30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19748/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019748.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019748.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-19669",
+    "name": "皮卡丘",
+    "hp": 70,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019669.png",
+    "number": "217/M-P",
+    "skills": [
+      {
+        "name": "激戰電光",
+        "damage": "30+",
+        "effect": "擲硬幣直到出現反面，增加正面出現的次數×30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19669/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019669.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019669.png",
+    "stats": {
+      "hp": 70,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-13137",
+    "name": "皮卡丘ex",
+    "hp": 190,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "ex初階牌組 皮卡丘",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00013137.png",
+    "number": "001/023",
+    "skills": [
+      {
+        "name": "皮卡拳",
+        "damage": "30",
+        "effect": ""
+      },
+      {
+        "name": "極限伏特",
+        "damage": "220",
+        "effect": "擲1次硬幣若為反面，則將這隻寶可夢身上附加的能量全部丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/13137/",
+    "source": "tw-pokemon",
+    "title": "皮卡丘ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00013137.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00013137.png",
+    "stats": {
+      "hp": 190,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "ex初階牌組 皮卡丘"
+    }
+  },
+  {
+    "id": "tw-15894",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "黯焰支配者",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00015894.png",
+    "number": "134/108",
+    "skills": [
+      {
+        "name": "[太晶]",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "[特性]煉獄支配",
+        "damage": "",
+        "effect": "在自己的回合，從手牌使出這張卡並完成進化時，可使用1次。從自己的牌庫選擇最多3張「基本【火】能量」卡，以任意方式附於自己的寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "燃燒黑暗",
+        "damage": "180+",
+        "effect": "增加對手已經獲得的獎賞卡的張數×30點傷害。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/15894/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00015894.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00015894.png",
+    "stats": {
+      "hp": 330,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "黯焰支配者"
+    }
+  },
+  {
+    "id": "tw-15892",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "黯焰支配者",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00015892.png",
+    "number": "139/108",
+    "skills": [
+      {
+        "name": "[太晶]",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "[特性]煉獄支配",
+        "damage": "",
+        "effect": "在自己的回合，從手牌使出這張卡並完成進化時，可使用1次。從自己的牌庫選擇最多3張「基本【火】能量」卡，以任意方式附於自己的寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "燃燒黑暗",
+        "damage": "180+",
+        "effect": "增加對手已經獲得的獎賞卡的張數×30點傷害。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/15892/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00015892.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00015892.png",
+    "stats": {
+      "hp": 330,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "黯焰支配者"
+    }
+  },
+  {
+    "id": "tw-8625",
+    "name": "光輝噴火龍",
+    "hp": 160,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "牌組構築BOX黯焰支配者",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008625.png",
+    "number": "001/038",
+    "skills": [
+      {
+        "name": "[特性] 激動之心",
+        "damage": "",
+        "effect": "這隻寶可夢使用招式所需的【無】能量，減少對手已經獲得的獎賞卡的張數數量。"
+      },
+      {
+        "name": "烈焰爆",
+        "damage": "250",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用「烈焰爆」。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8625/",
+    "source": "tw-pokemon",
+    "title": "光輝噴火龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008625.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008625.png",
+    "stats": {
+      "hp": 160,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "牌組構築BOX黯焰支配者"
+    }
+  },
+  {
+    "id": "tw-8129",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008129.png",
+    "number": "006/165",
+    "skills": [
+      {
+        "name": "無畏之翼",
+        "damage": "60+",
+        "effect": "若這隻寶可夢身上放置有傷害指示物，則增加100點傷害。"
+      },
+      {
+        "name": "爆焰旋渦",
+        "damage": "330",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8129/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008129.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008129.png",
+    "stats": {
+      "hp": 330,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-8308",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008308.png",
+    "number": "185/165",
+    "skills": [
+      {
+        "name": "無畏之翼",
+        "damage": "60+",
+        "effect": "若這隻寶可夢身上放置有傷害指示物，則增加100點傷害。"
+      },
+      {
+        "name": "爆焰旋渦",
+        "damage": "330",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8308/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008308.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008308.png",
+    "stats": {
+      "hp": 330,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-8324",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008324.png",
+    "number": "201/165",
+    "skills": [
+      {
+        "name": "無畏之翼",
+        "damage": "60+",
+        "effect": "若這隻寶可夢身上放置有傷害指示物，則增加100點傷害。"
+      },
+      {
+        "name": "爆焰旋渦",
+        "damage": "330",
+        "effect": "選擇3個這隻寶可夢身上附加的能量，將其丟棄。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8324/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008324.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008324.png",
+    "stats": {
+      "hp": 330,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-8735",
+    "name": "噴火龍VMAX",
+    "hp": 330,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008735.png",
+    "number": "038/SV-P",
+    "skills": [
+      {
+        "name": "利爪劈擊",
+        "damage": "100",
+        "effect": ""
+      },
+      {
+        "name": "超極巨地獄滅焰",
+        "damage": "300",
+        "effect": "選擇2個這隻寶可夢身上附加的能量，將其丟棄。"
+      },
+      {
+        "name": "[VMAX規則]",
+        "damage": "",
+        "effect": "寶可夢【VMAX】【昏厥】時，對手獲得3張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8735/",
+    "source": "tw-pokemon",
+    "title": "噴火龍VMAX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008735.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008735.png",
+    "stats": {
+      "hp": 330,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-11505",
+    "name": "噴火龍ex",
+    "hp": 330,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011505.png",
+    "number": "166/SV-P",
+    "skills": [
+      {
+        "name": "[太晶]",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "[特性]煉獄支配",
+        "damage": "",
+        "effect": "在自己的回合，從手牌使出這張卡並完成進化時，可使用1次。從自己的牌庫選擇最多3張「基本【火】能量」卡，以任意方式附於自己的寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "燃燒黑暗",
+        "damage": "180+",
+        "effect": "增加對手已經獲得的獎賞卡的張數×30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11505/",
+    "source": "tw-pokemon",
+    "title": "噴火龍ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011505.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011505.png",
+    "stats": {
+      "hp": 330,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-7451",
+    "name": "噴火龍V",
+    "hp": 220,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特別牌組組合 「噴火龍VSTAR vs 烈空坐VMAX",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007451.png",
+    "number": "001/030",
+    "skills": [
+      {
+        "name": "燒盡",
+        "damage": "90",
+        "effect": "在造成傷害前，將對手的戰鬥寶可夢身上附加的「寶可夢道具」丟棄。"
+      },
+      {
+        "name": "高溫爆破",
+        "damage": "180",
+        "effect": ""
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7451/",
+    "source": "tw-pokemon",
+    "title": "噴火龍V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007451.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007451.png",
+    "stats": {
+      "hp": 220,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特別牌組組合 「噴火龍VSTAR vs 烈空坐VMAX"
+    }
+  },
+  {
+    "id": "tw-7452",
+    "name": "噴火龍VSTAR",
+    "hp": 280,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特別牌組組合 「噴火龍VSTAR vs 烈空坐VMAX",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007452.png",
+    "number": "002/030",
+    "skills": [
+      {
+        "name": "爆裂火焰",
+        "damage": "130+",
+        "effect": "若這隻寶可夢身上放置有傷害指示物，則增加100點傷害。"
+      },
+      {
+        "name": "[VSTAR力量]星星火焰",
+        "damage": "320",
+        "effect": "選擇2個這隻寶可夢身上附加的能量，將其丟棄。[對戰中，己方只可使用1次【VSTAR】力量。]"
+      },
+      {
+        "name": "[VSTAR規則]",
+        "damage": "",
+        "effect": "寶可夢【VSTAR】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7452/",
+    "source": "tw-pokemon",
+    "title": "噴火龍VSTAR",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007452.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007452.png",
+    "stats": {
+      "hp": 280,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特別牌組組合 「噴火龍VSTAR vs 烈空坐VMAX"
+    }
+  },
+  {
+    "id": "tw-7237",
+    "name": "噴火龍V",
+    "hp": 220,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007237.png",
+    "number": "013/172",
+    "skills": [
+      {
+        "name": "燒盡",
+        "damage": "90",
+        "effect": "在造成傷害前，將對手的戰鬥寶可夢身上附加的「寶可夢道具」丟棄。"
+      },
+      {
+        "name": "高溫爆破",
+        "damage": "180",
+        "effect": ""
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7237/",
+    "source": "tw-pokemon",
+    "title": "噴火龍V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007237.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007237.png",
+    "stats": {
+      "hp": 220,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-7238",
+    "name": "噴火龍VSTAR",
+    "hp": 280,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007238.png",
+    "number": "014/172",
+    "skills": [
+      {
+        "name": "爆裂火焰",
+        "damage": "130+",
+        "effect": "若這隻寶可夢身上放置有傷害指示物，則增加100點傷害。"
+      },
+      {
+        "name": "[VSTAR力量]星星火焰",
+        "damage": "320",
+        "effect": "選擇2個這隻寶可夢身上附加的能量，將其丟棄。[對戰中，己方只可使用1次【VSTAR】力量。]"
+      },
+      {
+        "name": "[VSTAR規則]",
+        "damage": "",
+        "effect": "寶可夢【VSTAR】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7238/",
+    "source": "tw-pokemon",
+    "title": "噴火龍VSTAR",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007238.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007238.png",
+    "stats": {
+      "hp": 280,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-7239",
+    "name": "光輝噴火龍",
+    "hp": 160,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007239.png",
+    "number": "015/172",
+    "skills": [
+      {
+        "name": "[光輝寶可夢規則]",
+        "damage": "",
+        "effect": "1副牌組只可放1張光輝寶可夢卡。"
+      },
+      {
+        "name": "[特性]激動之心",
+        "damage": "",
+        "effect": "這隻寶可夢使用招式所需的【無】能量，減少對手已經獲得的獎賞卡的張數數量。"
+      },
+      {
+        "name": "烈焰爆",
+        "damage": "250",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用「烈焰爆」。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7239/",
+    "source": "tw-pokemon",
+    "title": "光輝噴火龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007239.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007239.png",
+    "stats": {
+      "hp": 160,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-7531",
+    "name": "噴火龍V",
+    "hp": 220,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007531.png",
+    "number": "211/172",
+    "skills": [
+      {
+        "name": "燒盡",
+        "damage": "90",
+        "effect": "在造成傷害前，將對手的戰鬥寶可夢身上附加的「寶可夢道具」丟棄。"
+      },
+      {
+        "name": "高溫爆破",
+        "damage": "180",
+        "effect": ""
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7531/",
+    "source": "tw-pokemon",
+    "title": "噴火龍V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007531.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007531.png",
+    "stats": {
+      "hp": 220,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-7532",
+    "name": "噴火龍VSTAR",
+    "hp": 280,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007532.png",
+    "number": "212/172",
+    "skills": [
+      {
+        "name": "爆裂火焰",
+        "damage": "130+",
+        "effect": "若這隻寶可夢身上放置有傷害指示物，則增加100點傷害。"
+      },
+      {
+        "name": "[VSTAR力量]星星火焰",
+        "damage": "320",
+        "effect": "選擇2個這隻寶可夢身上附加的能量，將其丟棄。[對戰中，己方只可使用1次【VSTAR】力量。]"
+      },
+      {
+        "name": "[VSTAR規則]",
+        "damage": "",
+        "effect": "寶可夢【VSTAR】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7532/",
+    "source": "tw-pokemon",
+    "title": "噴火龍VSTAR",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007532.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007532.png",
+    "stats": {
+      "hp": 280,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-5552",
+    "name": "噴火龍GX",
+    "hp": 250,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005552.png",
+    "number": "074/S-P",
+    "skills": [
+      {
+        "name": "翅膀攻擊",
+        "damage": "70",
+        "effect": ""
+      },
+      {
+        "name": "紅蓮風暴",
+        "damage": "300",
+        "effect": "將這隻寶可夢身上所附加的3個【火】能量丟到棄牌區。"
+      },
+      {
+        "name": "怒火中燒GX",
+        "damage": "",
+        "effect": "將對手的牌庫上方的10張丟到棄牌區。［對戰中，己方只可使用1次GX招式。］"
+      },
+      {
+        "name": "[寶可夢GX規則]",
+        "damage": "",
+        "effect": "寶可夢GX【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5552/",
+    "source": "tw-pokemon",
+    "title": "噴火龍GX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005552.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005552.png",
+    "stats": {
+      "hp": 250,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5553",
+    "name": "噴火龍V",
+    "hp": 220,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005553.png",
+    "number": "075/S-P",
+    "skills": [
+      {
+        "name": "利爪劈擊",
+        "damage": "80",
+        "effect": ""
+      },
+      {
+        "name": "火焰旋渦",
+        "damage": "220",
+        "effect": "選擇2個這隻寶可夢身上附加的能量，將其丟棄。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5553/",
+    "source": "tw-pokemon",
+    "title": "噴火龍V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005553.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005553.png",
+    "stats": {
+      "hp": 220,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5554",
+    "name": "噴火龍",
+    "hp": 170,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005554.png",
+    "number": "076/S-P",
+    "skills": [
+      {
+        "name": "[特性]戰鬥意識",
+        "damage": "",
+        "effect": "在自己的回合時，可使用1次。查看自己的牌庫上方3張卡，選擇其中1張卡加入手牌。將剩餘卡丟棄。"
+      },
+      {
+        "name": "王者火焰",
+        "damage": "100+",
+        "effect": "增加自己的棄牌區的「丹帝」的張數×50點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5554/",
+    "source": "tw-pokemon",
+    "title": "噴火龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005554.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005554.png",
+    "stats": {
+      "hp": 170,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5562",
+    "name": "萊希拉姆&噴火龍GX",
+    "hp": 270,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005562.png",
+    "number": "085/S-P",
+    "skills": [
+      {
+        "name": "逆鱗",
+        "damage": "30+",
+        "effect": "增加這隻寶可夢身上所放置的傷害指示物的數量×10點傷害。"
+      },
+      {
+        "name": "閃焰強襲",
+        "damage": "230",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用「閃焰強襲」。"
+      },
+      {
+        "name": "雙重火焰GX",
+        "damage": "200+",
+        "effect": "若額外附有3個【火】能量，則增加100點傷害。這個情況下，這個招式的傷害不計算對手的戰鬥寶可夢身上的附加效果。[對戰中，己方只可使用1次GX招式。]"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5562/",
+    "source": "tw-pokemon",
+    "title": "萊希拉姆&噴火龍GX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005562.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005562.png",
+    "stats": {
+      "hp": 270,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5563",
+    "name": "噴火龍GX",
+    "hp": 250,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005563.png",
+    "number": "086/S-P",
+    "skills": [
+      {
+        "name": "翅膀攻擊",
+        "damage": "70",
+        "effect": ""
+      },
+      {
+        "name": "紅蓮風暴",
+        "damage": "300",
+        "effect": "將這隻寶可夢身上所附加的3個【火】能量丟到棄牌區。"
+      },
+      {
+        "name": "怒火中燒GX",
+        "damage": "",
+        "effect": "將對手的牌庫上方的10張丟到棄牌區。［對戰中，己方只可使用1次GX招式。］"
+      },
+      {
+        "name": "[寶可夢GX規則]",
+        "damage": "",
+        "effect": "寶可夢GX【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5563/",
+    "source": "tw-pokemon",
+    "title": "噴火龍GX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005563.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005563.png",
+    "stats": {
+      "hp": 250,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5564",
+    "name": "噴火龍VMAX",
+    "hp": 330,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005564.png",
+    "number": "087/S-P",
+    "skills": [
+      {
+        "name": "利爪劈擊",
+        "damage": "100",
+        "effect": ""
+      },
+      {
+        "name": "超極巨地獄滅焰",
+        "damage": "300",
+        "effect": "選擇2個這隻寶可夢身上附加的能量，將其丟棄。"
+      },
+      {
+        "name": "[VMAX規則]",
+        "damage": "",
+        "effect": "寶可夢【VMAX】【氣絕】時，對手獲得3張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5564/",
+    "source": "tw-pokemon",
+    "title": "噴火龍VMAX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005564.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005564.png",
+    "stats": {
+      "hp": 330,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5597",
+    "name": "阿渡的噴火龍V",
+    "hp": 220,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005597.png",
+    "number": "123/S-P",
+    "skills": [
+      {
+        "name": "噴射火焰",
+        "damage": "200",
+        "effect": "選擇1個這隻寶可夢身上附加的能量，將其丟棄。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5597/",
+    "source": "tw-pokemon",
+    "title": "阿渡的噴火龍V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005597.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005597.png",
+    "stats": {
+      "hp": 220,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-5605",
+    "name": "噴火龍V",
+    "hp": 220,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005605.png",
+    "number": "132/S-P",
+    "skills": [
+      {
+        "name": "燒盡",
+        "damage": "90",
+        "effect": "在造成傷害前，將對手的戰鬥寶可夢身上附加的「寶可夢道具」丟棄。"
+      },
+      {
+        "name": "高溫爆破",
+        "damage": "180",
+        "effect": ""
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5605/",
+    "source": "tw-pokemon",
+    "title": "噴火龍V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005605.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005605.png",
+    "stats": {
+      "hp": 220,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-7143",
+    "name": "噴火龍V",
+    "hp": 220,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "V初階牌組 「噴火龍",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007143.png",
+    "number": "001/021",
+    "skills": [
+      {
+        "name": "燒盡",
+        "damage": "90",
+        "effect": "在造成傷害前，將對手的戰鬥寶可夢身上附加的「寶可夢道具」丟棄。"
+      },
+      {
+        "name": "高溫爆破",
+        "damage": "180",
+        "effect": ""
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7143/",
+    "source": "tw-pokemon",
+    "title": "噴火龍V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007143.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007143.png",
+    "stats": {
+      "hp": 220,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "V初階牌組 「噴火龍"
+    }
+  },
+  {
+    "id": "tw-6543",
+    "name": "噴火龍",
+    "hp": 170,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "Pokémon GO",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00006543.png",
+    "number": "010/071",
+    "skills": [
+      {
+        "name": "[特性]猛烈燃燒",
+        "damage": "",
+        "effect": "只要這隻寶可夢在場上，自己的場上寶可夢身上附加的基本【火】能量，各視為提供2個【火】能量。無論有多少隻擁有這個特性的寶可夢，這個效果也不會重複。"
+      },
+      {
+        "name": "閃焰衝鋒",
+        "damage": "170",
+        "effect": "將這隻寶可夢身上附加的【火】能量全部丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/6543/",
+    "source": "tw-pokemon",
+    "title": "噴火龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00006543.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00006543.png",
+    "stats": {
+      "hp": 170,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "Pokémon GO"
+    }
+  },
+  {
+    "id": "tw-6544",
+    "name": "光輝噴火龍",
+    "hp": 160,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "Pokémon GO",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00006544.png",
+    "number": "011/071",
+    "skills": [
+      {
+        "name": "[光輝寶可夢的規則]",
+        "damage": "",
+        "effect": "1副牌組只可放1張光輝寶可夢卡。"
+      },
+      {
+        "name": "[特性]激動之心",
+        "damage": "",
+        "effect": "這隻寶可夢使用招式所需的【無】能量，減少對手已經獲得的獎賞卡的張數數量。"
+      },
+      {
+        "name": "烈焰爆",
+        "damage": "250",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用「烈焰爆」。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/6544/",
+    "source": "tw-pokemon",
+    "title": "光輝噴火龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00006544.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00006544.png",
+    "stats": {
+      "hp": 160,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "Pokémon GO"
+    }
+  },
+  {
+    "id": "tw-5425",
+    "name": "噴火龍V",
+    "hp": 220,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "星星誕生",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005425.png",
+    "number": "014/100",
+    "skills": [
+      {
+        "name": "燒盡",
+        "damage": "90",
+        "effect": "在造成傷害前，將對手的戰鬥寶可夢身上附加的「寶可夢道具」丟棄。"
+      },
+      {
+        "name": "高溫爆破",
+        "damage": "180",
+        "effect": ""
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5425/",
+    "source": "tw-pokemon",
+    "title": "噴火龍V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005425.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005425.png",
+    "stats": {
+      "hp": 220,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "星星誕生"
+    }
+  },
+  {
+    "id": "tw-5426",
+    "name": "噴火龍VSTAR",
+    "hp": 280,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "星星誕生",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005426.png",
+    "number": "015/100",
+    "skills": [
+      {
+        "name": "爆裂火焰",
+        "damage": "130+",
+        "effect": "若這隻寶可夢身上放置有傷害指示物，則增加100點傷害。"
+      },
+      {
+        "name": "[VSTAR力量]星星火焰",
+        "damage": "320",
+        "effect": "選擇2個這隻寶可夢身上附加的能量，將其丟棄。[對戰中，己方只可使用1次【VSTAR】力量。]"
+      },
+      {
+        "name": "[VSTAR規則]",
+        "damage": "",
+        "effect": "寶可夢【VSTAR】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5426/",
+    "source": "tw-pokemon",
+    "title": "噴火龍VSTAR",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005426.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005426.png",
+    "stats": {
+      "hp": 280,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "星星誕生"
+    }
+  },
+  {
+    "id": "tw-5208",
+    "name": "噴火龍",
+    "hp": 170,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "高級擴充包「VMAX絕群壓軸",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00005208.png",
+    "number": "017/184",
+    "skills": [
+      {
+        "name": "[特性]戰鬥意識",
+        "damage": "",
+        "effect": "在自己的回合時，可使用1次。查看自己的牌庫上方3張卡，選擇其中1張卡加入手牌。將剩餘卡丟棄。"
+      },
+      {
+        "name": "王者火焰",
+        "damage": "100+",
+        "effect": "增加自己的棄牌區的「丹帝」的張數×50點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/5208/",
+    "source": "tw-pokemon",
+    "title": "噴火龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00005208.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00005208.png",
+    "stats": {
+      "hp": 170,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「VMAX絕群壓軸"
+    }
+  },
+  {
+    "id": "tw-303",
+    "name": "噴火龍",
+    "hp": 170,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "驚天伏特攻擊",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00000303.png",
+    "number": "012/100",
+    "skills": [
+      {
+        "name": "[特性]戰鬥意識",
+        "damage": "",
+        "effect": "在自己的回合時，可使用1次。查看自己的牌庫上方3張卡，選擇其中1張卡加入手牌。將剩餘卡丟棄。"
+      },
+      {
+        "name": "王者火焰",
+        "damage": "100+",
+        "effect": "增加自己的棄牌區的「丹帝」的張數×50點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/303/",
+    "source": "tw-pokemon",
+    "title": "噴火龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00000303.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00000303.png",
+    "stats": {
+      "hp": 170,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "驚天伏特攻擊"
+    }
+  },
+  {
+    "id": "tw-19680",
+    "name": "超夢",
+    "hp": 130,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "頂級牌組組合 「太陽伊布・月亮伊布",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019680.png",
+    "number": "010/040",
+    "skills": [
+      {
+        "name": "賦予力量",
+        "damage": "",
+        "effect": "從自己的棄牌區選擇最多2張基本能量卡，附於自己的1隻寶可夢身上。"
+      },
+      {
+        "name": "精神驅動",
+        "damage": "120",
+        "effect": "選擇1個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19680/",
+    "source": "tw-pokemon",
+    "title": "超夢",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019680.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019680.png",
+    "stats": {
+      "hp": 130,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "頂級牌組組合 「太陽伊布・月亮伊布"
+    }
+  },
+  {
+    "id": "tw-16761",
+    "name": "<火箭隊的>超夢ex",
+    "hp": 280,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016761.png",
+    "number": "290/742",
+    "skills": [
+      {
+        "name": "[特性] 力量抑制者",
+        "damage": "",
+        "effect": "只有在自己的場上的「火箭隊的寶可夢」數量為4隻以上時，這隻寶可夢才可使用招式。"
+      },
+      {
+        "name": "擦除球",
+        "damage": "160+",
+        "effect": "若希望，將最多2張自己的備戰寶可夢身上附加的能量卡丟棄，增加其張數×60點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16761/",
+    "source": "tw-pokemon",
+    "title": "<火箭隊的>超夢ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016761.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016761.png",
+    "stats": {
+      "hp": 280,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-14723",
+    "name": "<火箭隊的>超夢ex",
+    "hp": 280,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「超級進化夢想ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014723.png",
+    "number": "063/193",
+    "skills": [
+      {
+        "name": "[特性] 力量抑制者",
+        "damage": "",
+        "effect": "只有在自己的場上的「火箭隊的寶可夢」數量為4隻以上時，這隻寶可夢才可使用招式。"
+      },
+      {
+        "name": "擦除球",
+        "damage": "160+",
+        "effect": "若希望，將最多2張自己的備戰寶可夢身上附加的能量卡丟棄，增加其張數×60點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14723/",
+    "source": "tw-pokemon",
+    "title": "<火箭隊的>超夢ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014723.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014723.png",
+    "stats": {
+      "hp": 280,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「超級進化夢想ex"
+    }
+  },
+  {
+    "id": "tw-15985",
+    "name": "<火箭隊的>超夢ex",
+    "hp": 280,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「超級進化夢想ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00015985.png",
+    "number": "237/193",
+    "skills": [
+      {
+        "name": "[特性] 力量抑制者",
+        "damage": "",
+        "effect": "只有在自己的場上的「火箭隊的寶可夢」數量為4隻以上時，這隻寶可夢才可使用招式。"
+      },
+      {
+        "name": "擦除球",
+        "damage": "160+",
+        "effect": "若希望，將最多2張自己的備戰寶可夢身上附加的能量卡丟棄，增加其張數×60點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/15985/",
+    "source": "tw-pokemon",
+    "title": "<火箭隊的>超夢ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00015985.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00015985.png",
+    "stats": {
+      "hp": 280,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「超級進化夢想ex"
+    }
+  },
+  {
+    "id": "tw-12789",
+    "name": "<火箭隊的>超夢ex",
+    "hp": 280,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "火箭隊的榮耀",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00012789.png",
+    "number": "039/098",
+    "skills": [
+      {
+        "name": "[特性] 力量抑制者",
+        "damage": "",
+        "effect": "只有在自己的場上的「火箭隊的寶可夢」數量為4隻以上時，這隻寶可夢才可使用招式。"
+      },
+      {
+        "name": "擦除球",
+        "damage": "160+",
+        "effect": "若希望，將最多2張自己的備戰寶可夢身上附加的能量卡丟棄，增加其張數×60點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/12789/",
+    "source": "tw-pokemon",
+    "title": "<火箭隊的>超夢ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00012789.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00012789.png",
+    "stats": {
+      "hp": 280,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "火箭隊的榮耀"
+    }
+  },
+  {
+    "id": "tw-12919",
+    "name": "<火箭隊的>超夢ex",
+    "hp": 280,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "火箭隊的榮耀",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00012919.png",
+    "number": "114/098",
+    "skills": [
+      {
+        "name": "[特性] 力量抑制者",
+        "damage": "",
+        "effect": "只有在自己的場上的「火箭隊的寶可夢」數量為4隻以上時，這隻寶可夢才可使用招式。"
+      },
+      {
+        "name": "擦除球",
+        "damage": "160+",
+        "effect": "若希望，將最多2張自己的備戰寶可夢身上附加的能量卡丟棄，增加其張數×60點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/12919/",
+    "source": "tw-pokemon",
+    "title": "<火箭隊的>超夢ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00012919.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00012919.png",
+    "stats": {
+      "hp": 280,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "火箭隊的榮耀"
+    }
+  },
+  {
+    "id": "tw-12930",
+    "name": "<火箭隊的>超夢ex",
+    "hp": 280,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "火箭隊的榮耀",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00012930.png",
+    "number": "125/098",
+    "skills": [
+      {
+        "name": "[特性] 力量抑制者",
+        "damage": "",
+        "effect": "只有在自己的場上的「火箭隊的寶可夢」數量為4隻以上時，這隻寶可夢才可使用招式。"
+      },
+      {
+        "name": "擦除球",
+        "damage": "160+",
+        "effect": "若希望，將最多2張自己的備戰寶可夢身上附加的能量卡丟棄，增加其張數×60點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/12930/",
+    "source": "tw-pokemon",
+    "title": "<火箭隊的>超夢ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00012930.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00012930.png",
+    "stats": {
+      "hp": 280,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "火箭隊的榮耀"
+    }
+  },
+  {
+    "id": "tw-12935",
+    "name": "<火箭隊的>超夢ex",
+    "hp": 280,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "火箭隊的榮耀",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00012935.png",
+    "number": "130/098",
+    "skills": [
+      {
+        "name": "[特性] 力量抑制者",
+        "damage": "",
+        "effect": "只有在自己的場上的「火箭隊的寶可夢」數量為4隻以上時，這隻寶可夢才可使用招式。"
+      },
+      {
+        "name": "擦除球",
+        "damage": "160+",
+        "effect": "若希望，將最多2張自己的備戰寶可夢身上附加的能量卡丟棄，增加其張數×60點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/12935/",
+    "source": "tw-pokemon",
+    "title": "<火箭隊的>超夢ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00012935.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00012935.png",
+    "stats": {
+      "hp": 280,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "火箭隊的榮耀"
+    }
+  },
+  {
+    "id": "tw-11314",
+    "name": "超夢",
+    "hp": 130,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "Trianers Camp",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011314.png",
+    "number": "024/066",
+    "skills": [
+      {
+        "name": "超念力",
+        "damage": "100",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11314/",
+    "source": "tw-pokemon",
+    "title": "超夢",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011314.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011314.png",
+    "stats": {
+      "hp": 130,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "Trianers Camp"
+    }
+  },
+  {
+    "id": "tw-8767",
+    "name": "超夢ex",
+    "hp": 230,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "起始組合 太晶 超夢ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008767.png",
+    "number": "001/020",
+    "skills": [
+      {
+        "name": "[太晶]",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "轉移充能",
+        "damage": "",
+        "effect": "從自己的棄牌區選擇最多2張「基本【超】能量」卡，以任意方式附於自己的寶可夢身上。"
+      },
+      {
+        "name": "光子強念",
+        "damage": "10+",
+        "effect": "增加自己的所有寶可夢身上附加的【超】能量的數量×30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8767/",
+    "source": "tw-pokemon",
+    "title": "超夢ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008767.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008767.png",
+    "stats": {
+      "hp": 230,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "起始組合 太晶 超夢ex"
+    }
+  },
+  {
+    "id": "tw-8273",
+    "name": "超夢",
+    "hp": 130,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008273.png",
+    "number": "150/165",
+    "skills": [
+      {
+        "name": "反射屏障",
+        "damage": "20",
+        "effect": "在下個對手的回合，這隻寶可夢受到招式的傷害時，將與受到的傷害相同數值的傷害指示物，放置於使用招式的寶可夢身上。"
+      },
+      {
+        "name": "精神強襲",
+        "damage": "130",
+        "effect": "選擇2個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8273/",
+    "source": "tw-pokemon",
+    "title": "超夢",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008273.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008273.png",
+    "stats": {
+      "hp": 130,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-14992",
+    "name": "超夢",
+    "hp": 130,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014992.png",
+    "number": "150/165",
+    "skills": [
+      {
+        "name": "反射屏障",
+        "damage": "20",
+        "effect": "在下個對手的回合，這隻寶可夢受到招式的傷害時，將與受到的傷害相同數值的傷害指示物，放置於使用招式的寶可夢身上。"
+      },
+      {
+        "name": "精神強襲",
+        "damage": "130",
+        "effect": "選擇2個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14992/",
+    "source": "tw-pokemon",
+    "title": "超夢",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014992.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014992.png",
+    "stats": {
+      "hp": 130,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-8306",
+    "name": "超夢",
+    "hp": 130,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008306.png",
+    "number": "183/165",
+    "skills": [
+      {
+        "name": "反射屏障",
+        "damage": "20",
+        "effect": "在下個對手的回合，這隻寶可夢受到招式的傷害時，將與受到的傷害相同數值的傷害指示物，放置於使用招式的寶可夢身上。"
+      },
+      {
+        "name": "精神強襲",
+        "damage": "130",
+        "effect": "選擇2個這隻寶可夢身上附加的能量，將其丟棄。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8306/",
+    "source": "tw-pokemon",
+    "title": "超夢",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008306.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008306.png",
+    "stats": {
+      "hp": 130,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-7274",
+    "name": "超夢V",
+    "hp": 220,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007274.png",
+    "number": "050/172",
+    "skills": [
+      {
+        "name": "超念力",
+        "damage": "50",
+        "effect": ""
+      },
+      {
+        "name": "轉移破壞",
+        "damage": "160",
+        "effect": "選擇1個這隻寶可夢身上附加的能量，改附於備戰寶可夢身上。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7274/",
+    "source": "tw-pokemon",
+    "title": "超夢V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007274.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007274.png",
+    "stats": {
+      "hp": 220,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-7275",
+    "name": "超夢VSTAR",
+    "hp": 280,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007275.png",
+    "number": "051/172",
+    "skills": [
+      {
+        "name": "精神光芒",
+        "damage": "90×",
+        "effect": "將自己的場上寶可夢身上附加的最多3張【超】能量卡丟棄，造成其張數×90點傷害。"
+      },
+      {
+        "name": "[VSTAR力量]星星襲擊",
+        "damage": "",
+        "effect": "對手的所有「寶可夢【V】」各受到120點傷害。這個招式的傷害不計算弱點・抵抗力。[對戰中，己方只可使用1次【VSTAR】力量。]"
+      },
+      {
+        "name": "[VSTAR規則]",
+        "damage": "",
+        "effect": "寶可夢【VSTAR】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7275/",
+    "source": "tw-pokemon",
+    "title": "超夢VSTAR",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007275.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007275.png",
+    "stats": {
+      "hp": 280,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-7541",
+    "name": "超夢VSTAR",
+    "hp": 280,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007541.png",
+    "number": "221/172",
+    "skills": [
+      {
+        "name": "精神光芒",
+        "damage": "90×",
+        "effect": "將自己的場上寶可夢身上附加的最多3張【超】能量卡丟棄，造成其張數×90點傷害。"
+      },
+      {
+        "name": "[VSTAR力量]星星襲擊",
+        "damage": "",
+        "effect": "對手的所有「寶可夢【V】」各受到120點傷害。這個招式的傷害不計算弱點・抵抗力。[對戰中，己方只可使用1次【VSTAR】力量。]"
+      },
+      {
+        "name": "[VSTAR規則]",
+        "damage": "",
+        "effect": "寶可夢【VSTAR】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7541/",
+    "source": "tw-pokemon",
+    "title": "超夢VSTAR",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007541.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007541.png",
+    "stats": {
+      "hp": 280,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-6615",
+    "name": "超夢V",
+    "hp": 220,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00006615.png",
+    "number": "176/S-P",
+    "skills": [
+      {
+        "name": "超念力",
+        "damage": "50",
+        "effect": ""
+      },
+      {
+        "name": "轉移破壞",
+        "damage": "160",
+        "effect": "選擇1個這隻寶可夢身上附加的能量，改附於備戰寶可夢身上。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/6615/",
+    "source": "tw-pokemon",
+    "title": "超夢V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00006615.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00006615.png",
+    "stats": {
+      "hp": 220,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-19968",
+    "name": "夢幻",
+    "hp": 60,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019968.png",
+    "number": "056/103",
+    "skills": [
+      {
+        "name": "精神強念",
+        "damage": "10+",
+        "effect": "增加對手的戰鬥寶可夢身上附加的能量的數量×40點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19968/",
+    "source": "tw-pokemon",
+    "title": "夢幻",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019968.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019968.png",
+    "stats": {
+      "hp": 60,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19969",
+    "name": "夢幻ex",
+    "hp": 160,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019969.png",
+    "number": "057/103",
+    "skills": [
+      {
+        "name": "[特性] 記憶螺旋",
+        "damage": "",
+        "effect": "這隻寶可夢可使用自己的備戰寶可夢持有的所有招式。[需要有足夠使用招式的能量。]"
+      },
+      {
+        "name": "瞬間移動突擊",
+        "damage": "30",
+        "effect": "若希望，將這隻寶可夢與備戰寶可夢互換。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19969/",
+    "source": "tw-pokemon",
+    "title": "夢幻ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019969.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019969.png",
+    "stats": {
+      "hp": 160,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-20043",
+    "name": "夢幻ex",
+    "hp": 160,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00020043.png",
+    "number": "135/103",
+    "skills": [
+      {
+        "name": "[特性] 記憶螺旋",
+        "damage": "",
+        "effect": "這隻寶可夢可使用自己的備戰寶可夢持有的所有招式。[需要有足夠使用招式的能量。]"
+      },
+      {
+        "name": "瞬間移動突擊",
+        "damage": "30",
+        "effect": "若希望，將這隻寶可夢與備戰寶可夢互換。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/20043/",
+    "source": "tw-pokemon",
+    "title": "夢幻ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00020043.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00020043.png",
+    "stats": {
+      "hp": 160,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-20070",
+    "name": "夢幻VMAX",
+    "hp": 310,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00020070.png",
+    "number": "163/103",
+    "skills": [
+      {
+        "name": "交錯匯流",
+        "damage": "",
+        "effect": "選擇自己的備戰區的「匯流」寶可夢持有的1個招式，作為這個招式使用。"
+      },
+      {
+        "name": "極巨奇跡",
+        "damage": "130",
+        "effect": "這個招式的傷害不計算對手的戰鬥寶可夢身上的附加效果。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/20070/",
+    "source": "tw-pokemon",
+    "title": "夢幻VMAX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00020070.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00020070.png",
+    "stats": {
+      "hp": 310,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19681",
+    "name": "夢幻",
+    "hp": 60,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "頂級牌組組合 「太陽伊布・月亮伊布",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019681.png",
+    "number": "011/040",
+    "skills": [
+      {
+        "name": "精神強念",
+        "damage": "10+",
+        "effect": "增加對手的戰鬥寶可夢身上附加的能量的數量×40點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19681/",
+    "source": "tw-pokemon",
+    "title": "夢幻",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019681.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019681.png",
+    "stats": {
+      "hp": 60,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "頂級牌組組合 「太陽伊布・月亮伊布"
+    }
+  },
+  {
+    "id": "tw-11131",
+    "name": "夢幻ex",
+    "hp": 180,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "牌組構築BOX 樂園騰龍",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011131.png",
+    "number": "001/042",
+    "skills": [
+      {
+        "name": "[特性]重啟",
+        "damage": "",
+        "effect": "在自己的回合時可使用1次。從牌庫抽卡直到自己的手牌滿3張為止。"
+      },
+      {
+        "name": "基因駭入",
+        "damage": "",
+        "effect": "選擇1個對手的戰鬥寶可夢持有的招式，作為這個招式使用。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11131/",
+    "source": "tw-pokemon",
+    "title": "夢幻ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011131.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011131.png",
+    "stats": {
+      "hp": 180,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "牌組構築BOX 樂園騰龍"
+    }
+  },
+  {
+    "id": "tw-9104",
+    "name": "夢幻ex",
+    "hp": 180,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「閃色寶藏ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00009104.png",
+    "number": "076/190",
+    "skills": [
+      {
+        "name": "[特性]重啟",
+        "damage": "",
+        "effect": "在自己的回合時可使用1次。從牌庫抽卡直到自己的手牌滿3張為止。"
+      },
+      {
+        "name": "基因駭入",
+        "damage": "",
+        "effect": "選擇1個對手的戰鬥寶可夢持有的招式，作為這個招式使用。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/9104/",
+    "source": "tw-pokemon",
+    "title": "夢幻ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00009104.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00009104.png",
+    "stats": {
+      "hp": 180,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「閃色寶藏ex"
+    }
+  },
+  {
+    "id": "tw-9356",
+    "name": "夢幻ex",
+    "hp": 180,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「閃色寶藏ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00009356.png",
+    "number": "327/190",
+    "skills": [
+      {
+        "name": "[特性]重啟",
+        "damage": "",
+        "effect": "在自己的回合時可使用1次。從牌庫抽卡直到自己的手牌滿3張為止。"
+      },
+      {
+        "name": "基因駭入",
+        "damage": "",
+        "effect": "選擇1個對手的戰鬥寶可夢持有的招式，作為這個招式使用。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/9356/",
+    "source": "tw-pokemon",
+    "title": "夢幻ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00009356.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00009356.png",
+    "stats": {
+      "hp": 180,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「閃色寶藏ex"
+    }
+  },
+  {
+    "id": "tw-9376",
+    "name": "夢幻ex",
+    "hp": 180,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「閃色寶藏ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00009376.png",
+    "number": "347/190",
+    "skills": [
+      {
+        "name": "[特性]重啟",
+        "damage": "",
+        "effect": "在自己的回合時可使用1次。從牌庫抽卡直到自己的手牌滿3張為止。"
+      },
+      {
+        "name": "基因駭入",
+        "damage": "",
+        "effect": "選擇1個對手的戰鬥寶可夢持有的招式，作為這個招式使用。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/9376/",
+    "source": "tw-pokemon",
+    "title": "夢幻ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00009376.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00009376.png",
+    "stats": {
+      "hp": 180,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「閃色寶藏ex"
+    }
+  },
+  {
+    "id": "tw-8752",
+    "name": "夢幻",
+    "hp": 60,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "起始組合 太晶 骨紋巨聲鱷ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008752.png",
+    "number": "007/020",
+    "skills": [
+      {
+        "name": "[特性] 神秘尾巴",
+        "damage": "",
+        "effect": "若這隻寶可夢在戰鬥場上，則在自己的回合時可使用1次。查看自己的牌庫上方6張卡。從其中選擇1張物品卡，在給對手看過後加入手牌。將剩餘卡放回牌庫並重洗。"
+      },
+      {
+        "name": "精神射擊",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8752/",
+    "source": "tw-pokemon",
+    "title": "夢幻",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008752.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008752.png",
+    "stats": {
+      "hp": 60,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "起始組合 太晶 骨紋巨聲鱷ex"
+    }
+  },
+  {
+    "id": "tw-8629",
+    "name": "夢幻",
+    "hp": 60,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "牌組構築BOX黯焰支配者",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008629.png",
+    "number": "005/038",
+    "skills": [
+      {
+        "name": "[特性] 神秘尾巴",
+        "damage": "",
+        "effect": "若這隻寶可夢在戰鬥場上，則在自己的回合時可使用1次。查看自己的牌庫上方6張卡。從其中選擇1張物品卡，在給對手看過後加入手牌。將剩餘卡放回牌庫並重洗。"
+      },
+      {
+        "name": "精神射擊",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8629/",
+    "source": "tw-pokemon",
+    "title": "夢幻",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008629.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008629.png",
+    "stats": {
+      "hp": 60,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "牌組構築BOX黯焰支配者"
+    }
+  },
+  {
+    "id": "tw-8274",
+    "name": "夢幻ex",
+    "hp": 180,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008274.png",
+    "number": "151/165",
+    "skills": [
+      {
+        "name": "[特性] 重啟",
+        "damage": "",
+        "effect": "在自己的回合時可使用1次。從牌庫抽卡直到自己的手牌滿3張為止。"
+      },
+      {
+        "name": "基因駭入",
+        "damage": "",
+        "effect": "選擇1個對手的戰鬥寶可夢持有的招式，作為這個招式使用。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8274/",
+    "source": "tw-pokemon",
+    "title": "夢幻ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008274.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008274.png",
+    "stats": {
+      "hp": 180,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-8318",
+    "name": "夢幻ex",
+    "hp": 180,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008318.png",
+    "number": "195/165",
+    "skills": [
+      {
+        "name": "[特性] 重啟",
+        "damage": "",
+        "effect": "在自己的回合時可使用1次。從牌庫抽卡直到自己的手牌滿3張為止。"
+      },
+      {
+        "name": "基因駭入",
+        "damage": "",
+        "effect": "選擇1個對手的戰鬥寶可夢持有的招式，作為這個招式使用。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8318/",
+    "source": "tw-pokemon",
+    "title": "夢幻ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008318.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008318.png",
+    "stats": {
+      "hp": 180,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-8328",
+    "name": "夢幻ex",
+    "hp": 180,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008328.png",
+    "number": "205/165",
+    "skills": [
+      {
+        "name": "[特性] 重啟",
+        "damage": "",
+        "effect": "在自己的回合時可使用1次。從牌庫抽卡直到自己的手牌滿3張為止。"
+      },
+      {
+        "name": "基因駭入",
+        "damage": "",
+        "effect": "選擇1個對手的戰鬥寶可夢持有的招式，作為這個招式使用。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8328/",
+    "source": "tw-pokemon",
+    "title": "夢幻ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008328.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008328.png",
+    "stats": {
+      "hp": 180,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-8331",
+    "name": "夢幻ex",
+    "hp": 180,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008331.png",
+    "number": "208/165",
+    "skills": [
+      {
+        "name": "[特性] 重啟",
+        "damage": "",
+        "effect": "在自己的回合時可使用1次。從牌庫抽卡直到自己的手牌滿3張為止。"
+      },
+      {
+        "name": "基因駭入",
+        "damage": "",
+        "effect": "選擇1個對手的戰鬥寶可夢持有的招式，作為這個招式使用。"
+      },
+      {
+        "name": "[ex規則]",
+        "damage": "",
+        "effect": "寶可夢【ex】【昏厥】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8331/",
+    "source": "tw-pokemon",
+    "title": "夢幻ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008331.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008331.png",
+    "stats": {
+      "hp": 180,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-7850",
+    "name": "夢幻",
+    "hp": 60,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "頂級訓練家收藏箱ex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007850.png",
+    "number": "011/028",
+    "skills": [
+      {
+        "name": "[特性]神秘尾巴",
+        "damage": "",
+        "effect": "若這隻寶可夢在戰鬥場上，則在自己的回合時可使用1次。查看自己的牌庫上方6張卡。選擇其中1張物品卡，在給對手看過後加入手牌。將剩餘卡放回牌庫並重洗。"
+      },
+      {
+        "name": "精神射擊",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7850/",
+    "source": "tw-pokemon",
+    "title": "夢幻",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007850.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007850.png",
+    "stats": {
+      "hp": 60,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "頂級訓練家收藏箱ex"
+    }
+  },
+  {
+    "id": "tw-11499",
+    "name": "夢幻VMAX",
+    "hp": 310,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "特典卡 朱&紫",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00011499.png",
+    "number": "160/SV-P",
+    "skills": [
+      {
+        "name": "交錯匯流",
+        "damage": "",
+        "effect": "選擇自己的備戰區的「匯流」寶可夢持有的1個招式，作為這個招式使用。"
+      },
+      {
+        "name": "極巨奇跡",
+        "damage": "130",
+        "effect": "這個招式的傷害不計算對手的戰鬥寶可夢身上的附加效果。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/11499/",
+    "source": "tw-pokemon",
+    "title": "夢幻VMAX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00011499.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00011499.png",
+    "stats": {
+      "hp": 310,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 朱&紫"
+    }
+  },
+  {
+    "id": "tw-7276",
+    "name": "夢幻",
+    "hp": 60,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007276.png",
+    "number": "052/172",
+    "skills": [
+      {
+        "name": "[特性]神秘尾巴",
+        "damage": "",
+        "effect": "若這隻寶可夢在戰鬥場上，則在自己的回合時可使用1次。查看自己的牌庫上方6張卡。選擇其中1張物品卡，在給對手看過後加入手牌。將剩餘卡放回牌庫並重洗。"
+      },
+      {
+        "name": "精神射擊",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7276/",
+    "source": "tw-pokemon",
+    "title": "夢幻",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007276.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007276.png",
+    "stats": {
+      "hp": 60,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-7277",
+    "name": "夢幻V",
+    "hp": 180,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007277.png",
+    "number": "053/172",
+    "skills": [
+      {
+        "name": "能量混和",
+        "damage": "",
+        "effect": "從自己的牌庫選擇1張能量卡，附於自己的「匯流」寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "精神之跳",
+        "damage": "70",
+        "effect": "若希望，將這隻寶可夢與附加的卡，全部放回自己的牌庫並重洗。"
+      },
+      {
+        "name": "[V規則]",
+        "damage": "",
+        "effect": "寶可夢【V】【氣絕】時，對手獲得2張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7277/",
+    "source": "tw-pokemon",
+    "title": "夢幻V",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007277.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007277.png",
+    "stats": {
+      "hp": 180,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-7278",
+    "name": "夢幻VMAX",
+    "hp": 310,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "高級擴充包「天地萬物VSTAR",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00007278.png",
+    "number": "054/172",
+    "skills": [
+      {
+        "name": "交錯匯流",
+        "damage": "",
+        "effect": "選擇自己的備戰區的「匯流」寶可夢持有的1個招式，作為這個招式使用。"
+      },
+      {
+        "name": "極巨奇跡",
+        "damage": "130",
+        "effect": "這個招式的傷害不計算對手的戰鬥寶可夢身上的附加效果。"
+      },
+      {
+        "name": "[VMAX規則]",
+        "damage": "",
+        "effect": "寶可夢【VMAX】【氣絕】時，對手獲得3張獎賞卡。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/7278/",
+    "source": "tw-pokemon",
+    "title": "夢幻VMAX",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00007278.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00007278.png",
+    "stats": {
+      "hp": 310,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "高級擴充包「天地萬物VSTAR"
+    }
+  },
+  {
+    "id": "tw-20006",
+    "name": "伊布",
+    "hp": 70,
+    "type": "無色",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00020006.png",
+    "number": "094/103",
+    "skills": [
+      {
+        "name": "叼去藏",
+        "damage": "",
+        "effect": "查看對手的手牌，從其中選擇1張物品卡，放回對手的牌庫下方。"
+      },
+      {
+        "name": "撞擊",
+        "damage": "10",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/20006/",
+    "source": "tw-pokemon",
+    "title": "伊布",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00020006.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00020006.png",
+    "stats": {
+      "hp": 70,
+      "type": "無色",
+      "types": [
+        "無色"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-20039",
+    "name": "仙子伊布ex",
+    "hp": 270,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "30th CELEBRATION",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00020039.png",
+    "number": "130/103",
+    "skills": [
+      {
+        "name": "鮮豔和聲",
+        "damage": "50×",
+        "effect": "造成自己的所有寶可夢身上附加的基本能量的屬性種類的數量×50點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/20039/",
+    "source": "tw-pokemon",
+    "title": "仙子伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00020039.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00020039.png",
+    "stats": {
+      "hp": 270,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "30th CELEBRATION"
+    }
+  },
+  {
+    "id": "tw-19684",
+    "name": "太陽伊布ex",
+    "hp": 260,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "頂級牌組組合 「太陽伊布・月亮伊布",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019684.png",
+    "number": "014/040",
+    "skills": [
+      {
+        "name": "陽光律動",
+        "damage": "30×",
+        "effect": "造成自己的場上寶可夢的數量×30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19684/",
+    "source": "tw-pokemon",
+    "title": "太陽伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019684.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019684.png",
+    "stats": {
+      "hp": 260,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "頂級牌組組合 「太陽伊布・月亮伊布"
+    }
+  },
+  {
+    "id": "tw-19687",
+    "name": "月亮伊布ex",
+    "hp": 270,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "頂級牌組組合 「太陽伊布・月亮伊布",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019687.png",
+    "number": "017/040",
+    "skills": [
+      {
+        "name": "月光利爪",
+        "damage": "100+",
+        "effect": "若對手的戰鬥寶可夢身上放置有傷害指示物，則增加140點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19687/",
+    "source": "tw-pokemon",
+    "title": "月亮伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019687.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019687.png",
+    "stats": {
+      "hp": 270,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "頂級牌組組合 「太陽伊布・月亮伊布"
+    }
+  },
+  {
+    "id": "tw-19695",
+    "name": "伊布",
+    "hp": 70,
+    "type": "無色",
+    "rarity": "未標示",
+    "series": "頂級牌組組合 「太陽伊布・月亮伊布",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019695.png",
+    "number": "025/040",
+    "skills": [
+      {
+        "name": "電光一閃",
+        "damage": "20+",
+        "effect": "擲1次硬幣若為正面，則增加20點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19695/",
+    "source": "tw-pokemon",
+    "title": "伊布",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019695.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019695.png",
+    "stats": {
+      "hp": 70,
+      "type": "無色",
+      "types": [
+        "無色"
+      ],
+      "rarity": "未標示",
+      "set": "頂級牌組組合 「太陽伊布・月亮伊布"
+    }
+  },
+  {
+    "id": "tw-19696",
+    "name": "伊布",
+    "hp": 70,
+    "type": "無色",
+    "rarity": "未標示",
+    "series": "頂級牌組組合 「太陽伊布・月亮伊布",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019696.png",
+    "number": "026/040",
+    "skills": [
+      {
+        "name": "電光一閃",
+        "damage": "20+",
+        "effect": "擲1次硬幣若為正面，則增加20點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19696/",
+    "source": "tw-pokemon",
+    "title": "伊布",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019696.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019696.png",
+    "stats": {
+      "hp": 70,
+      "type": "無色",
+      "types": [
+        "無色"
+      ],
+      "rarity": "未標示",
+      "set": "頂級牌組組合 「太陽伊布・月亮伊布"
+    }
+  },
+  {
+    "id": "tw-19713",
+    "name": "太陽伊布ex",
+    "hp": 260,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "頂級牌組組合 「太陽伊布・月亮伊布",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019713.png",
+    "number": "043/040",
+    "skills": [
+      {
+        "name": "陽光律動",
+        "damage": "30×",
+        "effect": "造成自己的場上寶可夢的數量×30點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19713/",
+    "source": "tw-pokemon",
+    "title": "太陽伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019713.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019713.png",
+    "stats": {
+      "hp": 260,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "頂級牌組組合 「太陽伊布・月亮伊布"
+    }
+  },
+  {
+    "id": "tw-19714",
+    "name": "月亮伊布ex",
+    "hp": 270,
+    "type": "惡",
+    "rarity": "未標示",
+    "series": "頂級牌組組合 「太陽伊布・月亮伊布",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019714.png",
+    "number": "044/040",
+    "skills": [
+      {
+        "name": "月光利爪",
+        "damage": "100+",
+        "effect": "若對手的戰鬥寶可夢身上放置有傷害指示物，則增加140點傷害。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19714/",
+    "source": "tw-pokemon",
+    "title": "月亮伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019714.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019714.png",
+    "stats": {
+      "hp": 270,
+      "type": "惡",
+      "types": [
+        "惡"
+      ],
+      "rarity": "未標示",
+      "set": "頂級牌組組合 「太陽伊布・月亮伊布"
+    }
+  },
+  {
+    "id": "tw-16508",
+    "name": "葉伊布",
+    "hp": 120,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016508.png",
+    "number": "037/742",
+    "skills": [
+      {
+        "name": "嫩葉之恩",
+        "damage": "",
+        "effect": "從自己的手牌選擇1張「基本【草】能量」卡，附於備戰寶可夢身上。然後，將附上那張卡的寶可夢的HP全部恢復。"
+      },
+      {
+        "name": "日光束",
+        "damage": "70",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16508/",
+    "source": "tw-pokemon",
+    "title": "葉伊布",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016508.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016508.png",
+    "stats": {
+      "hp": 120,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-16509",
+    "name": "葉伊布ex",
+    "hp": 270,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016509.png",
+    "number": "038/742",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "綠葉風暴",
+        "damage": "60×",
+        "effect": "造成對手的所有寶可夢身上附加的能量的數量×60點傷害。"
+      },
+      {
+        "name": "苔紋瑪瑙",
+        "damage": "230",
+        "effect": "將自己的所有備戰寶可夢各恢復「100」HP。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16509/",
+    "source": "tw-pokemon",
+    "title": "葉伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016509.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016509.png",
+    "stats": {
+      "hp": 270,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-16565",
+    "name": "火伊布ex",
+    "hp": 270,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016565.png",
+    "number": "094/742",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "燃燒充能",
+        "damage": "130",
+        "effect": "從自己的牌庫選擇最多2張基本能量卡，附於自己的1隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "紅玉髓",
+        "damage": "280",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用招式。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16565/",
+    "source": "tw-pokemon",
+    "title": "火伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016565.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016565.png",
+    "stats": {
+      "hp": 270,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-18223",
+    "name": "火伊布ex",
+    "hp": 270,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018223.png",
+    "number": "094/742",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "燃燒充能",
+        "damage": "130",
+        "effect": "從自己的牌庫選擇最多2張基本能量卡，附於自己的1隻寶可夢身上。並且重洗牌庫。"
+      },
+      {
+        "name": "紅玉髓",
+        "damage": "280",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用招式。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18223/",
+    "source": "tw-pokemon",
+    "title": "火伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018223.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018223.png",
+    "stats": {
+      "hp": 270,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-16632",
+    "name": "水伊布ex",
+    "hp": 280,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016632.png",
+    "number": "161/742",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "重磅驟雨",
+        "damage": "",
+        "effect": "對手的所有「寶可夢【ex】」各受到60點傷害。這個招式的傷害不計算弱點・抵抗力。"
+      },
+      {
+        "name": "海藍寶石",
+        "damage": "280",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用招式。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16632/",
+    "source": "tw-pokemon",
+    "title": "水伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016632.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016632.png",
+    "stats": {
+      "hp": 280,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-16633",
+    "name": "冰伊布ex",
+    "hp": 270,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016633.png",
+    "number": "162/742",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "冰霜子彈",
+        "damage": "110",
+        "effect": "對手的1隻備戰寶可夢也受到30點傷害。[在備戰區不計算弱點・抵抗力。]"
+      },
+      {
+        "name": "藍柱石",
+        "damage": "",
+        "effect": "選擇1隻對手的身上放置有6個傷害指示物的寶可夢，將其【昏厥】。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16633/",
+    "source": "tw-pokemon",
+    "title": "冰伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016633.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016633.png",
+    "stats": {
+      "hp": 270,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-18237",
+    "name": "冰伊布ex",
+    "hp": 270,
+    "type": "水",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00018237.png",
+    "number": "162/742",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "冰霜子彈",
+        "damage": "110",
+        "effect": "對手的1隻備戰寶可夢也受到30點傷害。[在備戰區不計算弱點・抵抗力。]"
+      },
+      {
+        "name": "藍柱石",
+        "damage": "",
+        "effect": "選擇1隻對手的身上放置有6個傷害指示物的寶可夢，將其【昏厥】。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/18237/",
+    "source": "tw-pokemon",
+    "title": "冰伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00018237.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00018237.png",
+    "stats": {
+      "hp": 270,
+      "type": "水",
+      "types": [
+        "水"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-16709",
+    "name": "雷伊布ex",
+    "hp": 260,
+    "type": "雷",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016709.png",
+    "number": "238/742",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "閃光尖矛",
+        "damage": "60+",
+        "effect": "若希望，將最多2張自己的備戰寶可夢身上附加的基本能量卡丟棄，增加其張數×90點傷害。"
+      },
+      {
+        "name": "棕碧璽",
+        "damage": "280",
+        "effect": "在下個自己的回合，這隻寶可夢無法使用招式。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16709/",
+    "source": "tw-pokemon",
+    "title": "雷伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016709.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016709.png",
+    "stats": {
+      "hp": 260,
+      "type": "雷",
+      "types": [
+        "雷"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-16769",
+    "name": "太陽伊布ex",
+    "hp": 270,
+    "type": "超",
+    "rarity": "未標示",
+    "series": "初階牌組 100對戰收藏",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00016769.png",
+    "number": "298/742",
+    "skills": [
+      {
+        "name": "太晶",
+        "damage": "",
+        "effect": "只要這隻寶可夢在備戰區，不會受到招式的傷害。"
+      },
+      {
+        "name": "精神出局",
+        "damage": "160",
+        "effect": "在不看正面的情況下，從對手的手牌選擇1張，將其丟棄。"
+      },
+      {
+        "name": "阿賽斯特萊石",
+        "damage": "",
+        "effect": "從對手的所有進化的寶可夢身上，各移除1張「進化卡」使其退化。將移除的卡放回對手的牌庫並重洗。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/16769/",
+    "source": "tw-pokemon",
+    "title": "太陽伊布ex",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00016769.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00016769.png",
+    "stats": {
+      "hp": 270,
+      "type": "超",
+      "types": [
+        "超"
+      ],
+      "rarity": "未標示",
+      "set": "初階牌組 100對戰收藏"
+    }
+  },
+  {
+    "id": "tw-13958",
+    "name": "妙蛙種子",
+    "hp": 80,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "超級勇氣",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00013958.png",
+    "number": "001/063",
+    "skills": [
+      {
+        "name": "束縛",
+        "damage": "10",
+        "effect": "在下個對手的回合，受到這個招式的寶可夢無法撤退。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/13958/",
+    "source": "tw-pokemon",
+    "title": "妙蛙種子",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00013958.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00013958.png",
+    "stats": {
+      "hp": 80,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "超級勇氣"
+    }
+  },
+  {
+    "id": "tw-14182",
+    "name": "妙蛙種子",
+    "hp": 80,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "超級勇氣",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014182.png",
+    "number": "064/063",
+    "skills": [
+      {
+        "name": "束縛",
+        "damage": "10",
+        "effect": "在下個對手的回合，受到這個招式的寶可夢無法撤退。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14182/",
+    "source": "tw-pokemon",
+    "title": "妙蛙種子",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014182.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014182.png",
+    "stats": {
+      "hp": 80,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "超級勇氣"
+    }
+  },
+  {
+    "id": "tw-14091",
+    "name": "妙蛙種子",
+    "hp": 80,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014091.png",
+    "number": "001/M-P",
+    "skills": [
+      {
+        "name": "束縛",
+        "damage": "10",
+        "effect": "在下個對手的回合，受到這個招式的寶可夢無法撤退。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14091/",
+    "source": "tw-pokemon",
+    "title": "妙蛙種子",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014091.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014091.png",
+    "stats": {
+      "hp": 80,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-19720",
+    "name": "妙蛙種子",
+    "hp": 80,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "特典卡 超級進化",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019720.png",
+    "number": "173/M-P",
+    "skills": [
+      {
+        "name": "寄生種子",
+        "damage": "10",
+        "effect": "將這隻寶可夢恢復「10」HP。"
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19720/",
+    "source": "tw-pokemon",
+    "title": "妙蛙種子",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019720.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019720.png",
+    "stats": {
+      "hp": 80,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 超級進化"
+    }
+  },
+  {
+    "id": "tw-8124",
+    "name": "妙蛙種子",
+    "hp": 70,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008124.png",
+    "number": "001/165",
+    "skills": [
+      {
+        "name": "寄生種子",
+        "damage": "20",
+        "effect": "將這隻寶可夢恢復「20」HP。"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8124/",
+    "source": "tw-pokemon",
+    "title": "妙蛙種子",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008124.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008124.png",
+    "stats": {
+      "hp": 70,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-14854",
+    "name": "妙蛙種子",
+    "hp": 70,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00014854.png",
+    "number": "001/165",
+    "skills": [
+      {
+        "name": "寄生種子",
+        "damage": "20",
+        "effect": "將這隻寶可夢恢復「20」HP。"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/14854/",
+    "source": "tw-pokemon",
+    "title": "妙蛙種子",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00014854.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00014854.png",
+    "stats": {
+      "hp": 70,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-8289",
+    "name": "妙蛙種子",
+    "hp": 70,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "寶可夢卡牌151",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00008289.png",
+    "number": "166/165",
+    "skills": [
+      {
+        "name": "寄生種子",
+        "damage": "20",
+        "effect": "將這隻寶可夢恢復「20」HP。"
+      },
+      {
+        "name": "",
+        "damage": "",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/8289/",
+    "source": "tw-pokemon",
+    "title": "妙蛙種子",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00008289.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00008289.png",
+    "stats": {
+      "hp": 70,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "寶可夢卡牌151"
+    }
+  },
+  {
+    "id": "tw-6617",
+    "name": "妙蛙種子",
+    "hp": 70,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "特典卡 劍&盾",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00006617.png",
+    "number": "182/S-P",
+    "skills": [
+      {
+        "name": "藤鞭",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "飛葉快刀",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/6617/",
+    "source": "tw-pokemon",
+    "title": "妙蛙種子",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00006617.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00006617.png",
+    "stats": {
+      "hp": 70,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "特典卡 劍&盾"
+    }
+  },
+  {
+    "id": "tw-6534",
+    "name": "妙蛙種子",
+    "hp": 70,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "Pokémon GO",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00006534.png",
+    "number": "001/071",
+    "skills": [
+      {
+        "name": "藤鞭",
+        "damage": "10",
+        "effect": ""
+      },
+      {
+        "name": "飛葉快刀",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/6534/",
+    "source": "tw-pokemon",
+    "title": "妙蛙種子",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00006534.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00006534.png",
+    "stats": {
+      "hp": 70,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "Pokémon GO"
+    }
+  },
+  {
+    "id": "tw-3969",
+    "name": "妙蛙種子",
+    "hp": 70,
+    "type": "草",
+    "rarity": "未標示",
+    "series": "眾星雲集組合篇」SET A",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00003969.png",
+    "number": "001/158",
+    "skills": [
+      {
+        "name": "飛葉快刀",
+        "damage": "30",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/3969/",
+    "source": "tw-pokemon",
+    "title": "妙蛙種子",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00003969.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00003969.png",
+    "stats": {
+      "hp": 70,
+      "type": "草",
+      "types": [
+        "草"
+      ],
+      "rarity": "未標示",
+      "set": "眾星雲集組合篇」SET A"
+    }
+  },
+  {
+    "id": "tw-19284",
+    "name": "小火龍",
+    "hp": 80,
+    "type": "火",
+    "rarity": "未標示",
+    "series": "戰術牌組「超級噴火龍Xex",
+    "price": "-",
+    "image_url": "https://asia.pokemon-card.com/tw/card-img/tw00019284.png",
+    "number": "001/023",
+    "skills": [
+      {
+        "name": "[特性] 一身輕",
+        "damage": "",
+        "effect": "若這隻寶可夢身上沒有附加能量卡，則這隻寶可夢【撤退】所需的能量全部消除。"
+      },
+      {
+        "name": "火種",
+        "damage": "20",
+        "effect": ""
+      }
+    ],
+    "detail_url": "https://asia.pokemon-card.com/tw/card-search/detail/19284/",
+    "source": "tw-pokemon",
+    "title": "小火龍",
+    "img_url": "https://asia.pokemon-card.com/tw/card-img/tw00019284.png",
+    "img_large": "https://asia.pokemon-card.com/tw/card-img/tw00019284.png",
+    "stats": {
+      "hp": 80,
+      "type": "火",
+      "types": [
+        "火"
+      ],
+      "rarity": "未標示",
+      "set": "戰術牌組「超級噴火龍Xex"
+    }
+  }
+]

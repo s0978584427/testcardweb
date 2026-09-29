@@ -1,5 +1,5 @@
 #!/bin/bash
-# 卡牌價格監控系統 - Linux/Mac 快速啟動腳本
+# Card Lens - Linux/macOS startup
 
 # 檢查虛擬環境是否存在
 if [ ! -d "venv" ]; then

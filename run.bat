@@ -1,5 +1,5 @@
 @echo off
-REM 卡牌價格監控系統 - Windows 快速啟動腳本
+REM Card Lens - Windows startup
 
 REM 檢查虛擬環境是否存在
 if not exist "venv" (

@@ -1,20 +1,17 @@
-# 卡牌價格監控系統 - 依賴項
+# Card Lens dependencies
 
 # Web 框架
 Flask==2.3.3
 Flask-CORS==4.0.0
 
-# 網頁爬蟲
+# Official card catalogue parsing
 requests==2.31.0
 beautifulsoup4==4.12.2
-
-# 自動更新排程
-APScheduler==3.10.4
 
 # 其他工具
 python-dotenv==1.0.0
 
-# 開發工具
+# Runtime and image recognition
 gunicorn==21.2.0
 opencv-python-headless>=4.8.0
 numpy>=1.24.0

@@ -3,509 +3,1061 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>卡牌價格查詢系統 - PChome + 國際卡牌資料庫</title>
+    <title>Card Lens - 卡牌圖鑑與相機辨識</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6366f1;
-            --secondary-color: #8b5cf6;
-            --success-color: #10b981;
-            --dark-bg: #0f172a;
-            --card-bg: #1e293b;
-            --border-color: #334155;
-            --text-primary: #e2e8f0;
-            --text-secondary: #cbd5e1;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-soft: #f1f5f9;
+            --ink: #10233f;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --blue: #1677ff;
+            --blue-deep: #0756b8;
+            --amber: #f6d854;
+            --coral: #ff6f59;
+            --sea: #4d90fe;
+            --mint: #5dbe7e;
+            --psychic: #a55eea;
+            --shadow: 0 10px 30px rgba(15, 35, 63, 0.08);
+            --shadow-lg: 0 24px 70px rgba(15, 35, 63, 0.18);
+            --radius-xl: 24px;
+            --radius-lg: 18px;
+            --type-accent: var(--blue);
+            --type-glow: rgba(77, 144, 254, 0.18);
         }
 
-        * { color-scheme: dark; }
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--dark-bg);
-            color: var(--text-primary);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
             min-height: 100vh;
+            color: var(--ink);
+            font-family: "Manrope", "Noto Sans TC", sans-serif;
+            background:
+                radial-gradient(circle at 8% 4%, rgba(77, 144, 254, 0.11), transparent 27rem),
+                radial-gradient(circle at 90% 20%, rgba(246, 216, 84, 0.13), transparent 24rem),
+                linear-gradient(180deg, #fff 0, var(--bg) 28rem);
         }
 
+        button, input, select { font: inherit; }
+        button { -webkit-tap-highlight-color: transparent; }
+        .mono { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+
         .navbar {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-            border-bottom: 2px solid var(--border-color);
-            padding: 1rem 0;
-            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 14px clamp(18px, 4vw, 56px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.78);
+            background: rgba(255, 255, 255, 0.76);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-inner {
+            max-width: 1240px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
         }
 
         .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: var(--ink);
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            color: white;
+            border-radius: 13px;
+            background: linear-gradient(145deg, #1685ff, #0756b8);
+            box-shadow: 0 8px 18px rgba(22, 119, 255, 0.22);
+        }
+
+        .nav-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 0.82rem;
             font-weight: 700;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        }
+
+        .nav-status::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--mint);
+            box-shadow: 0 0 0 5px rgba(93, 190, 126, 0.12);
         }
 
         .container-main {
-            padding: 3rem 1rem;
-            min-height: 100vh;
+            width: min(1240px, calc(100% - 32px));
+            margin: auto;
+            padding: clamp(42px, 7vw, 92px) 0 80px;
         }
 
-        .search-section {
-            margin-bottom: 3rem;
-            text-align: center;
+        .search-section { text-align: center; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            padding: 8px 12px;
+            color: var(--blue-deep);
+            border: 1px solid #cfe4ff;
+            border-radius: 999px;
+            background: rgba(239, 247, 255, 0.9);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         .search-section h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            max-width: 820px;
+            margin: 0 auto 18px;
+            color: var(--ink);
+            font-size: clamp(2.25rem, 5vw, 4.7rem);
+            font-weight: 850;
+            letter-spacing: -0.06em;
+            line-height: 1.02;
+        }
+
+        .hero-accent { color: var(--blue); }
+
+        .hero-copy {
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.13rem);
+            line-height: 1.75;
+        }
+
+        .search-panel {
+            position: relative;
+            max-width: 900px;
+            margin: 36px auto 0;
+            padding: clamp(18px, 3vw, 30px);
+            overflow: hidden;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: var(--radius-xl);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(16px);
+        }
+
+        .search-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto auto 10%;
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(22, 119, 255, 0.55), transparent);
         }
 
         .search-input-group {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            gap: 0.5rem;
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-field {
+            position: relative;
+            min-width: 0;
+        }
+
+        .search-field i {
+            position: absolute;
+            top: 50%;
+            left: 18px;
+            color: #94a3b8;
+            transform: translateY(-50%);
         }
 
         .search-input-group input {
-            background-color: var(--card-bg);
-            border: 2px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            flex: 1;
+            width: 100%;
+            min-height: 56px;
+            padding: 0 18px 0 49px;
+            color: var(--ink);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            outline: none;
+            background: #f8fafc;
+            transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
         }
 
         .search-input-group input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            border-color: rgba(22, 119, 255, 0.68);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(22, 119, 255, 0.1);
         }
 
-        .search-input-group button {
-            background-color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            font-weight: 600;
+        .primary-action, .scan-action {
+            min-height: 56px;
+            padding: 0 22px;
+            border: 0;
+            border-radius: 16px;
+            font-weight: 800;
             cursor: pointer;
-            white-space: nowrap;
+            transition: transform .2s ease, box-shadow .2s ease;
         }
 
-        .search-input-group button:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
+        .primary-action {
+            color: white;
+            background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+            box-shadow: 0 9px 20px rgba(22, 119, 255, 0.24);
         }
+
+        .scan-action {
+            color: var(--blue-deep);
+            border: 1px solid #cfe4ff;
+            background: #eff7ff;
+        }
+
+        .primary-action:hover, .scan-action:hover { transform: translateY(-2px); }
 
         .platform-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
+            display: inline-flex;
+            gap: 5px;
+            margin-top: 22px;
+            padding: 5px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--surface-soft);
         }
 
         .platform-btn {
-            padding: 0.5rem 1.5rem;
-            border: 2px solid var(--border-color);
-            background-color: transparent;
-            color: var(--text-secondary);
-            border-radius: 2rem;
+            padding: 10px 16px;
+            color: var(--muted);
+            border: 0;
+            border-radius: 999px;
+            background: transparent;
+            font-size: 0.86rem;
+            font-weight: 750;
             cursor: pointer;
-            font-weight: 600;
+            transition: all .2s ease;
         }
 
-        .platform-btn:hover, .platform-btn.active {
-            border-color: var(--primary-color);
-            background-color: var(--primary-color);
-            color: white;
+        .platform-btn.active {
+            color: var(--ink);
+            background: white;
+            box-shadow: 0 4px 14px rgba(15, 35, 63, 0.1);
+        }
+
+        .search-meta {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            align-items: center;
+            margin-top: 18px;
+            text-align: left;
+        }
+
+        #searchHint, #cardSourceSelector {
+            min-height: 48px;
+            padding: 12px 15px;
+            color: var(--muted);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: #fbfdff;
+            font-size: 0.84rem;
+        }
+
+        #searchHint strong { color: var(--ink); }
+
+        #cardSourceSelector label {
+            margin-right: 8px;
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        #cardSource {
+            padding: 7px 30px 7px 10px;
+            color: var(--ink);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: white;
+        }
+
+        .quick-searches {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .quick-search-btn {
+            padding: 8px 13px;
+            color: #475569;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: white;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+
+        .quick-search-btn:hover {
+            color: var(--blue-deep);
+            border-color: #b9d9ff;
+            background: #eff7ff;
+            transform: translateY(-1px);
+        }
+
+        .results-section {
+            display: none;
+            margin-top: 60px;
         }
 
         .results-section.active { display: block; }
-        .results-section { display: none; }
 
-        .platform-results { margin-bottom: 3rem; }
+        .platform-results {
+            margin-bottom: 52px;
+            animation: reveal .45s both;
+        }
 
         .platform-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--border-color);
+            gap: 14px;
+            margin-bottom: 20px;
         }
 
-        .platform-icon { font-size: 2rem; }
-        .platform-header h2 { margin: 0; font-size: 1.5rem; font-weight: 700; }
-        .result-count { margin-left: auto; color: var(--text-secondary); font-size: 0.9rem; }
+        .platform-header::before {
+            content: "";
+            width: 5px;
+            height: 32px;
+            border-radius: 99px;
+            background: var(--blue);
+        }
 
-        .product-grid {
+        .platform-header h2 {
+            margin: 0;
+            color: var(--ink);
+            font-size: clamp(1.2rem, 2vw, 1.55rem);
+            font-weight: 850;
+            letter-spacing: -0.035em;
+        }
+
+        .result-count {
+            margin-left: auto;
+            padding: 7px 11px;
+            color: var(--muted);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: white;
+            font-family: "JetBrains Mono", monospace;
+            font-size: .76rem;
+        }
+
+        .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
         }
 
-        .product-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 0.75rem;
-            overflow: hidden;
+        .catalog-card {
+            position: relative;
             display: flex;
+            min-width: 0;
             flex-direction: column;
-        }
-
-        .product-card:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(99, 102, 241, 0.1));
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
-            padding: 8px;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 8px;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border: 2px solid #FFD700;
-            border-radius: 6px;
-            box-shadow: 
-                inset 0 0 8px rgba(255, 255, 255, 0.3),
-                0 4px 12px rgba(0, 0, 0, 0.5),
-                0 0 10px rgba(255, 215, 0, 0.4);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .product-image img:hover {
-            transform: scale(1.05);
-            box-shadow: 
-                inset 0 0 10px rgba(255, 255, 255, 0.4),
-                0 8px 16px rgba(0, 0, 0, 0.6),
-                0 0 15px rgba(255, 215, 0, 0.6);
-        }
-
-        .product-info {
-            padding: 1.25rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-name {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .product-shop {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-        }
-
-        .product-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--success-color);
-            margin-bottom: 1rem;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--text-secondary);
-        }
-
-        .no-results i {
-            font-size: 3rem;
-            color: #f59e0b;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 3rem 1rem;
-        }
-
-        .spinner-border {
-            color: var(--primary-color);
-            width: 3rem;
-            height: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .search-section h1 { font-size: 2rem; }
-            .search-input-group { flex-direction: column; }
-            .product-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
-        }
-
-        .quick-search-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border-color);
-            background-color: transparent;
-            color: var(--text-secondary);
-            border-radius: 1.5rem;
+            border: 1px solid rgba(226, 232, 240, 0.92);
+            border-radius: 22px;
+            background: white;
+            box-shadow: 0 8px 25px rgba(15, 35, 63, 0.06);
             cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
         }
 
-        .quick-search-btn:hover {
-            border-color: var(--primary-color);
-            background-color: var(--primary-color);
+        .catalog-card:hover {
+            border-color: #c4dcf8;
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(15, 35, 63, 0.12);
+        }
+
+        .catalog-image {
+            display: grid;
+            min-height: 290px;
+            place-items: center;
+            padding: 18px;
+            background:
+                radial-gradient(circle at 20% 15%, rgba(255,255,255,.95), transparent 35%),
+                linear-gradient(145deg, #edf5ff, #f8fafc 55%, #fff9df);
+        }
+
+        .catalog-image img {
+            width: min(100%, 185px);
+            max-height: 260px;
+            object-fit: contain;
+            border-radius: 8px;
+            filter: drop-shadow(0 13px 13px rgba(15,35,63,.17));
+            transition: transform .28s ease;
+        }
+
+        .catalog-card:hover .catalog-image img { transform: scale(1.025) rotate(-.6deg); }
+
+        .catalog-info { padding: 18px; }
+
+        .catalog-name {
+            margin-bottom: 10px;
+            color: var(--ink);
+            font-size: 1rem;
+            font-weight: 850;
+            line-height: 1.35;
+        }
+
+        .card-metadata {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 12px;
+        }
+
+        .mini-chip {
+            padding: 5px 8px;
+            color: #475569;
+            border-radius: 8px;
+            background: var(--surface-soft);
+            font-size: .69rem;
+            font-weight: 750;
+        }
+
+        .no-results, .loading {
+            padding: 50px 20px;
+            color: var(--muted);
+            text-align: center;
+            border: 1px dashed #cbd5e1;
+            border-radius: var(--radius-xl);
+            background: rgba(255,255,255,.66);
+        }
+
+        /* Camera scanner */
+        #scannerModal .modal-dialog {
+            width: min(92vw, 780px);
+            max-width: none;
+        }
+
+        #scannerModal .modal-content {
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.65);
+            border-radius: 28px;
+            background: #0c1524;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .scanner-stage {
+            position: relative;
+            min-height: min(76vh, 700px);
+            overflow: hidden;
+            background: #0c1524;
+        }
+
+        #camera-video {
+            width: 100%;
+            height: min(76vh, 700px);
+            display: block;
+            object-fit: cover;
+        }
+
+        .scanner-shade {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse at center, transparent 0 29%, rgba(6, 14, 26, .44) 62%, rgba(6, 14, 26, .76));
+        }
+
+        .scanner-toolbar {
+            position: absolute;
+            z-index: 5;
+            top: 16px;
+            left: 50%;
+            display: flex;
+            width: max-content;
+            max-width: calc(100% - 28px);
+            align-items: center;
+            gap: 9px;
+            padding: 8px 9px 8px 14px;
+            border: 1px solid rgba(255,255,255,.72);
+            border-radius: 999px;
+            background: rgba(255,255,255,.67);
+            box-shadow: 0 8px 24px rgba(0,0,0,.13);
+            backdrop-filter: blur(12px);
+            transform: translateX(-50%);
+        }
+
+        .scanner-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--sea);
+            box-shadow: 0 0 0 5px rgba(77,144,254,.13);
+            animation: statusPulse 1.8s infinite;
+        }
+
+        .scanner-status-label {
+            color: var(--ink);
+            font-size: .78rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .scanner-control {
+            display: grid;
+            width: 36px;
+            height: 36px;
+            place-items: center;
+            color: var(--ink);
+            border: 0;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+
+        .scanner-reticle {
+            position: absolute;
+            z-index: 3;
+            top: 50%;
+            left: 50%;
+            width: min(54vw, 280px);
+            aspect-ratio: 63 / 88;
+            border: 2px solid rgba(91, 164, 255, .95);
+            border-radius: 18px;
+            box-shadow: 0 0 0 1px rgba(255,255,255,.24) inset, 0 0 28px rgba(77,144,254,.68);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            animation: scanBreath 2.1s ease-in-out infinite;
+        }
+
+        .scanner-reticle::before, .scanner-reticle::after {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+        }
+
+        .scanner-reticle::before {
+            background: linear-gradient(110deg, transparent 25%, rgba(255,255,255,.7) 46%, transparent 62%);
+            background-size: 250% 100%;
+            mix-blend-mode: screen;
+            animation: scannerFlow 2.4s linear infinite;
+        }
+
+        .scanner-reticle::after {
+            inset: 12px;
+            border: 1px solid rgba(255,255,255,.15);
+        }
+
+        .scanner-shell.locked .scanner-reticle {
+            border-color: #34d399;
+            box-shadow: 0 0 0 1px rgba(255,255,255,.3) inset, 0 0 35px rgba(52,211,153,.84);
+            animation: lockPulse .58s ease-out 2;
+        }
+
+        .scanner-shell.locked .scanner-status-dot { background: #10b981; }
+        .scanner-shell.locked .scanner-status-label { color: #047857; }
+
+        #scan-status {
+            position: absolute;
+            z-index: 5;
+            right: 18px;
+            bottom: 18px;
+            left: 18px;
+            padding: 12px 16px;
             color: white;
-        }
-
-        /* ===== 卡牌詳情 Modal 樣式 ===== */
-        .modal-content {
-            background-color: rgba(20, 20, 30, 0.95);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-        }
-
-        .modal-title {
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 14px;
+            background: rgba(5,12,22,.52);
+            backdrop-filter: blur(12px);
+            font-size: .86rem;
             font-weight: 700;
-            font-size: 1.3rem;
-            color: #FFFFFF !important;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;
+            text-align: center;
         }
 
-        .btn-close {
-            filter: brightness(1.2);
+        /* Bottom sheet */
+        #cardModal { --bs-modal-bg: transparent; }
+
+        #cardModal .modal-dialog {
+            display: flex;
+            width: 100%;
+            max-width: none;
+            min-height: 100%;
+            margin: 0;
+            align-items: flex-end;
+        }
+
+        #cardModal .modal-content {
+            max-height: min(88vh, 820px);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.8);
+            border-radius: 30px 30px 0 0;
+            background:
+                radial-gradient(circle at 12% 0, var(--type-glow), transparent 28rem),
+                rgba(255,255,255,.97);
+            box-shadow: 0 -24px 70px rgba(15,35,63,.2);
+            backdrop-filter: blur(22px);
+            transform-origin: center bottom;
+        }
+
+        #cardModal.show .modal-content { animation: sheetIn .38s cubic-bezier(.2,.8,.2,1); }
+
+        .sheet-handle {
+            width: 100%;
+            padding: 13px 0 5px;
+            border: 0;
+            background: transparent;
+            cursor: grab;
+            touch-action: none;
+        }
+
+        .sheet-handle::after {
+            content: "";
+            display: block;
+            width: 48px;
+            height: 5px;
+            margin: auto;
+            border-radius: 99px;
+            background: #cbd5e1;
+        }
+
+        #cardModal .modal-header {
+            padding: 8px clamp(20px, 4vw, 48px) 14px;
+            border-bottom: 1px solid var(--line);
+            background: transparent;
+        }
+
+        #cardModal .modal-title {
+            color: var(--ink);
+            font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+            font-weight: 850;
+            letter-spacing: -.035em;
         }
 
         #cardModal .modal-body {
-            padding: 2rem;
-            min-height: 450px;
-            background-size: cover;
-            background-attachment: fixed;
+            overflow-y: auto;
+            padding: clamp(22px, 4vw, 42px);
         }
 
-        /* Modal 內所有文字強制白化 */
-        #cardModal h2,
-        #cardModal h5,
-        #cardModal h6,
-        #cardModal p,
-        #cardModal span,
-        #cardModal div,
-        #cardModal label,
-        #cardModal td,
-        #cardModal th {
-            color: #FFFFFF !important;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;
+        .detail-layout {
+            display: grid;
+            grid-template-columns: minmax(220px, 360px) minmax(0, 1fr);
+            gap: clamp(28px, 5vw, 70px);
+            max-width: 1080px;
+            margin: auto;
+            align-items: center;
         }
 
-        /* 發行版本清單區塊 */
-        #cardModalSeries {
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.5) !important;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.15) !important;
-            margin-top: 1.5rem;
+        .holo-stage { perspective: 950px; }
+
+        .holo-card {
+            --pointer-x: 50%;
+            --pointer-y: 50%;
+            --rotate-x: 0deg;
+            --rotate-y: 0deg;
+            --holo-opacity: 0;
+            position: relative;
+            width: min(100%, 330px);
+            margin: auto;
+            aspect-ratio: 63 / 88;
+            overflow: hidden;
+            border-radius: 4.6% / 3.3%;
+            box-shadow: 0 26px 45px rgba(15,35,63,.24), 0 0 0 1px rgba(255,255,255,.8);
+            transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) translateZ(0);
+            transform-style: preserve-3d;
+            transition: transform .18s ease-out, box-shadow .25s ease;
+            will-change: transform;
+            touch-action: none;
         }
 
-        /* 表格樣式 */
-        .modal-body .table {
-            color: #FFFFFF !important;
-            border-color: rgba(255, 255, 255, 0.1);
+        .holo-card img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
         }
 
-        .modal-body .table thead th {
-            color: #FFFFFF !important;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
-            font-weight: 700 !important;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;
+        .holo-shine, .holo-glare {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: var(--holo-opacity);
+            transition: opacity .25s ease;
         }
 
-        .modal-body .table tbody td {
-            vertical-align: middle;
-            padding: 0.8rem 0.5rem;
-            color: #FFFFFF !important;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;
+        .holo-shine {
+            z-index: 2;
+            background:
+                repeating-linear-gradient(115deg,
+                    rgba(255,110,110,.75) 0%, rgba(255,222,94,.72) 10%,
+                    rgba(111,255,192,.7) 20%, rgba(91,184,255,.75) 30%,
+                    rgba(196,122,255,.73) 40%, rgba(255,110,110,.75) 50%),
+                radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(255,255,255,.9), rgba(255,255,255,0) 42%);
+            background-size: 220% 220%, 100% 100%;
+            background-position: calc(var(--pointer-x) * .8) calc(var(--pointer-y) * .8), center;
+            filter: brightness(1.05) contrast(1.25) saturate(1.35);
+            mix-blend-mode: color-dodge;
         }
 
-        .modal-body .table tbody tr {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        .holo-card.is-holo .holo-shine::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 18% 22%, rgba(255,255,255,.85) 0 1px, transparent 2px),
+                radial-gradient(circle at 72% 62%, rgba(255,255,255,.8) 0 1.5px, transparent 2.5px),
+                radial-gradient(circle at 44% 78%, rgba(255,255,255,.65) 0 1px, transparent 2px);
+            background-size: 48px 52px, 73px 67px, 92px 86px;
+            transform: translate(calc((var(--pointer-x) - 50%) * .08), calc((var(--pointer-y) - 50%) * .08));
+            mix-blend-mode: screen;
         }
 
-        .modal-body .table tbody tr:hover {
-            background-color: rgba(99, 102, 241, 0.2) !important;
+        .holo-glare {
+            z-index: 3;
+            background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(255,255,255,.72), rgba(255,255,255,.08) 30%, rgba(0,0,0,.12) 72%);
+            mix-blend-mode: overlay;
+        }
+
+        .holo-card:not(.is-holo) .holo-shine { display: none; }
+        .holo-card:not(.is-holo) .holo-glare { opacity: calc(var(--holo-opacity) * .42); }
+
+        .detail-copy { min-width: 0; }
+
+        .source-badge {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 13px;
+            padding: 7px 11px;
+            color: var(--type-accent);
+            border: 1px solid color-mix(in srgb, var(--type-accent) 28%, white);
+            border-radius: 999px;
+            background: color-mix(in srgb, var(--type-accent) 9%, white);
+            font-size: .74rem;
+            font-weight: 850;
+        }
+
+        .detail-name {
+            margin: 0 0 8px;
+            color: var(--ink);
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -.065em;
+            line-height: 1;
+        }
+
+        .detail-number {
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: .78rem;
+        }
+
+        .stat-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin: 24px 0;
+        }
+
+        .stat-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 12px;
+            color: #334155;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(15,35,63,.05);
+            font-size: .78rem;
+            font-weight: 800;
+        }
+
+        .stat-chip.hp {
+            color: #047857;
+            border-color: #bbf7d0;
+            background: #ecfdf5;
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        .stat-chip.rarity.high {
+            color: #6b4d00;
+            border-color: rgba(215,170,20,.36);
+            background: linear-gradient(115deg, #fff4b5, #ffe07a 45%, #fff8cf);
+            box-shadow: 0 7px 18px rgba(215,170,20,.16);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .detail-cell {
+            padding: 14px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: rgba(255,255,255,.74);
+        }
+
+        .detail-cell span {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--muted);
+            font-size: .68rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .detail-cell strong {
+            display: block;
+            color: var(--ink);
+            font-size: .9rem;
+            font-weight: 800;
+            overflow-wrap: anywhere;
+        }
+
+        .skills-block { margin-top: 18px; }
+        .skills-title { margin: 0 0 10px; font-size: .82rem; font-weight: 850; }
+        .skill-card { padding: 13px; border-radius: 13px; background: var(--surface-soft); margin-top: 8px; }
+        .skill-card strong { color: var(--ink); }
+        .skill-card p { margin: 5px 0 0; color: var(--muted); font-size: .8rem; line-height: 1.55; }
+
+        .btn-close { box-shadow: none !important; }
+
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes sheetIn {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes scanBreath {
+            0%, 100% { opacity: .72; filter: brightness(.92); }
+            50% { opacity: 1; filter: brightness(1.22); }
+        }
+
+        @keyframes scannerFlow {
+            from { background-position: 150% 0; }
+            to { background-position: -120% 0; }
+        }
+
+        @keyframes lockPulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            55% { transform: translate(-50%, -50%) scale(1.035); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        @keyframes statusPulse {
+            0%,100% { transform: scale(.85); }
+            50% { transform: scale(1.15); }
+        }
+
+        @media (max-width: 760px) {
+            .nav-status span { display: none; }
+            .container-main { width: min(100% - 22px, 1240px); padding-top: 38px; }
+            .search-input-group { grid-template-columns: 1fr 56px; }
+            .search-field { grid-column: 1 / -1; }
+            .primary-action, .scan-action { padding: 0; }
+            .primary-action span, .scan-action span { display: none; }
+            .platform-tabs { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; }
+            .platform-btn { padding-inline: 8px; font-size: .74rem; }
+            .search-meta { grid-template-columns: 1fr; }
+            .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+            .catalog-image { min-height: 210px; padding: 12px; }
+            .catalog-image img { max-height: 190px; }
+            .catalog-info { padding: 13px; }
+            .detail-layout { grid-template-columns: 1fr; align-items: start; }
+            .holo-card { width: min(62vw, 270px); }
+            #cardModal .modal-content { max-height: 92vh; }
+            #cardModal .modal-body { padding-top: 18px; }
+            .detail-name { font-size: 2.15rem; }
+            .scanner-stage, #camera-video { height: 78vh; min-height: 520px; }
+            .scanner-reticle { width: min(62vw, 270px); }
+        }
+
+        @media (max-width: 430px) {
+            .card-grid { grid-template-columns: 1fr 1fr; }
+            .catalog-image { min-height: 180px; }
+            .catalog-image img { max-height: 165px; }
+            .catalog-name { font-size: .86rem; }
+            .card-metadata .mini-chip:nth-child(n+3) { display: none; }
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 導航欄 -->
-    <nav class="navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/"><i class="fas fa-credit-card"></i> 卡牌查詢系統</a>
-            <span class="navbar-text ms-auto"><small>PChome + 國際卡牌資料庫</small></span>
+    <nav class="navbar" aria-label="主要導覽">
+        <div class="nav-inner">
+            <a class="navbar-brand" href="/">
+                <span class="brand-mark"><i class="fa-solid fa-layer-group"></i></span>
+                <span>Card Lens</span>
+            </a>
+            <div class="nav-status">
+                <span>官方卡庫已連線</span>
+                <strong class="mono">TW · JP · EN</strong>
+            </div>
         </div>
     </nav>
 
-    <!-- 卡牌詳情模態框 -->
-    <div id="cardModal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog modal-lg">
+    <div id="cardModal" class="modal fade" tabindex="-1" aria-labelledby="cardModalTitle" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
+                <button type="button" class="sheet-handle" aria-label="下拉關閉卡牌詳情"></button>
                 <div class="modal-header">
                     <h5 class="modal-title" id="cardModalTitle">卡牌詳情</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img id="cardModalImage" src="" alt="卡牌" style="width: 100%; border-radius: 12px;">
+                    <div class="detail-layout">
+                        <div class="holo-stage">
+                            <div id="cardTilt" class="holo-card">
+                                <img id="cardModalImage" src="" alt="卡牌原圖">
+                                <div class="holo-shine"></div>
+                                <div class="holo-glare"></div>
+                            </div>
                         </div>
-                        <div class="col-md-7">
-                            <div id="cardModalDetails" style="max-height: 500px; overflow-y: auto; padding-right: 0.5rem;"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- 發行版本清單 -->
-                    <div id="cardModalSeries" style="max-height: 300px; overflow-y: auto; margin-top: 1.5rem;">
-                        <p class="text-muted" style="color: #A0A0A0;">無版本信息</p>
+                        <div id="cardModalDetails" class="detail-copy"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 相機掃描 Modal (深色毛玻璃) -->
-    <div class="modal fade" id="scannerModal" tabindex="-1" aria-labelledby="scannerModalLabel" aria-hidden="true" style="backdrop-filter: blur(8px);">
+    <div class="modal fade scanner-shell" id="scannerModal" tabindex="-1" aria-labelledby="scannerModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="background: rgba(30, 30, 30, 0.85); border: 1px solid rgba(255, 255, 255, 0.1);">
-                <div class="modal-header" style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                    <h5 class="modal-title" id="scannerModalLabel" style="color: white;">📷 掃描實體卡牌正面</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onclick="stopScanner()"></button>
-                </div>
-                <div class="modal-body text-center" style="position: relative; min-height: 300px; padding: 0;">
-                    <div id="video-container" style="width: 100%; border-radius: 0 0 8px 8px; overflow: hidden; position: relative;">
-                        <!-- 使用網頁原生 Video 標籤來串流相機 -->
-                        <video id="camera-video" autoplay playsinline style="width: 100%; height: auto; display: block; object-fit: cover;"></video>
-                        <!-- 用來截圖的隱藏 Canvas -->
-                        <canvas id="camera-canvas" style="display: none;"></canvas>
-                        <!-- 掃描焦點框 -->
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 250px; height: 350px; border: 3px dashed rgba(255, 215, 0, 0.8); border-radius: 12px; pointer-events: none; box-shadow: 0 0 0 4000px rgba(0,0,0,0.6);">
-                        </div>
+            <div class="modal-content">
+                <div class="scanner-stage">
+                    <video id="camera-video" autoplay playsinline muted></video>
+                    <canvas id="camera-canvas" hidden></canvas>
+                    <div class="scanner-shade"></div>
+                    <div class="scanner-toolbar">
+                        <span class="scanner-status-dot"></span>
+                        <span class="scanner-status-label" id="scanner-status-label">準備掃描</span>
+                        <button type="button" class="scanner-control" onclick="switchCamera()" aria-label="切換前後鏡頭" title="切換鏡頭">
+                            <i class="fa-solid fa-camera-rotate"></i>
+                        </button>
+                        <button type="button" class="scanner-control" data-bs-dismiss="modal" onclick="stopScanner()" aria-label="關閉掃描">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
                     </div>
-                    <div id="scan-status" style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: white; background: rgba(0,0,0,0.5); padding: 5px 0;">
-                        將卡牌正面對準黃色虛線框內... 
-                    </div>
+                    <div class="scanner-reticle" aria-hidden="true"></div>
+                    <div id="scan-status">將卡牌完整放入藍色對焦框</div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- 主容器 -->
-    <div class="container-main">
-        <!-- 搜索區域 -->
-        <div class="search-section">
-            <h1>🎴 卡牌價格與資料查詢</h1>
-            <p>搜尋 PChome 台灣價格 + 國際卡牌參考資料</p>
-            
-            <div class="search-input-group">
-                <input type="text" id="searchKeyword" placeholder="搜尋建議：遊戲王卡牌, 寶可夢卡牌..." onkeyup="handleKeyboardSearch(event)">
-                <button onclick="performSearch()"><i class="fas fa-search"></i> 搜尋</button>
-            </div>
-            
-            <div style="margin-top: 1rem; text-align: center;">
-                <button onclick="openScanner()" style="background-color: var(--primary-color); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; border: none; cursor: pointer; font-weight: 600;">
-                    <i class="fas fa-camera"></i> 📷 開啟相機掃描卡牌
-                </button>
-            </div>
 
-            <!-- 搜尋模式選擇 -->
-            <div class="platform-tabs" style="margin-top: 2rem;">
-                <button class="platform-btn active" onclick="setSearchMode('ecommerce')">
-                    <i class="fas fa-shopping-cart"></i> 台灣 PChome
-                </button>
-                <button class="platform-btn" onclick="setSearchMode('international')">
-                    <i class="fas fa-globe"></i> 國際卡牌 API
-                </button>
-                <button class="platform-btn" onclick="setSearchMode('combined')">
-                    <i class="fas fa-plus"></i> 組合搜尋
-                </button>
+    <main class="container-main">
+        <section class="search-section" aria-labelledby="pageTitle">
+            <div class="eyebrow"><i class="fa-solid fa-sparkles"></i> Visual Card Archive</div>
+            <h1 id="pageTitle">掃描、辨識，建立你的<br><span class="hero-accent">卡牌視覺圖鑑</span></h1>
+            <p class="hero-copy">搜尋繁中、日版、英文寶可夢與遊戲王官方資料，或直接對準實體卡牌辨識完整資訊。</p>
+
+            <div class="search-panel">
+                <div class="search-input-group">
+                    <div class="search-field">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="searchKeyword" placeholder="輸入寶可夢或遊戲王卡片名稱..." onkeyup="handleKeyboardSearch(event)" aria-label="搜尋卡牌">
+                    </div>
+                    <button class="primary-action" onclick="performSearch()">
+                        <i class="fa-solid fa-magnifying-glass"></i> <span>搜尋</span>
+                    </button>
+                    <button class="scan-action" onclick="openScanner()">
+                        <i class="fa-solid fa-camera"></i> <span>掃描卡牌</span>
+                    </button>
+                </div>
+
+                <div class="platform-tabs" aria-label="目前功能">
+                    <span class="platform-btn active">
+                        <i class="fa-solid fa-earth-asia"></i> 官方卡牌圖鑑
+                    </span>
+                </div>
+
+                <div class="search-meta">
+                    <div id="searchHint">
+                        <i class="fa-regular fa-lightbulb"></i>
+                        <strong id="hintTitle">官方卡牌資料庫</strong> · <span id="hintExamples">繁中、日版、英文寶可夢與遊戲王</span>
+                    </div>
+                    <div id="cardSourceSelector">
+                        <label for="cardSource">卡庫</label>
+                        <select id="cardSource" onchange="changeCardSource(this.value)">
+                            <option value="all">全部來源</option>
+                            <option value="tw-pokemon">台灣繁中官方</option>
+                            <option value="pokemon-jp">日本官方</option>
+                            <option value="pokemon">國際英文</option>
+                            <option value="yugioh">遊戲王</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="quick-searches" aria-label="快速搜尋">
+                    <button class="quick-search-btn" onclick="quickSearch('皮卡丘')">皮卡丘</button>
+                    <button class="quick-search-btn" onclick="quickSearch('ピカチュウ')">ピカチュウ</button>
+                    <button class="quick-search-btn" onclick="quickSearch('Pikachu')">Pikachu</button>
+                    <button class="quick-search-btn" onclick="quickSearch('Blue-Eyes White Dragon')">Blue-Eyes</button>
+                </div>
             </div>
+        </section>
 
-            <!-- 提示信息 -->
-            <div id="searchHint" style="margin-top: 1.5rem; padding: 1rem; background-color: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; border-radius: 0.5rem; color: #cbd5e1; font-size: 0.95rem;">
-                <i class="fas fa-lightbulb"></i> <strong id="hintTitle">台灣 PChome</strong>：搜尋 <span id="hintExamples">遊戲王卡牌、寶可夢卡牌、集換式卡牌</span>
+        <section class="results-section active" id="resultsSection" aria-live="polite">
+            <div id="searchResults">
+                <div class="no-results">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h3>開始探索卡牌圖鑑</h3>
+                    <p>輸入卡名、卡號，或開啟相機辨識實體卡牌。</p>
+                </div>
             </div>
-
-            <!-- 國際卡牌來源選擇器 (只在國際模式顯示) -->
-            <div id="cardSourceSelector" style="display: none; margin-top: 1.5rem; padding: 1rem; background-color: rgba(139, 92, 246, 0.1); border-left: 4px solid #8b5cf6; border-radius: 0.5rem;">
-                <label for="cardSource" style="color: #cbd5e1; font-weight: 600; margin-right: 1rem;">選擇卡牌來源：</label>
-                <select id="cardSource" onchange="changeCardSource(this.value)" style="padding: 0.5rem 1rem; background-color: var(--card-bg); color: var(--text-primary); border: 2px solid var(--border-color); border-radius: 0.5rem; cursor: pointer; font-size: 0.95rem;">
-                    <option value="pokemon">寶可夢 TCG (國際英文)</option>
-                    <option value="tw-pokemon">🇹🇼 寶可夢 TCG (台灣繁中官方)</option>
-                    <option value="yugioh">遊戲王</option>
-                    <option value="mtg">Magic 風雲會</option>
-                    <option value="all">全部來源</option>
-                </select>
-            </div>
-
-            <!-- 快速搜尋建議 -->
-            <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
-                <button class="quick-search-btn" onclick="quickSearch('遊戲王卡牌')">遊戲王卡牌</button>
-                <button class="quick-search-btn" onclick="quickSearch('寶可夢')">寶可夢</button>
-                <button class="quick-search-btn" onclick="quickSearch('pikachu')">Pikachu</button>
-                <button class="quick-search-btn" onclick="quickSearch('black lotus')">Black Lotus</button>
-            </div>
-        </div>
-
-        <!-- 結果區域 -->
-        <div class="results-section active" id="resultsSection">
-            <div id="searchResults"></div>
-        </div>
-    </div>
-
+        </section>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- npm install html5-qrcode -->
-    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>
         let currentMatchName = '';
         let matchCounter = 0;
         let currentSearchResults = {};
-        let searchMode = 'ecommerce';
         
         // 分頁狀態
         let currentCardSearch = {
             keyword: '',
             source: 'all',
             page: 1,
-            limit: 20,
+            limit: 50,
             results: null
         };
 
@@ -514,18 +1066,16 @@
             const stats = card.stats || {};
             let type = '';
             
-            if (card.source === 'pokemon' && stats.types && stats.types.length > 0) {
-                type = stats.types[0].toLowerCase();
-            } else if (card.source === 'tw-pokemon') {
+            if (card.source === 'pokemon' && card.type) {
+                type = card.type.toLowerCase();
+            } else if (card.source === 'tw-pokemon' || card.source === 'pokemon-jp') {
                 // 台灣寶可夢使用 type_color 和 pokemon_type 欄位
                 if (card.type_color) {
                     return `linear-gradient(145deg, ${card.type_color.primary || '#a8a878'}, ${card.type_color.secondary || '#6d6d4f'})`;
                 }
-                type = stats.pokemon_type ? stats.pokemon_type.toLowerCase() : '';
+                type = card.type ? card.type.toLowerCase() : '';
             } else if (card.source === 'yugioh' && stats.attribute) {
                 type = stats.attribute.toLowerCase();
-            } else if (card.source === 'mtg' && stats.type) {
-                type = stats.type.toLowerCase();
             }
             
             // 台灣寶可夢屬性對應 (繁體中文)
@@ -562,7 +1112,7 @@
             };
             
             // 優先使用台灣寶可夢的繁中屬性
-            if (card.source === 'tw-pokemon' && type in twPokemonGradients) {
+            if ((card.source === 'tw-pokemon' || card.source === 'pokemon-jp') && type in twPokemonGradients) {
                 return twPokemonGradients[type];
             }
             
@@ -570,275 +1120,128 @@
         }
 
         /** 打開卡牌詳情模態框 */
+        let holoTiltController = null;
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, char => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+            })[char]);
+        }
+
+        function getTypeTheme(type) {
+            const key = String(type || '').toLowerCase();
+            const themes = [
+                { match: ['雷', '電', 'lightning', 'electric'], accent: '#d6a900', glow: 'rgba(246,216,84,.28)', icon: 'fa-bolt' },
+                { match: ['火', 'fire'], accent: '#ff6f59', glow: 'rgba(255,111,89,.22)', icon: 'fa-fire' },
+                { match: ['水', 'water'], accent: '#4d90fe', glow: 'rgba(77,144,254,.22)', icon: 'fa-droplet' },
+                { match: ['草', 'grass'], accent: '#36a967', glow: 'rgba(93,190,126,.22)', icon: 'fa-leaf' },
+                { match: ['超', 'psychic'], accent: '#a55eea', glow: 'rgba(165,94,234,.2)', icon: 'fa-eye' }
+            ];
+            return themes.find(theme => theme.match.some(token => key.includes(token)))
+                || { accent: '#1677ff', glow: 'rgba(77,144,254,.18)', icon: 'fa-gem' };
+        }
+
+        function isHighRarity(rarity) {
+            const value = String(rarity || '').toUpperCase().replace(/\s+/g, '');
+            if (!value || ['C', 'U', 'U/C', 'COMMON', 'UNCOMMON', '未標示'].includes(value)) return false;
+            return /SAR|AR|SR|UR|RRR|RR|CHR|CSR|ACE|RARE|SECRET|HOLO/.test(value) || value === 'R';
+        }
+
+        function initHoloTilt(cardElement, isHolo) {
+            if (holoTiltController) holoTiltController.abort();
+            holoTiltController = new AbortController();
+            const { signal } = holoTiltController;
+            const update = event => {
+                const point = event.touches?.[0] || event;
+                const rect = cardElement.getBoundingClientRect();
+                const x = Math.max(0, Math.min(1, (point.clientX - rect.left) / rect.width));
+                const y = Math.max(0, Math.min(1, (point.clientY - rect.top) / rect.height));
+                cardElement.style.setProperty('--pointer-x', `${Math.round(x * 100)}%`);
+                cardElement.style.setProperty('--pointer-y', `${Math.round(y * 100)}%`);
+                cardElement.style.setProperty('--rotate-x', `${((.5 - y) * 16).toFixed(2)}deg`);
+                cardElement.style.setProperty('--rotate-y', `${((x - .5) * 18).toFixed(2)}deg`);
+                cardElement.style.setProperty('--holo-opacity', isHolo ? '.78' : '.22');
+            };
+            const reset = () => {
+                cardElement.style.setProperty('--rotate-x', '0deg');
+                cardElement.style.setProperty('--rotate-y', '0deg');
+                cardElement.style.setProperty('--pointer-x', '50%');
+                cardElement.style.setProperty('--pointer-y', '50%');
+                cardElement.style.setProperty('--holo-opacity', '0');
+            };
+            cardElement.addEventListener('pointermove', update, { signal });
+            cardElement.addEventListener('touchmove', update, { signal, passive: true });
+            cardElement.addEventListener('pointerleave', reset, { signal });
+            cardElement.addEventListener('touchend', reset, { signal });
+        }
+
         function showCardDetail(card) {
-            console.log('Card data received:', { source: card.source, hasSkills: !!card.skills, skillsCount: card.skills?.length });
-            
-            const modal = new bootstrap.Modal(document.getElementById('cardModal'));
-            const modalBody = document.querySelector('#cardModal .modal-body');
-            
-            // 動態設定背景到 modal-body
-            const gradient = getTypeGradient(card);
-            modalBody.style.background = gradient;
-            modalBody.style.backgroundAttachment = 'fixed';
-            
-            // 支持新舊欄位名稱
-            const displayName = card.name || card.title || '';
-            const imageUrl = card.image_url || card.img_url || '';
-            const imageLarge = card.image_url || card.img_large || card.img_url || '';
-            
+            const modalElement = document.getElementById('cardModal');
+            const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+            const imageUrl = card.image_url || card.img_large || card.img_url || '';
+            const displayName = card.name || card.title || '未命名卡牌';
+            const rarity = card.rarity || '未標示';
+            const highRarity = isHighRarity(rarity);
+            const theme = getTypeTheme(card.type);
+            const modalContent = modalElement.querySelector('.modal-content');
+            const tiltCard = document.getElementById('cardTilt');
+
+            modalContent.style.setProperty('--type-accent', theme.accent);
+            modalContent.style.setProperty('--type-glow', theme.glow);
+            tiltCard.classList.toggle('is-holo', highRarity);
             document.getElementById('cardModalTitle').textContent = displayName;
-            document.getElementById('cardModalImage').src = imageLarge;
-            
-            // 圖片樣式：官方風格邊框和陰影
-            const imgElement = document.getElementById('cardModalImage');
-            // 黃色邊框 + 白色光暈 + 多層陰影（官方網站風格）
-            imgElement.style.border = '3px solid #FFD700';
-            imgElement.style.borderRadius = '8px';
-            imgElement.style.boxShadow = `
-                inset 0 0 10px rgba(255, 255, 255, 0.4),
-                0 0 15px rgba(255, 215, 0, 0.6),
-                0 8px 20px rgba(0, 0, 0, 0.8),
-                0 2px 4px rgba(255, 255, 255, 0.3)
-            `;
-            imgElement.style.maxWidth = '100%';
-            imgElement.style.height = 'auto';
-            
-            // 定義文本樣式常數 - 使用更重的陰影和純白色
-            const textShadow = 'text-shadow: 2px 2px 5px rgba(0, 0, 0, 1) !important;';
-            const labelStyle = `color: #CCCCCC !important; ${textShadow} font-weight: 500 !important;`;
-            const valueStyle = `color: #FFFFFF !important; ${textShadow} font-weight: 700 !important;`;
-            const titleStyle = `color: #FFFFFF !important; ${textShadow} font-size: 1.3rem; margin-bottom: 1.5rem; font-weight: 700 !important;`;
-            const descriptionStyle = `color: #FFFFFF !important; ${textShadow} font-size: 0.95rem; line-height: 1.7; margin-top: 1rem;`;
-            
-            // 構建詳細信息 - 使用 Flex 佈局
-            let detailsHTML = `<h5 style="${titleStyle}">${displayName}</h5>`;
-            
-            // 使用 Flex 佈局讓標籤和值左右對齐
-            detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                <span style="${labelStyle}">來源:</span>
-                <span style="${valueStyle}">${getSourceName(card.source)}</span>
-            </div>`;
-            
-            detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                <span style="${labelStyle}">價格:</span>
-                <span style="${valueStyle}">${card.price || 'N/A'}</span>
-            </div>`;
-            
-            // 根據卡牌類型顯示不同的屬性
+            document.getElementById('cardModalImage').src = imageUrl;
+            document.getElementById('cardModalImage').alt = `${displayName} 卡牌原圖`;
+
             const stats = card.stats || {};
-            
-            if (card.source === 'pokemon') {
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">HP:</span>
-                    <span style="${valueStyle}">${stats.hp || 'N/A'}</span>
+            const source = getSourceName(card.source);
+            const number = card.number || card.id || '-';
+            const skills = Array.isArray(card.skills) ? card.skills : [];
+            const hasHp = card.hp !== undefined && card.hp !== null && card.hp !== '' && card.hp !== '-';
+
+            let html = `
+                <span class="source-badge">${escapeHtml(source)}</span>
+                <h2 class="detail-name">${escapeHtml(displayName)}</h2>
+                <div class="detail-number">NO. ${escapeHtml(number)}</div>
+                <div class="stat-chips">
+                    ${hasHp ? `<span class="stat-chip hp"><i class="fa-solid fa-heart-pulse"></i> HP ${escapeHtml(card.hp)}</span>` : ''}
+                    <span class="stat-chip"><i class="fa-solid ${theme.icon}"></i> ${escapeHtml(card.type || '未標示')}</span>
+                    <span class="stat-chip rarity ${highRarity ? 'high' : ''}"><i class="fa-solid fa-star"></i> ${escapeHtml(rarity)}</span>
+                </div>
+                <div class="detail-grid">
+                    <div class="detail-cell"><span>系列</span><strong>${escapeHtml(card.series || '未標示')}</strong></div>
+                    <div class="detail-cell"><span>卡片編號</span><strong class="mono">${escapeHtml(number)}</strong></div>
+                    <div class="detail-cell"><span>版本來源</span><strong>${escapeHtml(source)}</strong></div>
                 </div>`;
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">屬性:</span>
-                    <span style="${valueStyle}">${stats.types ? stats.types.join(', ') : 'N/A'}</span>
+
+            if (card.source === 'yugioh') {
+                html += `<div class="detail-grid" style="margin-top:10px">
+                    <div class="detail-cell"><span>卡片種類</span><strong>${escapeHtml(stats.card_type || '未標示')}</strong></div>
+                    <div class="detail-cell"><span>ATK / DEF</span><strong class="mono">${escapeHtml(stats.atk ?? '-')} / ${escapeHtml(stats.def ?? '-')}</strong></div>
                 </div>`;
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">系列:</span>
-                    <span style="${valueStyle}">${stats.set || 'N/A'}</span>
-                </div>`;
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">稀有度:</span>
-                    <span style="${valueStyle}">${stats.rarity || 'N/A'}</span>
-                </div>`;
-            } else if (card.source === 'pokemon-en') {
-                // 新的國際英文寶可夢卡牌格式
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">HP:</span>
-                    <span style="${valueStyle}">${card.hp || 'N/A'}</span>
-                </div>`;
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">Type:</span>
-                    <span style="${valueStyle}">${card.type || 'N/A'}</span>
-                </div>`;
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">Series:</span>
-                    <span style="${valueStyle}">${card.series || 'N/A'}</span>
-                </div>`;
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">Rarity:</span>
-                    <span style="${valueStyle}">${card.rarity || 'N/A'}</span>
-                </div>`;
-                
-                // 顯示英文技能
-                if (card.skills && card.skills.length > 0) {
-                    detailsHTML += `<div style="background: rgba(100, 149, 237, 0.1) !important; padding: 0.8rem !important; border-radius: 6px !important; margin-top: 1rem !important; border-left: 3px solid #6495ED !important;">
-                        <h6 style="color: #6495ED !important; font-weight: 600 !important; ${textShadow}; margin-bottom: 0.8rem !important;">⚡ Attacks & Abilities</h6>`;
-                        
-                        card.skills.forEach((skill, index) => {
-                            detailsHTML += `<div style="background: rgba(0, 0, 0, 0.3) !important; padding: 0.6rem !important; border-radius: 4px !important; margin-bottom: 0.6rem !important;">
-                                <div style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
-                                    <span style="color: #FFFFFF !important; font-weight: 600 !important; ${textShadow}">${skill.name}</span>
-                                    ${skill.damage ? `<span style="color: #FF6347 !important; font-weight: 700 !important; ${textShadow}; font-size: 0.9rem !important;">DMG: ${skill.damage}</span>` : ''}
-                                </div>
-                                ${skill.effect ? `<div style="color: #CCCCCC !important; font-size: 0.85rem !important; ${textShadow}; margin-top: 0.4rem !important; line-height: 1.5 !important;">${skill.effect}</div>` : ''}
-                            </div>`;
-                        });
-                        
-                        detailsHTML += `</div>`;
-                    }
-            } else if (card.source === 'yugioh') {
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">類型:</span>
-                    <span style="${valueStyle}">${stats.type || 'N/A'}</span>
-                </div>`;
-                if (stats.level) {
-                    detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                        <span style="${labelStyle}">等級:</span>
-                        <span style="${valueStyle}">${stats.level}</span>
-                    </div>`;
-                }
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">屬性:</span>
-                    <span style="${valueStyle}">${stats.attribute || 'N/A'}</span>
-                </div>`;
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">攻防:</span>
-                    <span style="${valueStyle}">${stats.atk} / ${stats.def}</span>
-                </div>`;
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">種族:</span>
-                    <span style="${valueStyle}">${stats.race || 'N/A'}</span>
-                </div>`;
-            } else if (card.source === 'mtg') {
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">法力費:</span>
-                    <span style="${valueStyle}">${stats.mana_cost || 'N/A'}</span>
-                </div>`;
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">類型:</span>
-                    <span style="${valueStyle}">${stats.type || 'N/A'}</span>
-                </div>`;
-                if (stats.power || stats.toughness) {
-                    detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                        <span style="${labelStyle}">攻防:</span>
-                        <span style="${valueStyle}">${stats.power} / ${stats.toughness}</span>
-                    </div>`;
-                }
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">稀有度:</span>
-                    <span style="${valueStyle}">${stats.rarity || 'N/A'}</span>
-                </div>`;
-            } else if (card.source === 'tw-pokemon') {
-                // 台灣官方寶可夢卡牌
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">HP (生命值):</span>
-                    <span style="${valueStyle}">${card.hp || 'N/A'}</span>
-                </div>`;
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">屬性 (繁體):</span>
-                    <span style="${valueStyle}">${card.type || 'N/A'}</span>
-                </div>`;
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">系列編號:</span>
-                    <span style="${valueStyle}">${card.number || 'N/A'}</span>
-                </div>`;
-                
-                // 顯示系列信息
-                if (card.series && typeof card.series === 'string') {
-                    detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                        <span style="${labelStyle}">系列:</span>
-                        <span style="${valueStyle}">${card.series}</span>
-                    </div>`;
-                }
-                
-                detailsHTML += `<div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin: 0.8rem 0 !important; padding: 8px 0 !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;">
-                    <span style="${labelStyle}">稀有度:</span>
-                    <span style="${valueStyle}">${card.rarity || 'N/A'}</span>
-                </div>`;
-                
-                detailsHTML += `<div style="background: rgba(255, 215, 0, 0.1) !important; padding: 0.8rem !important; border-radius: 6px !important; margin-top: 1rem !important; border-left: 3px solid #FFD700 !important;">
-                    <span style="color: #FFD700 !important; font-weight: 600 !important; ${textShadow}">🇹🇼 官方繁體中文卡牌</span><br>
-                    <span style="color: #CCCCCC !important; font-size: 0.85rem !important; ${textShadow}">直接來自台灣官方 API，提供完整的繁體中文資訊。</span>
-                </div>`;
-                
-                // 顯示技能 (Skills/Attacks)
-                if (card.skills && card.skills.length > 0) {
-                    detailsHTML += `<div style="background: rgba(100, 149, 237, 0.1) !important; padding: 0.8rem !important; border-radius: 6px !important; margin-top: 1rem !important; border-left: 3px solid #6495ED !important;">
-                        <h6 style="color: #6495ED !important; font-weight: 600 !important; ${textShadow}; margin-bottom: 0.8rem !important;">⚡ 技能與招式</h6>`;
-                    
-                    card.skills.forEach((skill, index) => {
-                        detailsHTML += `<div style="background: rgba(0, 0, 0, 0.3) !important; padding: 0.6rem !important; border-radius: 4px !important; margin-bottom: 0.6rem !important;">
-                            <div style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
-                                <span style="color: #FFFFFF !important; font-weight: 600 !important; ${textShadow}">${skill.name}</span>
-                                ${skill.damage ? `<span style="color: #FF6347 !important; font-weight: 700 !important; ${textShadow}; font-size: 0.9rem !important;">傷害: ${skill.damage}</span>` : ''}
-                            </div>
-                            ${skill.effect ? `<div style="color: #CCCCCC !important; font-size: 0.85rem !important; ${textShadow}; margin-top: 0.4rem !important; line-height: 1.5 !important;">${skill.effect}</div>` : ''}
-                        </div>`;
-                    });
-                    
-                    detailsHTML += `</div>`;
-                }
             }
-            
-            detailsHTML += `<p style="${descriptionStyle}">${card.description || '無描述'}</p>`;
-            
-            document.getElementById('cardModalDetails').innerHTML = detailsHTML;
-            
-            // 隱藏 cardModalSeries（因為 series 數據結構不同）
-            const seriesEl = document.getElementById('cardModalSeries');
-            if (seriesEl) {
-                seriesEl.style.display = 'none';
+
+            if (skills.length) {
+                html += `<div class="skills-block"><h3 class="skills-title">招式與能力</h3>${skills.map(skill => `
+                    <div class="skill-card">
+                        <strong>${escapeHtml(skill.name || '未命名招式')} ${skill.damage ? `· ${escapeHtml(skill.damage)}` : ''}</strong>
+                        ${skill.effect ? `<p>${escapeHtml(skill.effect)}</p>` : ''}
+                    </div>`).join('')}</div>`;
             }
-            
+
+            document.getElementById('cardModalDetails').innerHTML = html;
+            initHoloTilt(tiltCard, highRarity);
             modal.show();
         }
-        
         function getSourceName(source) {
             const names = {
                 'pokemon': '寶可夢 TCG (國際)',
                 'pokemon-en': '寶可夢 TCG (國際英文)',
                 'yugioh': '遊戲王',
-                'mtg': 'Magic 風雲會',
-                'tw-pokemon': '🇹🇼 寶可夢 TCG (台灣繁中)'
+                'tw-pokemon': '🇹🇼 寶可夢 TCG (台灣繁中)',
+                'pokemon-jp': '🇯🇵 寶可夢 TCG (日本官方)'
             };
             return names[source] || source;
-        }
-
-        /** 設定搜尋模式 */
-        function setSearchMode(mode) {
-            searchMode = mode;
-            console.log('切換搜尋模式:', mode);
-            
-            document.querySelectorAll('.platform-tabs .platform-btn').forEach((btn, i) => {
-                const modes = ['ecommerce', 'international', 'combined'];
-                btn.classList.toggle('active', modes[i] === mode);
-            });
-
-            // 顯示/隱藏卡牌來源選擇器
-            const sourceSelector = document.getElementById('cardSourceSelector');
-            if (mode === 'international') {
-                sourceSelector.style.display = 'block';
-            } else {
-                sourceSelector.style.display = 'none';
-            }
-
-            // 更新提示信息
-            const hints = {
-                'ecommerce': {
-                    title: '台灣 PChome',
-                    examples: '遊戲王卡牌、寶可夢卡牌、集換式卡牌、補充包',
-                    placeholder: '搜尋建議：遊戲王卡牌, 寶可夢卡牌...'
-                },
-                'international': {
-                    title: '國際卡牌 API',
-                    examples: '英文卡牌名稱：pikachu、blue eyes、black lotus | 繁體中文：寶可夢卡牌',
-                    placeholder: '搜尋建議：pikachu, blue eyes, black lotus...'
-                },
-                'combined': {
-                    title: '組合搜尋',
-                    examples: '同時搜尋台灣價格與國際卡牌資料庫',
-                    placeholder: '搜尋建議：任何卡牌名稱都可以...'
-                }
-            };
-
-            const hint = hints[mode];
-            document.getElementById('hintTitle').textContent = hint.title;
-            document.getElementById('hintExamples').textContent = hint.examples;
-            document.getElementById('searchKeyword').placeholder = hint.placeholder;
         }
 
         /** 改變卡牌來源 */
@@ -851,12 +1254,12 @@
             const searchInput = document.getElementById('searchKeyword');
             if (source === 'tw-pokemon') {
                 searchInput.placeholder = "請輸入中文名稱或卡號（如：皮卡丘 或 sv4a-127）";
+            } else if (source === 'pokemon-jp') {
+                searchInput.placeholder = "日本公式カードを検索（例：ピカチュウ、リザードン）";
             } else if (source === 'pokemon') {
                 searchInput.placeholder = "Please enter English name (e.g., Pikachu 或 id:sv4a-127)";
             } else if (source === 'yugioh') {
                 searchInput.placeholder = "搜尋遊戲王卡牌 (如: 黑魔導)";
-            } else if (source === 'mtg') {
-                searchInput.placeholder = "搜尋魔法風雲會卡牌";
             }
         }
 
@@ -874,68 +1277,9 @@
                 return;
             }
 
-            // 如果是國際卡牌搜尋，使用新的分頁 API
-            if (searchMode === 'international') {
-                currentCardSearch.keyword = keyword;
-                currentCardSearch.page = 1;  // 重置到第 1 頁
-                await performCardSearch();
-                return;
-            }
-
-            try {
-                let url;
-                if (searchMode === 'combined') {
-                    url = `/api/combined-search?keyword=${encodeURIComponent(keyword)}`;
-                } else {
-                    url = `/api/search?keyword=${encodeURIComponent(keyword)}`;
-                }
-                
-                console.log('📡 [API 請求]', searchMode === 'combined' ? '組合搜尋' : 'PChome 搜尋', url);
-                
-                const response = await fetch(url, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    credentials: 'include'
-                });
-                
-                console.log(`📊 [API 回應] 狀態碼: ${response.status}`);
-                
-                const data = await response.json();
-
-                if (!response.ok) {
-                    const errorMsg = data.error || `HTTP ${response.status}`;
-                    console.error('❌ [API 錯誤]', {
-                        status: response.status,
-                        searchMode: searchMode,
-                        error: errorMsg,
-                        details: data
-                    });
-                    alert('搜尋失敗: ' + errorMsg);
-                    return;
-                }
-
-                console.log('✅ [API 成功]', searchMode === 'combined' ? '組合搜尋' : 'PChome 搜尋', {
-                    resultCount: Object.keys(data.results || {}).length
-                });
-
-                if (searchMode === 'combined') {
-                    displayCombinedResults(data);
-                } else {
-                    currentSearchResults = data.results || {};
-                    displayResults(currentSearchResults);
-                }
-            } catch (error) {
-                console.error('❌ [網路錯誤]', {
-                    name: error.name,
-                    message: error.message,
-                    searchMode: searchMode,
-                    stack: error.stack
-                });
-                alert('搜尋失敗: ' + error.message + '\n\n請檢查網路連接或查看瀏覽器控制台了解詳情');
-            }
+            currentCardSearch.keyword = keyword;
+            currentCardSearch.page = 1;
+            await performCardSearch();
         }
         
         /** 國際卡牌搜尋（支持分頁） */
@@ -1045,7 +1389,7 @@
             // 顯示來源標題
             if (source === 'all') {
                 // 顯示所有來源的結果
-                const sources = ['pokemon', 'yugioh', 'mtg'];
+                const sources = ['pokemon', 'tw-pokemon', 'pokemon-jp', 'yugioh'];
                 const results = data.results || {};
                 
                 sources.forEach(src => {
@@ -1077,15 +1421,15 @@
             const sourceNames = {
                 'pokemon': '⚡ 寶可夢 TCG (國際)',
                 'yugioh': '🎴 遊戲王',
-                'mtg': '🪄 魔法風雲會',
-                'tw-pokemon': '🇹🇼 寶可夢 TCG (台灣繁中)'
+                'tw-pokemon': '🇹🇼 寶可夢 TCG (台灣繁中)',
+                'pokemon-jp': '🇯🇵 寶可夢 TCG (日本官方)'
             };
             
             const sourceColors = {
                 'pokemon': '#FF6B6B',
                 'yugioh': '#FFD700',
-                'mtg': '#9932CC',
-                'tw-pokemon': '#FF6347'  // 台灣寶可夢使用稍深的紅色
+                'tw-pokemon': '#FF6347',
+                'pokemon-jp': '#E11D48'
             };
             
             let html = `
@@ -1094,7 +1438,7 @@
                         <h2>${sourceNames[source] || source}</h2>
                         <span class="result-count">${cards.length} / ${total}</span>
                     </div>
-                    <div class="product-grid">
+                    <div class="card-grid">
                         ${cards.map(card => createCardElement(card, source)).join('')}
                     </div>
                     
@@ -1108,29 +1452,37 @@
         
         /** 創建卡牌元素 */
         function createCardElement(card, source) {
-            // 支持兩種格式：新格式 (image_url) 和舊格式 (img_url)
             const imageUrl = card.image_url || card.img_url || '';
-            const displayName = card.name || card.title || '';
-            
+            const displayName = card.name || card.title || '未命名卡牌';
+            const cardKey = `card-${Math.random().toString(36).slice(2, 11)}`;
+            currentSearchResults[cardKey] = card;
+            const rarity = card.rarity || '未標示';
+            const sourceName = getSourceName(card.source || source);
+            const hasHp = card.hp !== undefined && card.hp !== null && card.hp !== '' && card.hp !== '-';
+
             return `
-                <div class="product-card" style="cursor: pointer;" onclick="showCardDetail(${JSON.stringify(card).replace(/"/g, '&quot;')})">
-                    <div class="product-image">
-                        <img src="${imageUrl}" alt="${displayName}" onerror="this.src='https://picsum.photos/280/220?random=${Math.random()}'" style="cursor: pointer;">
+                <article class="catalog-card" onclick="showCardDetail(currentSearchResults['${cardKey}'])" tabindex="0"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showCardDetail(currentSearchResults['${cardKey}'])}">
+                    <div class="catalog-image">
+                        <img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(displayName)}" loading="lazy"
+                            onerror="this.src='https://picsum.photos/280/390?random=${Math.random()}'">
                     </div>
-                    <div class="product-info">
-                        <div class="product-name">${displayName}</div>
-                        <div style="font-size: 0.8rem; color: #888; margin: 0.3rem 0;">
-                            ${card.price ? '$' + card.price : 'N/A'}
+                    <div class="catalog-info">
+                        <div class="catalog-name">${escapeHtml(displayName)}</div>
+                        <div class="detail-number">${escapeHtml(card.number || card.id || '-')}</div>
+                        <div class="card-metadata">
+                            ${hasHp ? `<span class="mini-chip mono">HP ${escapeHtml(card.hp)}</span>` : ''}
+                            <span class="mini-chip">${escapeHtml(card.type || '未標示')}</span>
+                            <span class="mini-chip">${escapeHtml(rarity)}</span>
                         </div>
-                        <div style="font-size: 0.75rem; color: #aaa;">
-                            ${card.series || card.stats?.set || card.stats?.type || ''}
+                        <div style="display:flex;justify-content:space-between;gap:8px;align-items:end;margin-top:14px">
+                            <span style="color:#64748b;font-size:.69rem;font-weight:700">${escapeHtml(sourceName)}</span>
+                            <strong style="color:#475569;font-size:.76rem;text-align:right">${escapeHtml(card.series || '未標示')}</strong>
                         </div>
-                        ${card.skills && card.skills.length > 0 ? `<div style="font-size: 0.7rem; color: #6495ED; margin-top: 0.3rem;">⚡ ${card.skills.length} 個技能</div>` : ''}
                     </div>
-                </div>
+                </article>
             `;
         }
-        
         /** 生成分頁控制按鈕 */
         function createPaginationControls(source, currentPage, totalPages) {
             let html = `<div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">`;
@@ -1159,42 +1511,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        /** 顯示 PChome 結果 */
-        function displayResults(results) {
-            const container = document.getElementById('searchResults');
-            const pchomeItems = results.pchome || [];
-            
-            if (!pchomeItems.length) {
-                container.innerHTML = '<div class="no-results"><i class="fas fa-search"></i><h3>未找到商品</h3></div>';
-                return;
-            }
-
-            container.innerHTML = `
-                <div class="platform-results">
-                    <div class="platform-header platform-pchome">
-                        <span class="platform-icon">🛒</span>
-                        <h2>PChome 24h</h2>
-                        <span class="result-count">${pchomeItems.length} 個商品</span>
-                    </div>
-                    <div class="product-grid">
-                        ${pchomeItems.map(item => `
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="${item.image || ''}" alt="${item.name}" onerror="this.src='https://picsum.photos/280/220'">
-                                </div>
-                                <div class="product-info">
-                                    <div class="product-name">${item.name || ''}</div>
-                                    <div class="product-shop"><i class="fas fa-store"></i> ${item.shop || 'PChome'}</div>
-                                    <div class="product-price">NT$ ${Number(item.price).toLocaleString()}</div>
-                                    <a href="${item.url || '#'}" target="_blank" class="btn" style="margin-top: auto; background-color: var(--primary-color); color: white; text-decoration: none; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">購買</a>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
         /** 顯示國際卡牌結果 */
         function displayInternationalResults(data) {
             const container = document.getElementById('searchResults');
@@ -1204,12 +1520,13 @@
             const cardConfig = {
                 'yugioh': { name: '🎴 遊戲王', color: '#FFD700' },
                 'pokemon': { name: '⚡ 寶可夢卡牌', color: '#FF6B6B' },
-                'mtg': { name: '🪄 魔法風雲會', color: '#9932CC' }
+                'tw-pokemon': { name: '🇹🇼 繁中寶可夢', color: '#FF6347' },
+                'pokemon-jp': { name: '🇯🇵 日版寶可夢', color: '#E11D48' }
             };
 
             for (const [source, cards] of Object.entries(refs)) {
                 if (!cards || !cards.length) continue;
-                const cfg = cardConfig[source];
+                const cfg = cardConfig[source] || { name: '卡牌資料', color: '#2563eb' };
                 
                 html += `
                     <div class="platform-results">
@@ -1217,7 +1534,7 @@
                             <h2>${cfg.name}</h2>
                             <span class="result-count">${cards.length}</span>
                         </div>
-                        <div class="product-grid">
+                        <div class="card-grid">
                             ${cards.map(card => createCardDetail(card, source)).join('')}
                         </div>
                     </div>
@@ -1229,274 +1546,134 @@
 
         /** 創建卡牌詳細信息卡片 */
         function createCardDetail(card, source) {
-            if (source === 'pokemon') {
-                // 寶可夢卡牌 - 顯示屬性、能力等信息
-                const types = card.types || [];
-                const abilities = card.abilities || [];
-                const stats = card.stats || {};
-                
-                return `
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="${card.img_url || ''}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">${card.title || ''}</div>
-                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
-                                <strong>ID:</strong> #${card.id || 'N/A'}
-                            </div>
-                            
-                            <!-- 屬性 -->
-                            <div style="font-size: 0.75rem; margin-bottom: 0.5rem;">
-                                <strong>屬性:</strong> ${types.map(t => `<span style="display: inline-block; background-color: rgba(255,107,107,0.3); padding: 0.2rem 0.4rem; border-radius: 3px; margin-right: 0.3rem;">${t}</span>`).join('') || 'N/A'}
-                            </div>
-                            
-                            <!-- 身高體重 -->
-                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
-                                <strong>身高:</strong> ${card.height || 'N/A'} | <strong>體重:</strong> ${card.weight || 'N/A'}
-                            </div>
-                            
-                            <!-- 能力 -->
-                            ${abilities.length > 0 ? `
-                                <div style="font-size: 0.75rem; margin-bottom: 0.5rem;">
-                                    <strong>能力:</strong> ${abilities.map(a => a.name + (a.is_hidden ? ' ⭐' : '')).join(', ')}
-                                </div>
-                            ` : ''}
-                            
-                            <!-- 基礎能力統計 -->
-                            ${Object.keys(stats).length > 0 ? `
-                                <div style="font-size: 0.7rem; margin-bottom: 0.5rem;">
-                                    <strong>能力值:</strong><br/>
-                                    ${Object.entries(stats).map(([key, val]) => `${key}: ${val}`).join(' | ')}
-                                </div>
-                            ` : ''}
-                            
-                            <!-- 進化 -->
-                            ${card.evolution_line && card.evolution_line !== 'N/A' ? `
-                                <div style="font-size: 0.75rem; color: var(--primary-color); margin-top: 0.5rem;"><strong>進化:</strong> ${card.evolution_line}</div>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
-            } else if (source === 'yugioh') {
-                // 遊戲王卡牌 - 顯示屬性、等級、ATK/DEF
-                const attribute = card.attribute || '';
-                const level = card.level || '';
-                const atk = card.atk || 0;
-                const def = card.def || 0;
-                const desc = card.desc || '';
-                
-                return `
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="${card.img_url || ''}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">${card.title || ''}</div>
-                            
-                            <!-- 類型 -->
-                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.3rem;">
-                                <strong>類型:</strong> ${card.type || '未知'}
-                            </div>
-                            
-                            <!-- 屬性 & 等級 -->
-                            ${attribute || level ? `
-                                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.3rem;">
-                                    ${attribute ? `<strong>屬性:</strong> ${attribute}` : ''} ${level ? `| <strong>等級:</strong> ${level}` : ''}
-                                </div>
-                            ` : ''}
-                            
-                            <!-- ATK / DEF -->
-                            <div style="font-size: 0.75rem; font-weight: bold; margin-bottom: 0.3rem;">
-                                攻: <span style="color: #FF6B6B;">${atk}</span> / 防: <span style="color: #4ECDC4;">${def}</span>
-                            </div>
-                            
-                            <!-- 效果描述 -->
-                            ${desc ? `
-                                <div style="font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4; max-height: 3em; overflow: hidden;">
-                                    ${desc.substring(0, 150)}${desc.length > 150 ? '...' : ''}
-                                </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
-            } else if (source === 'mtg') {
-                // MTG 卡牌 - 顯示法力費、類型、能力值、效果
-                const mana_cost = card.mana_cost || '';
-                const power = card.power || '';
-                const toughness = card.toughness || '';
-                const text = card.text || '';
-                
-                return `
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="${card.img_url || ''}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">${card.title || ''}</div>
-                            
-                            <!-- 法力費 -->
-                            ${mana_cost ? `
-                                <div style="font-size: 0.8rem; margin-bottom: 0.3rem;">
-                                    <strong style="color: #9932CC;">法力費:</strong> <span style="font-family: monospace;">${mana_cost}</span>
-                                </div>
-                            ` : ''}
-                            
-                            <!-- 類型 -->
-                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.3rem;">
-                                <strong>類型:</strong> ${card.type || '未知'}
-                            </div>
-                            
-                            <!-- 能力值 (生物卡) -->
-                            ${power || toughness ? `
-                                <div style="font-size: 0.75rem; font-weight: bold; margin-bottom: 0.3rem;">
-                                    攻防: <span style="color: #FF6B6B;">${power}/${toughness}</span>
-                                </div>
-                            ` : ''}
-                            
-                            <!-- 效果 -->
-                            ${text ? `
-                                <div style="font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4; max-height: 3em; overflow: hidden;">
-                                    ${text.substring(0, 150)}${text.length > 150 ? '...' : ''}
-                                </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
-            } else {
-                // 未知類型 - 簡化顯示
-                return `
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="${card.img_url || ''}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">${card.title || ''}</div>
-                            <div class="product-shop" style="font-size: 0.8rem; margin-bottom: 0.5rem;"><strong>類型:</strong> ${card.type || '未知'}</div>
-                            ${card.text ? `<div style="font-size: 0.75rem; color: var(--text-secondary);">${card.text}</div>` : ''}
-                        </div>
-                    </div>
-                `;
-            }
+            return createCardElement(card, source);
         }
-
-        /** 顯示組合結果 */
-        function displayCombinedResults(data) {
-            const container = document.getElementById('searchResults');
-            let html = '';
-
-            // 台灣價格
-            const pchomeItems = (data.taipei_prices?.pchome || []);
-            if (pchomeItems.length) {
-                html += `
-                    <div class="platform-results">
-                        <div class="platform-header platform-pchome">
-                            <h2>🇹🇼 台灣價格 (PChome)</h2>
-                            <span class="result-count">${pchomeItems.length}</span>
-                        </div>
-                        <div class="product-grid">
-                            ${pchomeItems.map(item => `
-                                <div class="product-card">
-                                    <div class="product-image"><img src="${item.image}" alt="${item.name}" onerror="this.src='https://picsum.photos/280/220'"></div>
-                                    <div class="product-info">
-                                        <div class="product-name">${item.name}</div>
-                                        <div class="product-price">NT$ ${Number(item.price).toLocaleString()}</div>
-                                        <a href="${item.url || '#'}" target="_blank" class="btn" style="margin-top: auto; background-color: var(--primary-color); color: white; text-decoration: none; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">購買</a>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-
-            // 國際卡牌參考
-            const refs = data.international_references || {};
-            const cardConfig = {
-                'yugioh': { name: '🎴 遊戲王', color: '#FFD700' },
-                'pokemon': { name: '⚡ 寶可夢', color: '#FF6B6B' },
-                'mtg': { name: '🪄 魔法風雲會', color: '#9932CC' }
-            };
-
-            for (const [source, cards] of Object.entries(refs)) {
-                if (!cards || !cards.length) continue;
-                const cfg = cardConfig[source];
-                
-                html += `
-                    <div class="platform-results">
-                        <div class="platform-header" style="border-bottom-color: ${cfg.color};">
-                            <h2>${cfg.name}</h2>
-                            <span class="result-count">${cards.length} 張</span>
-                        </div>
-                        <div class="product-grid">
-                            ${cards.map(card => `
-                                <div class="product-card">
-                                    <div class="product-image"><img src="${card.img_url}" alt="${card.title}" onerror="this.src='https://picsum.photos/280/220'"></div>
-                                    <div class="product-info">
-                                        <div class="product-name">${card.title}</div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-
-            container.innerHTML = html || '<div class="no-results"><i class="fas fa-search"></i><h3>未找到內容</h3></div>';
-        }
-
         /** 輔助函數 */
         function handleKeyboardSearch(event) {
             if (event.key === 'Enter') performSearch();
         }
 
-        /** 頁面載入時自動搜尋 */
+        function setupBottomSheet() {
+            const modalEl = document.getElementById('cardModal');
+            const content = modalEl.querySelector('.modal-content');
+            const handle = modalEl.querySelector('.sheet-handle');
+            let startY = 0;
+            let offsetY = 0;
+            let dragging = false;
+
+            const resetSheet = () => {
+                dragging = false;
+                offsetY = 0;
+                content.style.removeProperty('transition');
+                content.style.removeProperty('transform');
+            };
+
+            handle.addEventListener('pointerdown', event => {
+                dragging = true;
+                startY = event.clientY;
+                content.style.transition = 'none';
+                handle.setPointerCapture(event.pointerId);
+            });
+
+            handle.addEventListener('pointermove', event => {
+                if (!dragging) return;
+                offsetY = Math.max(0, event.clientY - startY);
+                content.style.transform = `translateY(${offsetY}px)`;
+            });
+
+            const finishDrag = () => {
+                if (!dragging) return;
+                dragging = false;
+                content.style.removeProperty('transition');
+                if (offsetY > 110) {
+                    bootstrap.Modal.getOrCreateInstance(modalEl).hide();
+                } else {
+                    content.style.transform = 'translateY(0)';
+                    window.setTimeout(resetSheet, 260);
+                }
+            };
+
+            handle.addEventListener('pointerup', finishDrag);
+            handle.addEventListener('pointercancel', finishDrag);
+            modalEl.addEventListener('hidden.bs.modal', () => {
+                resetSheet();
+                if (holoTiltController) holoTiltController.abort();
+                holoTiltController = null;
+            });
+        }
+
+        /** 頁面載入時初始化圖鑑模式 */
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('頁面已載入');
-            document.getElementById('searchKeyword').value = '遊戲王';
-            performSearch();
+            setupBottomSheet();
+            document.getElementById('cardSource').value = 'all';
+            changeCardSource('all');
         });
 
         // ---------- 影像特徵辨識邏輯 ----------
         let cameraStream = null;
         let scanInterval = null;
+        let facingMode = 'environment';
+        let matchRequestInFlight = false;
         const scanStatusEl = document.getElementById('scan-status');
+        const scannerShell = document.getElementById('scannerModal');
+        const scannerStatusLabel = document.getElementById('scanner-status-label');
 
-        async function openScanner() {
-            const scannerModal = new bootstrap.Modal(document.getElementById('scannerModal'));
-            scannerModal.show();
-            
-            const video = document.getElementById('camera-video');
-            scanStatusEl.innerText = "正在向系統請求相機權限...";
-            
-            try {
-                // 原生 WebRTC 請求相機 (優先後鏡頭)
-                cameraStream = await navigator.mediaDevices.getUserMedia({
-                    video: { facingMode: "environment", width: { ideal: 1280 }, height: { ideal: 720 } },
-                    audio: false
-                });
-                video.srcObject = cameraStream;
-                scanStatusEl.innerText = "將卡牌正面對準黃色虛線框內...";
-                
-                // 相機準備好後開始循環擷取畫面
-                video.onplay = () => {
-                    if (scanInterval) clearInterval(scanInterval);
-                    scanInterval = setInterval(captureAndMatch, 800); // 每 0.8 秒比對一次減少後端壓力
-                };
-
-            } catch (err) {
-                console.error("相機權限遭拒或發生錯誤:", err);
-                alert("無法啟動相機，請確認已授予攝影機權限並使用 HTTPS 連線。");
-                stopScanner();
-            }
-            
-            // 監聽 Modal 關閉事件
-            document.getElementById('scannerModal').addEventListener('hidden.bs.modal', function () {
-                stopScanner();
-            }, { once: true });
+        function setScannerState(state, message) {
+            scannerShell.classList.toggle('locked', state === 'locked');
+            scannerShell.dataset.state = state;
+            const labels = {
+                idle: '準備掃描',
+                scanning: '掃描中',
+                target: '正在確認',
+                locked: '辨識完成',
+                error: '相機無法使用'
+            };
+            scannerStatusLabel.textContent = labels[state] || labels.idle;
+            if (message) scanStatusEl.textContent = message;
         }
 
-        function stopScanner() {
+        async function startCamera() {
+            if (cameraStream) cameraStream.getTracks().forEach(track => track.stop());
+            const video = document.getElementById('camera-video');
+            setScannerState('scanning', '將卡牌完整放入藍色對焦框');
+            cameraStream = await navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: { ideal: facingMode },
+                    width: { ideal: 1280 },
+                    height: { ideal: 720 }
+                },
+                audio: false
+            });
+            video.srcObject = cameraStream;
+            await video.play();
+            if (scanInterval) clearInterval(scanInterval);
+            scanInterval = setInterval(captureAndMatch, 800);
+        }
+
+        async function openScanner() {
+            const modal = bootstrap.Modal.getOrCreateInstance(scannerShell);
+            modal.show();
+            try {
+                await startCamera();
+            } catch (error) {
+                console.error('相機權限遭拒或發生錯誤:', error);
+                setScannerState('error', '無法啟動相機，請確認權限並使用 HTTPS 或 localhost');
+            }
+            scannerShell.addEventListener('hidden.bs.modal', () => stopScanner(), { once: true });
+        }
+
+        async function switchCamera() {
+            facingMode = facingMode === 'environment' ? 'user' : 'environment';
+            try {
+                setScannerState('scanning', '正在切換鏡頭…');
+                await startCamera();
+            } catch (error) {
+                console.error('切換鏡頭失敗:', error);
+                setScannerState('error', '找不到可切換的相機');
+            }
+        }
+
+        function stopScanner(preserveState = false) {
             if (scanInterval) {
                 clearInterval(scanInterval);
                 scanInterval = null;
@@ -1505,79 +1682,92 @@
                 cameraStream.getTracks().forEach(track => track.stop());
                 cameraStream = null;
             }
-            scanStatusEl.innerText = "相機已關閉。";
+            matchRequestInFlight = false;
+            if (!preserveState) setScannerState('idle', '相機已關閉');
         }
 
         async function captureAndMatch() {
             const video = document.getElementById('camera-video');
             const canvas = document.getElementById('camera-canvas');
-            if (!video.videoWidth) return;
+            const reticle = scannerShell.querySelector('.scanner-reticle');
+            if (!video.videoWidth || !reticle || matchRequestInFlight) return;
 
-            // 繪製畫面到 canvas
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
+            const videoRect = video.getBoundingClientRect();
+            const reticleRect = reticle.getBoundingClientRect();
+            const coverScale = Math.max(
+                videoRect.width / video.videoWidth,
+                videoRect.height / video.videoHeight
+            );
+            const renderedWidth = video.videoWidth * coverScale;
+            const renderedHeight = video.videoHeight * coverScale;
+            const hiddenX = (renderedWidth - videoRect.width) / 2;
+            const hiddenY = (renderedHeight - videoRect.height) / 2;
+            const sourceX = Math.max(0, (reticleRect.left - videoRect.left + hiddenX) / coverScale);
+            const sourceY = Math.max(0, (reticleRect.top - videoRect.top + hiddenY) / coverScale);
+            const sourceWidth = Math.min(video.videoWidth - sourceX, reticleRect.width / coverScale);
+            const sourceHeight = Math.min(video.videoHeight - sourceY, reticleRect.height / coverScale);
+
+            canvas.width = 630;
+            canvas.height = 880;
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            
-            // 轉為 Base64 JPG
-            const base64Image = canvas.toDataURL('image/jpeg', 0.8);
-            
-            fetchMatchApi(base64Image);
+            ctx.drawImage(
+                video,
+                sourceX, sourceY, sourceWidth, sourceHeight,
+                0, 0, canvas.width, canvas.height
+            );
+            await fetchMatchApi(canvas.toDataURL('image/jpeg', 0.88));
         }
 
-        async function fetchMatchApi(base64Str) {
+        async function fetchMatchApi(base64Image) {
+            matchRequestInFlight = true;
             try {
-                const response = await fetch('/api/cards/image-match', {
+                const response = await fetch('/api/identify', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ image: base64Str })
+                    body: JSON.stringify({ image: base64Image })
                 });
-
-                const scanStatusEl = document.getElementById('scanner-status');
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.status === 'success' && data.confidence >= 70.0) {
-                        if (data.match === currentMatchName) {
-                            matchCounter++;
-                        } else {
-                            currentMatchName = data.match;
-                            matchCounter = 1;
-                        }
-
-                        if (matchCounter >= 3) {
-                            // 達成連續 3 次穩定命中 (約延遲 2.4 秒)
-                            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-                            onScanMatched(data);
-                            currentMatchName = '';
-                            matchCounter = 0;
-                        } else {
-                            // 儀式感提示
-                            scanStatusEl.innerText = `穩定對焦中...發現《${data.match}》 (${matchCounter}/3)`;
-                        }
-                    } else {
-                        currentMatchName = '';
-                        matchCounter = 0;
-                        scanStatusEl.innerText = "將卡牌正面對準黃色虛線框內...";
-                    }
-                } else {
+                const data = await response.json();
+                if (!response.ok || data.status !== 'success' || data.confidence < 47) {
                     currentMatchName = '';
                     matchCounter = 0;
-                    scanStatusEl.innerText = "將卡牌正面對準黃色虛線框內...";
+                    setScannerState('scanning', '將卡牌完整放入藍色對焦框');
+                    return;
                 }
-            } catch (err) {
-                console.error("影像比對請求失敗:", err);
+
+                const matchName = data.match?.name || '';
+                if (matchName === currentMatchName) {
+                    matchCounter += 1;
+                } else {
+                    currentMatchName = matchName;
+                    matchCounter = 1;
+                }
+
+                if (matchCounter >= 3) {
+                    setScannerState('locked', `已鎖定 ${matchName} · ${Math.round(data.confidence)}%`);
+                    if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+                    onScanMatched(data);
+                    currentMatchName = '';
+                    matchCounter = 0;
+                } else {
+                    setScannerState('target', `正在確認 ${matchName} · ${matchCounter}/3`);
+                }
+            } catch (error) {
+                console.error('影像比對請求失敗:', error);
+                setScannerState('error', '辨識服務暫時無法連線');
+            } finally {
+                matchRequestInFlight = false;
             }
         }
-
         function onScanMatched(data) {
-            console.log(`影像辨識成功: ${data.match} (置信度: ${data.confidence}%)`);
+            const matchName = data.match?.name || '未知卡牌';
+            console.log(`影像辨識成功: ${matchName} (置信度: ${data.confidence}%)`);
             
             // 暫停相機
-            stopScanner();
+            stopScanner(true);
             
             if (navigator.vibrate) navigator.vibrate(200);
-            scanStatusEl.innerText = `✅ 成功辨識：${data.match}！`;
+            setScannerState('locked', `成功辨識：${matchName}`);
             
             setTimeout(() => {
                 const modalEl = document.getElementById('scannerModal');
@@ -1587,15 +1777,14 @@
                 // 若有爬蟲抓到的卡牌資料，直接打開卡牌詳情
                 if (data.cards && data.cards.length > 0) {
                     const card = data.cards[0];
-                    if (card.source === 'tw-pokemon') {
-                        document.getElementById('cardSource').value = 'tw-pokemon';
-                        changeCardSource('tw-pokemon');
-                        document.getElementById('searchKeyword').value = data.match.name;
-                    }
-                    showCardDetail(card);
+                    const validSources = ['all', 'tw-pokemon', 'pokemon-jp', 'pokemon', 'yugioh'];
+                    const cardSource = validSources.includes(card.source) ? card.source : 'all';
+                    document.getElementById('cardSource').value = cardSource;
+                    changeCardSource(cardSource);
+                    document.getElementById('searchKeyword').value = matchName;
+                    window.setTimeout(() => showCardDetail(card), 180);
                 } else {
-                    document.getElementById('searchKeyword').value = data.match.name;
-                    setSearchMode('international');
+                    document.getElementById('searchKeyword').value = matchName;
                     document.getElementById('cardSource').value = 'tw-pokemon';
                     changeCardSource('tw-pokemon');
                     performSearch();
